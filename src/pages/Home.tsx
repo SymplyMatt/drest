@@ -145,13 +145,15 @@ const Home = () => {
                     className="flex items-center justify-between"
                 >
                     {[...Array(10)].map((_, index) => (
-                        <SwiperSlide key={index} className="h-[320px] w-[220px] flex justify-center">
-                            <div className="relative w-full h-full flex justify-center">
+                        <SwiperSlide key={index} className="flex justify-center">
+                            <div className="relative w-full h-full flex flex-col justify-center gap-[14px]">
                                 <img
                                     src={`/src/assets/images/newarrivals${(index % 4) + 1}.png`}
-                                    className="object-cover w-full h-full"
+                                    className="object-cover h-[320px] w-[220px]"
                                     alt="Product"
                                 />
+                                <p className="text-black foont-medium text-[14px]">Athletics French Terry Crew</p>
+                                <p className="text-[18px] text-[#8F0024] font-semibold price">109.40 TND</p>
                             </div>
                         </SwiperSlide>
                     ))}
