@@ -8,12 +8,26 @@ body{
     box-sizing: border-box;
 }
 .slider_home{
-    height: calc(100vh - 206px);
-    >div{
+    height: calc(100vh - 228px) !important;
+
+    .sliderone{
+        height: calc(100vh - 228px) !important;
         background: url('/src/assets/images/slideone.webp') no-repeat center center;
+        background-size: cover;
+        width: 100%;
+    }
+    .slidertwo{
+        width: 100%;
+        height: calc(100vh - 228px) !important;
+        background: url('/src/assets/images/slidetwo.webp') no-repeat center center;
         background-size: cover;
     }
 }
 .header_slider{
     font-family: "GFS Didot", serif;
+}
+.swiper-slide{
+    margin-right: 0px !important;
+    height: calc(100vh - 228px) !important;
+    width: 100% !important;
 }
