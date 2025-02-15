@@ -36,7 +36,8 @@ module.exports = {
       },
       colors: {
         white: "#FFFFFF",
-        recruitBlue: "#002147",
+        headerBlack: "#000000",
+        textWhite: "#FFFFFF",
       },
       spacing: {
         1: "1px",
