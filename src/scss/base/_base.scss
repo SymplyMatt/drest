@@ -78,3 +78,32 @@ body{
         display: none;
     }    
 }
+.slider_arrivals{
+    .swiper-pagination{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .swiper-slide{
+        height: 320px !important;
+        width: 220px !important;
+    }
+    .swiper-button-prev, .swiper-button-next {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .swiper-button-prev {
+        background-image: url('/src/assets/images/prev.svg'); 
+    }
+    
+    .swiper-button-next {
+        background-image: url('/src/assets/images/next.svg');
+    }
+    .swiper-button-prev:after, .swiper-button-next:after {
+        display: none;
+    }    
+}
