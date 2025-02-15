@@ -20,7 +20,7 @@ const Home = () => {
                     <div className="font-medium underline leading-[14px] cursor-pointer">SHOP NOW</div>
                     <div className="cursor-pointer"><img src="/src/assets/images/arrowright.svg"/></div>
                 </div>
-                <div className="text-[14px] flex items-center gap-[4px]">Currency: <span className="text-[14px] font-extrabold">EUR</span> <img src="/src/assets/images/caretdownsm.svg"/></div>  
+                <div className="text-[14px] flex items-center gap-[4px] cursor-pointer">Currency: <span className="text-[14px] font-extrabold">EUR</span> <img src="/src/assets/images/caretdownsm.svg"/></div>  
             </div>
             <div className="w-full h-[92px] flex border-b border-[#E6E6E6] px-[60px] justify-between items-center">
                 <div className="cursor-pointer"><img src="/src/assets/images/logo.svg"/></div>
@@ -35,7 +35,7 @@ const Home = () => {
                     <input type="text" className="border-none outline-none focus:ring-0 text-base text-[#6B6B6B]" placeholder="Search for product"/>
                     <img src="/src/assets/images/search.svg"/>
                 </div>
-                <div className="h-[48px] bg-black text-[#E6E6E6] flex items-center justify-center gap-[12px] px-[8px]"><img src="/src/assets/images/user.svg"/> Sign In/Sign Up</div>
+                <div className="h-[48px] bg-black text-[#E6E6E6] flex items-center justify-center gap-[12px] px-[12px] cursor-pointer"><img src="/src/assets/images/user.svg"/> Sign In/Sign Up</div>
                 <div className="flex items-center gap-[16px]">
                     <img src="/src/assets/images/heart.svg" className="cursor-pointer"/>
                     <img src="/src/assets/images/wish.svg" className="cursor-pointer"/>
@@ -57,7 +57,13 @@ const Home = () => {
             </div>
         </div>
         <div className="w-full px-[60px] flex justify-center slider_home mb-[24px]">
-            <div className="w-full flex justify-center flex justify-center items-center bg-[url('/src/assets/images/slideonebg.webp')] bg-no-repeat bg-cover"></div>
+            <div className="w-full flex justify-center bg-no-repeat bg-cover px-[80px] gap-[32px] flex-col text-white">
+                <div className="flex flex-col justify-center gap-[12px]">
+                    <div className="text-white text-[40px] leading-[50px] header_slider">Fall in Love with Fashion <br /> This Valentine's Day!</div>
+                    <div className="text-[14px] max-w-[370px] text-[#E6E6E6]">Celebrate love in style! Shop our exclusive Valentine's Day collection  and enjoy up to 50% off on romantic dresses, chic accessories, and more.</div>
+                </div>
+                <div className="bg-white h-[48px] w-fit px-[36px] text-black flex items-center justify-center tracking-[2%] text-[16px] font-medium cursor-pointer transition-transform duration-200 hover:scale-90">SHOP NOW</div>
+            </div>
         </div>
     </div>
   )
