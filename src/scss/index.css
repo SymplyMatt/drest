@@ -11,16 +11,23 @@
 
 @font-face {
     font-family: 'AvenirNext';
-    src: url('/src/assets/fonts/AvenirNextLTPro-Bold.otf') format('opentype');
-    font-weight: 700;
+    src: url('/src/assets/fonts/AvenirNextLTPro-Medium.otf') format('opentype');
+    font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'AvenirNext';
-    src: url('/src/assets/fonts/AvenirNextLTPro-It.otf') format('opentype');
-    font-weight: 400;
-    font-style: italic;
+    src: url('/src/assets/fonts/AvenirNextLTPro-Demi.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'AvenirNext';
+    src: url('/src/assets/fonts/AvenirNextLTPro-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
 }
 
 

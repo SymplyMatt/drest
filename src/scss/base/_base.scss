@@ -7,3 +7,10 @@ body{
     padding: 0;
     box-sizing: border-box;
 }
+.slider_home{
+    height: calc(100vh - 206px);
+    >div{
+        background: url('/src/assets/images/slideone.webp') no-repeat center center;
+        background-size: cover;
+    }
+}
