@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import { Autoplay, Pagination } from "swiper/modules";
 
 const Home = () => {
   return (
@@ -63,7 +63,6 @@ const Home = () => {
         </div>
         <div className="w-full px-[60px] flex justify-center">
       <Swiper
-        // spaceBetween={50}
         slidesPerView={1}
         loop={true}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
@@ -72,7 +71,6 @@ const Home = () => {
         className="w-full slider_home bg-black"
         speed={1800}
       >
-        {/* Slide 1 */}
         <SwiperSlide className="bg-red-900">
           <div className="w-full flex justify-center bg-no-repeat bg-cover px-[80px] gap-[32px] flex-col text-white sliderone">
             <div className="flex flex-col justify-center gap-[12px]">
@@ -88,8 +86,6 @@ const Home = () => {
             </div>
           </div>
         </SwiperSlide>
-
-        {/* Slide 2 */}
         <SwiperSlide>
           <div className="w-full flex justify-center bg-no-repeat bg-cover px-[80px] gap-[32px] flex-col text-white slidertwo">
             <div className="flex flex-col justify-center gap-[12px]">
