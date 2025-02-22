@@ -7,7 +7,7 @@ import { Autoplay, Navigation } from "swiper/modules";
 const CategoriesSlider = () => {
     const categories: string[] = ["Shoes", "Clothing", "Accessories", "Bags", "Beauty", "Home lifestyle", "Shoes", "Clothing", "Accessories", "Bags", "Beauty", "Home lifestyle"]
     return (
-        <div className="px-[60px] w-full slider_featured mb-[24px]">
+        <div className="px-[30px] w-full slider_featured mb-[24px]">
             <Swiper
                 spaceBetween={14}
                 slidesPerView={6}
