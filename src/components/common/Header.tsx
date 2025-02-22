@@ -23,7 +23,7 @@ const Header = () => {
             </div>
             <div className="w-full h-[92px] flex border-b border-[#E6E6E6] px-[60px] justify-between items-center">
                 <div className="cursor-pointer"><img src="/src/assets/images/logo.svg" /></div>
-                <div className="flex items-center gap-[12px] uppercase">
+                <div className="flex items-center gap-[16px] uppercase">
                     <div className="font-semibold cursor-pointer flex items-center opacity-[0.90]">Women</div>
                     <div className="font-semibold cursor-pointer flex items-center opacity-[0.90]">Men</div>
                     <div className="font-semibold cursor-pointer flex items-center opacity-[0.90]">Kids</div>
