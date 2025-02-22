@@ -2,6 +2,7 @@ interface CategoriesAndProductsProps {
     title: string;
 }
 const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title }) => {
+    const shuffledIndexes = [...Array(8).keys()].sort(() => Math.random() - 0.5);
     return (
         <div className="w-full flex flex-col items-center gap-[24px] mb-[50px]">
             <div className="w-full flex flex-col gap-[20px] justify-center px-[50px]">
@@ -22,14 +23,14 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title }) 
                 <div className="h-[1px] bg-[#E6E6E6] w-full"></div>
             </div>
             <div className="w-full grid grid-cols-4">
-                {[...Array(8)].map((_, index) => {
+                {shuffledIndexes.map((number) => {
                     const discount = Math.random() < 0.5 ? 0 : Math.floor(Math.random() * 41) + 10;
                     const price = Math.floor(Math.random() * 101) + 100;
                     const priceAfterDiscount = price - (price * discount) / 100;
                     return(
-                        <div className="col-span-1 flex flex-col items-center h-[480px] group">
+                        <div className="col-span-1 flex flex-col items-center h-[480px] group" key={number}>
                             <div className="w-full h-[400px] bg-[#F3F3F3] border border-[#E6E6E6] flex items-center justify-center relative">
-                                <img src={`/src/assets/images/recommended${index+1}.png`} className="w-full h-full object-cover"/>
+                                <img src={`/src/assets/images/recommended${number+1}.png`} className="w-full h-full object-cover"/>
                                 <img src="/src/assets/images/heart.svg" className="cursor-pointer absolute top-[20px] right-[10px]" />
                                 <div className={`absolute top-[20px] left-[10px] h-[28px] bg-[#8F0024] p-[10px] flex justify-center items-center text-white text-[14px] font-semibold leading-[21px] tracking-[-4%] gap-[8px] ${!discount && 'hidden'}`}><img src="/src/assets/images/discountbadge.svg" /> {discount}% OFF</div>
                                 <img src="/src/assets/images/rec_plus.svg" className="cursor-pointer absolute bottom-[20px] right-[10px]" />
