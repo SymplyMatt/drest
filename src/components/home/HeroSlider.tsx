@@ -6,7 +6,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 
 const HeroSlider = () => {
     return (
-        <div className="w-full px-[60px] flex justify-center slider_hero">
+        <div className="w-full flex justify-center slider_hero">
             <Swiper
                 slidesPerView={1}
                 loop={true}
