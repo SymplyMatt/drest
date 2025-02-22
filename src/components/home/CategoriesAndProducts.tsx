@@ -39,7 +39,7 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title }) 
                             </div>
                             <div className="flex flex-col items-center justify-center gap-[4px] h-[80px] border-b border-l border-r border-[#E6E6E6] w-full">
                                 <div className="text-[18px] leading-[27px] tracking-[0%]">Ocean breeze varsity jacket</div>
-                                <div className="text-[18px] font-semibold leading-[26px] tracking-[-5%]">{Math.round(priceAfterDiscount)} TND {discount && <span className="font-semibold text-[#8F0024] text-[16px] leading-[24px] tracking-[-4%] line-through">{price} TND</span>}</div>
+                                <div className="text-[18px] font-semibold leading-[26px] tracking-[-5%]">{Math.round(priceAfterDiscount)} TND {discount ? <span className="font-semibold text-[#8F0024] text-[16px] leading-[24px] tracking-[-4%] line-through">{price} TND</span> : ''}</div>
                             </div>
                         </div>
                     )

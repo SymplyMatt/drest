@@ -10,6 +10,7 @@ const Home = () => {
             <HeroSlider />
             <CategoriesSlider />
             <CategoriesAndProducts title="Recommended"/>
+            <CategoriesAndProducts title="Trending"/>
       </div>
   )
 }
