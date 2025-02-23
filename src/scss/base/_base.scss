@@ -79,14 +79,30 @@ body{
     }    
 }
 .slider_arrivals{
+    display: flex;
+    align-items: center;
+    .transition-all{
+        transition-duration: 900ms !important;
+    }
+    .swiper-wrapper{
+        display: flex !important;
+        align-items: center !important;
+    }
+    .swiper{
+        display: flex !important;
+        align-items: center !important;
+    }
     .swiper-pagination{
         display: flex;
         align-items: center;
         justify-content: center;
     }
     .swiper-slide{
-        // height: 320px !important;
-        width: 220px !important;
+        width: 315px;
+        height: 420px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .swiper-button-prev, .swiper-button-next {
         background-size: contain;
