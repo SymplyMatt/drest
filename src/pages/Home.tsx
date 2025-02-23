@@ -39,41 +39,69 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex w-full bg-black flex-col gap-[24px] text-white px-[30px] py-[70px]">
+                <div className="flex w-full bg-black flex-col gap-[100px] text-[#E6E6E6] px-[30px] py-[70px]">
                     <div className="grid grid-cols-5 w-full gap-[50px]">
-                        <div className="col-span-3 grid grid-cols-3 gap-[100px]">
-                            <div className="flex flex-col gap-[36px]">
-                                <div className="uppercase text-[24px] font-semibold leading-[32.78px] tracking-[0%]">TOP BRANDS</div>
-                                <div className="flex flex-col justify-center gap-[16px]">
-                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">New Balance</div>
-                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Adidas</div>
-                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Birkenstock</div>
-                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Nike</div>
-                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">All Brands</div>
+                        <div className="flex flex-col w-full gap-[50px] col-span-3 pr-[50px]">
+                            <div className="grid grid-cols-3 gap-[100px] items-center justify-between">
+                                <div className="flex flex-col text-white gap-[36px] col-span-1">
+                                    <div className="uppercase text-[24px] font-semibold leading-[32.78px] tracking-[0%] text-white">TOP BRANDS</div>
+                                    <div className="flex flex-col justify-center gap-[16px] text-[#E6E6E6]">
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">New Balance</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Adidas</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Birkenstock</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Nike</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">All Brands</div>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col text-white gap-[36px] col-span-1">
+                                    <div className="uppercase text-[24px] font-semibold leading-[32.78px] tracking-[0%]">TOP BRANDS</div>
+                                    <div className="flex flex-col justify-center gap-[16px] text-[#E6E6E6]">
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">New Balance</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Adidas</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Birkenstock</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Nike</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">All Brands</div>
+                                    </div>
+                                </div>
+                                <div className="flex flex-col text-white gap-[36px] col-span-1">
+                                    <div className="uppercase text-[24px] font-semibold leading-[32.78px] tracking-[0%]">TOP BRANDS</div>
+                                    <div className="flex flex-col justify-center gap-[16px] text-[#E6E6E6]">
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">Confidentiality Policy</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">Adidas</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">Birkenstock</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">Nike</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">All Brands</div>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="flex flex-col gap-[36px]">
-                                <div className="uppercase text-[24px] font-semibold leading-[32.78px] tracking-[0%]">TOP BRANDS</div>
-                                <div className="flex flex-col justify-center gap-[16px]">
-                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">New Balance</div>
-                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Adidas</div>
-                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Birkenstock</div>
-                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Nike</div>
-                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">All Brands</div>
-                                </div>
+                            <div className="w-full h-[0.5px] bg-[#969696]"></div>
+                        </div>
+                        <div className="col-span-2 flex flex-col gap-[36px]">
+                            <img src="/src/assets/images/logowhite.svg" className="h-[46px] w-[186px]"/>
+                            <div className="text-[16px] font-normal leading-[28px] tracking-[0%] text-[#E6E6E6]">From Tunisian Vision 🇹🇳✨ to Global Fashion Fusion. Drest  is home to 20+ local and global brands  redefining Tunisian e-commerce since 2020. Born from the  adventure of two trailblazers, we sparked a style revolution, uniting  New Look UK, Havaianas, Timberland, and more under one roof. Discover a world where borders fade and trends unite. <span className="italic font-semibold">#FashionWithoutBorders #StyleRedefined</span></div>
+                        </div>
+                    </div>
+                    <div className="w-full grid grid-cols-5 items-center gap-[50px]">
+                        <div className="flex flex-col gap-[36px]  col-span-3 text-[#E6E6E6]">
+                            <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">Accepted Payment methods</div>
+                            <div className="flex items-center gap-[36px]">
+                                <img src="/src/assets/images/visa.svg" alt="" />
+                                <img src="/src/assets/images/mastercard.svg" alt="" />
+                                <img src="/src/assets/images/americanexpress.svg" alt="" />
+                                <img src="/src/assets/images/paypal.svg" alt="" />
                             </div>
-                            <div className="flex flex-col gap-[36px]">
-                                <div className="uppercase text-[24px] font-semibold leading-[32.78px] tracking-[0%]">TOP BRANDS</div>
-                                <div className="flex flex-col justify-center gap-[16px]">
-                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">New Balance</div>
-                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">Adidas</div>
-                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">Birkenstock</div>
-                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">Nike</div>
-                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">All Brands</div>
-                                </div>
+                        </div>
+                        <div className="flex flex-col gap-[36px] col-span-2 text-[#E6E6E6]">
+                            <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">Accepted Payment methods</div>
+                            <div className="flex items-center gap-[36px]">
+                                <div className="h-[36px] w-[36px]"><img src="/src/assets/images/pinterest.svg" alt="" /></div>
+                                <div className="h-[36px] w-[36px]"><img src="/src/assets/images/instagram.svg" alt="" /></div>
+                                <div className="h-[36px] w-[36px]"><img src="/src/assets/images/x.svg" alt="" /></div>
+                                <div className="h-[36px] w-[36px]"><img src="/src/assets/images/facebook.svg" alt="" /></div>
                             </div>
                         </div>
                     </div>
+                    <div className="w-full flex items-center justify-center text-[14px] font-normal leading-[19.12px] tracking-[0%] text-[#E6E6E6]">© 2024 Drest. All Rights Reserved</div>
                 </div>
             </div>
         </>
