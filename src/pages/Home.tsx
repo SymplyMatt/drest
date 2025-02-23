@@ -3,6 +3,7 @@ import Header from "../components/common/Header";
 import HeroSlider from "../components/home/HeroSlider";
 import CategoriesAndProducts from "../components/home/CategoriesAndProducts";
 import GridSlider from "../components/home/GridSlider";
+import FeaturedBrands from "../components/home/FeaturedBrands";
 
 const Home = () => {
     return (
@@ -20,8 +21,8 @@ const Home = () => {
                 </div>
                 <GridSlider />
             </div>
-
             <CategoriesAndProducts title="Trending"/>
+            <FeaturedBrands />
       </div>
   )
 }

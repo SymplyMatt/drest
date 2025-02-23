@@ -78,6 +78,34 @@ body{
         display: none;
     }    
 }
+.featured_brands{
+    .swiper-pagination{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .swiper-slide{
+        height: 384px !important;
+    }
+    .swiper-button-prev, .swiper-button-next {
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .swiper-button-prev {
+        background-image: url('/src/assets/images/prev.svg'); 
+    }
+    
+    .swiper-button-next {
+        background-image: url('/src/assets/images/next.svg');
+    }
+    .swiper-button-prev:after, .swiper-button-next:after {
+        display: none;
+    }    
+}
 .slider_arrivals{
     display: flex;
     align-items: center;
