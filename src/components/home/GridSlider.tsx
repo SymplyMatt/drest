@@ -27,11 +27,11 @@ const GridSlider = () => {
                 className="flex items-center justify-between"
                 onSwiper={(swiper) => (swiperRef.current = swiper)}
             >
-                {[...Array(100)].map((_, index) => (
+                {[...Array(5)].map((_, index) => (
                     <SwiperSlide key={index} className="flex justify-center bg-[#F3F3F3] border border-[#E6E6E6] transition-all duration-1000 hover:h-[500px] hover:w-[375px] hover:z-10 relative px-[20px] py-[60px] hover:px-[10px] hover:py-[20px] hover:scale-[1.05]">
                         <div className="w-full h-full flex flex-col justify-center transition-all duration-1000 hover:z-10 relative bg-white">
                             <div className="w-full flex items-center justify-center new_arrivals_img">
-                                <img src={`/src/assets/images/arrivals1.png`} className=""/>
+                                <img src={`/src/assets/images/arrivals${index + 1}.png`} className="w-[80%] h-[80%] object-cover"/>
                             </div>
                             <div className="w-full h-[60px] border-t border-[#D6D6D5] flex items-center justify-between">
                                 <div className="w-full flex items-center justify-center">Sweat Shirts</div>
