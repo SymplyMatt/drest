@@ -26,7 +26,7 @@ const GridSlider = () => {
         const totalSlides = 5; 
         return (
             <div className="flex items-center justify-center mt-6 gap-[24px]">
-                <img src="/src/assets/images/prev_arrivals.svg" className="cursor-pointer" onClick={handlePrevClick}   />
+                <img src="/images/prev_arrivals.svg" className="cursor-pointer" onClick={handlePrevClick}   />
                 <div className="flex items-center justify-center">
                     {[...Array(totalSlides)].map((_, index) => (
                         <button
@@ -41,7 +41,7 @@ const GridSlider = () => {
                         />
                     ))}
                 </div>
-                <img src="/src/assets/images/next_arrivals.svg"  className="cursor-pointer" onClick={handleNextClick}/>
+                <img src="/images/next_arrivals.svg"  className="cursor-pointer" onClick={handleNextClick}/>
             </div>
         );
     };
@@ -78,12 +78,12 @@ const GridSlider = () => {
                             <div className="w-full h-full flex flex-col justify-center transition-all duration-1000 hover:z-10 relative bg-white">
                                 <div className="w-full flex items-center justify-center new_arrivals_img relative">
                                     <img 
-                                        src={`/src/assets/images/arrivals${index + 1}.png`} 
+                                        src={`/images/arrivals${index + 1}.png`} 
                                         className="w-[80%] h-[80%] object-cover"
                                         alt={`Arrival ${index + 1}`}
                                     />
                                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-[48px] text-[#141511] bg-white py-[8px] px-[24px] flex justify-center items-center text-[16px] font-medium leading-[24.8px] tracking-[0%] cursor-pointer gap-[8px] opacity-0 scale-0 transition-all duration-50 group-hover:opacity-100 group-hover:scale-100">
-                                        View all <img src="/src/assets/images/arrowdirection.svg" alt="Arrow" />
+                                        View all <img src="/images/arrowdirection.svg" alt="Arrow" />
                                     </div>
                                 </div>
                                 <div className="w-full h-[60px] border-t border-[#D6D6D5] flex items-center justify-between">

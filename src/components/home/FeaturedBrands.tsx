@@ -26,7 +26,7 @@ const FeaturedBrands = () => {
                         <SwiperSlide key={index} className="h-[384px] flex justify-center">
                             <div className="relative w-full h-full flex justify-center">
                                 <img
-                                    src={`/src/assets/images/brands${(index % 5) + 1}.png`}
+                                    src={`/images/brands${(index % 5) + 1}.png`}
                                     className="object-cover w-full h-full"
                                     alt="Product"
                                 />

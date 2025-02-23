@@ -22,7 +22,7 @@ const CategoriesSlider = () => {
                     <SwiperSlide key={index} className="h-[290px] flex justify-center">
                         <div className="relative w-full h-full flex justify-center">
                             <img
-                                src={`/src/assets/images/productimage${(index % 6) + 1}.jpeg`}
+                                src={`/images/productimage${(index % 6) + 1}.jpeg`}
                                 className="object-cover w-full h-full"
                                 alt="Product"
                             />

@@ -60,7 +60,7 @@ const Footer = () => {
                     <div className="w-full h-[0.5px] bg-[#969696]"></div>
                 </div>
                 <div className="col-span-2 flex flex-col gap-[36px]">
-                    <img src="/src/assets/images/logowhite.svg" className="h-[46px] w-[186px]"/>
+                    <img src="/images/logowhite.svg" className="h-[46px] w-[186px]"/>
                     <div className="text-[16px] font-normal leading-[28px] tracking-[0%] text-[#E6E6E6]">From Tunisian Vision 🇹🇳✨ to Global Fashion Fusion. Drest  is home to 20+ local and global brands  redefining Tunisian e-commerce since 2020. Born from the  adventure of two trailblazers, we sparked a style revolution, uniting  New Look UK, Havaianas, Timberland, and more under one roof. Discover a world where borders fade and trends unite. <span className="italic font-semibold">#FashionWithoutBorders #StyleRedefined</span></div>
                 </div>
             </div>
@@ -68,19 +68,19 @@ const Footer = () => {
                 <div className="flex flex-col gap-[36px]  col-span-3 text-[#E6E6E6]">
                     <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">Accepted Payment methods</div>
                     <div className="flex items-center gap-[36px]">
-                        <img src="/src/assets/images/visa.svg" alt="" />
-                        <img src="/src/assets/images/mastercard.svg" alt="" />
-                        <img src="/src/assets/images/americanexpress.svg" alt="" />
-                        <img src="/src/assets/images/paypal.svg" alt="" />
+                        <img src="/images/visa.svg" alt="" />
+                        <img src="/images/mastercard.svg" alt="" />
+                        <img src="/images/americanexpress.svg" alt="" />
+                        <img src="/images/paypal.svg" alt="" />
                     </div>
                 </div>
                 <div className="flex flex-col gap-[36px] col-span-2 text-[#E6E6E6]">
                     <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">Stay connected with us:</div>
                     <div className="flex items-center gap-[36px]">
-                        <div className="h-[36px] w-[36px]"><img src="/src/assets/images/pinterest.svg" alt="" /></div>
-                        <div className="h-[36px] w-[36px]"><img src="/src/assets/images/instagram.svg" alt="" /></div>
-                        <div className="h-[36px] w-[36px]"><img src="/src/assets/images/x.svg" alt="" /></div>
-                        <div className="h-[36px] w-[36px]"><img src="/src/assets/images/facebook.svg" alt="" /></div>
+                        <div className="h-[36px] w-[36px]"><img src="/images/pinterest.svg" alt="" /></div>
+                        <div className="h-[36px] w-[36px]"><img src="/images/instagram.svg" alt="" /></div>
+                        <div className="h-[36px] w-[36px]"><img src="/images/x.svg" alt="" /></div>
+                        <div className="h-[36px] w-[36px]"><img src="/images/facebook.svg" alt="" /></div>
                     </div>
                 </div>
             </div>
