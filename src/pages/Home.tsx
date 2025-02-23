@@ -39,7 +39,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex w-full bg-black flex-col gap-[100px] text-[#E6E6E6] px-[30px] py-[70px]">
+                <div className="flex w-full bg-black flex-col gap-[100px] text-[#E6E6E6] px-[50px] py-[70px]">
                     <div className="grid grid-cols-5 w-full gap-[50px]">
                         <div className="flex flex-col w-full gap-[50px] col-span-3 pr-[50px]">
                             <div className="grid grid-cols-3 gap-[100px] items-center justify-between">

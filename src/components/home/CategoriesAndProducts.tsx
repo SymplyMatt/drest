@@ -5,7 +5,7 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title }) 
     const shuffledIndexes = [...Array(8).keys()].sort(() => Math.random() - 0.5);
     return (
         <div className="w-full flex flex-col items-center gap-[24px] mb-[50px]">
-            <div className="w-full flex flex-col gap-[20px] justify-center px-[30px]">
+            <div className="w-full flex flex-col gap-[20px] justify-center px-[50px]">
                 <div className="w-full flex items-center justify-between h-[48px]">
                     <div className="flex items-center gap-[32px]">
                         <div className="text-[24px] font-semibold leading-[32.78px] tracking-[0%]">{title}</div>
