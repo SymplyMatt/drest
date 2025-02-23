@@ -26,7 +26,7 @@ const HeroSlider = () => {
                                 Celebrate love in style! Shop our exclusive Valentine's Day collection and enjoy up to 50% off on romantic dresses, chic accessories, and more.
                             </div>
                         </div>
-                        <div className="bg-white h-[48px] w-fit px-[36px] text-black flex items-center justify-center tracking-[2%] text-[16px] font-medium cursor-pointer transition-transform duration-200 hover:scale-90">
+                        <div className="bg-white h-[48px] w-fit px-[36px] text-black flex items-center justify-center tracking-[2%] text-[16px] font-medium cursor-pointer transition-transform duration-200 hover:scale-90 transition-transform duration-200 hover:scale-[0.9]">
                             SHOP NOW
                         </div>
                     </div>

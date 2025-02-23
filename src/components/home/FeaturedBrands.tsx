@@ -35,7 +35,7 @@ const FeaturedBrands = () => {
                     ))}
                 </Swiper>
             </div>
-            <div className="h-[48px] border-[#000000] flex items-center justify-center py-[12px] px-[36px] border text-[18px] font-semibold cursor-pointer leading-[24px] tracking-[0%]">SHOP ALL BRANDS</div>
+            <div className="h-[48px] border-[#000000] flex items-center justify-center py-[12px] px-[36px] border text-[18px] font-semibold cursor-pointer leading-[24px] tracking-[0%] transition-transform duration-200 hover:scale-[0.9]">SHOP ALL BRANDS</div>
         </div>
     )
 }

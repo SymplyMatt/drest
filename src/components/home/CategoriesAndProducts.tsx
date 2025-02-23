@@ -18,7 +18,7 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title }) 
                             <div className="flex items-center justify-center text-[14px] font-medium leading-[19.12px] tracking-[0%] cursor-pointer">HOME+LIFESTYLE</div>
                         </div>
                     </div>
-                    <div className="h-[48px] bg-white border border-black px-[36px] py-[12px] cursor-pointer flex items-center justify-center font-semibold leading-[24px] tracking-[0%]">VIEW ALL</div>
+                    <div className="h-[48px] bg-white border border-black px-[36px] py-[12px] cursor-pointer flex items-center justify-center font-semibold leading-[24px] tracking-[0%] transition-transform duration-200 hover:scale-[0.9]">VIEW ALL</div>
                 </div>
                 <div className="h-[1px] bg-[#E6E6E6] w-full"></div>
             </div>
@@ -31,11 +31,11 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title }) 
                         <div className="col-span-1 flex flex-col items-center h-[480px] group" key={number}>
                             <div className="w-full h-[400px] bg-[#F3F3F3] border border-[#E6E6E6] flex items-center justify-center relative">
                                 <img src={`/src/assets/images/recommended${number+1}.png`} className="w-full h-full object-cover"/>
-                                <img src="/src/assets/images/heart.svg" className="cursor-pointer absolute top-[20px] right-[10px]" />
+                                <img src="/src/assets/images/heart.svg" className="cursor-pointer absolute top-[20px] right-[10px] transition-transform duration-200 hover:scale-[0.9]" />
                                 <div className={`absolute top-[20px] left-[10px] h-[28px] bg-[#8F0024] p-[10px] flex justify-center items-center text-white text-[14px] font-semibold leading-[21px] tracking-[-4%] gap-[8px] ${!discount && 'hidden'}`}><img src="/src/assets/images/discountbadge.svg" /> {discount}% OFF</div>
                                 <img src="/src/assets/images/rec_plus.svg" className="cursor-pointer absolute bottom-[20px] right-[10px]" />
                                 <div className="w-full h-[80px] border-t border-b border-[#D6D6D5] cursor-pointer absolute bottom-[0px] right-[0px] bg-white flex items-center justify-center p-[16px] opacity-0 translate-y-4 transition-all duration-500 ease-in-out group-hover:opacity-100 group-hover:translate-y-0">
-                                    <div className="h-[48px] bg-[#141511] w-full flex items-center justify-center text-white gap-[8px] text-[16px] leading-[24px] tracking-[0%] font-medium"><img src="/src/assets/images/eye_product.svg" /> Quick View</div>
+                                    <div className="h-[48px] bg-[#141511] w-full flex items-center justify-center text-white gap-[8px] text-[16px] leading-[24px] tracking-[0%] font-medium transition-transform duration-200 hover:scale-[0.9]"><img src="/src/assets/images/eye_product.svg" /> Quick View</div>
                                 </div>
                             </div>
                             <div className="flex flex-col items-center justify-center gap-[4px] h-[80px] border-b border-l border-r border-[#E6E6E6] w-full">

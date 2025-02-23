@@ -7,7 +7,7 @@ const NewArrivals = () => {
             <div className="w-full flex items-center gap-[32px]">
                 <div className="text-[48px] font-normal leading-[32.78px] tracking-[0%]">New Arrivals</div>
             </div>
-            <div className="h-[48px] bg-white border border-black px-[36px] py-[12px] cursor-pointer flex items-center justify-center font-semibold leading-[24px] tracking-[0%] whitespace-nowrap">VIEW ALL NEW</div>
+            <div className="h-[48px] bg-white border border-black px-[36px] py-[12px] cursor-pointer flex items-center justify-center font-semibold leading-[24px] tracking-[0%] whitespace-nowrap transition-transform duration-200 hover:scale-[0.9]">VIEW ALL NEW</div>
         </div>
         <GridSlider />
     </div>
