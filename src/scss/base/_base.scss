@@ -149,6 +149,18 @@ body{
     }
     .swiper-button-prev:after, .swiper-button-next:after {
         display: none;
+    }
+    .swiper-pagination-bullet{
+        background: url('/src/assets/images/paginationinactive.svg') no-repeat center center !important;
+        width: 16px !important;
+        height: 16px !important;
+        opacity: 0.9 !important;
+    }
+    .swiper-pagination-bullet-active{
+        background: url('/src/assets/images/paginationactive.svg') no-repeat center center !important;
+        width: 32px !important;
+        height: 32px !important;
+        opacity: 1 !important;
     }    
 }
 .price{
