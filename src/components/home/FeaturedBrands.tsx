@@ -6,12 +6,12 @@ import { Autoplay, Navigation } from "swiper/modules";
 
 const FeaturedBrands = () => {
     return (
-        <div className="flex flex-col items-center gap-[24px] w-full justify-center">
+        <div className="flex flex-col items-center gap-[36px] w-full justify-center mb-[40px]">
             <div className="w-full flex flex-col items-center justify-center gap-[4px]">
                 <div className="text-[48px] font-medium leading-[62.4px] tracking-[-2%]">Featured Brands</div>
                 <div className="text-[#8F0024] text-[18px] font-medium leading-[24.59px] tracking-[-2%]">Brands you love</div>
             </div>
-            <div className="w-full featured_brands mb-[40px]">
+            <div className="w-full featured_brands">
                 <Swiper
                     spaceBetween={14}
                     slidesPerView={4.5}
@@ -35,6 +35,7 @@ const FeaturedBrands = () => {
                     ))}
                 </Swiper>
             </div>
+            <div className="h-[48px] border-[#000000] flex items-center justify-center py-[12px] px-[36px] border text-[18px] font-semibold cursor-pointer leading-[24px] tracking-[0%]">SHOP ALL BRANDS</div>
         </div>
     )
 }
