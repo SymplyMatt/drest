@@ -17,8 +17,8 @@ const Home = () => {
                     <CategoriesAndProducts title="Trending"/>
                     <FeaturedBrands />
             </div>
-            <div className="w-full flex flex-col justify-center items-center gap-[24px]">
-                <div className="w-full bg-[#DCBF89] h-[225px] grid grid-cols-2 px-[10%] py-[50px] gap-[0px]">
+            <div className="w-full flex flex-col justify-center items-center">
+                <div className="w-full bg-[#DCBF89] grid grid-cols-2 px-[10%] py-[50px] gap-[0px]">
                     <div className="flex flex-col col-span-1 justify-center">
                         <div className="w-[78%] flex flex-col justify-center gap-[16px]">
                             <div className="text-[36px] font-bold leading-[36px] tracking-[0%] uppercase text-justify">Get the latest updates and exclusive offers</div>
@@ -36,6 +36,42 @@ const Home = () => {
                         <div className="w-full grid grid-cols-[1fr_157px] items-center justify-center gap-[20px]">
                             <div className="text-[14px] font-normal leading-[19.12px] tracking-[0%] text-justify w-full">*By entering my email address, i agree to receive DREST offers, promotions, other commercial messages related to our partners.</div>
                             <div className=" w-[157px]"></div>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex w-full bg-black flex-col gap-[24px] text-white px-[30px] py-[70px]">
+                    <div className="grid grid-cols-5 w-full gap-[50px]">
+                        <div className="col-span-3 grid grid-cols-3 gap-[100px]">
+                            <div className="flex flex-col gap-[36px]">
+                                <div className="uppercase text-[24px] font-semibold leading-[32.78px] tracking-[0%]">TOP BRANDS</div>
+                                <div className="flex flex-col justify-center gap-[16px]">
+                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">New Balance</div>
+                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Adidas</div>
+                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Birkenstock</div>
+                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Nike</div>
+                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">All Brands</div>
+                                </div>
+                            </div>
+                            <div className="flex flex-col gap-[36px]">
+                                <div className="uppercase text-[24px] font-semibold leading-[32.78px] tracking-[0%]">TOP BRANDS</div>
+                                <div className="flex flex-col justify-center gap-[16px]">
+                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">New Balance</div>
+                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Adidas</div>
+                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Birkenstock</div>
+                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Nike</div>
+                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">All Brands</div>
+                                </div>
+                            </div>
+                            <div className="flex flex-col gap-[36px]">
+                                <div className="uppercase text-[24px] font-semibold leading-[32.78px] tracking-[0%]">TOP BRANDS</div>
+                                <div className="flex flex-col justify-center gap-[16px]">
+                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">New Balance</div>
+                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">Adidas</div>
+                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">Birkenstock</div>
+                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">Nike</div>
+                                    <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">All Brands</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
