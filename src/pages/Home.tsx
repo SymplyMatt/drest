@@ -66,11 +66,11 @@ const Home = () => {
                                 <div className="flex flex-col text-white gap-[36px] col-span-1">
                                     <div className="uppercase text-[24px] font-semibold leading-[32.78px] tracking-[0%]">TOP BRANDS</div>
                                     <div className="flex flex-col justify-center gap-[16px] text-[#E6E6E6]">
-                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">Confidentiality Policy</div>
-                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">Adidas</div>
-                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">Birkenstock</div>
-                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">Nike</div>
-                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">All Brands</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Confidentiality Policy</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Adidas</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Birkenstock</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Nike</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">All Brands</div>
                                     </div>
                                 </div>
                             </div>
@@ -92,7 +92,7 @@ const Home = () => {
                             </div>
                         </div>
                         <div className="flex flex-col gap-[36px] col-span-2 text-[#E6E6E6]">
-                            <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">Accepted Payment methods</div>
+                            <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">Stay connected with us:</div>
                             <div className="flex items-center gap-[36px]">
                                 <div className="h-[36px] w-[36px]"><img src="/src/assets/images/pinterest.svg" alt="" /></div>
                                 <div className="h-[36px] w-[36px]"><img src="/src/assets/images/instagram.svg" alt="" /></div>
