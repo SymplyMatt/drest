@@ -54,23 +54,22 @@ const Home = () => {
                                     </div>
                                 </div>
                                 <div className="flex flex-col text-white gap-[36px] col-span-1">
-                                    <div className="uppercase text-[24px] font-semibold leading-[32.78px] tracking-[0%]">TOP BRANDS</div>
+                                    <div className="uppercase text-[24px] font-semibold leading-[32.78px] tracking-[0%]">HELP</div>
                                     <div className="flex flex-col justify-center gap-[16px] text-[#E6E6E6]">
-                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">New Balance</div>
-                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Adidas</div>
-                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Birkenstock</div>
-                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Nike</div>
-                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">All Brands</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Track Order</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Returns & Exchanges</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">FAQ</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Contact Us</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Site Map</div>
                                     </div>
                                 </div>
                                 <div className="flex flex-col text-white gap-[36px] col-span-1">
-                                    <div className="uppercase text-[24px] font-semibold leading-[32.78px] tracking-[0%]">TOP BRANDS</div>
+                                    <div className="uppercase text-[24px] font-semibold leading-[32.78px] tracking-[0%]">LEGAL</div>
                                     <div className="flex flex-col justify-center gap-[16px] text-[#E6E6E6]">
                                         <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Confidentiality Policy</div>
-                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Adidas</div>
-                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Birkenstock</div>
-                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Nike</div>
-                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">All Brands</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Terms & Conditions</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Cookie Policy</div>
+                                        <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%] cursor-pointer">Accessibility</div>
                                     </div>
                                 </div>
                             </div>
