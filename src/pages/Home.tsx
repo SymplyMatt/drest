@@ -26,7 +26,7 @@ const Home = () => {
                         </div>
                     </div>
                     <div className="flex flex-col col-span-1 justify-center gap-[12px]">
-                        <div className="text-[14px] font-bold leading-[19.12px] tracking-[0%]">Enter email address*</div>
+                        <div className="text-[14px] font-bold leading-[19.12px] tracking-[0%]">Enter email addresss<span className="text-[#8F0024]">*</span></div>
                             <div className="w-full grid grid-cols-[1fr_157px] items-center gap-[20px]"> 
                                 <input type="text" className="h-[46px] border border-black outline-none focus:outline-none w-full"/> 
                                 <div className="h-[48px] w-[157px] bg-[#000000] border border-black px-[36px] text-white cursor-pointer flex items-center justify-center uppercase text-[18px] font-semibold leading-[24px] tracking-[2%] transition-transform duration-200 hover:scale-[0.9]">
@@ -34,7 +34,7 @@ const Home = () => {
                                 </div>
                             </div>
                         <div className="w-full grid grid-cols-[1fr_157px] items-center justify-center gap-[20px]">
-                            <div className="text-[14px] font-normal leading-[19.12px] tracking-[0%] text-justify w-full">*By entering my email address, i agree to receive DREST offers, promotions, other commercial messages related to our partners.</div>
+                            <div className="text-[14px] font-normal leading-[19.12px] tracking-[0%] text-justify w-full"><span className="text-[#8F0024]">*</span>By entering my email address, i agree to receive DREST offers, promotions, other commercial messages related to our partners.</div>
                             <div className=" w-[157px]"></div>
                         </div>
                     </div>
