@@ -23,7 +23,7 @@ const MenuLinks: React.FC<MenuLinksProps> = ({ hoveredMenu, setHoveredMenu }) =>
     >
         <div className="py-[30px] flex gap-[30px] flex-wrap">
             <div className="flex flex-col gap-[10px]">
-                <div className="text-[#141511] font-bold text-[16px] leading-[24px] tracking-[0%] cursor-pointer">NEW & TRENDING</div>
+                <div className="text-[#141511] font-bold text-[16px] leading-[24px] tracking-[0%]">NEW & TRENDING</div>
                 <div className="flex flex-col gap-[10px] justify-center">
                     <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">Featured items</div>
                     <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">New Arrivals</div>
@@ -32,7 +32,7 @@ const MenuLinks: React.FC<MenuLinksProps> = ({ hoveredMenu, setHoveredMenu }) =>
                 </div>
             </div>
             <div className="flex flex-col gap-[10px]">
-                <div className="text-[#141511] font-bold text-[16px] leading-[24px] tracking-[0%] cursor-pointer">BAGS</div>
+                <div className="text-[#141511] font-bold text-[16px] leading-[24px] tracking-[0%]">BAGS</div>
                 <div className="flex flex-col gap-[10px] justify-center">
                     <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">All Women's Bags</div>
                     <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">Travel duffels</div>
@@ -44,7 +44,7 @@ const MenuLinks: React.FC<MenuLinksProps> = ({ hoveredMenu, setHoveredMenu }) =>
                 </div>
             </div>
             <div className="flex flex-col gap-[10px]">
-                <div className="text-[#141511] font-bold text-[16px] leading-[24px] tracking-[0%] cursor-pointer">CLOTHING</div>
+                <div className="text-[#141511] font-bold text-[16px] leading-[24px] tracking-[0%]">CLOTHING</div>
                 <div className="flex flex-col gap-[10px] justify-center">
                     <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">All Women's Clothing</div>
                     <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">Hoodies & Sweat shirts</div>
@@ -57,7 +57,7 @@ const MenuLinks: React.FC<MenuLinksProps> = ({ hoveredMenu, setHoveredMenu }) =>
                 </div>
             </div>
             <div className="flex flex-col gap-[10px]">
-                <div className="text-[#141511] font-bold text-[16px] leading-[24px] tracking-[0%] cursor-pointer">FOOTWEAR</div>
+                <div className="text-[#141511] font-bold text-[16px] leading-[24px] tracking-[0%]">FOOTWEAR</div>
                 <div className="flex flex-col gap-[10px] justify-center">
                     <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">All Women's Shoes</div>
                     <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">Sneakers</div>
@@ -70,7 +70,7 @@ const MenuLinks: React.FC<MenuLinksProps> = ({ hoveredMenu, setHoveredMenu }) =>
                 </div>
             </div>
             <div className="flex flex-col gap-[10px]">
-                <div className="text-[#141511] font-bold text-[16px] leading-[24px] tracking-[0%] cursor-pointer">ACCESSORIES</div>
+                <div className="text-[#141511] font-bold text-[16px] leading-[24px] tracking-[0%]">ACCESSORIES</div>
                 <div className="flex flex-col gap-[10px] justify-center">
                     <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">All Women's accessories</div>
                     <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">Scarves</div>
@@ -83,7 +83,7 @@ const MenuLinks: React.FC<MenuLinksProps> = ({ hoveredMenu, setHoveredMenu }) =>
                 </div>
             </div>
             <div className="flex flex-col gap-[10px]">
-                <div className="text-[#141511] font-bold text-[16px] leading-[24px] tracking-[0%] cursor-pointer">SPORTS</div>
+                <div className="text-[#141511] font-bold text-[16px] leading-[24px] tracking-[0%]">SPORTS</div>
                 <div className="flex flex-col gap-[10px] justify-center">
                     <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">All Sport items</div>
                     <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">Tailored shirts</div>
