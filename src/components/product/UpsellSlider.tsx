@@ -13,7 +13,6 @@ const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products = [1, 2, 
     const shuffledIndexes = [...products.keys()].sort(() => Math.random() - 0.5);
     const navigate = useNavigate();
     const swiperRef = useRef<SwiperClass | null>(null);
-    const [slidesPerView, setSlidesPerView] = useState(4);
     const [activeIndex, setActiveIndex] = useState(0);
 
     const handlePrevClick = () => {
