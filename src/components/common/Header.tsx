@@ -25,11 +25,11 @@ const Header = () => {
                 <div className="w-full h-[92px] flex border-b border-[#E6E6E6] px-[50px] justify-between items-center">
                     <div className="cursor-pointer"><img src="/images/logo.svg" /></div>
                     <div className="flex items-center gap-[16px] uppercase">
-                        <div className="font-semibold cursor-pointer flex items-center opacity-[0.90]">Women</div>
-                        <div className="font-semibold cursor-pointer flex items-center opacity-[0.90]">Men</div>
-                        <div className="font-semibold cursor-pointer flex items-center opacity-[0.90]">Kids</div>
-                        <div className="font-semibold cursor-pointer flex items-center opacity-[0.90]">Beauty</div>
-                        <div className="font-semibold cursor-pointer flex items-center opacity-[0.90]">Home+Lifestyle</div>
+                        <div className="font-semibold cursor-pointer flex items-center opacity-[0.90] hover:font-semibold">Women</div>
+                        <div className="font-semibold cursor-pointer flex items-center opacity-[0.90] hover:font-semibold">Men</div>
+                        <div className="font-semibold cursor-pointer flex items-center opacity-[0.90] hover:font-semibold">Kids</div>
+                        <div className="font-semibold cursor-pointer flex items-center opacity-[0.90] hover:font-semibold">Beauty</div>
+                        <div className="font-semibold cursor-pointer flex items-center opacity-[0.90] hover:font-semibold">Home+Lifestyle</div>
                     </div>
                     <div className="h-[48px] border border-black gap-[60px] flex items-center justify-between px-[24px] cursor-pointer">
                         <input type="text" className="border-none outline-none focus:ring-0 text-base text-[#6B6B6B]" placeholder="Search for product" />
