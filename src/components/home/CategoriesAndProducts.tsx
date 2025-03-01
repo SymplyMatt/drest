@@ -2,9 +2,10 @@ import { useNavigate } from "react-router-dom";
 
 interface CategoriesAndProductsProps {
     title: string;
+    products?: any[];
 }
-const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title }) => {
-    const shuffledIndexes = [...Array(8).keys()].sort(() => Math.random() - 0.5);
+const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title, products=[1,2,3,4,5,6,7,8] }) => {
+    const shuffledIndexes = [...products.keys()].sort(() => Math.random() - 0.5);
     const navigate = useNavigate();
     return (
         <div className="w-full flex flex-col items-center gap-[24px] mb-[50px]">

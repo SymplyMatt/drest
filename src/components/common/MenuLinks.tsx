@@ -12,7 +12,7 @@ const MenuLinks: React.FC<MenuLinksProps> = ({ hoveredMenu, setHoveredMenu }) =>
         if (hoveredMenu) {
           setIsVisible(true);
         } else {
-          setTimeout(() => setIsVisible(false), 300);
+          setTimeout(() => setIsVisible(false), 100);
         }
     }, [hoveredMenu]);
   return (
