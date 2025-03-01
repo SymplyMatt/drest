@@ -58,8 +58,13 @@ const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products = [1, 2, 
                         <div className="flex items-center gap-[32px]">
                             <div className="text-[48px] font-medium leading-[32.78px] tracking-[0%]">You may also like</div>
                         </div>
-                        <div className="h-[48px] bg-white border border-black px-[36px] py-[12px] cursor-pointer flex items-center justify-center font-semibold leading-[24px] tracking-[0%] transition-transform duration-200 hover:scale-[0.9]">
-                            VIEW ALL
+                        <div className="flex items-center gap-[16px]">
+                            <div className="h-[48px] bg-white border border-[#D6D6D5] px-[36px] py-[12px] cursor-pointer flex items-center justify-center font-normal leading-[24px] tracking-[0%] transition-transform duration-200 hover:scale-[0.9] gap-[8px]">
+                                <img src="/images/arrow_left.svg" className="cursor-pointer"/>PREVIOUS
+                            </div>
+                            <div className="h-[48px] bg-white border border-[#D6D6D5] px-[36px] py-[12px] cursor-pointer flex items-center justify-center font-normal leading-[24px] tracking-[0%] transition-transform duration-200 hover:scale-[0.9] gap-[8px]">
+                                NEXT <img src="/images/arrow_right.svg" className="cursor-pointer"/>
+                            </div>
                         </div>
                     </div>
                 </div>
