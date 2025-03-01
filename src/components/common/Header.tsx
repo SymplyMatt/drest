@@ -1,6 +1,8 @@
+import { useState } from "react";
 import TopHeaderSlide from "./TopHeaderSlide"
 
 const Header = () => {
+    const [hoveredMenu, setHoveredMenu] = useState<String | null>(null);
     return (
         <>
             <div className="w-full flex flex-col">
@@ -26,11 +28,11 @@ const Header = () => {
                 <div className="w-full h-[92px] flex border-b border-[#E6E6E6] px-[50px] justify-between items-center">
                     <div className="cursor-pointer"><img src="/images/logo.svg" /></div>
                     <div className="flex items-center gap-[16px] uppercase">
-                        <div className="font-semibold cursor-pointer flex items-center opacity-[0.90] hover:text-[#8F0024]">Women</div>
-                        <div className="font-semibold cursor-pointer flex items-center opacity-[0.90] hover:text-[#8F0024]">Men</div>
-                        <div className="font-semibold cursor-pointer flex items-center opacity-[0.90] hover:text-[#8F0024]">Kids</div>
-                        <div className="font-semibold cursor-pointer flex items-center opacity-[0.90] hover:text-[#8F0024]">Beauty</div>
-                        <div className="font-semibold cursor-pointer flex items-center opacity-[0.90] hover:text-[#8F0024]">Home+Lifestyle</div>
+                        {["Women", "Men", "Kids", "Beauty", "Home+Lifestyle"].map((category, index) => (
+                            <div key={index} className="font-semibold cursor-pointer flex items-center opacity-[0.90] hover:text-[#8F0024] open-menu" onMouseEnter={() => setHoveredMenu(category)}>
+                                {category}
+                            </div>
+                        ))}
                     </div>
                     <div className="h-[48px] border border-black gap-[60px] flex items-center justify-between px-[24px] cursor-pointer">
                         <input type="text" className="border-none outline-none focus:ring-0 text-base text-[#6B6B6B]" placeholder="Search for product" />
@@ -57,7 +59,7 @@ const Header = () => {
                     <div className="flex items-center gap-[8px]"><img src="/images/headphone.svg" /> Need help? <span className="font-bold">+216 50 660006</span></div>
                 </div>
             </div>
-            <div className="absolute z-10 bg-white w-full top-[182px] right-[0px] grid grid-cols-[auto_360px] px-[50px]">
+            {hoveredMenu && <div className="absolute z-10 bg-white w-full top-[182px] right-[0px] grid grid-cols-[auto_360px] px-[50px]" onMouseLeave={() => setHoveredMenu(null)}>
                 <div className="py-[30px] flex gap-[30px] flex flex-wrap">
                     <div className="flex flex-col gap-[10px]">
                         <div className="text-[#141511] font-bold text-[16px] leading-[24px] tracking-[0%] cursor-pointer">NEW & TRENDING</div>
@@ -135,7 +137,7 @@ const Header = () => {
                     </div>
                 </div>
                 <TopHeaderSlide />
-            </div>
+            </div>}
         </>
     )
 }
