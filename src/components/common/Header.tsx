@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MenuLinks from "./MenuLinks";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
     const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
     const navigate = useNavigate();
+    const location = useLocation();
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    }, [location.pathname]);
     return (
         <>
             <div className="w-full flex flex-col">
