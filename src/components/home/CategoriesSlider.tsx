@@ -3,9 +3,11 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper/modules";
+import { useNavigate } from "react-router-dom";
 
 const CategoriesSlider = () => {
-    const categories: string[] = ["Shoes", "Clothing", "Accessories", "Bags", "Beauty", "Home lifestyle", "Shoes", "Clothing", "Accessories", "Bags", "Beauty", "Home lifestyle"]
+    const categories: string[] = ["Shoes", "Clothing", "Accessories", "Bags", "Beauty", "Home lifestyle", "Shoes", "Clothing", "Accessories", "Bags", "Beauty", "Home lifestyle"];
+    const navigate = useNavigate();
     return (
         <div className="px-[30px] w-full slider_featured mb-[40px]">
             <Swiper
@@ -26,7 +28,7 @@ const CategoriesSlider = () => {
                                 className="object-cover w-full h-full"
                                 alt="Product"
                             />
-                            <div className="absolute bottom-[10px] flex items-center justify-center h-[36px] bg-white px-[20px] font-semibold cursor-pointer">
+                            <div className="absolute bottom-[10px] flex items-center justify-center h-[36px] bg-white px-[20px] font-semibold cursor-pointer" onClick={()=>navigate('/product/productId')}>
                                 {categories[index]}
                             </div>
                         </div>

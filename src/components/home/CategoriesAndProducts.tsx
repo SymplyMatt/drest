@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
 interface CategoriesAndProductsProps {
     title: string;
 }
 const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title }) => {
     const shuffledIndexes = [...Array(8).keys()].sort(() => Math.random() - 0.5);
+    const navigate = useNavigate();
     return (
         <div className="w-full flex flex-col items-center gap-[24px] mb-[50px]">
             <div className="w-full flex flex-col gap-[20px] justify-center px-[50px]">
@@ -35,7 +38,7 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title }) 
                                 <div className={`absolute top-[20px] left-[10px] h-[28px] bg-[#8F0024] p-[10px] flex justify-center items-center text-white text-[14px] font-semibold leading-[21px] tracking-[-4%] gap-[8px] ${!discount && 'hidden'}`}><img src="/images/discountbadge.svg" /> {discount}% OFF</div>
                                 <img src="/images/rec_plus.svg" className="cursor-pointer absolute bottom-[20px] right-[10px]" />
                                 <div className="w-full h-[80px] border-t border-b border-[#D6D6D5] cursor-pointer absolute bottom-[0px] right-[0px] bg-white flex items-center justify-center p-[16px] opacity-0 translate-y-4 transition-all duration-500 ease-in-out group-hover:opacity-100 group-hover:translate-y-0">
-                                    <div className="h-[48px] bg-[#141511] w-full flex items-center justify-center text-white gap-[8px] text-[16px] leading-[24px] tracking-[0%] font-medium transition-transform duration-200 hover:scale-[0.9]"><img src="/images/eye_product.svg" /> Quick View</div>
+                                    <div className="h-[48px] bg-[#141511] w-full flex items-center justify-center text-white gap-[8px] text-[16px] leading-[24px] tracking-[0%] font-medium transition-transform duration-200 hover:scale-[0.9]" onClick={()=>navigate('/product/productId')}><img src="/images/eye_product.svg" /> Quick View</div>
                                 </div>
                             </div>
                             <div className="flex flex-col items-center justify-center gap-[4px] h-[80px] border-b border-l border-r border-[#E6E6E6] w-full">
