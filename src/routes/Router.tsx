@@ -1,11 +1,16 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home";
+import Product from "../pages/Product";
 
 const Routes = (): JSX.Element => {
   const pageRoutes = [
     {
       path: "/",
-      element:<Home />
+      element: <Home />
+    },
+    {
+      path: "/product/:id", 
+      element: <Product />
     },
   ];
 

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import MenuLinks from "./MenuLinks";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
     const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
+    const navigate = useNavigate();
     return (
         <>
             <div className="w-full flex flex-col">
@@ -26,7 +28,7 @@ const Header = () => {
                     <div className="text-[14px] flex items-center gap-[4px] cursor-pointer">Currency: <span className="text-[14px] font-extrabold">EUR</span> <img src="/images/caretdownsm.svg" /></div>
                 </div>
                 <div className="w-full h-[92px] flex border-b border-[#E6E6E6] px-[50px] justify-between items-center">
-                    <div className="cursor-pointer"><img src="/images/logo.svg" /></div>
+                    <div className="cursor-pointer" onClick={()=>navigate('/')}><img src="/images/logo.svg" /></div>
                     <div className="flex items-center gap-[16px] uppercase">
                         {["Women", "Men", "Kids", "Beauty", "Home+Lifestyle"].map((category, index) => (
                             <div key={index} className="font-semibold cursor-pointer flex items-center opacity-[0.90] hover:text-[#8F0024] open-menu" onMouseEnter={() => setHoveredMenu(category)}>
