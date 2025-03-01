@@ -1,3 +1,4 @@
+import TopHeaderSlide from "./TopHeaderSlide"
 
 const Header = () => {
     return (
@@ -57,7 +58,7 @@ const Header = () => {
                 </div>
             </div>
             <div className="absolute z-10 bg-white w-full top-[182px] right-[0px] grid grid-cols-[auto_360px] px-[50px]">
-                <div className="py-[30px] flex gap-[30px]">
+                <div className="py-[30px] flex gap-[30px] flex flex-wrap">
                     <div className="flex flex-col gap-[10px]">
                         <div className="text-[#141511] font-bold text-[16px] leading-[24px] tracking-[0%] cursor-pointer">NEW & TRENDING</div>
                         <div className="flex flex-col gap-[10px] justify-center">
@@ -133,11 +134,7 @@ const Header = () => {
                         </div>
                     </div>
                 </div>
-                <div className="pl-[24px] py-[24px]">
-                    <div className="h-full w-full bg-[#F3F3F3]">
-                        <img src="/images/topslider1.png" className="w-full h-full object-cover" />
-                    </div>
-                </div>
+                <TopHeaderSlide />
             </div>
         </>
     )
