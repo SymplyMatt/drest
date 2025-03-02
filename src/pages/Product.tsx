@@ -4,7 +4,6 @@ import "swiper/css/navigation";
 import UpsellSlider from "../components/product/UpsellSlider";
 import Layout from "./Layout";
 import { useRef, useState } from "react";
-import { Autoplay } from "swiper/modules";
 
 const Home = () => {
     const swiperRef = useRef<SwiperClass | null>(null);
@@ -41,11 +40,8 @@ const Home = () => {
                             direction="vertical"
                             slidesPerView={3.2}
                             spaceBetween={0}
-                            loop={true}
-                            autoplay={{ delay: 3000, disableOnInteraction: false }}
                             speed={1000}
                             className="w-full h-full"
-                            modules={[Autoplay]}
                             onSwiper={(swiper) => (swiperRef.current = swiper)}
                             onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
                         >
@@ -145,8 +141,17 @@ const Home = () => {
                                 </div>
                             </div>
                             <div className="w-full flex flex-col items-center justify-center px-[24px] py-[16px] gap-[12px]">
-                                <div className="gap-[8px] w-full h-[48px] bg-[#141511] text-white flex items-center justify-center cursor-pointer"><img src="/images/plus.svg"/> ADD TO CART</div>
-                                <div className="gap-[8px] w-full h-[48px] bg-[#fff] text-[#60D669] flex items-center justify-center cursor-pointer border border-[#60D669]"><img src="/images/plus.svg"/><img src="/images/whatsapp.svg"/> ORDER ON WHATSAPP</div>
+                                <div className="gap-[8px] w-full h-[48px] bg-[#141511] text-white flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-[0.95]"><img src="/images/plus.svg"/> ADD TO CART</div>
+                                <div className="gap-[8px] w-full h-[48px] bg-[#fff] text-[#60D669] flex items-center justify-center cursor-pointer border border-[#60D669] transition-transform duration-200 hover:scale-[0.95]"><img src="/images/plus.svg"/><img src="/images/whatsapp.svg"/> ORDER ON WHATSAPP</div>
+                            </div>
+                        </div>
+                        <div className="w-full flex flex-col justify-center items-center bg-white mt-[20px]">
+                            <div className="flex flex-col justify-center gap-[8px] border-b border-[#D6D6D5] py-[24px] px-[24px]">
+                                <div className="text-[#141511] font-semibold text-[20px] leading-[26px] tracking-[0%]">PRODUCT REVIEW</div>
+                                <div className="text-[#4F4F4D] font-normal text-[16px] leading-[24px] tracking-[0%]">See what other customers think about this product.</div>
+                            </div>
+                            <div className="w-full p-[24px] flex items-center justify-center">
+                                <div className="flex justify-center items-center gap-[8px] w-full h-[48px] bg-white text-[#141511] flex items-center justify-center cursor-pointer border border-[#D6D6D5] font-medium cursor-pointer transition-transform duration-200 hover:scale-[0.95]">SEE REVIEWS</div>
                             </div>
                         </div>
                     </div>
