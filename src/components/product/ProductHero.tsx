@@ -2,7 +2,7 @@ import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { useRef, useState } from "react";
-
+import { Autoplay } from "swiper/modules";
 const ProductHero = () => {
     const swiperRef = useRef<SwiperClass | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
@@ -37,6 +37,9 @@ const ProductHero = () => {
                         direction="vertical"
                         slidesPerView={3.2}
                         spaceBetween={0}
+                        loop={true} 
+                        autoplay={{ delay: 3000, disableOnInteraction: false }}
+                        modules={[Autoplay]}
                         speed={1000}
                         className="w-full h-full"
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
