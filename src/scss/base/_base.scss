@@ -169,3 +169,7 @@ body{
 .new_arrivals_img{
     height: calc(100% - 60px) !important;
 }
+.slide-in-slide{
+    display: flex !important;
+    gap: 12px;
+}
