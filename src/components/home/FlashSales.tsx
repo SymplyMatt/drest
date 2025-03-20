@@ -1,5 +1,5 @@
 import UpsellSlider from '../product/UpsellSlider'
-import homeimageone from '../../assets/images/homeimageone.svg';
+import homeimageone from '../../assets/images/homeimageone.png';
 
 const FlashSales = () => {
   return (
@@ -12,7 +12,7 @@ const FlashSales = () => {
           </div>
           <UpsellSlider showTitle={false} />
       </div>
-      <img src={homeimageone} className="w-full"/>
+      <img src={homeimageone} className="w-full h-auto" />
     </>
   )
 }
