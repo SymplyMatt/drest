@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import Header from "../components/common/Header";
 import Footer from "../components/common/Footer";
+import Auth from "../components/common/Auth";
 
 interface LayoutProps {
     children?: ReactNode;
@@ -14,6 +15,7 @@ const Layout = ({ children=<></> }: LayoutProps) => {
                 {children}
             </div>
             <Footer />
+            <Auth />
         </>
     );
 };
