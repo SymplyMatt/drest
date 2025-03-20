@@ -1,4 +1,3 @@
-import CategoriesSlider from "../components/home/CategoriesSlider";
 import HeroSlider from "../components/home/HeroSlider";
 import CategoriesAndProducts from "../components/home/CategoriesAndProducts";
 import FeaturedBrands from "../components/home/FeaturedBrands";
@@ -7,11 +6,12 @@ import Layout from "./Layout";
 import FlashSales from "../components/home/FlashSales";
 import homeimagetwo from '../assets/images/homeimagetwo.png';
 import homeimagethree from '../assets/images/homeimagethree.png';
+import RoundCategoriesSlider from "../components/home/RoundCategoriesSlider";
 const Home = () => {
     return (
         <Layout>
             <HeroSlider />
-            <CategoriesSlider />
+            <RoundCategoriesSlider />
             <FlashSales />
             <CategoriesAndProducts title="Recommended"/>
             <NewArrivals />
