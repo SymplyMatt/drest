@@ -11,12 +11,14 @@ interface LayoutProps {
 const Layout = ({ children=<></> }: LayoutProps) => {
     const { authPage } = useSelector((state: RootState) => state.auth);
     return (
-        <>
-            <div className="flex flex-col w-full items-center gap-[24px]">
-                <Header />
-                {children}
+        <>  
+            <div className={`w-full flex flex-col items-center ${authPage ? "blur-sm" : ""}`}>
+                <div className="flex flex-col w-full items-center gap-[24px]">
+                    <Header />
+                    {children}
+                </div>
+                <Footer />
             </div>
-            <Footer />
             {authPage && <Auth />}
         </>
     );
