@@ -7,9 +7,11 @@ import { Autoplay } from "swiper/modules";
 import { useRef, useState } from "react";
 interface CategoriesAndProductsProps {
     products?: any[];
+    showTitle?: boolean;
+    title?: string;
 }
 
-const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products = [1, 2, 3, 4, 5, 6, 7, 8] }) => {
+const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products = [1, 2, 3, 4, 5, 6, 7, 8], showTitle = true, title= 'You may also like' }) => {
     const shuffledIndexes = [...products.keys()].sort(() => Math.random() - 0.5);
     const navigate = useNavigate();
     const swiperRef = useRef<SwiperClass | null>(null);
@@ -28,7 +30,7 @@ const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products = [1, 2, 
     const renderCustomPagination = () => {
         const totalSlides = 5; 
         return (
-            <div className="flex items-center justify-center mb-6 gap-[24px]">
+            <div className="flex items-center justify-center mb-6 gap-[24px] mt-[24px]">
                 <img src="/images/prev_arrivals.svg" className="cursor-pointer" onClick={handlePrevClick} />
                 <div className="flex items-center justify-center">
                     {[...Array(totalSlides)].map((_, index) => (
@@ -51,11 +53,11 @@ const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products = [1, 2, 
 
     return (
         <>
-            <div className="w-full flex flex-col items-center gap-[24px]">
-                <div className="w-full flex flex-col gap-[20px] justify-center px-[50px]">
+            <div className="w-full flex flex-col items-center">
+                {showTitle && <div className="w-full flex flex-col gap-[20px] justify-center px-[50px]">
                     <div className="w-full flex items-center justify-between h-[48px]">
                         <div className="flex items-center gap-[32px]">
-                            <div className="text-[48px] font-medium leading-[32.78px] tracking-[0%]">You may also like</div>
+                            <div className="text-[48px] font-medium leading-[32.78px] tracking-[0%]">{title}</div>
                         </div>
                         <div className="flex items-center gap-[16px]">
                             <div className="h-[48px] bg-white border border-[#D6D6D5] px-[36px] py-[12px] cursor-pointer flex items-center justify-center font-normal leading-[24px] tracking-[0%] transition-transform duration-200 hover:scale-[0.9] gap-[8px]">
@@ -66,7 +68,7 @@ const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products = [1, 2, 
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>}
                 <Swiper
                     slidesPerView={4}
                     className="w-full"
