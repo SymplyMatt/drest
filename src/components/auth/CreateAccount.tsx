@@ -1,8 +1,12 @@
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../../redux/store";
+import { setAuthPage } from "../../redux/states/auth";
 
 const CreateAccount = () => {
+  const dispatch = useDispatch<AppDispatch>();
     return (
       <div className="w-[500px] h-full bg-white border border-[#D6D6D5] p-[38px] flex flex-col items-center h_content overflow-y-scroll login">
-          <img src="/images/cancelx.svg" className="self-end cursor-pointer"/>
+          <img src="/images/cancelx.svg" className="self-end cursor-pointer" onClick={() => dispatch(setAuthPage(null))}/>
           <div className="w-full flex flex-col items-center gap-[24px] p-10">
               <img src="/images/logo.svg" className="h-[38px] mt-[-24px]"/>
               <div className="flex flex-col items-center gap-[8px]">
@@ -27,8 +31,8 @@ const CreateAccount = () => {
                     <div className="text-[#676764] flex items-center gap-[8px] cursor-pointer text-left text-[14px]">At least 1 number, 8 characters, 1 symbol</div>
                 </div>
               </div>
-              <div className="flex h-[48px] bg-[#141511] w-full cursor-pointer text-white items-center justify-center">REGISTER</div>
-              <div className="text-[#676764] flex items-center gap-[8px] cursor-pointer">Already have an account? <span className="font-semibold text-[#141511] underline">Sign in</span></div>
+              <div className="flex h-[48px] bg-[#141511] w-full cursor-pointer text-white items-center justify-center" onClick={() => dispatch(setAuthPage(null))}>REGISTER</div>
+              <div className="text-[#676764] flex items-center gap-[8px] cursor-pointer">Already have an account? <span className="font-semibold text-[#141511] underline" onClick={() => dispatch(setAuthPage('emaillogin'))}>Sign in</span></div>
               <div className="text-[#676764]">Or</div>
               <div className="w-full flex flex-col justify-center gap-[12px]">
                   <div className="uppercase flex h-[36px] bg-[#fff] w-full cursor-pointer items-center justify-center border border-[#D6D6D5] text-[#141511] text-[14px] font-semibold gap-[8px]"><img src="/images/google.svg" /> Signup with Google</div>

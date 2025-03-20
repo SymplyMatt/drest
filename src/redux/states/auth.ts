@@ -33,7 +33,7 @@ const auth = createSlice({
     setLoginValues: (state, action: PayloadAction<LoginValues>) => {
       state.loginValues = action.payload;
     },
-    setAuthPage: (state, action: PayloadAction<string>) => {
+    setAuthPage: (state, action: PayloadAction<string | null>) => {
       state.authPage = action.payload;
     },
   },
