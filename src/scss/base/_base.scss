@@ -176,3 +176,35 @@ body{
 .h_content{
     height: fit-content;
 }
+/* Scrollbar width */
+::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+}
+
+/* Scrollbar track (background) */
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Scrollbar handle (thumb) */
+::-webkit-scrollbar-thumb {
+    background: #141511;
+    border-radius: 2px;
+}
+
+/* Hover effect on scrollbar */
+::-webkit-scrollbar-thumb:hover {
+    background: #0f0f0e;
+}
+
+.login {
+    overflow-y: auto; /* Enables scrolling */
+    scrollbar-width: none; /* Hides scrollbar in Firefox */
+    -ms-overflow-style: none; /* Hides scrollbar in IE/Edge */
+}
+
+/* Hides scrollbar in Webkit browsers (Chrome, Safari) */
+.login::-webkit-scrollbar {
+    display: none;
+}
