@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import MenuLinks from "./MenuLinks";
 import { useLocation, useNavigate } from "react-router-dom";
+import { AppDispatch } from "../../redux/store";
+import { useDispatch } from "react-redux";
+import { setAuthPage } from "../../redux/states/auth";
 
 const Header = () => {
     const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
     const navigate = useNavigate();
     const location = useLocation();
+    const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     }, [location.pathname]);
@@ -45,7 +49,7 @@ const Header = () => {
                         <img src="/images/search.svg" />
                     </div>
                     <div className="flex items-center gap-[16px]">
-                        <div className="h-[48px] bg-black text-[#E6E6E6] flex items-center justify-center gap-[12px] px-[12px] cursor-pointer"><img src="/images/user.svg" /> Sign In/Sign Up</div>
+                        <div className="h-[48px] bg-black text-[#E6E6E6] flex items-center justify-center gap-[12px] px-[12px] cursor-pointer" onClick={() => dispatch(setAuthPage("emaillogin"))}><img src="/images/user.svg" /> Sign In/Sign Up</div>
                         <img src="/images/heart.svg" className="cursor-pointer" />
                         <img src="/images/wish.svg" className="cursor-pointer" />
                     </div>

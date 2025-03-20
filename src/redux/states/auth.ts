@@ -14,13 +14,13 @@ interface LoginValues {
 interface AuthState {
   signupValues: SignupValues;
   loginValues: LoginValues;
-  authPage: string;
+  authPage: string | null;
 }
 
 const initialState: AuthState = {
   signupValues: { email: "", password: "" },
   loginValues: { email: "", password: "" },
-  authPage: "login",
+  authPage: null,
 };
 
 const auth = createSlice({
