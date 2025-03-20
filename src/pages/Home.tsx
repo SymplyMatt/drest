@@ -5,7 +5,6 @@ import FeaturedBrands from "../components/home/FeaturedBrands";
 import NewArrivals from "../components/home/NewArrivals";
 import Layout from "./Layout";
 import FlashSales from "../components/home/FlashSales";
-
 const Home = () => {
     return (
         <Layout>

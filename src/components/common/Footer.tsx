@@ -1,7 +1,7 @@
 
 const Footer = () => {
   return (
-    <div className="w-full flex flex-col justify-center items-center">
+    <div className="w-full flex flex-col justify-center items-center pt-[24px]">
         <div className="w-full bg-[#DCBF89] grid grid-cols-2 px-[10%] py-[50px] gap-[0px]">
             <div className="flex flex-col col-span-1 justify-center">
                 <div className="w-[78%] flex flex-col justify-center gap-[16px]">

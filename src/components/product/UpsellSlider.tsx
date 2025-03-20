@@ -30,7 +30,7 @@ const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products = [1, 2, 
     const renderCustomPagination = () => {
         const totalSlides = 5; 
         return (
-            <div className="flex items-center justify-center mb-6 gap-[24px] mt-[24px]">
+            <div className="flex items-center justify-center gap-[24px] mt-[24px]">
                 <img src="/images/prev_arrivals.svg" className="cursor-pointer" onClick={handlePrevClick} />
                 <div className="flex items-center justify-center">
                     {[...Array(totalSlides)].map((_, index) => (
@@ -53,7 +53,7 @@ const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products = [1, 2, 
 
     return (
         <>
-            <div className="w-full flex flex-col items-center">
+            <div className="w-full flex flex-col items-center gap-[20px]">
                 {showTitle && <div className="w-full flex flex-col gap-[20px] justify-center px-[50px]">
                     <div className="w-full flex items-center justify-between h-[48px]">
                         <div className="flex items-center gap-[32px]">
