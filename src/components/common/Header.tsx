@@ -34,9 +34,9 @@ const Header = () => {
                 <div className="w-full h-[92px] flex border-b border-[#E6E6E6] px-[50px] justify-between items-center">
                     <div className="cursor-pointer" onClick={()=>navigate('/')}><img src="/images/logo.svg" /></div>
                     <div className="flex items-center gap-[16px] uppercase">
-                        {["Women", "Men", "Kids", "Beauty", "Home+Lifestyle"].map((category, index) => (
+                        {["women", "men", "kids", "home", "beauty"].map((category, index) => (
                             <div key={index} className="font-semibold cursor-pointer flex items-center opacity-[0.90] hover:text-[#8F0024] open-menu" onMouseEnter={() => setHoveredMenu(category)}>
-                                {category}
+                                <img src={`/images/${category}.svg`} alt="" />
                             </div>
                         ))}
                     </div>
