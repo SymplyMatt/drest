@@ -44,7 +44,7 @@ const CreateAccount = () => {
               <div className="flex h-[48px] bg-[#141511] w-full cursor-pointer text-white items-center justify-center" 
                 onClick={() => {
                   dispatch(setLoggedInUser({name: "Matt", email: "symplymatt@gmail.com", id: "1"}));
-                  dispatch(setAuthPage(null));
+                  dispatch(setAuthPage("verify-email"));
                 }}>REGISTER</div>
               <div className="text-[#676764] flex items-center gap-[8px] cursor-pointer">Already have an account? <span className="font-semibold text-[#141511] underline" onClick={() => dispatch(setAuthPage('emaillogin'))}>Sign in</span></div>
               <div className="text-[#676764]">Or</div>

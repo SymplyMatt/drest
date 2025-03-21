@@ -8,6 +8,8 @@ import { motion } from "framer-motion";
 import PhoneLogin from "../auth/PhoneLogin";
 import ResetPasswordEmail from "../auth/ResetPasswordEmail";
 import ResetPasswordPhone from "../auth/ResetPasswordPhone";
+import VerifyEmail from "../auth/VerifyEmail";
+import VerifyPhone from "../auth/VerifyPhone";
 
 const Auth = () => {
   const { authPage } = useSelector((state: RootState) => state.auth);
@@ -20,6 +22,8 @@ const Auth = () => {
       {authPage === "create-account" && <CreateAccount />}
       {authPage === "resetpassword-email" && <ResetPasswordEmail />}
       {authPage === "resetpassword-phone" && <ResetPasswordPhone />}
+      {authPage === "verify-email" && <VerifyEmail />}
+      {authPage === "verify-phone" && <VerifyPhone />}
     </motion.div>
   );
 };
