@@ -18,24 +18,19 @@ const SearchResults = () => {
                 </div>
                 <div className="text-[#6B6B6B] cursor-pointer text-[14px]" onClick={() => dispatch(setSearchMode(null))}>CANCEL</div>
             </div>
-            <div className="w-full flex flex-col items-center justify-center gap-[18px] w-[70%]">
-                <div className="flex items-center gap-[8px] text-[#141511]"><img src="/images/arrowcurve.svg" className="h-full"/>Popular searches this week</div>
-                <div className="flex items-center justify-center gap-[12px] flex-wrap">
-                    <div className="flex items-center justify-center gap-[4px] h-[40px] bg-[#F3F3F3] border border-[#D6D6D5] py-[8px] px-[12px] text-[#4F4F4D] text-[14px]"><img src="/images/searchfade.svg"/> Jean jacket</div>
-                    <div className="flex items-center justify-center gap-[4px] h-[40px] bg-[#F3F3F3] border border-[#D6D6D5] py-[8px] px-[12px] text-[#4F4F4D] text-[14px]"><img src="/images/searchfade.svg"/> Graphic tee</div>
-                    <div className="flex items-center justify-center gap-[4px] h-[40px] bg-[#F3F3F3] border border-[#D6D6D5] py-[8px] px-[12px] text-[#4F4F4D] text-[14px]"><img src="/images/searchfade.svg"/> Graphic tee</div>
-                </div>
-            </div>
-            <div className="w-full flex flex-col items-center justify-center gap-[8px] w-[70%]">
-                <div className="flex items-center gap-[8px] text-[#141511]">Search history</div>
-                <div className="flex items-center justify-center gap-[12px] flex-wrap">
-                    <div className="flex items-center justify-center gap-[4px] h-[40px] border border-[#D6D6D5] py-[8px] px-[12px] text-[#4F4F4D] text-[14px] cursor-pointer">New varsity jacket <img src="/images/x_sm.svg"/></div>
-                    <div className="flex items-center justify-center gap-[4px] h-[40px] border border-[#D6D6D5] py-[8px] px-[12px] text-[#4F4F4D] text-[14px] cursor-pointer">Black jeans <img src="/images/x_sm.svg"/></div>
-                    <div className="flex items-center justify-center gap-[4px] h-[40px] border border-[#D6D6D5] py-[8px] px-[12px] text-[#4F4F4D] text-[14px] cursor-pointer">Ankle pants for chidren <img src="/images/x_sm.svg"/></div>
-                    <div className="flex items-center justify-center gap-[4px] h-[40px] border border-[#D6D6D5] py-[8px] px-[12px] text-[#4F4F4D] text-[14px] cursor-pointer">White T-shirt <img src="/images/x_sm.svg"/></div>
-                    <div className="flex items-center justify-center gap-[4px] h-[40px] border border-[#D6D6D5] py-[8px] px-[12px] text-[#4F4F4D] text-[14px] cursor-pointer">Most popular shirt <img src="/images/x_sm.svg"/></div>
-                    <div className="flex items-center justify-center gap-[4px] h-[40px] border border-[#D6D6D5] py-[8px] px-[12px] text-[#4F4F4D] text-[14px] cursor-pointer">Outwear for winter <img src="/images/x_sm.svg"/></div>
-                    <div className="flex items-center justify-center gap-[4px] h-[40px] border border-[#D6D6D5] py-[8px] px-[12px] text-[#4F4F4D] text-[14px] cursor-pointer">Beige coats <img src="/images/x_sm.svg"/></div>
+            <div className="w-full flex gap-[36px]">
+                <div className="flex flex-col gap-[16px]">
+                    <div className="text-[#141511] font-semibold">Search Suggestions:</div>
+                    <div className="flex flex-col gap-[8px]">
+                        <div className="text-[#141511] font-normal">Womens shoes (12)</div>
+                        <div className="text-[#141511] font-normal">Wood pecker (3)</div>
+                        <div className="text-[#141511] font-normal">Clothing for women (12)</div>
+                        <div className="text-[#141511] font-normal">Adidas women bra (4)</div>
+                        <div className="text-[#141511] font-normal">Women Bags (36)</div>
+                        <div className="text-[#141511] font-normal">Jackets for work (34)</div>
+                        <div className="text-[#141511] font-normal">Bottoms (58)</div>
+                        <div className="text-[#141511] font-normal">Tops (72)</div>
+                    </div>
                 </div>
             </div>
         </div>
