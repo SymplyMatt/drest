@@ -4,14 +4,15 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay } from "swiper/modules";
-import { useRef, useState } from "react";
+import { ReactNode, useRef, useState } from "react";
 interface CategoriesAndProductsProps {
     products?: any[];
     showTitle?: boolean;
     title?: string;
+    titleComponent?: ReactNode;
 }
 
-const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products = [1, 2, 3, 4, 5, 6, 7, 8], showTitle = true, title= 'You may also like' }) => {
+const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products = [1, 2, 3, 4, 5, 6, 7, 8], showTitle = true, title= 'You may also like', titleComponent=<></> }) => {
     const shuffledIndexes = [...products.keys()].sort(() => Math.random() - 0.5);
     const navigate = useNavigate();
     const swiperRef = useRef<SwiperClass | null>(null);
@@ -54,6 +55,7 @@ const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products = [1, 2, 
     return (
         <>
             <div className="w-full flex flex-col items-center gap-[20px]">
+                {titleComponent}
                 {showTitle && <div className="w-full flex flex-col gap-[20px] justify-center px-[50px]">
                     <div className="w-full flex items-center justify-between h-[48px]">
                         <div className="flex items-center gap-[32px]">

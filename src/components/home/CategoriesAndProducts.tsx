@@ -1,15 +1,19 @@
+import { ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface CategoriesAndProductsProps {
-    title: string;
+    title?: string;
     products?: any[];
+    showTitle?: boolean;
+    titleComponent?: ReactNode;
 }
-const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title, products=[1,2,3,4,5,6,7,8] }) => {
+const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title='Trending', products=[1,2,3,4,5,6,7,8], showTitle=true, titleComponent=<></>  }) => {
     const shuffledIndexes = [...products.keys()].sort(() => Math.random() - 0.5);
     const navigate = useNavigate();
     return (
         <div className="w-full flex flex-col items-center gap-[24px] mb-[50px]">
-            <div className="w-full flex flex-col gap-[20px] justify-center px-[50px]">
+            {titleComponent}
+            {showTitle && <div className="w-full flex flex-col gap-[20px] justify-center px-[50px]">
                 <div className="w-full flex items-center justify-between h-[48px]">
                     <div className="flex items-center gap-[32px]">
                         <div className="text-[24px] font-semibold leading-[32.78px] tracking-[0%]">{title}</div>
@@ -25,7 +29,7 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title, pr
                     <div className="h-[48px] bg-white border border-black px-[36px] py-[12px] cursor-pointer flex items-center justify-center font-semibold leading-[24px] tracking-[0%] transition-transform duration-200 hover:scale-[0.9]">VIEW ALL</div>
                 </div>
                 <div className="h-[1px] bg-[#E6E6E6] w-full"></div>
-            </div>
+            </div>}
             <div className="w-full grid grid-cols-4">
                 {shuffledIndexes.map((number) => {
                     const discount = Math.random() < 0.5 ? 0 : Math.floor(Math.random() * 41) + 10;
