@@ -27,7 +27,7 @@ const PasswordLogin = () => {
                     <input type="password" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder=""/>
                     <div className="w-full flex justify-between items-center">
                         <div className="text-[#141511] text-[16px] font-normal flex items-center gap-[8px] underline"><img src="/images/eyepassword.svg" className="cursor-pointer"/>Show password</div>
-                        <div className="text-[#141511] text-[12px] underline font-semibold cursor-pointer">Forgot password?</div>
+                        <div className="text-[#141511] text-[12px] underline font-semibold cursor-pointer" onClick={() => dispatch(setAuthPage("resetpassword-email"))}>Forgot password?</div>
                     </div>
                 </div>
                 <div className="flex h-[48px] bg-[#141511] w-full cursor-pointer text-white items-center justify-center"  
