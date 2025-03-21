@@ -10,17 +10,8 @@ const ResetPasswordPhone = () => {
             <img src="/images/cancelx.svg" className="self-end cursor-pointer" onClick={() => dispatch(setAuthPage(null))}/>
             <div className="w-full flex flex-col items-center gap-[24px] p-10">
                 <div className="flex flex-col items-center gap-[8px] mt-[-24px]">
-                    <div className="text-center text-[28px] font-medium leading-[130%] tracking-[0%] text-[#141511]">Sign in</div>
-                    <div className="text-center text-[16px] font-normal leading-[130%] tracking-[0%] text-[#4F4F4D]">Enter your password to continue</div>
-                    <div className="flex justify-between gap-[12px] items-center text-center text-[16px] font-normal leading-[130%] tracking-[0%] text-[#4F4F4D] font-semibold">
-                        johndoe@mail.com   
-                        <span className="underline cursor-pointer font-normal"
-                        onClick={() => {
-                            dispatch(setAuthPage("emaillogin"));
-                        }}>
-                            Edit
-                        </span>
-                    </div>
+                    <div className="text-center text-[28px] font-medium leading-[130%] tracking-[0%] text-[#141511]">Password Reset</div>
+                    <div className="text-center text-[16px] font-normal leading-[130%] tracking-[0%] text-[#4F4F4D]">Please enter your email address and we'll send you instructions to reset your password</div>
                 </div>
                 <div className="w-full flex flex-col justify-center gap-[12px]">
                     <label className="text-[#141511] font-semibold">Phone number</label>
