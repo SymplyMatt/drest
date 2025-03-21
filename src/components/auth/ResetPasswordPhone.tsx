@@ -14,7 +14,7 @@ const ResetPasswordPhone = () => {
                     <div className="text-center text-[16px] font-normal leading-[130%] tracking-[0%] text-[#4F4F4D]">Please enter your email address and we'll send you instructions to reset your password</div>
                 </div>
                 <div className="w-full flex flex-col justify-center gap-[12px]">
-                    <label className="text-[#141511] font-semibold">Phone number</label>
+                    <label className="text-[#141511] font-semibold">Mobile number</label>
                     <div className="w-full flex items-center">
                         <div className="h-[48px] bg-[#F3F3F3] flag-container min-w-[85px] border-r border-[#D6D6D5] flex items-center justify-center text-[#676764] p-[8px] gap-[4px] cursor-pointer">
                             <img src="/images/tunisia.svg" className="w-[24px] h-[24px]"/>

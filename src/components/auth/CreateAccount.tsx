@@ -17,7 +17,16 @@ const CreateAccount = () => {
                   <label className="text-[#141511] font-semibold">Email</label>
                   <input type="text" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder="mail@gmail.com"/>
                   <label className="text-[#141511] font-semibold">First name</label>
-                  <input type="text" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder="John"/>
+                  <input type="text" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder="Maulana"/>
+                  <label className="text-[#141511] font-semibold">Mobile number</label>
+                  <div className="w-full flex items-center">
+                    <div className="h-[48px] bg-[#F3F3F3] flag-container min-w-[85px] border-r border-[#D6D6D5] flex items-center justify-center text-[#676764] p-[8px] gap-[4px] cursor-pointer">
+                        <img src="/images/tunisia.svg" className="w-[24px] h-[24px]"/>
+                        +1
+                        <img src="/images/caretflag.svg" className="w-[24px] h-[24px]"/>
+                    </div>
+                    <input type="text" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder="Enter mobile number"/>
+                    </div>
                   <label className="text-[#141511] font-semibold">Password</label>
                   <div className="w-full flex items-center relative">
                     <input type="password" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder=""/>
