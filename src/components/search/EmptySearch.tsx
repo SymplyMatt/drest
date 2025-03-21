@@ -18,7 +18,7 @@ const EmptySearch = () => {
                         <img src="/images/caretflag.svg" className="w-[24px] h-[24px]"/>
                     </div>
                     <input type="text" placeholder="Search for product" className="w-full h-full border-none outline-none p-[16px] text-[#6B6B6B]" onChange={(e)=>setInput(e.currentTarget.value)} value={input}/>
-                    <img src="/images/cancelxsm.svg" className="h-full cursor-pointer h-[18px] relative right-[10px]" onClick={() => setInput('')}/>
+                    {input && <img src="/images/cancelxsm.svg" className="h-full cursor-pointer h-[18px] relative right-[10px]" onClick={() => setInput('')}/>}
                     <img src="/images/searchIcon.svg" className="h-full cursor-pointer" onClick={() => dispatch(setSearchMode("results"))}/>
                 </div>
                 <div className="text-[#6B6B6B] cursor-pointer text-[14px]" onClick={() => dispatch(setSearchMode(null))}>CANCEL</div>
