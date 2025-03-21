@@ -9,13 +9,13 @@ interface User {
 interface AppState {
   theme: "light" | "dark";
   language: string;
-  showSearch: boolean;
+  searchMode: string | null;
   loggedInUser: User | null;
 }
 
 const initialState: AppState = {
   theme: "light",
-  showSearch:false,
+  searchMode: null,
   language: "en",
   loggedInUser: null,
 };
@@ -27,8 +27,8 @@ const app = createSlice({
     setTheme: (state, action: PayloadAction<"light" | "dark">) => {
       state.theme = action.payload;
     },
-    setShowSearch: (state, action: PayloadAction<boolean>) => {
-      state.showSearch = action.payload;
+    setSearchMode: (state, action: PayloadAction<string | null>) => {
+      state.searchMode = action.payload;
     },
     setLanguage: (state, action: PayloadAction<string>) => {
       state.language = action.payload;
@@ -39,5 +39,5 @@ const app = createSlice({
   },
 });
 
-export const { setTheme, setLanguage, setLoggedInUser, setShowSearch } = app.actions;
+export const { setTheme, setLanguage, setLoggedInUser, setSearchMode } = app.actions;
 export default app.reducer;

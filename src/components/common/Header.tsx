@@ -5,7 +5,7 @@ import { AppDispatch, RootState } from "../../redux/store";
 import { useDispatch } from "react-redux";
 import { setAuthPage } from "../../redux/states/auth";
 import { useSelector } from "react-redux";
-import { setShowSearch } from "../../redux/states/app";
+import { setSearchMode } from "../../redux/states/app";
 
 const Header = () => {
     const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
@@ -48,7 +48,7 @@ const Header = () => {
                         ))}
                     </div>
                     <div className="h-[48px] border border-black flex items-center justify-between px-[12px] cursor-pointer w-[200px]">
-                        <input type="text" className="border-none outline-none focus:ring-0 text-base text-[#6B6B6B]" placeholder="Search for product" onClick={() => dispatch(setShowSearch(true))}/>
+                        <input type="text" className="border-none outline-none focus:ring-0 text-base text-[#6B6B6B] cursor-pointer" placeholder="Search for product" onClick={() => dispatch(setSearchMode('empty'))}/>
                         <img src="/images/search.svg" />
                     </div>
                     <div className="flex items-center gap-[16px]">

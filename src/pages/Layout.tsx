@@ -11,10 +11,10 @@ interface LayoutProps {
 }
 const Layout = ({ children=<></> }: LayoutProps) => {
     const { authPage } = useSelector((state: RootState) => state.auth);
-    const { showSearch } = useSelector((state: RootState) => state.app);
+    const { searchMode } = useSelector((state: RootState) => state.app);
     return (
         <>  
-            <div className={`w-full flex flex-col items-center ${(authPage || showSearch) ? "blur-sm" : ""}`}>
+            <div className={`w-full flex flex-col items-center ${(authPage || searchMode) ? "blur-sm" : ""}`}>
                 <div className="flex flex-col w-full items-center gap-[24px]">
                     <Header />
                     {children}
@@ -22,7 +22,7 @@ const Layout = ({ children=<></> }: LayoutProps) => {
                 <Footer />
             </div>
             {authPage && <Auth />}
-            {showSearch && <Search />}
+            {searchMode && <Search />}
         </>
     );
 };
