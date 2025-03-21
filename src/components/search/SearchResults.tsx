@@ -1,5 +1,3 @@
-
-import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { setSearchMode } from "../../redux/states/app";
@@ -7,7 +5,7 @@ import { setSearchMode } from "../../redux/states/app";
 const SearchResults = () => {
     const dispatch = useDispatch<AppDispatch>();
     return (
-    <motion.div initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.4, ease: "easeOut" }} className="w-[100vw] h-[100vh] fixed top-0 right-0 bg-[#1415114D] z-10 flex justify-center">
+    <div className="w-[100vw] h-[100vh] fixed top-0 right-0 bg-[#1415114D] z-10 flex justify-center">
         <div className="w-[70%] bg-white h_content border border-[#D6D6D5] p-[40px] flex flex-col items-center gap-[40px]">
             <div className="w-full flex items-center justify-between gap-[40px]">
                 <div className="w-full flex items-center justify-center border border-black h-[48px]">
@@ -41,7 +39,7 @@ const SearchResults = () => {
                 </div>
             </div>
         </div>
-    </motion.div>
+    </div>
     );
 };
 
