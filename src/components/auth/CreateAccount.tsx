@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { setAuthPage } from "../../redux/states/auth";
+import { setLoggedInUser } from "../../redux/states/app";
 
 const CreateAccount = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -31,7 +32,11 @@ const CreateAccount = () => {
                     <div className="text-[#676764] flex items-center gap-[8px] cursor-pointer text-left text-[14px]">At least 1 number, 8 characters, 1 symbol</div>
                 </div>
               </div>
-              <div className="flex h-[48px] bg-[#141511] w-full cursor-pointer text-white items-center justify-center" onClick={() => dispatch(setAuthPage(null))}>REGISTER</div>
+              <div className="flex h-[48px] bg-[#141511] w-full cursor-pointer text-white items-center justify-center" 
+                onClick={() => {
+                  dispatch(setLoggedInUser({name: "Matt", email: "symplymatt@gmail.com", id: "1"}));
+                  dispatch(setAuthPage(null));
+                }}>REGISTER</div>
               <div className="text-[#676764] flex items-center gap-[8px] cursor-pointer">Already have an account? <span className="font-semibold text-[#141511] underline" onClick={() => dispatch(setAuthPage('emaillogin'))}>Sign in</span></div>
               <div className="text-[#676764]">Or</div>
               <div className="w-full flex flex-col justify-center gap-[12px]">

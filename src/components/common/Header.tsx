@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import MenuLinks from "./MenuLinks";
 import { useLocation, useNavigate } from "react-router-dom";
-import { AppDispatch } from "../../redux/store";
+import { AppDispatch, RootState } from "../../redux/store";
 import { useDispatch } from "react-redux";
 import { setAuthPage } from "../../redux/states/auth";
+import { useSelector } from "react-redux";
 
 const Header = () => {
     const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
     const navigate = useNavigate();
     const location = useLocation();
     const dispatch = useDispatch<AppDispatch>();
+    const { loggedInUser } = useSelector((state: RootState) => state.app);
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     }, [location.pathname]);
@@ -44,12 +46,20 @@ const Header = () => {
                             </div>
                         ))}
                     </div>
-                    <div className="h-[48px] border border-black gap-[60px] flex items-center justify-between px-[24px] cursor-pointer">
+                    <div className="h-[48px] border border-black flex items-center justify-between px-[12px] cursor-pointer w-[200px]">
                         <input type="text" className="border-none outline-none focus:ring-0 text-base text-[#6B6B6B]" placeholder="Search for product" />
                         <img src="/images/search.svg" />
                     </div>
                     <div className="flex items-center gap-[16px]">
-                        <div className="h-[48px] bg-black text-[#E6E6E6] flex items-center justify-center gap-[12px] px-[12px] cursor-pointer" onClick={() => dispatch(setAuthPage("emaillogin"))}><img src="/images/user.svg" /> Sign In/Sign Up</div>
+                        {!loggedInUser && <div className="h-[48px] bg-black text-[#E6E6E6] flex items-center justify-center gap-[12px] px-[12px] cursor-pointer" onClick={() => dispatch(setAuthPage("emaillogin"))}><img src="/images/user.svg" /> Sign In/Sign Up</div>}
+                        {loggedInUser && <div className="flex gap-[8px]">
+                            <img src="/images/userimage.svg"/>
+                            <div className="flex flex-col justify-between h-full">
+                                <div className="text-[12px] font-medium">Hello John</div>
+                                <div className="text-[14px] font-semibold">My Account</div>
+                            </div>
+                            <img src="/images/caretdownsmblack.svg" className="self-end cursor-pointer"/>
+                        </div>}
                         <img src="/images/heart.svg" className="cursor-pointer" onClick={()=>navigate('/wishlist')}/>
                         <img src="/images/wish.svg" className="cursor-pointer" />
                     </div>
@@ -69,7 +79,7 @@ const Header = () => {
                     <div className="flex items-center gap-[8px]"><img src="/images/headphone.svg" /> Need help? <span className="font-bold">+216 50 660006</span></div>
                 </div>
             </div>
-            <MenuLinks hoveredMenu={hoveredMenu} setHoveredMenu={setHoveredMenu}/>
+            {/* <MenuLinks hoveredMenu={hoveredMenu} setHoveredMenu={setHoveredMenu}/> */}
         </>
     )
 }
