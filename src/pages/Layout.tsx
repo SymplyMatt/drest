@@ -14,7 +14,7 @@ const Layout = ({ children=<></> }: LayoutProps) => {
     const { showSearch } = useSelector((state: RootState) => state.app);
     return (
         <>  
-            <div className={`w-full flex flex-col items-center ${authPage ? "blur-sm" : ""}`}>
+            <div className={`w-full flex flex-col items-center ${(authPage || showSearch) ? "blur-sm" : ""}`}>
                 <div className="flex flex-col w-full items-center gap-[24px]">
                     <Header />
                     {children}
