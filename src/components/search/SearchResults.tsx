@@ -22,17 +22,33 @@ const SearchResults = () => {
                 <div className="flex flex-col gap-[16px]">
                     <div className="text-[#141511] font-semibold">Search Suggestions:</div>
                     <div className="flex flex-col gap-[8px]">
-                        <div className="text-[#141511] font-normal">Womens shoes (12)</div>
-                        <div className="text-[#141511] font-normal">Wood pecker (3)</div>
-                        <div className="text-[#141511] font-normal">Clothing for women (12)</div>
-                        <div className="text-[#141511] font-normal">Adidas women bra (4)</div>
-                        <div className="text-[#141511] font-normal">Women Bags (36)</div>
-                        <div className="text-[#141511] font-normal">Jackets for work (34)</div>
-                        <div className="text-[#141511] font-normal">Bottoms (58)</div>
-                        <div className="text-[#141511] font-normal">Tops (72)</div>
+                        <div className="text-[#141511] font-normal whitespace-nowrap">Womens shoes (12)</div>
+                        <div className="text-[#141511] font-normal whitespace-nowrap">Wood pecker (3)</div>
+                        <div className="text-[#141511] font-normal whitespace-nowrap">Clothing for women (12)</div>
+                        <div className="text-[#141511] font-normal whitespace-nowrap">Adidas women bra (4)</div>
+                        <div className="text-[#141511] font-normal whitespace-nowrap">Women Bags (36)</div>
+                        <div className="text-[#141511] font-normal whitespace-nowrap">Jackets for work (34)</div>
+                        <div className="text-[#141511] font-normal whitespace-nowrap">Bottoms (58)</div>
+                        <div className="text-[#141511] font-normal whitespace-nowrap">Tops (72)</div>
+                    </div>
+                </div>
+                <div className="w-full flex flex-col gap-[16px]">
+                    <div className="text-[#141511] font-semibold">Products</div>
+                    <div className="w-full grid grid-cols-2 gap-[36px]">
+                        {[...Array(6)].map((_,i)=>(
+                            <div className="flex item-center gap-[12px]" key={i}>
+                                <img src={`/images/prodsug${i+1}.svg`}/>
+                                <div className="flex flex-col gap-[4px]">
+                                    <div className="text-[14px] font-semibold">Mango</div>
+                                    <div className="text-[#141511]">Charcoal denim trucker jacket</div>
+                                    <div className="font-semibold text-[#141511] text-[18px] price">120.50 TND</div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
+            <div className="uppercase underline text-[#141511] text-left self-start font-semibold mt-[-20px]">SEE all “WO”</div>
         </div>
     </div>
     );
