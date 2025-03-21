@@ -3,9 +3,11 @@ import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { setSearchMode } from "../../redux/states/app";
+import { useState } from "react";
 
 const EmptySearch = () => {
     const dispatch = useDispatch<AppDispatch>();
+    const [input, setInput] = useState<string>("");
     return (
     <motion.div initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.4, ease: "easeOut" }} className="w-[100vw] h-[100vh] fixed top-0 right-0 bg-[#1415114D] z-10 flex justify-center">
         <div className="w-[70%] bg-white h_content border border-[#D6D6D5] p-[40px] flex flex-col items-center gap-[40px]">
@@ -15,7 +17,8 @@ const EmptySearch = () => {
                         ALL
                         <img src="/images/caretflag.svg" className="w-[24px] h-[24px]"/>
                     </div>
-                    <input type="text" placeholder="Search for product" className="w-full h-full border-none outline-none p-[16px] text-[#6B6B6B]"/>
+                    <input type="text" placeholder="Search for product" className="w-full h-full border-none outline-none p-[16px] text-[#6B6B6B]" onChange={(e)=>setInput(e.currentTarget.value)} value={input}/>
+                    <img src="/images/cancelxsm.svg" className="h-full cursor-pointer h-[18px] relative right-[10px]" onClick={() => setInput('')}/>
                     <img src="/images/searchIcon.svg" className="h-full cursor-pointer" onClick={() => dispatch(setSearchMode("results"))}/>
                 </div>
                 <div className="text-[#6B6B6B] cursor-pointer text-[14px]" onClick={() => dispatch(setSearchMode(null))}>CANCEL</div>
