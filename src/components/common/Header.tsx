@@ -50,7 +50,7 @@ const Header = () => {
                     </div>
                     <div className="flex items-center gap-[16px]">
                         <div className="h-[48px] bg-black text-[#E6E6E6] flex items-center justify-center gap-[12px] px-[12px] cursor-pointer" onClick={() => dispatch(setAuthPage("emaillogin"))}><img src="/images/user.svg" /> Sign In/Sign Up</div>
-                        <img src="/images/heart.svg" className="cursor-pointer" />
+                        <img src="/images/heart.svg" className="cursor-pointer" onClick={()=>navigate('/wishlist')}/>
                         <img src="/images/wish.svg" className="cursor-pointer" />
                     </div>
                 </div>
