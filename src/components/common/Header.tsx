@@ -42,7 +42,7 @@ const Header = () => {
                     <div className="cursor-pointer" onClick={()=>navigate('/')}><img src="/images/logo.svg" /></div>
                     <div className="flex items-center gap-[16px] uppercase">
                         {["women", "men", "kids", "home", "beauty"].map((category, index) => (
-                            <div key={index} className="font-semibold cursor-pointer flex items-center opacity-[0.90] hover:text-[#8F0024] open-menu" onMouseEnter={() => setHoveredMenu(category)}>
+                            <div key={index} className="font-semibold cursor-pointer flex items-center opacity-[0.90] hover:text-[#8F0024] open-menu">
                                 <img src={`/images/${category}.svg`} alt="" />
                             </div>
                         ))}
@@ -67,20 +67,14 @@ const Header = () => {
                 </div>
                 <div className="border-b border-[#E6E6E6] h-[48px] w-full px-[50px] flex items-center justify-between">
                     <div className="flex items-center gap-[30px] text-[14px]">
-                        <div className="font-medium cursor-pointer hover:underline hover:decoration-2">New Arrivals</div>
-                        <div className="font-medium cursor-pointer hover:underline hover:decoration-2">Shoes</div>
-                        <div className="font-medium cursor-pointer hover:underline hover:decoration-2">Clothing</div>
-                        <div className="font-medium cursor-pointer hover:underline hover:decoration-2">Accessories</div>
-                        <div className="font-medium cursor-pointer hover:underline hover:decoration-2">Bags</div>
-                        <div className="font-medium cursor-pointer hover:underline hover:decoration-2">Sports</div>
-                        <div className="font-medium cursor-pointer hover:underline hover:decoration-2">Gifts</div>
-                        <div className="font-medium cursor-pointer hover:underline hover:decoration-2">Brands</div>
-                        <div className="font-semibold cursor-pointer text-[#D52B56]">SALE</div>
+                        {["New Arrivals", "Shoes", "Clothing", "Accessories", "Bags", "Sports", "Gifts", "Brands", "SALE"].map((category, index) => (
+                            <div className={`${category.toLowerCase() !== 'sale' ? 'font-medium cursor-pointer hover:underline hover:decoration-2 ' : 'font-semibold cursor-pointer text-[#D52B56]'}`} key={index} onMouseEnter={() => setHoveredMenu(category)}>{category}</div>
+                        ))}
                     </div>
                     <div className="flex items-center gap-[8px]"><img src="/images/headphone.svg" /> Need help? <span className="font-bold">+216 50 660006</span></div>
                 </div>
             </div>
-            {/* <MenuLinks hoveredMenu={hoveredMenu} setHoveredMenu={setHoveredMenu}/> */}
+            <MenuLinks hoveredMenu={hoveredMenu} setHoveredMenu={setHoveredMenu}/>
         </>
     )
 }
