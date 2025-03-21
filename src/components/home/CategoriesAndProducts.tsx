@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface CategoriesAndProductsProps {
     title?: string;
@@ -10,6 +10,7 @@ interface CategoriesAndProductsProps {
 const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title='Trending', products=[1,2,3,4,5,6,7,8], showTitle=true, titleComponent=<></>  }) => {
     const shuffledIndexes = [...products.keys()].sort(() => Math.random() - 0.5);
     const navigate = useNavigate();
+    const location = useLocation();
     return (
         <div className="w-full flex flex-col items-center gap-[24px] mb-[50px]">
             {titleComponent}
@@ -36,7 +37,7 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title='Tr
                     const price = Math.floor(Math.random() * 101) + 100;
                     const priceAfterDiscount = price - (price * discount) / 100;
                     return(
-                        <div className="col-span-1 flex flex-col items-center h-[480px] group" key={number}>
+                        <div className="col-span-1 flex flex-col items-center h-[500px] group" key={number}>
                             <div className="w-full h-[400px] bg-[#F3F3F3] border border-[#E6E6E6] flex items-center justify-center relative">
                                 <img src={`/images/recommended${number+1}.png`} className="w-full h-full object-cover"/>
                                 <img src="/images/heart.svg" className="cursor-pointer absolute top-[20px] right-[10px] transition-transform duration-200 hover:scale-[0.9]" />
@@ -46,7 +47,8 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title='Tr
                                     <div className="h-[48px] bg-[#141511] w-full flex items-center justify-center text-white gap-[8px] text-[16px] leading-[24px] tracking-[0%] font-medium transition-transform duration-200 hover:scale-[0.9]" onClick={()=>navigate('/product/productId')}><img src="/images/eye_product.svg" /> Quick View</div>
                                 </div>
                             </div>
-                            <div className="flex flex-col items-center justify-center gap-[4px] h-[80px] border-b border-l border-r border-[#E6E6E6] w-full">
+                            <div className="flex flex-col items-center justify-center gap-[4px] h-[100px] border-b border-l border-r border-[#E6E6E6] w-full">
+                                {location.pathname.includes('wishlist') && <div className="text-[14px] leading-[27px] tracking-[0%] text-[#141511] font-semibold">Adidas</div>}
                                 <div className="text-[18px] leading-[27px] tracking-[0%]">Ocean breeze varsity jacket</div>
                                 <div className="text-[18px] font-semibold leading-[26px] tracking-[-5%] price">{Math.round(priceAfterDiscount)} TND {discount ? <span className="font-semibold text-[#8F0024] text-[16px] leading-[24px] tracking-[-4%] line-through">{price} TND</span> : ''}</div>
                             </div>
