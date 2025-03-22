@@ -65,10 +65,13 @@ const Header = () => {
                         <img src="/images/wish.svg" className="cursor-pointer" />
                     </div>
                 </div>
-                <div className="border-b border-[#E6E6E6] h-[48px] w-full px-[50px] flex items-center justify-between">
+                <div className="relative border-b border-[#E6E6E6] h-[48px] w-full px-[50px] flex items-center justify-between">
                     <div className="flex items-center gap-[30px] text-[14px]">
                         {["New Arrivals", "Shoes", "Clothing", "Accessories", "Bags", "Sports", "Gifts", "Brands", "SALE"].map((category, index) => (
-                            <div className={`${category.toLowerCase() !== 'sale' ? 'font-medium cursor-pointer hover:underline hover:decoration-2 ' : 'font-semibold cursor-pointer text-[#D52B56]'}`} key={index} onMouseEnter={() => setHoveredMenu(category)}>{category}</div>
+                            <div className={`group h-full ${category.toLowerCase() !== 'sale' ? 'font-medium cursor-pointer hover:decoration-2 ' : 'font-semibold cursor-pointer text-[#D52B56]'}`} key={index} onMouseEnter={() => setHoveredMenu(category)}>
+                                {category}
+                                <span className="h-[3px] bg-[#912A1D] absolute bottom-[-1px] hidden group-hover:block" style={{ width: `${category.length * 7}px` }}></span>
+                            </div>
                         ))}
                     </div>
                     <div className="flex items-center gap-[8px]"><img src="/images/headphone.svg" /> Need help? <span className="font-bold">+216 50 660006</span></div>
