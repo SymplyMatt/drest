@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Autoplay } from "swiper/modules";
-import { ReactNode, useRef, useState } from "react";
+import { act, ReactNode, useEffect, useRef, useState } from "react";
 interface CategoriesAndProductsProps {
     products?: any[];
     showTitle?: boolean;
@@ -15,8 +15,24 @@ interface CategoriesAndProductsProps {
 const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products = [1, 2, 3, 4, 5, 6, 7, 8], showTitle = true, title= 'You may also like', titleComponent=<></> }) => {
     const shuffledIndexes = [...products.keys()].sort(() => Math.random() - 0.5);
     const navigate = useNavigate();
+    const allImages = ['/images/recommended1.png','/images/recommended2.png','/images/recommended3.png','/images/recommended4.png','/images/recommended5.png','/images/recommended6.png','/images/recommended7.png','/images/recommended8.png']
     const swiperRef = useRef<SwiperClass | null>(null);
+    const [isHovered, setIsHovered] = useState(false);
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(0);
+    const [activeImage, setActiveImage] = useState<string>('/images/recommended1.png');
     const [activeIndex, setActiveIndex] = useState(0);
+    useEffect(() => {
+        if (isHovered) {
+            const intervalId = setInterval(() => {
+                const nextIndex:number = (allImages.indexOf(activeImage as string) < allImages.length - 1) ? allImages.indexOf(activeImage) + 1 : 0;
+                setActiveImage(allImages[nextIndex]);
+            }, 1000);
+    
+            return () => clearInterval(intervalId);
+        } else {
+            setActiveImage('/images/recommended1.png');
+        }
+    }, [isHovered, allImages]);    
     const handlePrevClick = () => {
         if (swiperRef.current) {
             swiperRef.current.slidePrev();
@@ -81,15 +97,23 @@ const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products = [1, 2, 
                     onSwiper={(swiper) => (swiperRef.current = swiper)}
                     onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
                 >
-                    {shuffledIndexes.map((number) => {
+                    {shuffledIndexes.map((number,index) => {
                         const discount = Math.random() < 0.5 ? 0 : Math.floor(Math.random() * 41) + 10;
                         const price = Math.floor(Math.random() * 101) + 100;
                         const priceAfterDiscount = price - (price * discount) / 100;
                         return (
-                            <SwiperSlide key={number}>
-                                <div className="flex flex-col items-center h-[480px] group">
+                            <SwiperSlide key={index}>
+                                <div className="flex flex-col items-center h-[480px] group cursor-pointer" 
+                                    onMouseEnter={() =>{ 
+                                        setHoveredIndex(index);
+                                        setIsHovered(true);
+                                    }} 
+                                    onMouseLeave={() => {
+                                        setHoveredIndex(null);
+                                        setIsHovered(false);
+                                    }}>
                                     <div className="w-full h-[400px] bg-[#F3F3F3] border border-[#E6E6E6] flex items-center justify-center relative">
-                                        <img src={`/images/recommended${number + 1}.png`} className="w-full h-full object-cover" />
+                                        <img src={(isHovered && hoveredIndex === index) ? activeImage : `/images/recommended${number + 1}.png`} className="w-full h-full object-cover" />
                                         <img src="/images/heart.svg" className="cursor-pointer absolute top-[20px] right-[10px] transition-transform duration-200 hover:scale-[0.9]" />
                                         <div
                                             className={`absolute top-[20px] left-[10px] h-[28px] bg-[#8F0024] p-[10px] flex justify-center items-center text-white text-[14px] font-semibold leading-[21px] tracking-[-4%] gap-[8px] ${
@@ -111,7 +135,7 @@ const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products = [1, 2, 
                                     <div className="flex flex-col items-center justify-center gap-[4px] h-[80px] border-b border-l border-r border-[#E6E6E6] w-full">
                                         <div className="text-[18px] leading-[27px] tracking-[0%]">Ocean breeze varsity jacket</div>
                                         <div className="text-[18px] font-semibold leading-[26px] tracking-[-5%] price">
-                                            {Math.round(priceAfterDiscount)} TND{" "}
+                                            {Math.round(priceAfterDiscount)} TND
                                             {discount ? (
                                                 <span className="font-semibold text-[#8F0024] text-[16px] leading-[24px] tracking-[-4%] line-through">{price} TND</span>
                                             ) : (
