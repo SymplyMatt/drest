@@ -12,6 +12,16 @@ const images = [
 const ShoesSlide = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const swiperRef = useRef<SwiperClass | null>(null);
+    const handlePrevClick = () => {
+        if (swiperRef.current) {
+            swiperRef.current.slidePrev();
+        }
+    };
+    const handleNextClick = () => {
+        if (swiperRef.current) {
+            swiperRef.current.slideNext();
+        }
+    };
     const renderCustomPagination = () => {
         const totalSlides = images.length; 
         return (
@@ -32,21 +42,43 @@ const ShoesSlide = () => {
         );
     };
     return (
-        <div className="pl-[24px] py-[24px] w-[360px] h-[380px] flex flex-col justify-between gap-[20px] ">
+        <div className="pl-[24px] py-[24px] flex flex-col justify-between gap-[20px]">
+            <div className="uppercase font-bold text-[#141511] flex items-center justify-between w-full">
+                Featured items
+                <div className="flex items-center gap-[12px]">
+                    <img src="/images/prevsm.svg" className="cursor-pointer" onClick={handlePrevClick}/>
+                    <img src="/images/nextsm.svg" className="cursor-pointer"onClick={handleNextClick}/>
+                </div>
+            </div>
             <Swiper
                 slidesPerView={1}
                 loop={true}
                 autoplay={{ delay: 3000, disableOnInteraction: false }}
                 speed={1000}
                 modules={[Autoplay]}
-                className="w-full h-full h-[310px]"
+                className="w-full h-full"
                 onSwiper={(swiper) => (swiperRef.current = swiper)}
                 onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
             >
-                {images.map((src, index) => (
-                    <SwiperSlide key={index} className="h-[310px]">
-                        <div className="h-full w-full bg-[#F3F3F3]">
-                            <img src={src} className="w-full h-full object-cover" alt="Slide" />
+                {images.map((_, index) => (
+                    <SwiperSlide key={index}>
+                        <div className="flex flex-col gap-[18px]">
+                            <div className="flex item-center gap-[12px]">
+                                <img src={`/images/prodsug3.svg`}/>
+                                <div className="flex flex-col gap-[4px]">
+                                    <div className="text-[14px] font-semibold">Mango</div>
+                                    <div className="text-[#141511]">Charcoal denim trucker jacket</div>
+                                    <div className="font-semibold text-[#141511] text-[18px] price">120.50 TND</div>
+                                </div>
+                            </div>
+                            <div className="flex item-center gap-[12px]">
+                                <img src={`/images/prodsug5.svg`}/>
+                                <div className="flex flex-col gap-[4px]">
+                                    <div className="text-[14px] font-semibold">Mango</div>
+                                    <div className="text-[#141511]">Charcoal denim trucker jacket</div>
+                                    <div className="font-semibold text-[#141511] text-[18px] price">120.50 TND</div>
+                                </div>
+                            </div>
                         </div>
                     </SwiperSlide>
                 ))}
