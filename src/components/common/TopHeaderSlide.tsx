@@ -46,7 +46,7 @@ const TopHeaderSlide = () => {
                 {images.map((src, index) => (
                     <SwiperSlide key={index} className="h-[310px]">
                         <div className="h-full w-full bg-[#F3F3F3]">
-                            <img src={src} className="w-full h-full object-cover" alt="Slide" />
+                            <img src={src} className="h-full object-cover" alt="Slide" />
                         </div>
                     </SwiperSlide>
                 ))}
