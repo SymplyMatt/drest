@@ -4,9 +4,9 @@ import "swiper/css";
 import { useRef, useState } from "react";
 
 const images = [
-    "/images/topslider1.png",
-    "/images/topslider2.png",
-    "/images/topslider3.png"
+    [3,5],
+    [1,4],
+    [2,6]
 ];
 
 const ShoesSlide = () => {
@@ -60,11 +60,11 @@ const ShoesSlide = () => {
                 onSwiper={(swiper) => (swiperRef.current = swiper)}
                 onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
             >
-                {images.map((_, index) => (
+                {images.map((src, index) => (
                     <SwiperSlide key={index}>
                         <div className="flex flex-col gap-[18px]">
                             <div className="flex item-center gap-[12px]">
-                                <img src={`/images/prodsug3.svg`}/>
+                                <img src={`/images/prodsug${src[0]}.svg`}/>
                                 <div className="flex flex-col gap-[4px]">
                                     <div className="text-[14px] font-semibold">Mango</div>
                                     <div className="text-[#141511]">Charcoal denim trucker jacket</div>
@@ -72,7 +72,7 @@ const ShoesSlide = () => {
                                 </div>
                             </div>
                             <div className="flex item-center gap-[12px]">
-                                <img src={`/images/prodsug5.svg`}/>
+                                <img src={`/images/prodsug${src[1]}.svg`}/>
                                 <div className="flex flex-col gap-[4px]">
                                     <div className="text-[14px] font-semibold">Mango</div>
                                     <div className="text-[#141511]">Charcoal denim trucker jacket</div>
