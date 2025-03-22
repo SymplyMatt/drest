@@ -17,11 +17,11 @@ const NewsMenu: React.FC<MenuLinksProps> = ({ hoveredMenu, setHoveredMenu }) => 
     }, [hoveredMenu]);
   return (
     <div 
-      className={`absolute z-10 bg-white top-[182px] left-[50px] grid grid-cols-[auto_360px] gap-[120px] px-[50px] shadow-lg
+      className={`absolute z-10 bg-white top-[182px] left-[50px] grid grid-cols-[auto_360px] gap-[30px] px-[50px] shadow-lg
                   transition-all duration-300 ease-in-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`} 
       onMouseLeave={() => setHoveredMenu(null)}
     >
-        <div className="py-[30px] flex gap-[30px] flex-wrap">
+        <div className="py-[30px] pr-[70px] flex gap-[30px] flex-wrap border-r border-[#C4C4C4]">
             <div className="flex flex-col gap-[10px]">
                 <div className="text-[#141511] font-bold text-[16px] leading-[24px] tracking-[0%]">NEW & TRENDING</div>
                 <div className="flex flex-col gap-[10px] justify-center">
