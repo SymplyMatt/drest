@@ -108,7 +108,7 @@ const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products = [1, 2, 
                                         setHoveredIndex(null);
                                     }}>
                                     <div className="w-full h-[400px] bg-[#F3F3F3] border border-[#E6E6E6] flex items-center justify-center relative">
-                                        <img src={(hoveredIndex && hoveredIndex === index) ? activeImage : `/images/recommended${number + 1}.png`} className="w-full h-full object-cover" />
+                                        <img src={(hoveredIndex && hoveredIndex === index) ? activeImage : `/images/recommended${number}.png`} className="w-full h-full object-cover" />
                                         <img src="/images/heart.svg" className="cursor-pointer absolute top-[20px] right-[10px] transition-transform duration-200 hover:scale-[0.9]" />
                                         <div
                                             className={`absolute top-[20px] left-[10px] h-[28px] bg-[#8F0024] p-[10px] flex justify-center items-center text-white text-[14px] font-semibold leading-[21px] tracking-[-4%] gap-[8px] ${
