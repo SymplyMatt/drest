@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import TopHeaderSlide from '../common/TopHeaderSlide'
+import NewsSlide from './NewsSlide';
 
 type MenuLinksProps = {
     hoveredMenu: string | null;
@@ -33,7 +33,7 @@ const NewsMenu: React.FC<MenuLinksProps> = ({ hoveredMenu, setHoveredMenu }) => 
                 </div>
             </div>
         </div>
-        <TopHeaderSlide />
+        <NewsSlide />
     </div>
   )
 }

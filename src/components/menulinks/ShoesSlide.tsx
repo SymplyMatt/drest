@@ -9,7 +9,7 @@ const images = [
     "/images/topslider3.png"
 ];
 
-const TopHeaderSlide = () => {
+const ShoesSlide = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const swiperRef = useRef<SwiperClass | null>(null);
     const renderCustomPagination = () => {
@@ -56,4 +56,4 @@ const TopHeaderSlide = () => {
     );
 };
 
-export default TopHeaderSlide;
+export default ShoesSlide;

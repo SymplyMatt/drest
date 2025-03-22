@@ -9,7 +9,7 @@ const images = [
     "/images/topslider3.png"
 ];
 
-const TopHeaderSlide = () => {
+const NewsSlide = () => {
     const [activeIndex, setActiveIndex] = useState(0);
     const swiperRef = useRef<SwiperClass | null>(null);
     const renderCustomPagination = () => {
@@ -32,7 +32,7 @@ const TopHeaderSlide = () => {
         );
     };
     return (
-        <div className="pl-[24px] py-[24px] w-[360px] h-[380px] flex flex-col justify-between gap-[20px] ">
+        <div className="pl-[24px] py-[30px] w-[360px] h-[380px] flex flex-col justify-between gap-[20px] ">
             <Swiper
                 slidesPerView={1}
                 loop={true}
@@ -44,16 +44,17 @@ const TopHeaderSlide = () => {
                 onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
             >
                 {images.map((src, index) => (
-                    <SwiperSlide key={index} className="h-[310px]">
-                        <div className="h-full w-full bg-[#F3F3F3]">
-                            <img src={src} className="w-full h-full object-cover" alt="Slide" />
+                    <SwiperSlide key={index} className="h-[222px]">
+                        <div className="h-full w-full bg-[#F3F3F3] flex items-center justify-center">
+                            <img src={src} className="h-full object-cover" alt="Slide" />
                         </div>
                     </SwiperSlide>
                 ))}
             </Swiper>
+            <div className="text-[18px] uppercase underline font-semibold cursor-pointer">SHOP NOW</div>
             {renderCustomPagination()}
         </div>
     );
 };
 
-export default TopHeaderSlide;
+export default NewsSlide;
