@@ -44,7 +44,14 @@ const CheckoutProducts = () => {
                     </div>
                     <div className="col-span-1 flex flex-col gap-[8px]">
                         <label className="text-[#141511] font-semibold">Phone number</label>
-                        <input type="text" className="h-[48px] border border-[#D6D6D5] p-[12px] w-full bg-[#F3F3F3] text-[#676764] outline-none" placeholder="Mahmoud"/>
+                        <div className="w-full flex items-center">
+                            <div className="h-[48px] bg-[#F3F3F3] flag-container min-w-[100px] border-r border-[#D6D6D5] flex items-center justify-center text-[#676764] p-[8px] gap-[4px] cursor-pointer">
+                                <img src="/images/tunisia.svg" className="w-[24px] h-[24px]"/>
+                                +231
+                                <img src="/images/caretflag.svg" className="w-[24px] h-[24px]"/>
+                            </div>
+                            <input type="text" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder="Enter mobile number"/>
+                        </div>
                     </div>
                     <div className="col-span-1 flex flex-col gap-[8px]">
                         <label className="text-[#141511] font-semibold">Country/region</label>
