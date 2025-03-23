@@ -11,6 +11,7 @@ interface AppState {
   language: string;
   searchMode: string | null;
   loggedInUser: User | null;
+  cart: any[];
 }
 
 const initialState: AppState = {
@@ -18,6 +19,7 @@ const initialState: AppState = {
   searchMode: null,
   language: "en",
   loggedInUser: null,
+  cart: [1,2,3,4,5,6],
 };
 
 const app = createSlice({
@@ -36,8 +38,11 @@ const app = createSlice({
     setLoggedInUser: (state, action: PayloadAction<User | null>) => {
       state.loggedInUser = action.payload;
     },
+    emptyCart: (state) => {
+      state.cart = [];
+    },
   },
 });
 
-export const { setTheme, setLanguage, setLoggedInUser, setSearchMode } = app.actions;
+export const { setTheme, setLanguage, setLoggedInUser, setSearchMode, emptyCart } = app.actions;
 export default app.reducer;
