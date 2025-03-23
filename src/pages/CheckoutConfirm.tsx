@@ -36,7 +36,6 @@ const CheckoutConfirm = () => {
                             <div className="flex gap-[8px] items-start text-[#676764]"><img src="/images/info_sm.svg" /> To get a promo code you can help our social media, there we share promo codes every month.</div>
                             <div className="w-full h-[1px] bg-[#D6D6D5] mt-[12px]"></div>
                             <div className="flex w-full items-center justify-center bg-[#141511] cursor-pointer h-[48px] text-white mt-[12px]">CHECKOUT</div>
-                            <div className="text-[#676764] text-center">By selecting a payment method, it's means you agree to our <span className="cursor-pointer underline text-black">Terms of Use, Sale, Return Policy, and Privacy Policy.</span> </div>
                         </div>
                     </div>
                 </div>
