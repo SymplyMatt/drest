@@ -8,14 +8,15 @@ import Search from "../components/common/Search";
 
 interface LayoutProps {
     children?: ReactNode;
+    headerGap?: string;
 }
-const Layout = ({ children=<></> }: LayoutProps) => {
+const Layout = ({ children=<></>, headerGap= "gap-[24px]" }: LayoutProps) => {
     const { authPage } = useSelector((state: RootState) => state.auth);
     const { searchMode } = useSelector((state: RootState) => state.app);
     return (
         <>  
             <div className={`w-full flex flex-col items-center ${(authPage || searchMode) ? "blur-sm" : ""}`}>
-                <div className="flex flex-col w-full items-center gap-[24px]">
+                <div className={`flex flex-col w-full items-center ${headerGap}`}>
                     <Header />
                     {children}
                 </div>
