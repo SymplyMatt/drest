@@ -4,6 +4,7 @@ import Product from "../pages/Product";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
 import WishList from "../pages/Wishlist";
+import Cart from "../pages/Cart";
 
 const Routes = (): JSX.Element => {
   const pageRoutes = [
@@ -26,6 +27,10 @@ const Routes = (): JSX.Element => {
     {
       path: "/product/:id", 
       element: <Product />
+    },
+    {
+      path: "/cart", 
+      element: <Cart />
     },
   ];
 
