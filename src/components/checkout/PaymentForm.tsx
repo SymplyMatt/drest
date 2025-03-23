@@ -90,6 +90,19 @@ const PaymentForm = () => {
                     <div className="flex items-center gap-[8px] cursor-pointer text-[#141511]"><img src="/images/checkboxunchecked.svg" /> Save credit card detail for later</div>
                 </div>
             </div>
+            <div className="w-full flex flex-col gap-[8px]">
+                <div className="text-[#676764] text-[18px]">Payment method</div>
+                <div className="w-full grid grid-cols-1 items-center gap-[16px]">
+                    <div className="col-span-1 flex flex flex-col border border-[#D6D6D5] gap-[8px] cursor-pointer p-[16px]">
+                        <div className="text-[#141511] font-medium flex w-full items-center justify-between">
+                            Mahmud Richardson
+                            <div className="border border-[#D6D6D5] cursor-pointer text-[#141511] font-semibold h-[40px] px-[24px] flex items-center justify-center">EDIT</div>
+                        </div>
+                        <div className="text-[#676764] text-[18px]">14 Crystal avenue, Easy-way, Tunisia, 23170</div>
+                        <div className="text-[#676764] text-[18px]">Tunisia</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     )
