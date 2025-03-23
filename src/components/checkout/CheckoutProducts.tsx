@@ -53,6 +53,33 @@ const CheckoutProducts = () => {
                     </div>
                 ))}
             </div>
+            <div className="w-full flex flex-col gap-[12px]">
+                <div className="text-[#676764]">Product details</div>
+                <div className="grid grid-cols-2 w-full items-center gap-[16px]">
+                    <div className="h-[200px] w-full border boder-[#D6D6D5] flex flex-col">
+                        <div className="w-full flex items-center justify-between p-[16px] border-b border-[#D6D6D5]">
+                            <div className="text-[#141511] text-[18px] font-semibold">DELIVERY ADDRESS</div>
+                            <div className="border border-[#D6D6D5] cursor-pointer text-[#141511] font-semibold h-[40px] px-[24px] flex items-center justify-center">EDIT</div>
+                        </div>
+                        <div className="w-full flex-col p-[16px] gap-[12px]">
+                            <div className="text-[141511]">Mahmud Richardson</div>
+                            <div className="text-[#676764] text-[18px]">14 Crystal avenue, Easy-way, Tunisia, 23170</div>
+                            <div className="text-[#676764] text-[18px]">Tunisia</div>
+                        </div>
+                    </div>
+                    <div className="h-[200px] w-full border boder-[#D6D6D5] flex flex-col">
+                        <div className="w-full flex items-center justify-between p-[16px] border-b border-[#D6D6D5]">
+                            <div className="text-[#141511] text-[18px] font-semibold">BILLING ADDRESS</div>
+                            <div className="border border-[#D6D6D5] cursor-pointer text-[#141511] font-semibold h-[40px] px-[24px] flex items-center justify-center">EDIT</div>
+                        </div>
+                        <div className="w-full flex-col p-[16px] gap-[12px]">
+                            <div className="text-[141511]">Mahmud Richardson</div>
+                            <div className="text-[#676764] text-[18px]">14 Crystal avenue, Easy-way, Tunisia, 23170</div>
+                            <div className="text-[#676764] text-[18px]">Tunisia</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
   )
