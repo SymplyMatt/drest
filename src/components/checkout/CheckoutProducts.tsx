@@ -6,19 +6,19 @@ const CheckoutProducts = () => {
   return (
     <div className="w-full col-span-2 flex flex-col">
         <div className="w-full flex justify-center mx-auto py-[24px] gap-[4px] border-r border-[#D6D6D5]">
-            <div className="flex flex-col gap-[8px] text-[#141511]">
+            <div className="flex flex-col gap-[8px] text-[#141511] whitespace-nowrap">
                 <img src="/images/deliveryinfo.svg"  className="h-[48px]"/>
                 Delivery info
             </div>
             <img src="/images/arrowcheckout.svg" className="items-start h-[8px] mt-[22px]"/>
-            <div className="flex flex-col gap-[8px] text-[#141511]">
+            <div className="flex flex-col gap-[8px] text-[#141511] whitespace-nowrap">
                 <img src="/images/checkoutpayment.svg" className="h-[48px]"/>
-                Delivery info
+                Make payment
             </div>
             <img src="/images/arrowcheckout.svg" className="items-start h-[8px] mt-[22px]"/>
-            <div className="flex flex-col gap-[8px] text-[#141511]">
+            <div className="flex flex-col gap-[8px] text-[#141511] whitespace-nowrap">
                 <img src="/images/checkoutreview.svg"  className="h-[48px]"/>
-                Delivery info
+                Review order
             </div>
         </div>
         <div className="w-full flex flex-col p-[24px] gap-[24px] border-b border-r border-[#D6D6D5]">
