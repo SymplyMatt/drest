@@ -6,6 +6,7 @@ import SignUp from "../pages/SignUp";
 import WishList from "../pages/Wishlist";
 import Cart from "../pages/Cart";
 import CheckoutConfirm from "../pages/CheckoutConfirm";
+import CheckoutDelivery from "../pages/CheckoutDelivery";
 
 const Routes = (): JSX.Element => {
   const pageRoutes = [
@@ -32,6 +33,10 @@ const Routes = (): JSX.Element => {
     {
       path: "/cart", 
       element: <Cart />
+    },
+    {
+      path: "/checkout/delivery", 
+      element: <CheckoutDelivery />
     },
     {
       path: "/checkout/confirm", 
