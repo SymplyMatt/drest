@@ -1,12 +1,12 @@
-import DeliveryForm from "../components/checkout/DeliveryForm";
+import CheckoutProducts from "../components/checkout/CheckoutProducts";
 import Layout from "./Layout";
 
-const CheckoutDelivery = () => {
+const CheckoutPayment = () => {
     return (
         <Layout headerGap="">
             <div className="w-full flex flex-col gap-[24px]">
                 <div className="w-full grid grid-cols-3 min-h-[720px]">
-                    <DeliveryForm />
+                    <CheckoutProducts />
                     <div className="w-full col-span-1 flex flex-col border-b border-[#D6D6D5]">
                         <div className="w-full flex items-center justify-center border-b border-r border-[#D6D6D5] px-[50px] py-[12px]">
                             <div className="text-[#141511] text-[20px] font-medium">ORDER SUMMARY</div>
@@ -44,4 +44,4 @@ const CheckoutDelivery = () => {
     );
 };
 
-export default CheckoutDelivery;
+export default CheckoutPayment;

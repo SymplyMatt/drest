@@ -7,6 +7,7 @@ import WishList from "../pages/Wishlist";
 import Cart from "../pages/Cart";
 import CheckoutConfirm from "../pages/CheckoutConfirm";
 import CheckoutDelivery from "../pages/CheckoutDelivery";
+import CheckoutPayment from "../pages/CheckoutPayment";
 
 const Routes = (): JSX.Element => {
   const pageRoutes = [
@@ -41,6 +42,10 @@ const Routes = (): JSX.Element => {
     {
       path: "/checkout/confirm", 
       element: <CheckoutConfirm />
+    },
+    {
+      path: "/checkout/payment", 
+      element: <CheckoutPayment />
     },
   ];
 
