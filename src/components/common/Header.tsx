@@ -62,7 +62,7 @@ const Header = () => {
                             <img src="/images/caretdownsmblack.svg" className="self-end cursor-pointer"/>
                         </div>}
                         <img src="/images/heart.svg" className="cursor-pointer" onClick={()=>navigate('/wishlist')}/>
-                        <img src="/images/wish.svg" className="cursor-pointer" />
+                        <img src="/images/wish.svg" className="cursor-pointer" onClick={()=>navigate('/cart')}/>
                     </div>
                 </div>
                 <div className="relative border-b border-[#E6E6E6] h-[48px] w-full px-[50px] flex items-center justify-between">
