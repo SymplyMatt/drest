@@ -25,16 +25,16 @@ const Cart = () => {
                                 </div>
                                 <div className="flex flex-col gap-[8px] justify-center">
                                     <div className="">Product size</div>
-                                    <select className="w-[96px] h-[40px] border border-[#D6D6D5] outline-none py-[8px] px-[12px]">
+                                    <select className="w-[96px] h-[40px] border border-[#D6D6D5] outline-none py-[8px] px-[12px] cursor-pointer">
                                         <option value="xl">XL</option>
                                     </select>
                                 </div>
                                 <div className="flex flex-col gap-[8px] justify-center">
                                     <div className="">Quantity</div>
                                     <div className="flex justify-center items-center gap-[12px]">
-                                        <img src="/images/prev_cart.svg"/>
+                                        <img src="/images/prev_cart.svg" className="cursor-pointer"/>
                                         1
-                                        <img src="/images/next_cart.svg"/>
+                                        <img src="/images/next_cart.svg" className="cursor-pointer"/>
                                     </div>
                                 </div>
                                 <div className="flex flex-col gap-[8px] justify-between items-end h-[72px]">
@@ -58,16 +58,16 @@ const Cart = () => {
                                 </div>
                                 <div className="flex flex-col gap-[8px] justify-center">
                                     <div className="">Product size</div>
-                                    <select className="w-[96px] h-[40px] border border-[#D6D6D5] outline-none py-[8px] px-[12px]">
+                                    <select className="w-[96px] h-[40px] border border-[#D6D6D5] outline-none py-[8px] px-[12px] cursor-pointer">
                                         <option value="xl">XL</option>
                                     </select>
                                 </div>
                                 <div className="flex flex-col gap-[8px] justify-center">
                                     <div className="">Quantity</div>
                                     <div className="flex justify-center items-center gap-[12px]">
-                                        <img src="/images/prev_cart.svg"/>
+                                        <img src="/images/prev_cart.svg" className="cursor-pointer"/>
                                         1
-                                        <img src="/images/next_cart.svg"/>
+                                        <img src="/images/next_cart.svg" className="cursor-pointer"/>
                                     </div>
                                 </div>
                                 <div className="flex flex-col gap-[8px] justify-between items-end h-[72px]">
@@ -91,16 +91,16 @@ const Cart = () => {
                                 </div>
                                 <div className="flex flex-col gap-[8px] justify-center">
                                     <div className="">Product size</div>
-                                    <select className="w-[96px] h-[40px] border border-[#D6D6D5] outline-none py-[8px] px-[12px]">
+                                    <select className="w-[96px] h-[40px] border border-[#D6D6D5] outline-none py-[8px] px-[12px] cursor-pointer">
                                         <option value="xl">XL</option>
                                     </select>
                                 </div>
                                 <div className="flex flex-col gap-[8px] justify-center">
                                     <div className="">Quantity</div>
                                     <div className="flex justify-center items-center gap-[12px]">
-                                        <img src="/images/prev_cart.svg"/>
+                                        <img src="/images/prev_cart.svg" className="cursor-pointer"/>
                                         1
-                                        <img src="/images/next_cart.svg"/>
+                                        <img src="/images/next_cart.svg" className="cursor-pointer"/>
                                     </div>
                                 </div>
                                 <div className="flex flex-col gap-[8px] justify-between items-end h-[72px]">
@@ -124,16 +124,16 @@ const Cart = () => {
                                 </div>
                                 <div className="flex flex-col gap-[8px] justify-center">
                                     <div className="">Product size</div>
-                                    <select className="w-[96px] h-[40px] border border-[#D6D6D5] outline-none py-[8px] px-[12px]">
+                                    <select className="w-[96px] h-[40px] border border-[#D6D6D5] outline-none py-[8px] px-[12px] cursor-pointer">
                                         <option value="xl">XL</option>
                                     </select>
                                 </div>
                                 <div className="flex flex-col gap-[8px] justify-center">
                                     <div className="">Quantity</div>
                                     <div className="flex justify-center items-center gap-[12px]">
-                                        <img src="/images/prev_cart.svg"/>
+                                        <img src="/images/prev_cart.svg" className="cursor-pointer"/>
                                         1
-                                        <img src="/images/next_cart.svg"/>
+                                        <img src="/images/next_cart.svg" className="cursor-pointer"/>
                                     </div>
                                 </div>
                                 <div className="flex flex-col gap-[8px] justify-between items-end h-[72px]">
@@ -157,16 +157,16 @@ const Cart = () => {
                                 </div>
                                 <div className="flex flex-col gap-[8px] justify-center">
                                     <div className="">Product size</div>
-                                    <select className="w-[96px] h-[40px] border border-[#D6D6D5] outline-none py-[8px] px-[12px]">
+                                    <select className="w-[96px] h-[40px] border border-[#D6D6D5] outline-none py-[8px] px-[12px] cursor-pointer">
                                         <option value="xl">XL</option>
                                     </select>
                                 </div>
                                 <div className="flex flex-col gap-[8px] justify-center">
                                     <div className="">Quantity</div>
                                     <div className="flex justify-center items-center gap-[12px]">
-                                        <img src="/images/prev_cart.svg"/>
+                                        <img src="/images/prev_cart.svg" className="cursor-pointer"/>
                                         1
-                                        <img src="/images/next_cart.svg"/>
+                                        <img src="/images/next_cart.svg" className="cursor-pointer"/>
                                     </div>
                                 </div>
                                 <div className="flex flex-col gap-[8px] justify-between items-end h-[72px]">
@@ -190,16 +190,16 @@ const Cart = () => {
                                 </div>
                                 <div className="flex flex-col gap-[8px] justify-center">
                                     <div className="">Product size</div>
-                                    <select className="w-[96px] h-[40px] border border-[#D6D6D5] outline-none py-[8px] px-[12px]">
+                                    <select className="w-[96px] h-[40px] border border-[#D6D6D5] outline-none py-[8px] px-[12px] cursor-pointer">
                                         <option value="xl">XL</option>
                                     </select>
                                 </div>
                                 <div className="flex flex-col gap-[8px] justify-center">
                                     <div className="">Quantity</div>
                                     <div className="flex justify-center items-center gap-[12px]">
-                                        <img src="/images/prev_cart.svg"/>
+                                        <img src="/images/prev_cart.svg" className="cursor-pointer"/>
                                         1
-                                        <img src="/images/next_cart.svg"/>
+                                        <img src="/images/next_cart.svg" className="cursor-pointer"/>
                                     </div>
                                 </div>
                                 <div className="flex flex-col gap-[8px] justify-between items-end h-[72px]">
