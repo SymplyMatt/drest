@@ -10,10 +10,15 @@ const Header = () => {
     const type = searchParams.get("type");
     const subcategory = searchParams.get("subcategory");
     const menu = searchParams.get("menu");
+    const sublink = searchParams.get("sublink");
     const navigate = useNavigate();
     const handleMenuClick = (category: string) => {
-        navigate(`/search/allresults?search=${encodeURIComponent(category)}&type=subcategory`);
+        const params = new URLSearchParams(searchParams);
+        params.set("sublink", category);
+        params.set("type", "subcategory");
+        navigate(`/search/allresults?${params.toString()}`);
     };
+    
     return (
         <div className="w-full flex flex-col gap-[24px] justify-center px-[50px] pt-[20px]">
             {type !== 'all' && <div className="flex items-center justify-center text-[18px]">
@@ -25,7 +30,7 @@ const Header = () => {
                 <div className="w-full flex items-center justify-between h-[48px]">
                     <div className="flex gap-[8px] items-end">
                         {type === 'all' && <div className="gap-[16px] text-[32px] font-semibold leading-[130%] tracking-[-4%] items-end">Search results for “{searchQuery}” <span className="text-[16px] font-normal capitalize">(Showing 2,001 Products)</span></div>}
-                        {type !== 'all' && <div className="gap-[16px] text-[32px] font-semibold leading-[130%] tracking-[-4%] items-end uppercase">{link} <span className="text-[16px] font-normal capitalize">(Showing 2,001 Products)</span></div>}
+                        {type !== 'all' && <div className="gap-[16px] text-[32px] font-semibold leading-[130%] tracking-[-4%] items-end uppercase">{sublink ? sublink : link} <span className="text-[16px] font-normal capitalize">(Showing 2,001 Products)</span></div>}
                     </div>
                     <div className="flex items-center gap-[18px]">
                         <div className="flex items-center gap-[18px]">
