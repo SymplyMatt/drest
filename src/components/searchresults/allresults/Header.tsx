@@ -30,7 +30,7 @@ const Header = () => {
                 <div className="w-full flex items-center justify-between h-[48px]">
                     <div className="flex gap-[8px] items-end">
                         {type === 'all' && <div className="gap-[16px] text-[32px] font-semibold leading-[130%] tracking-[-4%] items-end">Search results for “{searchQuery}” <span className="text-[16px] font-normal capitalize">(Showing 2,001 Products)</span></div>}
-                        {type !== 'all' && <div className="gap-[16px] text-[32px] font-semibold leading-[130%] tracking-[-4%] items-end uppercase">{sublink ? sublink : link} <span className="text-[16px] font-normal capitalize">(Showing 2,001 Products)</span></div>}
+                        {type !== 'all' && <div className="gap-[16px] text-[32px] font-semibold leading-[130%] tracking-[-4%] items-end uppercase">{sublink ? sublink : link ? link : subcategory} <span className="text-[16px] font-normal capitalize">(Showing 2,001 Products)</span></div>}
                     </div>
                     <div className="flex items-center gap-[18px]">
                         <div className="flex items-center gap-[18px]">
@@ -111,10 +111,26 @@ const Header = () => {
                     All Filters <img src="/images/filters.svg"/>
                 </div>
             </div>}
-            <div className="w-full flex items-center gap-[8px]">
-                <div className="flex items-center justify-center gap-[4px] h-[40px] border border-[#D6D6D5] py-[8px] px-[12px] text-[#4F4F4D] text-[14px] cursor-pointer bg-[#F3F3F3]">New varsity jacket <img src="/images/x_sm.svg"/></div>
-                <div className="flex items-center justify-center gap-[4px] h-[40px] border border-[#D6D6D5] py-[8px] px-[12px] text-[#4F4F4D] text-[14px] cursor-pointer bg-[#F3F3F3]">New varsity jacket <img src="/images/x_sm.svg"/></div>
-            </div>
+            {sublink ? <div className="w-full flex items-center gap-[8px]">
+                <div className="flex items-center justify-center gap-[4px] h-[40px] border border-[#D6D6D5] py-[8px] px-[12px] text-[#4F4F4D] text-[14px] cursor-pointer bg-[#F3F3F3]"> {utils.capitalizeEachWord(sublink)} 
+                    <img src="/images/x_sm.svg" onClick={()=>{
+                        const params = new URLSearchParams(searchParams);
+                        params.delete("sublink");
+                        params.set("type", "category");
+                        navigate(`/search/allresults?${params.toString()}`);
+                    }}/>
+                </div>
+                <div className="flex items-center justify-center gap-[4px] h-[40px] border border-[#D6D6D5] py-[8px] px-[12px] text-[#4F4F4D] text-[14px] cursor-pointer bg-[#F3F3F3]">{utils.capitalizeEachWord(link as string)} 
+                    <img src="/images/x_sm.svg" onClick={()=>{
+                        const params = new URLSearchParams(searchParams);
+                        params.set("type", "category");
+                        params.delete("sublink");
+                        params.delete("link");
+                        navigate(`/search/allresults?${params.toString()}`);
+                    }}/>
+                </div>
+                <div className="text-[#141511] cursor-pointer underline text-[14px] ml-[10px]">Clear all</div>
+            </div> : ''}
         </div>
     );
 }
