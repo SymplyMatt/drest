@@ -10,7 +10,8 @@ const Header = () => {
             <div className="w-full flex flex-col gap-[24px] justify-center">
                 <div className="w-full flex items-center justify-between h-[48px]">
                     <div className="flex gap-[8px] items-end">
-                        <div className="gap-[12px] text-[32px] font-semibold leading-[130%] tracking-[-4%] items-end">Search results for “{searchQuery}” <span className="text-[16px] font-normal">(Showing 2,001 Products)</span></div>
+                        {type === 'all' && <div className="gap-[16px] text-[32px] font-semibold leading-[130%] tracking-[-4%] items-end">Search results for “{searchQuery}” <span className="text-[16px] font-normal capitalize">(Showing 2,001 Products)</span></div>}
+                        {type === 'category' && <div className="gap-[16px] text-[32px] font-semibold leading-[130%] tracking-[-4%] items-end uppercase">{searchQuery} <span className="text-[16px] font-normal capitalize">(Showing 2,001 Products)</span></div>}
                     </div>
                     <div className="flex items-center gap-[18px]">
                         <div className="flex items-center gap-[18px]">
