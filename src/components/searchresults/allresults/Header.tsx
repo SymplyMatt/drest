@@ -129,7 +129,7 @@ const Header = () => {
                         navigate(`/search/allresults?${params.toString()}`);
                     }}/>
                 </div> : ''}
-                {link || sublink ? <div className="text-[#141511] cursor-pointer underline text-[14px] ml-[10px]">Clear all</div> : ''}
+                {link || sublink ? <div className="text-[#141511] cursor-pointer underline text-[14px] ml-[10px]" onClick={()=>navigate('/')}>Clear all</div> : ''}
             </div> : ''}
         </div>
     );
