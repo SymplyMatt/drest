@@ -1,11 +1,15 @@
+import { useSearchParams } from "react-router-dom";
 
 const Header = () => {
+    const [searchParams] = useSearchParams();
+    const searchQuery = searchParams.get("search");
+    const type = searchParams.get("type");
     return (
         <div className="w-full flex flex-col gap-[24px] justify-center px-[50px] pt-[20px]">
             <div className="w-full flex flex-col gap-[24px] justify-center">
                 <div className="w-full flex items-center justify-between h-[48px]">
                     <div className="flex gap-[8px] items-end">
-                        <div className="gap-[12px] text-[32px] font-semibold leading-[130%] tracking-[-4%] items-end">Search results for “Wo” <span className="text-[16px] font-normal">(Showing 2,001 Products)</span></div>
+                        <div className="gap-[12px] text-[32px] font-semibold leading-[130%] tracking-[-4%] items-end">Search results for “{searchQuery}” <span className="text-[16px] font-normal">(Showing 2,001 Products)</span></div>
                     </div>
                     <div className="flex items-center gap-[18px]">
                         <div className="flex items-center gap-[18px]">

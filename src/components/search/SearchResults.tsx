@@ -55,7 +55,7 @@ const SearchResults = () => {
             </div>
             <div className="uppercase underline text-[#141511] text-left self-start font-semibold mt-[-20px] cursor-pointer" 
                 onClick={()=> {
-                    navigate(`/search/allresults?search=${encodeURIComponent('SEE all WO')}&type=all`);
+                    navigate(`/search/allresults?search=${encodeURIComponent('WO')}&type=all`);
                     dispatch(setSearchMode(null));
                 }}>SEE all “WO”</div>
         </div>
