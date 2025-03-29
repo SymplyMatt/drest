@@ -2,11 +2,12 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../redux/store";
 import { setSearchMode } from "../../redux/states/app";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SearchResults = () => {
     const dispatch = useDispatch<AppDispatch>();
     const [input, setInput] = useState<string>("");
-
+    const navigate = useNavigate();
     return (
     <div className="w-[100vw] h-[100vh] fixed top-0 right-0 bg-[#1415114D] z-10 flex justify-center">
         <div className="w-[70%] bg-white h_content border border-[#D6D6D5] p-[40px] flex flex-col items-center gap-[40px]">
@@ -52,7 +53,11 @@ const SearchResults = () => {
                     </div>
                 </div>
             </div>
-            <div className="uppercase underline text-[#141511] text-left self-start font-semibold mt-[-20px]">SEE all “WO”</div>
+            <div className="uppercase underline text-[#141511] text-left self-start font-semibold mt-[-20px] cursor-pointer" 
+                onClick={()=> {
+                    navigate(`/search/allresults?search=${encodeURIComponent('SEE all WO')}`);
+                    dispatch(setSearchMode(null));
+                }}>SEE all “WO”</div>
         </div>
     </div>
     );
