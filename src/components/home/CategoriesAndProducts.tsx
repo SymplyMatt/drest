@@ -119,11 +119,9 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({
                             </div>
                             
                             <div className="flex flex-col items-center justify-center gap-[4px] h-[100px] border-b border-l border-r border-[#E6E6E6] w-full">
-                                {location.pathname.includes('wishlist') && (
-                                    <div className="text-[14px] leading-[27px] tracking-[0%] text-[#141511] font-semibold">
-                                        Adidas
-                                    </div>
-                                )}
+                                <div className="text-[14px] leading-[27px] tracking-[0%] text-[#141511] font-semibold">
+                                    Adidas
+                                </div>
                                 
                                 <div className="text-[18px] leading-[27px] tracking-[0%]">
                                     Ocean breeze varsity jacket
