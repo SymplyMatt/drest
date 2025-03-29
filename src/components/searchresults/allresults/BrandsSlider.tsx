@@ -5,16 +5,14 @@ import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper/modules";
 import { useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
-interface ComponentProp{
-    handleClick?: (category: string) => void;
-}
-const RoundCategoriesSlider: React.FC<ComponentProp> = ({ handleClick }) => {
-    const navigate = useNavigate();
+
+const BrandsSlider = () => {
     const categories: string[][] = [
-        ["Shoes", "SHOP NOW", "Tops", "Hand Bags", "Tops", "Shoes", "Bottoms", "Jackets & coats"], 
-        ["Shoes", "SHOP NOW", "Tops", "Hand Bags", "Tops", "Shoes", "Bottoms", "Jackets & coats"], 
-        ["Shoes", "SHOP NOW", "Tops", "Hand Bags", "Tops", "Shoes", "Bottoms", "Jackets & coats"]
+        ["/images/mango.svg", "/images/addidas.svg", "/images/burberry.svg", "/images/chanel.svg", "/images/oysho.svg", "/images/zara.svg", "/images/patagonia.svg"],
+        ["/images/mango.svg", "/images/addidas.svg", "/images/burberry.svg", "/images/chanel.svg", "/images/oysho.svg", "/images/zara.svg", "/images/patagonia.svg"],
+        ["/images/mango.svg", "/images/addidas.svg", "/images/burberry.svg", "/images/chanel.svg", "/images/oysho.svg", "/images/zara.svg", "/images/patagonia.svg"]
     ];
+    const navigate = useNavigate();
     const swiperRef = useRef<SwiperClass | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
 
@@ -56,15 +54,8 @@ const RoundCategoriesSlider: React.FC<ComponentProp> = ({ handleClick }) => {
                 {categories.map((category, index) => (
                     <SwiperSlide key={index} className="h-full flex justify-center !w-auto flex-row slide-in-slide">
                         {category.map((category, index) =>(
-                            <div className="relative w-full h-full flex justify-center flex-col items-center gap-[8px] cursor-pointer" key={index}>
-                                <img
-                                    src={`/images/productimage${(index % 6) + 1}.jpeg`}
-                                    className="object-cover w-[100px] h-[100px] rounded-full"
-                                    alt="Product"
-                                />
-                                <div className="w-full flex text-center items-center whitespace-nowrap justify-center h-[36px] bg-white px-[20px] font-semibold cursor-pointer" onClick={() => {handleClick ? handleClick(category) : navigate('/product/productId')}}>
-                                    {category}
-                                </div>
+                            <div className="h-[110px] w-[185px] flex items-center justify-center bg-[#141511] cursor-pointer rounded-[24px]" key={index}>
+                                <img src={category}/>
                             </div>
                         ))}
                     </SwiperSlide>
@@ -75,4 +66,4 @@ const RoundCategoriesSlider: React.FC<ComponentProp> = ({ handleClick }) => {
     );
 }
 
-export default RoundCategoriesSlider;
+export default BrandsSlider;
