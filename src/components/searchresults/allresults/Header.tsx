@@ -63,10 +63,7 @@ const Header = () => {
                     All Filters <img src="/images/filters.svg"/>
                 </div>
             </div>}
-            {type !== 'all' &&<div className="w-full flex items-center justify-center gap-[16px]">
-                <select className="cursor-pointer border border-[#959694] border-[0.7px] h-[40px] rounded-[38px] py-[8px] px-[16px] text-[#141511]">
-                    <option value="Universe">Category</option>
-                </select>
+            {type !== 'all' &&<div className="w-full flex items-center gap-[16px]">
                 <select className="cursor-pointer border border-[#959694] border-[0.7px] h-[40px] rounded-[38px] py-[8px] px-[16px] text-[#141511]">
                     <option value="Universe">Category</option>
                 </select>
@@ -101,6 +98,10 @@ const Header = () => {
                     All Filters <img src="/images/filters.svg"/>
                 </div>
             </div>}
+            <div className="w-full flex items-center gap-[8px]">
+                <div className="flex items-center justify-center gap-[4px] h-[40px] border border-[#D6D6D5] py-[8px] px-[12px] text-[#4F4F4D] text-[14px] cursor-pointer bg-[#F3F3F3]">New varsity jacket <img src="/images/x_sm.svg"/></div>
+                <div className="flex items-center justify-center gap-[4px] h-[40px] border border-[#D6D6D5] py-[8px] px-[12px] text-[#4F4F4D] text-[14px] cursor-pointer bg-[#F3F3F3]">New varsity jacket <img src="/images/x_sm.svg"/></div>
+            </div>
         </div>
     );
 }

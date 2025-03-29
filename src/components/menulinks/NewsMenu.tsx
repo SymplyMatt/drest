@@ -21,8 +21,8 @@ const NewsMenu: React.FC<MenuLinksProps> = ({ hoveredMenu, setHoveredMenu }) => 
           setTimeout(() => setIsVisible(false), 100);
         }
     }, [hoveredMenu]);
-    const handleMenuClick = (link: string) => {
-      navigate(`/search/allresults?search=${encodeURIComponent(link)}&type=category`);
+    const handleMenuClick = (subcategory:string,link: string) => {
+      navigate(`/search/allresults?search=${encodeURIComponent(link)}&type=category&subcategory=${encodeURIComponent(subcategory)}&menu=${encodeURIComponent(hoveredMenu as string)}`);
       dispatch(setSearchMode(null));
     };
   return (
@@ -36,7 +36,7 @@ const NewsMenu: React.FC<MenuLinksProps> = ({ hoveredMenu, setHoveredMenu }) => 
                 <div className="text-[#141511] font-bold text-[16px] leading-[24px] tracking-[0%]">NEW & POPULAR</div>
                 <div className="flex flex-col gap-[10px] justify-center">
                     {["New arrivals", "Trending/Popular", "New Dresses", "New Bags", "New Accessories"].map((item) => (
-                      <div key={item} className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200" onClick={() => handleMenuClick(item)}>
+                      <div key={item} className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200" onClick={() => handleMenuClick('NEW & POPULAR',item)}>
                         {item}
                       </div>
                     ))}
