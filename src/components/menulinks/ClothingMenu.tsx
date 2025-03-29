@@ -23,7 +23,7 @@ const ClothingMenu: React.FC<MenuLinksProps> = ({ hoveredMenu, setHoveredMenu })
     }, [hoveredMenu]);
 
     const handleMenuClick = (subcategory:string,link: string) => {
-        navigate(`/search/allresults?search=${encodeURIComponent(link)}&type=category&subcategory=${encodeURIComponent(subcategory)}&menu=${encodeURIComponent(hoveredMenu as string)}`);
+        navigate(`/search/allresults?link=${encodeURIComponent(link)}&type=category&subcategory=${encodeURIComponent(subcategory)}&menu=${encodeURIComponent(hoveredMenu as string)}`);
         dispatch(setSearchMode(null));
     };
 

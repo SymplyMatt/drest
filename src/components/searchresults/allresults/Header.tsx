@@ -1,23 +1,31 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import RoundCategoriesSlider from "../../home/RoundCategoriesSlider";
 import BrandsSlider from "./BrandsSlider";
+import utils from "../../../utils/utils";
 
 const Header = () => {
     const [searchParams] = useSearchParams();
     const searchQuery = searchParams.get("search");
+    const link = searchParams.get("link");
     const type = searchParams.get("type");
+    const subcategory = searchParams.get("subcategory");
+    const menu = searchParams.get("menu");
     const navigate = useNavigate();
     const handleMenuClick = (category: string) => {
         navigate(`/search/allresults?search=${encodeURIComponent(category)}&type=subcategory`);
     };
     return (
         <div className="w-full flex flex-col gap-[24px] justify-center px-[50px] pt-[20px]">
-            {type !== 'all' && <div className="flex items-center justify-center text-[18px]">Women's/Clothing</div>}
+            {type !== 'all' && <div className="flex items-center justify-center text-[18px]">
+                {menu ?  utils.capitalizeEachWord(menu) : ''}
+                {subcategory ?  '/' : ''}
+                {subcategory ? utils.capitalizeEachWord(subcategory) : ''}
+            </div>}
             <div className="w-full flex flex-col gap-[24px] justify-center">
                 <div className="w-full flex items-center justify-between h-[48px]">
                     <div className="flex gap-[8px] items-end">
                         {type === 'all' && <div className="gap-[16px] text-[32px] font-semibold leading-[130%] tracking-[-4%] items-end">Search results for “{searchQuery}” <span className="text-[16px] font-normal capitalize">(Showing 2,001 Products)</span></div>}
-                        {type !== 'all' && <div className="gap-[16px] text-[32px] font-semibold leading-[130%] tracking-[-4%] items-end uppercase">{searchQuery} <span className="text-[16px] font-normal capitalize">(Showing 2,001 Products)</span></div>}
+                        {type !== 'all' && <div className="gap-[16px] text-[32px] font-semibold leading-[130%] tracking-[-4%] items-end uppercase">{link} <span className="text-[16px] font-normal capitalize">(Showing 2,001 Products)</span></div>}
                     </div>
                     <div className="flex items-center gap-[18px]">
                         <div className="flex items-center gap-[18px]">
