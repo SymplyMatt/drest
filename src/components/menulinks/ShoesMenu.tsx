@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react';
 import ShoesSlide from './ShoesSlide';
+import { setSearchMode } from "../../redux/states/app";
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 type MenuLinksProps = {
     hoveredMenu: string | null;
@@ -8,6 +11,8 @@ type MenuLinksProps = {
 
 const ShoesMenu: React.FC<MenuLinksProps> = ({ hoveredMenu, setHoveredMenu }) => {
     const [isVisible, setIsVisible] = useState(false);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     useEffect(() => {
         if (hoveredMenu) {
           setIsVisible(true);
@@ -15,6 +20,10 @@ const ShoesMenu: React.FC<MenuLinksProps> = ({ hoveredMenu, setHoveredMenu }) =>
           setTimeout(() => setIsVisible(false), 100);
         }
     }, [hoveredMenu]);
+    const handleMenuClick = (link: string) => {
+        navigate(`/search/allresults?search=${encodeURIComponent(link)}&type=category`);
+        dispatch(setSearchMode(null));
+    };
   return (
     <div 
       className={`absolute z-10 bg-white top-[182px] left-[100px] grid grid-cols-[auto_360px] gap-[100px] px-[50px] shadow-lg
@@ -25,35 +34,43 @@ const ShoesMenu: React.FC<MenuLinksProps> = ({ hoveredMenu, setHoveredMenu }) =>
             <div className="flex flex-col gap-[10px]">
                 <div className="text-[#141511] font-bold text-[16px] leading-[24px] tracking-[0%]">NEW & TRENDING</div>
                 <div className="flex flex-col gap-[10px] justify-center">
-                    <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">Featured items</div>
-                    <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">New Arrivals</div>
-                    <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">Trending</div>
-                    <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">Recommended</div>
+                    {["Featured items", "New Arrivals", "Trending", "Recommended"].map((item) => (
+                        <div
+                            key={item}
+                            className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200"
+                            onClick={() => handleMenuClick(item)}
+                        >
+                            {item}
+                        </div>
+                    ))}
                 </div>
             </div>
             <div className="flex flex-col gap-[10px]">
                 <div className="text-[#141511] font-bold text-[16px] leading-[24px] tracking-[0%]">BAGS</div>
                 <div className="flex flex-col gap-[10px] justify-center">
-                    <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">All Women's Bags</div>
-                    <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">Travel duffels</div>
-                    <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">Crossbody bags</div>
-                    <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">Messenger bags</div>
-                    <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">Tote bags</div>
-                    <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">Briefcases</div>
-                    <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">Backpacks</div>
+                    {["All Women's Bags", "Travel duffels", "Crossbody bags", "Messenger bags", "Tote bags", "Briefcases", "Backpacks"].map((item) => (
+                        <div
+                            key={item}
+                            className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200"
+                            onClick={() => handleMenuClick(item)}
+                        >
+                            {item}
+                        </div>
+                    ))}
                 </div>
             </div>
             <div className="flex flex-col gap-[10px]">
                 <div className="text-[#141511] font-bold text-[16px] leading-[24px] tracking-[0%]">CLOTHING</div>
                 <div className="flex flex-col gap-[10px] justify-center">
-                    <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">All Women's Clothing</div>
-                    <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">Hoodies & Sweat shirts</div>
-                    <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">Dresses</div>
-                    <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">Skirts</div>
-                    <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">Rompers</div>
-                    <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">Shorts</div>
-                    <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">Jump suits</div>
-                    <div className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200">Tops</div>
+                    {["All Women's Clothing", "Hoodies & Sweat shirts", "Dresses", "Skirts", "Rompers", "Shorts", "Jump suits", "Tops"].map((item) => (
+                        <div
+                            key={item}
+                            className="text-[#4F4F4D] text-[16px] font-normal leading-[24px] tracking-[0%] cursor-pointer hover:text-[#8F0024] hover:font-semibold transition-colors duration-200"
+                            onClick={() => handleMenuClick(item)}
+                        >
+                            {item}
+                        </div>
+                    ))}
                 </div>
             </div>
         </div>

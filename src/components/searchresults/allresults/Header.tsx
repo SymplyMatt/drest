@@ -1,4 +1,5 @@
 import { useSearchParams } from "react-router-dom";
+import RoundCategoriesSlider from "../../home/RoundCategoriesSlider";
 
 const Header = () => {
     const [searchParams] = useSearchParams();
@@ -27,6 +28,7 @@ const Header = () => {
                 </div>
                 <div className="h-[1px] bg-[#E6E6E6] w-full"></div>
             </div>
+            {type === 'category' && <RoundCategoriesSlider />}
             <div className="w-full flex items-center justify-center gap-[18px]">
                 <select className="cursor-pointer border border-[#959694] border-[0.7px] h-[40px] rounded-[38px] py-[8px] px-[16px] text-[#141511]">
                     <option value="Universe">Universe</option>
