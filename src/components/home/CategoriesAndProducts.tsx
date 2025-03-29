@@ -16,7 +16,7 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({
 }) => {
     const navigate = useNavigate();
     const location = useLocation();
-    const allImages = [
+    const allImages: string[] = [
         '/images/recommended1.png',
         '/images/recommended2.png',
         '/images/recommended3.png',
@@ -68,10 +68,12 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({
             
             <div className="w-full grid grid-cols-4">
                 {products.map((number, index) => {
-                    const discount = number % 3 !== 0 ? 0 : Math.floor(number/100 * 100) + 10;
-                    const price = Math.floor(number/100 * 101) + 100;
+                    const imagesLength = allImages.length; 
+                    const adjustedNumber = (number % imagesLength) || imagesLength; 
+                    const discount = adjustedNumber % 3 !== 0 ? 0 : Math.floor(adjustedNumber / 100 * 100) + 10;
+                    const price = Math.floor(adjustedNumber / 100 * 101) + 100;
                     const priceAfterDiscount = price - (price * discount) / 100;
-                    const showImage = hoveredIndex === index ? activeImage : `/images/recommended${number}.png`;
+                    const showImage = hoveredIndex === index ? activeImage : `/images/recommended${adjustedNumber}.png`;
                     return (
                         <div 
                             className="col-span-1 flex flex-col items-center h-[500px] group" 
