@@ -111,16 +111,16 @@ const Header = () => {
                     All Filters <img src="/images/filters.svg"/>
                 </div>
             </div>}
-            {sublink ? <div className="w-full flex items-center gap-[8px]">
-                <div className="flex items-center justify-center gap-[4px] h-[40px] border border-[#D6D6D5] py-[8px] px-[12px] text-[#4F4F4D] text-[14px] cursor-pointer bg-[#F3F3F3]"> {utils.capitalizeEachWord(sublink)} 
+            {type !== 'all' ? <div className="w-full flex items-center gap-[8px]">
+                {sublink ? <div className="flex items-center justify-center gap-[4px] h-[40px] border border-[#D6D6D5] py-[8px] px-[12px] text-[#4F4F4D] text-[14px] cursor-pointer bg-[#F3F3F3]"> {utils.capitalizeEachWord(sublink as string)} 
                     <img src="/images/x_sm.svg" onClick={()=>{
                         const params = new URLSearchParams(searchParams);
                         params.delete("sublink");
                         params.set("type", "category");
                         navigate(`/search/allresults?${params.toString()}`);
                     }}/>
-                </div>
-                <div className="flex items-center justify-center gap-[4px] h-[40px] border border-[#D6D6D5] py-[8px] px-[12px] text-[#4F4F4D] text-[14px] cursor-pointer bg-[#F3F3F3]">{utils.capitalizeEachWord(link as string)} 
+                </div> : ''}
+                {link ? <div className="flex items-center justify-center gap-[4px] h-[40px] border border-[#D6D6D5] py-[8px] px-[12px] text-[#4F4F4D] text-[14px] cursor-pointer bg-[#F3F3F3]">{utils.capitalizeEachWord(link as string)} 
                     <img src="/images/x_sm.svg" onClick={()=>{
                         const params = new URLSearchParams(searchParams);
                         params.set("type", "category");
@@ -128,8 +128,8 @@ const Header = () => {
                         params.delete("link");
                         navigate(`/search/allresults?${params.toString()}`);
                     }}/>
-                </div>
-                <div className="text-[#141511] cursor-pointer underline text-[14px] ml-[10px]">Clear all</div>
+                </div> : ''}
+                {link || sublink ? <div className="text-[#141511] cursor-pointer underline text-[14px] ml-[10px]">Clear all</div> : ''}
             </div> : ''}
         </div>
     );
