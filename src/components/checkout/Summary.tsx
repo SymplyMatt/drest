@@ -22,23 +22,25 @@ const Summary = () => {
                     <div className="text-[#4F4F4D] text-[20px] flex items-center gap-[8px]">697.05 TND</div>
                 </div>
                 <div className="w-full h-[1px] bg-[#D6D6D5] mt-[12px]"></div>
-                <div className="w-full flex items-center justify-between mt-[12px]">
-                    <div className="text-[#141511] text-[18px] flex items-center gap-[4px] font-medium">Do you have a promo code? </div>
-                    <div className="text-[#4F4F4D] text-[20px] flex items-center gap-[8px]"><img src="/images/caretup.svg" className="cursor-pointer" /></div>
-                </div>
-                <div className="w-full h-[48px] bg-[#F3F3F3] flex items-center justify-between py-[4px] pl-[12px] pr-[4px]">
-                    <div className="text-[#141511] ">ONEDISCOUNT</div>
-                    <div className="h-[40px] flex items-center bg-white border border-[#D6D6D5] py-[8px] px-[24px] text-[#676764]">APPLIED</div>
-                </div>
-                <div className="flex gap-[8px] items-start text-[#676764]"><img src="/images/info_sm.svg" /> To get a promo code you can help our social media, there we share promo codes every month.</div>
-                <div className="w-full h-[1px] bg-[#D6D6D5] mt-[12px]"></div>
-                <div className="flex w-full items-center justify-center bg-[#141511] cursor-pointer h-[48px] text-white mt-[12px]" 
-                    onClick={()=>{
-                        const nextPage = page === 'delivery' ? 'confirm' : page === 'confirm' ? 'payment' : 'payment';
-                        navigate(`/checkout/${nextPage}`);
-                    }}>
-                    CHECKOUT
-                </div>
+                {page !== 'payment' ? <>
+                    <div className="w-full flex items-center justify-between mt-[12px]">
+                        <div className="text-[#141511] text-[18px] flex items-center gap-[4px] font-medium">Do you have a promo code? </div>
+                        <div className="text-[#4F4F4D] text-[20px] flex items-center gap-[8px]"><img src="/images/caretup.svg" className="cursor-pointer" /></div>
+                    </div>
+                    <div className="w-full h-[48px] bg-[#F3F3F3] flex items-center justify-between py-[4px] pl-[12px] pr-[4px]">
+                        <div className="text-[#141511] ">ONEDISCOUNT</div>
+                        <div className="h-[40px] flex items-center bg-white border border-[#D6D6D5] py-[8px] px-[24px] text-[#676764]">APPLIED</div>
+                    </div>
+                    <div className="flex gap-[8px] items-start text-[#676764]"><img src="/images/info_sm.svg" /> To get a promo code you can help our social media, there we share promo codes every month.</div>
+                    <div className="w-full h-[1px] bg-[#D6D6D5] mt-[12px]"></div>
+                    <div className="flex w-full items-center justify-center bg-[#141511] cursor-pointer h-[48px] text-white mt-[12px]" 
+                        onClick={()=>{
+                            const nextPage = page === 'cart' ? 'delivery' : page === 'delivery' ? 'confirm' : page === 'confirm' ? 'payment' : 'payment';
+                            navigate(`/checkout/${nextPage}`);
+                        }}>
+                        CHECKOUT
+                    </div>
+                </> : ''}
             </div>
         </div>
     )
