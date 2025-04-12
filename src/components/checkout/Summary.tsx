@@ -1,5 +1,8 @@
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Summary = () => {
+    const navigate = useNavigate();
+    const page = useLocation().pathname.split("/").pop();
     return (
         <div className="w-full col-span-1 flex flex-col border-b border-[#D6D6D5]">
             <div className="w-full flex items-center justify-center border-b border-r border-[#D6D6D5] px-[50px] py-[12px]">
@@ -29,7 +32,13 @@ const Summary = () => {
                 </div>
                 <div className="flex gap-[8px] items-start text-[#676764]"><img src="/images/info_sm.svg" /> To get a promo code you can help our social media, there we share promo codes every month.</div>
                 <div className="w-full h-[1px] bg-[#D6D6D5] mt-[12px]"></div>
-                <div className="flex w-full items-center justify-center bg-[#141511] cursor-pointer h-[48px] text-white mt-[12px]">CHECKOUT</div>
+                <div className="flex w-full items-center justify-center bg-[#141511] cursor-pointer h-[48px] text-white mt-[12px]" 
+                    onClick={()=>{
+                        const nextPage = page === 'delivery' ? 'confirm' : page === 'confirm' ? 'payment' : 'payment';
+                        navigate(`/checkout/${nextPage}`);
+                    }}>
+                    CHECKOUT
+                </div>
             </div>
         </div>
     )

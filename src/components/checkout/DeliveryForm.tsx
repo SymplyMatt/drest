@@ -56,7 +56,7 @@ const DeliveryForm = () => {
                     <div className="col-span-1 flex flex-col gap-[8px]">
                         <label className="text-[#141511] font-semibold">Country/region</label>
                         <select className="h-[48px] border border-[#D6D6D5] p-[12px] w-full bg-[#F3F3F3] text-[#676764] outline-none">
-                            <option value="tunisia"><img src="/images/tunisia.svg"/> Tunisia</option>
+                            <option value="tunisia">Tunisia</option>
                         </select>
                     </div>
                     <div className="col-span-1 flex flex-col gap-[8px]">
@@ -74,7 +74,7 @@ const DeliveryForm = () => {
                     <div className="col-span-1 flex flex-col gap-[8px]">
                         <label className="text-[#141511] font-semibold">Building type</label>
                         <select className="h-[48px] border border-[#D6D6D5] p-[12px] w-full bg-[#F3F3F3] text-[#676764] outline-none">
-                            <option value="tunisia"><img src="/images/tunisia.svg"/> Select type</option>
+                            <option value="tunisia"> Select type</option>
                         </select>
                     </div>
                     <div className="col-span-1 flex flex-col gap-[8px]">
