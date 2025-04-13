@@ -118,6 +118,10 @@ const CheckoutSuccess = () => {
                             </div>
                         </div>
                     </div>
+                    <div className="w-full flex items-center justify-between mt-[16px]">
+                        <div className="border border-[#D6D6D5] cursor-pointer text-[#141511] font-semibold h-[40px] px-[24px] flex items-center justify-center w_content h-[48px] uppercase">Continue shopping</div>
+                        <div className="border border-[#D6D6D5] cursor-pointer text-[#FFFFFF] font-semibold h-[40px] px-[24px] flex items-center justify-center w_content h-[48px] uppercase bg-[#141511]">VIEW ORDER HISTORY</div>
+                    </div>
                 </div>
             </div>
         </Layout>
