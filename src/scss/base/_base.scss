@@ -211,3 +211,11 @@ body{
 .flag-container{
     width: 85px !important;
 }
+.product-list-swiper{
+    .swiper-slide{
+        height: 111px !important;
+    }
+    .swiper-slide:last-child{
+        margin-bottom: 0px !important;
+    }
+}
