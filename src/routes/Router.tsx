@@ -9,6 +9,7 @@ import CheckoutConfirm from "../pages/CheckoutConfirm";
 import CheckoutDelivery from "../pages/CheckoutDelivery";
 import CheckoutPayment from "../pages/CheckoutPayment";
 import AllResults from "../pages/AllResults";
+import CheckoutSuccess from "../pages/CheckoutSuccess";
 
 const Routes = (): JSX.Element => {
   const pageRoutes = [
@@ -47,6 +48,10 @@ const Routes = (): JSX.Element => {
     {
       path: "/checkout/confirm", 
       element: <CheckoutConfirm />
+    },
+    {
+      path: "/checkout/success", 
+      element: <CheckoutSuccess />
     },
     {
       path: "/search/allresults", 
