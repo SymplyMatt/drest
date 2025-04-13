@@ -41,12 +41,12 @@ const Routes = (): JSX.Element => {
       element: <CheckoutDelivery />
     },
     {
-      path: "/checkout/confirm", 
-      element: <CheckoutConfirm />
-    },
-    {
       path: "/checkout/payment", 
       element: <CheckoutPayment />
+    },
+    {
+      path: "/checkout/confirm", 
+      element: <CheckoutConfirm />
     },
     {
       path: "/search/allresults", 

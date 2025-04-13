@@ -49,7 +49,7 @@ const Summary = () => {
                         <div className="w-full h-[1px] bg-[#D6D6D5] mt-[12px]"></div>
                         <div className="flex w-full items-center justify-center bg-[#141511] cursor-pointer h-[48px] text-white mt-[12px]" 
                             onClick={()=>{
-                                const nextPage = page === 'cart' ? 'delivery' : page === 'delivery' ? 'confirm' : page === 'confirm' ? 'payment' : 'payment';
+                                const nextPage = page === 'cart' ? 'delivery' : page === 'delivery' ? 'payment' : page === 'payment' ? 'confirm' : 'confirm';
                                 navigate(`/checkout/${nextPage}`);
                             }}>
                             CHECKOUT
