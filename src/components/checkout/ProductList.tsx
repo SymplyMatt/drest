@@ -33,7 +33,9 @@ const ProductList = () => {
     <div className="w-full flex flex-col gap-4 product-list-swiper p-[24px]">
         <div className="w-full flex items-center justify-between">
             <div className="text-[#141511] text-[20px] font-medium">Product list</div>
-            <div className="cursor-pointer text-[#676764] text-[14px] underline leading-[150%]">EDIT PRODUCTS</div>
+            <div className="cursor-pointer text-[#676764] text-[14px] underline leading-[150%]" onClick={()=>{
+                        navigate(`/cart`);
+                    }}>EDIT PRODUCTS</div>
         </div>
         <div className="w-full flex flex-col items-center justify-between">
             <div className="w-full h-[660px] flex justify-between w-full overflow-hidden">
