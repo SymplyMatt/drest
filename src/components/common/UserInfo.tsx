@@ -31,7 +31,7 @@ const UserInfo = () => {
         {!loggedInUser && <div className="h-[48px] bg-black text-[#E6E6E6] flex items-center justify-center gap-[12px] px-[12px] cursor-pointer" onClick={() => dispatch(setAuthPage("emaillogin"))}><img src="/images/user.svg" /> Sign In/Sign Up</div>}
         {loggedInUser && 
             <div className="relative" onClick={toggleDropdown}>
-                <div className="flex gap-[8px]">
+                <div className="flex gap-[8px] cursor-pointer">
                     <img src="/images/userimage.svg"/>
                     <div className="flex flex-col justify-between h-full">
                         <div className="text-[12px] font-medium">Hello John</div>
