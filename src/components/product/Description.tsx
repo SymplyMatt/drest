@@ -204,8 +204,8 @@ const Description = () => {
         <div className="w-full overflow-hidden transition-all duration-300 ease-in-out border-r border-l border-[#D6D6D5]"
             style={{ 
             height: `${reviewsHeight}px`,
-            borderBottom: shippingHeight > 0 ? '1px solid #D6D6D5' : 'none',
-            opacity: showShipping ? 1 : 0
+            borderBottom: reviewsHeight > 0 ? '1px solid #D6D6D5' : 'none',
+            opacity: showReviews ? 1 : 0
           }}
         >
           <div ref={reviewsRef} className="p-[20px] gap-[12px] flex justify-center flex-col">
