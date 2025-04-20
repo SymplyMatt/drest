@@ -1,17 +1,20 @@
 import { useState, useRef, useEffect } from "react";
 
 const Description = () => {
-  const [showDescription, setShowDescription] = useState<boolean>(true);
-  const [showFeatures, setShowFeatures] = useState<boolean>(true);
+  const [showDescription, setShowDescription] = useState<boolean>(false);
+  const [showFeatures, setShowFeatures] = useState<boolean>(false);
   const [showShipping, setShowShipping] = useState<boolean>(false);
+  const [showReviews, setShowReviews] = useState<boolean>(false);
   
   const descriptionRef = useRef<HTMLDivElement>(null);
   const featuresRef = useRef<HTMLDivElement>(null);
   const shippingRef = useRef<HTMLDivElement>(null);
+  const reviewsRef = useRef<HTMLDivElement>(null);
   
   const [descriptionHeight, setDescriptionHeight] = useState<number>(0);
   const [featuresHeight, setFeaturesHeight] = useState<number>(0);
   const [shippingHeight, setShippingHeight] = useState<number>(0);
+  const [reviewsHeight, setReviewsHeight] = useState<number>(0);
   
   useEffect(() => {
     if (descriptionRef.current) {
@@ -30,6 +33,12 @@ const Description = () => {
       setShippingHeight(showShipping ? shippingRef.current.scrollHeight : 0);
     }
   }, [showShipping]);
+
+  useEffect(() => {
+    if (reviewsRef.current) {
+      setReviewsHeight(showReviews ? reviewsRef.current.scrollHeight : 0);
+    }
+  }, [showReviews]);
   
   return (
     <div className="w-full flex flex-col border border-[#D6D6D5] px-[50px] py-[24px] gap-[24px]">
@@ -183,7 +192,71 @@ const Description = () => {
               <img src="/images/staractive.svg" className="h-[20px] w-[20px]" />
               <img src="/images/starinactive.svg" className="h-[20px] w-[20px]" />
             </div>
-            <img src="/images/plusbox.svg" className="cursor-pointer "/>
+            <img 
+              src={`/images/${showReviews ? 'minus' : 'plusbox'}.svg`} 
+              onClick={() => setShowReviews(!showReviews)}
+              className="transition-transform duration-300 cursor-pointer"
+              style={{ transform: showShipping ? 'rotate(0deg)' : 'rotate(0deg)' }}
+              alt={showShipping ? "hide" : "show"}
+            />
+          </div>
+        </div>
+        <div className="w-full overflow-hidden transition-all duration-300 ease-in-out border-r border-l border-[#D6D6D5]"
+            style={{ 
+            height: `${reviewsHeight}px`,
+            borderBottom: shippingHeight > 0 ? '1px solid #D6D6D5' : 'none',
+            opacity: showShipping ? 1 : 0
+          }}
+        >
+          <div ref={reviewsRef} className="p-[20px] gap-[12px] flex justify-center flex-col">
+            <div className="w-full flex flex-col justify-center gap-[8px]">
+              <div className="font-normal text-[18px] leading-[27px] tracking-[-4%] text-[#676764] uppercase">Shipping</div>
+              <div className="font-normal text-[18px] leading-[27px] tracking-[-4%]">At DREST a signature will be required upon delivery to ensure your package arrives securely.</div>
+              <div className="font-normal text-[18px] leading-[27px] tracking-[-4%]">For Pre-order and Made to Order items, we will ship these on the estimated date provided on the product description page. Once ready, these items will be shipped via Premium Express, ensuring prompt delivery to your doorstep.</div>
+            </div>
+            <div className="w-full flex flex-col justify-center gap-[8px]">
+              <div className="font-normal text-[18px] leading-[27px] tracking-[-4%] text-[#676764] uppercase">Returns</div>
+              <div className="font-normal text-[18px] leading-[27px] tracking-[-4%]">To provide more flexibility during the holiday season, we offer extended returns. Orders placed from November 1 to January 1 will benefit from complimentary returns until January 31.</div>
+              <div className="font-normal text-[18px] leading-[27px] tracking-[-4%]">You can return items via mail or in-store. To process a return, log into your MY DREST account and select "Return this Item" from the order details, or use the link in your delivery confirmation email. You may also contact Customer Support for help. Once the request is approved, a prepaid shipping label will be emailed to you or made available for download in your MY DREST account.</div>
+              <div className="font-normal text-[18px] leading-[27px] tracking-[-4%]">All returned items must be in their original condition, with all labels attached and intact. Please note that Made to Order and personalised items are non-returnable.</div>
+              <div className="font-normal text-[18px] leading-[27px] tracking-[-4%]">Additional information is available during the checkout process or in the FAQs section.</div>
+            </div>
+            <table className="w-full border-collapse">
+              <thead className="bg-[#F3F3F3]">
+                <tr className="text-[#141511] font-medium text-[18px] leading-[27px] tracking-[0%] h-[60px]">
+                  <th className="text-[#141511] font-medium text-[18px] leading-[27px] tracking-[0%] border border-[#D6D6D5] p-[8px] text-center">Shipping service</th>
+                  <th className="text-[#141511] font-medium text-[18px] leading-[27px] tracking-[0%] border border-[#D6D6D5] p-[8px] text-center">Shipping fee</th>
+                  <th className="text-[#141511] font-medium text-[18px] leading-[27px] tracking-[0%] border border-[#D6D6D5] p-[8px] text-center">Delivery estimate</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="h-[72px]">
+                  <td className="border border-[#D6D6D5] p-[8px] text-center text-[#4F4F4D]">Premium Express (Within Tunisia)</td>
+                  <td className="border border-[#D6D6D5] p-[8px] text-center text-[#4F4F4D]">Free (for items over 1040 TND)</td>
+                  <td className="border border-[#D6D6D5] p-[8px] text-center text-[#4F4F4D]">2-3 business days.</td>
+                </tr>
+                <tr className="h-[72px]">
+                  <td className="border border-[#D6D6D5] p-[8px] text-center text-[#4F4F4D]">Premium Express (Alaska, Hawaii, Puerto Rico)</td>
+                  <td className="border border-[#D6D6D5] p-[8px] text-center text-[#4F4F4D]">10 TND</td>
+                  <td className="border border-[#D6D6D5] p-[8px] text-center text-[#4F4F4D]">4-5 business days.</td>
+                </tr>
+                <tr className="h-[72px]">
+                  <td className="border border-[#D6D6D5] p-[8px] text-center text-[#4F4F4D]">Premium Express International (Europe & Asia)</td>
+                  <td className="border border-[#D6D6D5] p-[8px] text-center text-[#4F4F4D]">25 TND</td>
+                  <td className="border border-[#D6D6D5] p-[8px] text-center text-[#4F4F4D]">7-10 business days.</td>
+                </tr>
+                <tr className="h-[72px]">
+                  <td className="border border-[#D6D6D5] p-[8px] text-center text-[#4F4F4D]">Premium Express International (Other Regions)</td>
+                  <td className="border border-[#D6D6D5] p-[8px] text-center text-[#4F4F4D]">35 TND</td>
+                  <td className="border border-[#D6D6D5] p-[8px] text-center text-[#4F4F4D]">10-14 business days.</td>
+                </tr>
+                <tr className="h-[72px]">
+                  <td className="border border-[#D6D6D5] p-[8px] text-center text-[#4F4F4D]">Next Business Day (U.S.)</td>
+                  <td className="border border-[#D6D6D5] p-[8px] text-center text-[#4F4F4D]">30 TND</td>
+                  <td className="border border-[#D6D6D5] p-[8px] text-center text-[#4F4F4D]">Order by 4 pm EST for next-day delivery between 9 am - 8 pm.</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
