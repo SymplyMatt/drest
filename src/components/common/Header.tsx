@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { setAuthPage } from "../../redux/states/auth";
 import { useSelector } from "react-redux";
 import { setSearchMode } from "../../redux/states/app";
+import Languages from "./Languages";
 
 const Header = () => {
     const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
@@ -20,16 +21,7 @@ const Header = () => {
         <>
             <div className="w-full flex flex-col">
                 <div className="w-full flex h-[42px] bg-headerBlack items-center justify-between text-textWhite px-[50px]">
-                    <div className="flex items-center gap-[8px] cursor-pointer">
-                        <img src="/images/france.svg" />
-                        <div className="flex gap-[4px] items-center text-[14px]">
-                            <span className="text-[14px] font-extrabold">FR</span>
-                            <span className="text-[#E6E6E6] opacity-[0.7]">|</span>
-                            <span>French</span>
-                            <img src="/images/caretdownsm.svg" />
-                        </div>
-
-                    </div>
+                    <Languages />
                     <div className="flex justify-center items-center gap-[40px] text-[14px]">
                         <div className="cursor-pointer"><img src="/images/arrowleft.svg" /></div>
                         <div className="font-semibold">We love love - Shop for all the Valentine's Day gifts in our LOVE SALE!!</div>
