@@ -419,6 +419,8 @@ const Description = () => {
                   </div>
                 </div>
               </div>
+              <hr className="w-full h-[1px] bg-[#C4C4C4]"/>
+              <div className="h-[44px] cursor-pointer bg-[#141511] mx-auto py-[10px] px-[16px] text-white font-medium uppercase min-w-[210px] mt-[30px]">See all 24 reviews</div>
             </div>
           </div>
         </div>
