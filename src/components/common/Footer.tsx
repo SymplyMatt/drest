@@ -1,10 +1,8 @@
-import { useLocation } from "react-router-dom";
 
 const Footer = () => {
-    const location = useLocation();
     return (
         <div className="w-full flex flex-col justify-center items-center pt-[24px]">
-            <div className={`w-full ${location.pathname.includes('wishlist') ? 'bg-[#87CEEB]' : 'bg-[#DCBF89]'} grid grid-cols-2 px-[10%] py-[50px] gap-[0px]`}>
+            <div className={`w-full bg-[#87CEEB] grid grid-cols-2 px-[10%] py-[50px] gap-[0px]`}>
                 <div className="flex flex-col col-span-1 justify-center">
                     <div className="w-[78%] flex flex-col justify-center gap-[16px]">
                         <div className="text-[36px] font-bold leading-[36px] tracking-[0%] uppercase text-justify">Get the latest updates and exclusive offers</div>
