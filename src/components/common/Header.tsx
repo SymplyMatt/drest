@@ -7,6 +7,7 @@ import { setAuthPage } from "../../redux/states/auth";
 import { useSelector } from "react-redux";
 import { setSearchMode } from "../../redux/states/app";
 import Languages from "./Languages";
+import Currencies from "./Currencies";
 
 const Header = () => {
     const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
@@ -28,7 +29,7 @@ const Header = () => {
                         <div className="font-medium underline leading-[14px] cursor-pointer">SHOP NOW</div>
                         <div className="cursor-pointer"><img src="/images/arrowright.svg" /></div>
                     </div>
-                    <div className="text-[14px] flex items-center gap-[4px] cursor-pointer">Currency: <span className="text-[14px] font-extrabold">EUR</span> <img src="/images/caretdownsm.svg" /></div>
+                    <Currencies />
                 </div>
                 <div className="w-full h-[92px] flex border-b border-[#E6E6E6] px-[50px] justify-between items-center">
                     <div className="cursor-pointer" onClick={()=>navigate('/')}><img src="/images/logo.svg" /></div>

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const Languages = () => {
+const Currencies = () => {
     const [showLanguages, setShowLanguages] = useState(false);
     const dropdownRef = useRef<HTMLDivElement | null>(null);
     useEffect(() => {
@@ -20,19 +20,8 @@ const Languages = () => {
     };
   return (
     <div className="relative">
-        <div className="flex items-center gap-[8px] cursor-pointer">
-            <img src="/images/france.svg" />
-            <div className="flex gap-[4px] items-center text-[14px] cursor-pointer" onClick={toggleDropdown}>
-                <span className="text-[14px] font-extrabold">FR</span>
-                <span className="text-[#E6E6E6] opacity-[0.7]">|</span>
-                <span>French</span>
-                {!showLanguages && <img src="/images/caretdownsm.svg" />}
-                {showLanguages && <svg width="8" height="4" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4.00013 0.052969L7.66992 3.90625H0.330338L4.00013 0.052969Z" fill="white"/>
-                </svg>}
-            </div>
-        </div>
-        <div className={`absolute top-[30px] left-[0px] text-red-900 bg-white z-10 w-[300px] h-[450px] border border-[#C4C4C4] flex flex-col gap-[12px] py-[24px] px-[24px] shadow-lang transition-all duration-300 ease-in-out ${showLanguages ? "opacity-100 scale-y-100 origin-top" : "opacity-0 scale-y-0 origin-top pointer-events-none"} flex flex-col justify-center`}  ref={dropdownRef}>
+        <div className="text-[14px] flex items-center gap-[4px] cursor-pointer" onClick={toggleDropdown}>Currency: <span className="text-[14px] font-extrabold">EUR</span> <img src="/images/caretdownsm.svg"/></div>
+        <div className={`absolute top-[30px] right-[0px] text-red-900 bg-white z-10 w-[300px] h-[450px] border border-[#C4C4C4] flex flex-col gap-[12px] py-[24px] px-[24px] shadow-lang transition-all duration-300 ease-in-out ${showLanguages ? "opacity-100 scale-y-100 origin-top" : "opacity-0 scale-y-0 origin-top pointer-events-none"} flex flex-col justify-center`}  ref={dropdownRef}>
             <div className="uppercase text-[#4F4F4D] text-[14px]">Languages</div>
             <div className="w-full h-full overflow-scroll shadow-lang p-[16px] flex flex-col gap-[8px]">
                 <div className="w-full h-[36px] border border-[#D6D6D5] flex items-center justify-between p-[12px] cursor-pointer text-[14px] text-[#959694]">
@@ -342,4 +331,4 @@ const Languages = () => {
   )
 }
 
-export default Languages
+export default Currencies
