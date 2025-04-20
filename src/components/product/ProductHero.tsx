@@ -83,7 +83,7 @@ const ProductHero = () => {
             </div>
             <div className="flex items-center justify-center p-[24px]">
                 <div className="w-full flex flex-col items-center justify-center">
-                    <div className="h-[48px] bg-[#8F0024] w-full flex items-center justify-between text-white px-[24px] py-[12px]">
+                    <div className="h-[48px] bg-[#36A34C] w-full flex items-center justify-between text-white px-[24px] py-[12px]">
                         <div className="font-normal text-[16px] leading-[24px] tracking-[0%]">SPECIAL DISCOUNT</div>
                         <div className="font-semibold text-[16px] leading-[24px] tracking-[-4%]">18% OFF</div>
                     </div>
@@ -97,17 +97,13 @@ const ProductHero = () => {
                         </div>
                         <div className="w-full grid grid-cols-2 items-center border-t border-b border-[#D6D6D5]">
                             <div className="px-[24px] col-span-1 flex flex-col justify-between text-white gap-[4px] border-r border-[#D6D6D5] py-[16px]">
-                                <div className="text-[#676764] font-normal text-[16px] leading-[24px] tracking-[0%]">Category:</div>
+                                <div className="text-[#676764] font-normal text-[16px] leading-[24px] tracking-[0%] uppercase">Category:</div>
                                 <div className="text-[#141511] font-medium text-[18px] leading-[27px] tracking-[0%]">Men's Jacket</div>
                             </div>
-                            <div className="px-[24px] col-span-1 flex flex-col justify-between text-white gap-[4px] py-[16px]">
-                                <div className="text-[#141511] font-semibold text-[18px] leading-[27px] tracking-[0%]">4.5 <span className="font-normal">(103 Reviews)</span> </div>
+                            <div className="px-[24px] col-span-1 flex flex-col justify-between text-black gap-[4px] py-[16px]">
+                                <div className="text-[#141511] font-semibold text-[18px] leading-[27px] tracking-[0%]">Brand </div>
                                 <div className="flex items-center gap-[4px]">
-                                    <img src="/images/staractive.svg" />
-                                    <img src="/images/staractive.svg" />
-                                    <img src="/images/staractive.svg" />
-                                    <img src="/images/staractive.svg" />
-                                    <img src="/images/starinactive.svg" />
+                                    Adidas
                                 </div>
                             </div>
                         </div>
@@ -133,9 +129,25 @@ const ProductHero = () => {
                                 <div className="w-full grid grid-cols-3 gap-[12px] text-[#141511]">
                                     <div className="col-span-1 h-40 border border-[#D6D6D5] flex items-center justify-center cursor-pointer font-medium text-[16px] leading-[21px] tracking-[-4%] hover:border-[#141511]">XS</div>
                                     <div className="col-span-1 h-40 border border-[#D6D6D5] flex items-center justify-center cursor-pointer font-medium text-[16px] leading-[21px] tracking-[-4%] hover:border-[#141511]">S</div>
-                                    <div className="col-span-1 h-40 border border-[#D6D6D5] flex items-center justify-center cursor-pointer font-medium text-[16px] leading-[21px] tracking-[-4%] hover:border-[#141511] bg-[#F3F3F3]">M</div>
-                                    <div className="col-span-1 h-40 border border-[#D6D6D5] flex items-center justify-center cursor-pointer font-medium text-[16px] leading-[21px] tracking-[-4%] hover:border-[#141511]">L</div>
-                                    <div className="col-span-1 h-40 border border-[#D6D6D5] flex items-center justify-center cursor-pointer font-medium text-[16px] leading-[21px] tracking-[-4%] hover:border-[#141511] bg-[#F3F3F3]">XL</div>
+                                    <div className="col-span-1 h-40 border border-[#D6D6D5] flex items-center justify-center cursor-pointer font-medium text-[16px] leading-[21px] tracking-[-4%] hover:border-[#141511] bg-[#F3F3F3] relative">
+                                    <svg width="120" height="42" viewBox="0 0 120 42" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-0 left-0 h-full w-full">
+                                        <line x1="0.905181" y1="40.7261" x2="119.773" y2="1.32455" stroke="#C4C4C4"/>
+                                    </svg>
+                                    <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-0 left-0 h-full w-full">
+                                        <line x1="0.155716" y1="0.524866" x2="119.156" y2="39.5249" stroke="#C4C4C4"/>
+                                    </svg>
+                                        M
+                                    </div>
+                                    <div className="col-span-1 h-40 border border-[#D6D6D5] flex items-center justify-center cursor-pointer font-medium text-[16px] leading-[21px] tracking-[-4%] hover:border-[#141511] bg-[#F3F3F3] relative">
+                                    <svg width="120" height="42" viewBox="0 0 120 42" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-0 left-0 h-full w-full">
+                                        <line x1="0.905181" y1="40.7261" x2="119.773" y2="1.32455" stroke="#C4C4C4"/>
+                                    </svg>
+                                    <svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-0 left-0 h-full w-full">
+                                        <line x1="0.155716" y1="0.524866" x2="119.156" y2="39.5249" stroke="#C4C4C4"/>
+                                    </svg>
+                                        L
+                                    </div>
+                                    <div className="col-span-1 h-40 border border-[#D6D6D5] flex items-center justify-center cursor-pointer font-medium text-[16px] leading-[21px] tracking-[-4%] hover:border-[#141511] bg-[#141511] text-white">XL</div>
                                     <div className="col-span-1 h-40 border border-[#D6D6D5] flex items-center justify-center cursor-pointer font-medium text-[16px] leading-[21px] tracking-[-4%] hover:border-[#141511]">XXL</div>
                                 </div>
                             </div>
