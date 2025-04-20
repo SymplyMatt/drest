@@ -46,8 +46,14 @@ const ProductHero = () => {
                         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
                     >
                         <SwiperSlide>
-                            <div className="w-full h-[150px] border border-[#D6D6D5] bg-[#F3F3F3] flex items-center justify-center cursor-pointer p-[10px]">
+                            <div className="w-full h-[150px] border border-[#D6D6D5] bg-[#F3F3F3] flex items-center justify-center cursor-pointer p-[10px] relative">
                                 <img src="/images/productimage1.png" className="h-full object-cover"/>
+                                <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                                    <rect x="1" y="1" width="48" height="48" rx="24" fill="#F3F3F3"/>
+                                    <rect x="1" y="1" width="48" height="48" rx="24" stroke="#D6D6D5"/>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.1178 25.467C15.9607 25.176 15.9607 24.823 16.1178 24.532C18.0097 21.033 21.5048 18 24.9998 18C28.4948 18 31.9898 21.033 33.8818 24.533C34.0388 24.824 34.0388 25.177 33.8818 25.468C31.9898 28.967 28.4948 32 24.9998 32C21.5048 32 18.0097 28.967 16.1178 25.467Z" stroke="#141511" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M27.1213 22.8787C28.2929 24.0502 28.2929 25.9497 27.1213 27.1213C25.9497 28.2929 24.0502 28.2929 22.8787 27.1213C21.7071 25.9497 21.7071 24.0502 22.8787 22.8787C24.0502 21.7071 25.9497 21.7071 27.1213 22.8787" stroke="#141511" stroke-width="1.4286" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
                             </div>
                         </SwiperSlide>
                         <SwiperSlide>
