@@ -2,11 +2,11 @@ import { useEffect, useRef, useState } from "react";
 
 const Languages = () => {
     const [showLanguages, setShowLanguages] = useState(false);
-    const dropdownRef = useRef<HTMLDivElement | null>(null);
+    const wrapperRef = useRef<HTMLDivElement | null>(null);
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent): void => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-            setShowLanguages(false);
+            if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
+                setShowLanguages(false);
             }
         };
         document.addEventListener("mousedown", handleClickOutside);
@@ -16,10 +16,10 @@ const Languages = () => {
     }, []);
     const toggleDropdown = (e: React.MouseEvent<HTMLDivElement>): void => {
         e.stopPropagation();
-        setShowLanguages(!showLanguages);
+        setShowLanguages(prev => !prev);
     };
   return (
-    <div className="relative">
+    <div className="relative" ref={wrapperRef}>
         <div className="flex items-center gap-[8px] cursor-pointer">
             <img src="/images/france.svg" />
             <div className="flex gap-[4px] items-center text-[14px] cursor-pointer" onClick={toggleDropdown}>
@@ -32,7 +32,7 @@ const Languages = () => {
                 </svg>}
             </div>
         </div>
-        <div className={`absolute top-[30px] left-[0px] text-red-900 bg-white z-10 w-[300px] h-[450px] border border-[#C4C4C4] flex flex-col gap-[12px] py-[24px] px-[24px] shadow-lang transition-all duration-300 ease-in-out ${showLanguages ? "opacity-100 scale-y-100 origin-top" : "opacity-0 scale-y-0 origin-top pointer-events-none"} flex flex-col justify-center`}  ref={dropdownRef}>
+        <div className={`absolute top-[30px] left-[0px] text-red-900 bg-white z-10 w-[300px] h-[450px] border border-[#C4C4C4] flex flex-col gap-[12px] py-[24px] px-[24px] shadow-lang transition-all duration-300 ease-in-out ${showLanguages ? "opacity-100 scale-y-100 origin-top" : "opacity-0 scale-y-0 origin-top pointer-events-none"} flex flex-col justify-center`}>
             <div className="uppercase text-[#4F4F4D] text-[14px]">Languages</div>
             <div className="w-full h-full overflow-scroll shadow-lang p-[16px] flex flex-col gap-[8px]">
                 <div className="w-full h-[36px] border border-[#D6D6D5] flex items-center justify-between p-[12px] cursor-pointer text-[14px] text-[#959694]">
@@ -44,10 +44,10 @@ const Languages = () => {
                     </div>
                 </div>
                 <div className="flex flex-col items-center gap-8px] h-[350px] overflow-scroll">
-                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4]">
+                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4] px-[12px]">
                         <img src="/images/usa.svg" /> English - USA
                     </div>
-                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4]">
+                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4] px-[12px]">
                         <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_832_41826)">
                         <path d="M10 21C15.5228 21 20 16.5228 20 11C20 5.47715 15.5228 1 10 1C4.47715 1 0 5.47715 0 11C0 16.5228 4.47715 21 10 21Z" fill="#F0F0F0"/>
@@ -74,7 +74,7 @@ const Languages = () => {
                         </svg>
                         English - UK
                     </div>
-                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4]">
+                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4] px-[12px]">
                         <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_832_41830)">
                         <path d="M10 21C15.5228 21 20 16.5228 20 11C20 5.47715 15.5228 1 10 1C4.47715 1 0 5.47715 0 11C0 16.5228 4.47715 21 10 21Z" fill="#F0F0F0"/>
@@ -90,7 +90,7 @@ const Languages = () => {
                         </svg>
                         French
                     </div>
-                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4]">
+                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4] px-[12px]">
                     <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_832_41834)">
                     <path d="M10 21C15.5228 21 20 16.5228 20 11C20 5.47715 15.5228 1 10 1C4.47715 1 0 5.47715 0 11C0 16.5228 4.47715 21 10 21Z" fill="#D80027"/>
@@ -107,7 +107,7 @@ const Languages = () => {
                     </svg>
                     Tunisian
                     </div>
-                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4]">
+                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4] px-[12px]">
                         <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_832_41838)">
                         <path d="M0.621094 14.4783C2.03402 18.2862 5.69945 21 9.9991 21C14.2987 21 17.9642 18.2862 19.3771 14.4783L9.9991 13.6087L0.621094 14.4783Z" fill="#FFDA44"/>
@@ -123,7 +123,7 @@ const Languages = () => {
                         </svg>
                         German
                     </div>
-                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4]">
+                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4] px-[12px]">
                         <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_832_41842)">
                         <path d="M0 11C0 15.2996 2.71375 18.965 6.52168 20.378L7.39129 10.9999L6.52168 1.62198C2.71375 3.03495 0 6.70034 0 11Z" fill="#6DA544"/>
@@ -141,10 +141,10 @@ const Languages = () => {
                         </svg>
                         Portugese
                     </div>
-                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4]">
+                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4] px-[12px]">
                         <img src="/images/usa.svg" /> English - USA
                     </div>
-                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4]">
+                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4] px-[12px]">
                         <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_832_41826)">
                         <path d="M10 21C15.5228 21 20 16.5228 20 11C20 5.47715 15.5228 1 10 1C4.47715 1 0 5.47715 0 11C0 16.5228 4.47715 21 10 21Z" fill="#F0F0F0"/>
@@ -171,7 +171,7 @@ const Languages = () => {
                         </svg>
                         English - UK
                     </div>
-                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4]">
+                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4] px-[12px]">
                         <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_832_41830)">
                         <path d="M10 21C15.5228 21 20 16.5228 20 11C20 5.47715 15.5228 1 10 1C4.47715 1 0 5.47715 0 11C0 16.5228 4.47715 21 10 21Z" fill="#F0F0F0"/>
@@ -187,7 +187,7 @@ const Languages = () => {
                         </svg>
                         French
                     </div>
-                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4]">
+                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4] px-[12px]">
                     <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_832_41834)">
                     <path d="M10 21C15.5228 21 20 16.5228 20 11C20 5.47715 15.5228 1 10 1C4.47715 1 0 5.47715 0 11C0 16.5228 4.47715 21 10 21Z" fill="#D80027"/>
@@ -204,7 +204,7 @@ const Languages = () => {
                     </svg>
                     Tunisian
                     </div>
-                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4]">
+                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4] px-[12px]">
                         <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_832_41838)">
                         <path d="M0.621094 14.4783C2.03402 18.2862 5.69945 21 9.9991 21C14.2987 21 17.9642 18.2862 19.3771 14.4783L9.9991 13.6087L0.621094 14.4783Z" fill="#FFDA44"/>
@@ -220,7 +220,7 @@ const Languages = () => {
                         </svg>
                         German
                     </div>
-                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4]">
+                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4] px-[12px]">
                         <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_832_41842)">
                         <path d="M0 11C0 15.2996 2.71375 18.965 6.52168 20.378L7.39129 10.9999L6.52168 1.62198C2.71375 3.03495 0 6.70034 0 11Z" fill="#6DA544"/>
@@ -238,10 +238,10 @@ const Languages = () => {
                         </svg>
                         Portugese
                     </div>
-                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4]">
+                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4] px-[12px]">
                         <img src="/images/usa.svg" /> English - USA
                     </div>
-                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4]">
+                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4] px-[12px]">
                         <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_832_41826)">
                         <path d="M10 21C15.5228 21 20 16.5228 20 11C20 5.47715 15.5228 1 10 1C4.47715 1 0 5.47715 0 11C0 16.5228 4.47715 21 10 21Z" fill="#F0F0F0"/>
@@ -268,7 +268,7 @@ const Languages = () => {
                         </svg>
                         English - UK
                     </div>
-                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4]">
+                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4] px-[12px]">
                         <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_832_41830)">
                         <path d="M10 21C15.5228 21 20 16.5228 20 11C20 5.47715 15.5228 1 10 1C4.47715 1 0 5.47715 0 11C0 16.5228 4.47715 21 10 21Z" fill="#F0F0F0"/>
@@ -284,7 +284,7 @@ const Languages = () => {
                         </svg>
                         French
                     </div>
-                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4]">
+                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4] px-[12px]">
                     <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_832_41834)">
                     <path d="M10 21C15.5228 21 20 16.5228 20 11C20 5.47715 15.5228 1 10 1C4.47715 1 0 5.47715 0 11C0 16.5228 4.47715 21 10 21Z" fill="#D80027"/>
@@ -301,7 +301,7 @@ const Languages = () => {
                     </svg>
                     Tunisian
                     </div>
-                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4]">
+                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4] px-[12px]">
                         <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_832_41838)">
                         <path d="M0.621094 14.4783C2.03402 18.2862 5.69945 21 9.9991 21C14.2987 21 17.9642 18.2862 19.3771 14.4783L9.9991 13.6087L0.621094 14.4783Z" fill="#FFDA44"/>
@@ -317,7 +317,7 @@ const Languages = () => {
                         </svg>
                         German
                     </div>
-                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4]">
+                    <div className="w-full h-[36px] flex items-center py-[12px] cursor-pointer text-[14px] text-[#0F172A] font-medium gap-[8px] hover:bg-[#F4F4F4] px-[12px]">
                         <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_832_41842)">
                         <path d="M0 11C0 15.2996 2.71375 18.965 6.52168 20.378L7.39129 10.9999L6.52168 1.62198C2.71375 3.03495 0 6.70034 0 11Z" fill="#6DA544"/>
