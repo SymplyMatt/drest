@@ -17,7 +17,7 @@ interface AppState {
 const initialState: AppState = {
   theme: "light",
   searchMode: null,
-  language: "en",
+  language: import.meta.env.VITE_LANGUAGE || "en",
   loggedInUser: null,
   cart: [1,2,3,4,5,6],
 };
