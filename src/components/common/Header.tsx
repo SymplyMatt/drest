@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import MenuLinks from "./MenuLinks";
+// import MenuLinks from "./MenuLinks";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AppDispatch } from "../../redux/store";
 import { useDispatch } from "react-redux";
@@ -10,6 +10,7 @@ import UserInfo from "./UserInfo";
 
 const Header = () => {
     const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
+    console.log(hoveredMenu)
     const navigate = useNavigate();
     const location = useLocation();
     const dispatch = useDispatch<AppDispatch>();
@@ -56,7 +57,7 @@ const Header = () => {
                     <div className="flex items-center gap-[8px]"><img src="/images/headphone.svg" /> Need help? <span className="font-bold">+216 50 660006</span></div>
                 </div>
             </div>
-            <MenuLinks hoveredMenu={hoveredMenu} setHoveredMenu={setHoveredMenu}/>
+            {/* <MenuLinks hoveredMenu={hoveredMenu} setHoveredMenu={setHoveredMenu}/> */}
         </>
     )
 }
