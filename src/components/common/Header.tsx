@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import MenuLinks from "./MenuLinks";
 import { useLocation, useNavigate } from "react-router-dom";
-import { AppDispatch, RootState } from "../../redux/store";
+import { AppDispatch } from "../../redux/store";
 import { useDispatch } from "react-redux";
 import { setSearchMode } from "../../redux/states/app";
 import Languages from "./Languages";

@@ -3,7 +3,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from "swiper/modules";
-import { useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 
 const BrandsSlider = () => {
@@ -12,7 +11,6 @@ const BrandsSlider = () => {
         ["/images/mango.svg", "/images/addidas.svg", "/images/burberry.svg", "/images/chanel.svg", "/images/oysho.svg", "/images/zara.svg", "/images/patagonia.svg"],
         ["/images/mango.svg", "/images/addidas.svg", "/images/burberry.svg", "/images/chanel.svg", "/images/oysho.svg", "/images/zara.svg", "/images/patagonia.svg"]
     ];
-    const navigate = useNavigate();
     const swiperRef = useRef<SwiperClass | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
 
