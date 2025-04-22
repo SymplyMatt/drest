@@ -7,14 +7,12 @@ import { setSearchMode } from "../../redux/states/app";
 import Languages from "./Languages";
 import Currencies from "./Currencies";
 import UserInfo from "./UserInfo";
-import { useSelector } from "react-redux";
 
 const Header = () => {
     const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
     const navigate = useNavigate();
     const location = useLocation();
     const dispatch = useDispatch<AppDispatch>();
-    const { language } = useSelector((state: RootState) => state.app);
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
     }, [location.pathname]);
