@@ -3,8 +3,12 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination } from "swiper/modules";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { heroSlider } from "../../contents/home";
 
 const HeroSlider = () => {
+    const { language } = useSelector((state: RootState) => state.app);
     return (
         <div className="w-full flex justify-center slider_hero">
             <Swiper
@@ -20,7 +24,7 @@ const HeroSlider = () => {
                     <div className="w-full flex justify-center bg-no-repeat bg-cover px-[80px] gap-[32px] flex-col text-white sliderone">
                         <div className="flex flex-col justify-center gap-[12px]">
                             <div className="text-white text-[40px] leading-[50px] header_slider">
-                                Fall in Love with Fashion <br /> This Valentine's Day!
+                                { heroSlider[language][0].title1 } <br /> { heroSlider[language][0].title2 }
                             </div>
                             <div className="text-[14px] max-w-[370px] text-[#E6E6E6]">
                                 Celebrate love in style! Shop our exclusive Valentine's Day collection and enjoy up to 50% off on romantic dresses, chic accessories, and more.
