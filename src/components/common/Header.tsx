@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import MenuLinks from "./MenuLinks";
 import { useLocation, useNavigate } from "react-router-dom";
-import { AppDispatch, RootState } from "../../redux/store";
+import { AppDispatch } from "../../redux/store";
 import { useDispatch } from "react-redux";
 import { setSearchMode } from "../../redux/states/app";
 import Languages from "./Languages";
@@ -56,7 +56,7 @@ const Header = () => {
                     <div className="flex items-center gap-[8px]"><img src="/images/headphone.svg" /> Need help? <span className="font-bold">+216 50 660006</span></div>
                 </div>
             </div>
-            {/* <MenuLinks hoveredMenu={hoveredMenu} setHoveredMenu={setHoveredMenu}/> */}
+            <MenuLinks hoveredMenu={hoveredMenu} setHoveredMenu={setHoveredMenu}/>
         </>
     )
 }
