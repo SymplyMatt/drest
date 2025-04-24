@@ -9,8 +9,8 @@ import Ads from "../components/home/Ads";
 const Home = () => {
     return (
         <Layout>
-            {/* <HeroSlider />
-            <RoundCategoriesSlider />
+            <HeroSlider />
+            {/* <RoundCategoriesSlider />
             <FlashSales />
             <CategoriesAndProducts title="Recommended"/>
             <NewArrivals />

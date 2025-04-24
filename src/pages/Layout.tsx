@@ -10,7 +10,7 @@ interface LayoutProps {
     children?: ReactNode;
     headerGap?: string;
 }
-const Layout = ({ children=<></>, headerGap= "gap-[24px]" }: LayoutProps) => {
+const Layout = ({ children=<></>, headerGap= "tmd:gap-[24px]" }: LayoutProps) => {
     const { authPage } = useSelector((state: RootState) => state.auth);
     const { searchMode } = useSelector((state: RootState) => state.app);
     return (
