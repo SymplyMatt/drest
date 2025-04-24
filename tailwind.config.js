@@ -16,6 +16,7 @@ module.exports = {
         sm: "640px",
         "sm-tab": "700px",
         mm: "900px",
+        tmd: "1200px",
         md: "1200px",
         mmd: "1300px",
         lg: "1500px",

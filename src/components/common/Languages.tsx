@@ -23,7 +23,7 @@ const Languages = () => {
     };
   return (
     <div className="relative" ref={wrapperRef}>
-        <div className="flex items-center gap-[8px] cursor-pointer">
+        <div className="hidden items-center gap-[8px] cursor-pointer tmd:flex">
             <img src="/images/france.svg" />
             <div className="flex gap-[4px] items-center text-[14px] cursor-pointer" onClick={toggleDropdown}>
                 <span className="text-[14px] font-extrabold">FR</span>

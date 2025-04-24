@@ -27,7 +27,7 @@ const UserInfo = () => {
         setShowLanguages(prev => !prev);
     };
   return (
-    <div className="flex items-center gap-[16px]" ref={wrapperRef}>
+    <div className="hidden tmd:flex items-center gap-[16px]" ref={wrapperRef}>
         {!loggedInUser && <div className="h-[48px] bg-black text-[#E6E6E6] flex items-center justify-center gap-[12px] px-[12px] cursor-pointer" onClick={() => dispatch(setAuthPage("emaillogin"))}><img src="/images/user.svg" /> Sign In/Sign Up</div>}
         {loggedInUser && 
             <div className="relative" onClick={toggleDropdown}>

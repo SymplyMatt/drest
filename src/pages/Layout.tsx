@@ -20,10 +20,10 @@ const Layout = ({ children=<></>, headerGap= "gap-[24px]" }: LayoutProps) => {
                     <Header />
                     {children}
                 </div>
-                <Footer />
+                {/* <Footer /> */}
             </div>
-            {authPage && <Auth />}
-            {searchMode && <Search />}
+            {/* {authPage && <Auth />}
+            {searchMode && <Search />} */}
         </>
     );
 };

@@ -23,10 +23,7 @@ const Currencies = () => {
 
     return (
         <div className="relative" ref={wrapperRef}>
-            <div
-                className="text-[14px] flex items-center gap-[4px] cursor-pointer"
-                onClick={toggleDropdown}
-            >
+            <div className="text-[14px] hidden tmd:flex items-center gap-[4px] cursor-pointer" onClick={toggleDropdown}>
                 Currency: <span className="text-[14px] font-extrabold">EUR</span>
                 <img src="/images/caretdownsm.svg" />
             </div>

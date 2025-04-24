@@ -9,14 +9,14 @@ import Ads from "../components/home/Ads";
 const Home = () => {
     return (
         <Layout>
-            <HeroSlider />
+            {/* <HeroSlider />
             <RoundCategoriesSlider />
             <FlashSales />
             <CategoriesAndProducts title="Recommended"/>
             <NewArrivals />
             <CategoriesAndProducts title="Trending"/>
             <Ads />
-            <FeaturedBrands />
+            <FeaturedBrands /> */}
         </Layout>
     );
 }

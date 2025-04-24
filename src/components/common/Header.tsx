@@ -20,19 +20,20 @@ const Header = () => {
     return (
         <>
             <div className="w-full flex flex-col">
-                <div className="w-full flex h-[42px] bg-headerBlack items-center justify-between text-textWhite px-[50px]">
+                <div className="w-full flex h-[42px] bg-headerBlack items-center justify-between text-textWhite px-[20px] tmd:px-[50px]">
                     <Languages />
                     <div className="flex justify-center items-center gap-[40px] text-[14px]">
-                        <div className="cursor-pointer"><img src="/images/arrowleft.svg" /></div>
-                        <div className="font-semibold">We love love - Shop for all the Valentine's Day gifts in our LOVE SALE!!</div>
-                        <div className="font-medium underline leading-[14px] cursor-pointer">SHOP NOW</div>
-                        <div className="cursor-pointer"><img src="/images/arrowright.svg" /></div>
+                        <div className="cursor-pointer hidden tmd:block "><img src="/images/arrowleft.svg" /></div>
+                        <div className="hidden tmd:block font-semibold">We love love - Shop for all the Valentine's Day gifts in our LOVE SALE!!</div>
+                        <div className="block tmd:hidden font-semibold">Special offers : 15% off for first purchase for new users</div>
+                        <div className="hidden tmd:block font-medium underline leading-[14px] cursor-pointer">SHOP NOW</div>
+                        <div className="hidden tmd:block cursor-pointer"><img src="/images/arrowright.svg" /></div>
                     </div>
                     <Currencies />
                 </div>
-                <div className="w-full h-[92px] flex border-b border-[#E6E6E6] px-[50px] justify-between items-center">
-                    <div className="cursor-pointer" onClick={()=>navigate('/')}><img src="/images/logo.svg" /></div>
-                    <div className="flex items-center gap-[16px] uppercase">
+                <div className="w-full h-[92px] flex border-b border-[#E6E6E6] px-[20px] tmd:px-[50px] justify-between items-center">
+                    <div className="cursor-pointer" onClick={()=>navigate('/')}><img src="/images/logo.svg" className="h-[32px] tmd:h-[36px]"/></div>
+                    <div className="items-center gap-[16px] uppercase hidden tmd:flex">
                         {["women", "men", "kids", "home", "beauty"].map((category, index) => (
                             <div key={index} className="font-semibold cursor-pointer flex items-center opacity-[0.90] hover:text-[#8F0024] open-menu">
                                 <img src={`/images/${category}.svg`} alt="" />
@@ -45,7 +46,7 @@ const Header = () => {
                     </div>
                     <UserInfo />
                 </div>
-                <div className="relative border-b border-[#E6E6E6] h-[48px] w-full px-[50px] flex items-center justify-between">
+                <div className="relative border-b border-[#E6E6E6] h-[48px] w-full px-[20px] tmd:px-[50px] hidden tmd:flex items-center justify-between">
                     <div className="flex items-center gap-[30px] text-[14px]">
                         {["New Arrivals", "Shoes", "Clothing", "Accessories", "Bags", "Sports", "Gifts", "Brands", "SALE"].map((category, index) => (
                             <div className={`group h-full ${category.toLowerCase() !== 'sale' ? 'font-medium cursor-pointer hover:decoration-2 ' : 'font-semibold cursor-pointer text-[#D52B56]'}`} key={index} onMouseEnter={() => setHoveredMenu(category)}>
@@ -56,6 +57,13 @@ const Header = () => {
                     </div>
                     <div className="flex items-center gap-[8px]"><img src="/images/headphone.svg" /> Need help? <span className="font-bold">+216 50 660006</span></div>
                 </div>
+                <div className="items-center gap-[16px] uppercase flex tmd:hidden w-full p-[20px]">
+                        {["women", "men", "kids", "home", "beauty"].map((category, index) => (
+                            <div key={index} className="font-semibold cursor-pointer flex items-center opacity-[0.90] hover:text-[#8F0024] open-menu">
+                                <img src={`/images/${category}.svg`} alt="" />
+                            </div>
+                        ))}
+                    </div>
             </div>
             {/* <MenuLinks hoveredMenu={hoveredMenu} setHoveredMenu={setHoveredMenu}/> */}
         </>
