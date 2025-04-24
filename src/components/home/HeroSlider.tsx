@@ -14,7 +14,7 @@ const HeroSlider = () => {
             <Swiper
                 slidesPerView={1}
                 loop={true}
-                // autoplay={{ delay: 4000, disableOnInteraction: false }}
+                autoplay={{ delay: 4000, disableOnInteraction: false }}
                 pagination={{ clickable: true }}
                 modules={[Autoplay, Pagination]}
                 className="w-full slider_home"
