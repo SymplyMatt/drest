@@ -13,8 +13,8 @@ const Home = () => {
             <RoundCategoriesSlider />
             <FlashSales />
             <CategoriesAndProducts title="Recommended"/>
-            {/* <NewArrivals />
-            <CategoriesAndProducts title="Trending"/>
+            <NewArrivals />
+            {/* <CategoriesAndProducts title="Trending"/>
             <Ads />
             <FeaturedBrands /> */}
         </Layout>

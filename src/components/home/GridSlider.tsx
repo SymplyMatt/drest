@@ -25,17 +25,17 @@ const GridSlider = () => {
     const renderCustomPagination = () => {
         const totalSlides = 5; 
         return (
-            <div className="flex items-center justify-center mt-6 gap-[24px]">
-                <img src="/images/prev_arrivals.svg" className="cursor-pointer" onClick={handlePrevClick}   />
-                <div className="flex items-center justify-center">
+            <div className="w-full tmd:w-fit flex items-center justify-center gap-[24px] tmd:mt-[24px] p-[20px] tmd:p-[0px] mx-auto">
+                <img src="/images/prev_arrivals.svg" className="cursor-pointer" onClick={handlePrevClick} />
+                <div className="w-full flex items-center justify-center">
                     {[...Array(totalSlides)].map((_, index) => (
                         <button
                             key={index}
                             onClick={() => swiperRef.current?.slideTo(index)}
                             className={`transition-all duration-300 ${
                                 activeIndex === index 
-                                    ? "bg-[#141511] w-[80px] h-[4px]" 
-                                    : "bg-[#F3F3F3] w-[80px] h-[4px]"
+                                    ? "bg-[#141511] w-full min-w-[20px] max-w-[80px] h-[4px] tmd:w-[80px]" 
+                                    : "bg-[#F3F3F3] w-full min-w-[20px] max-w-[80px] h-[4px] tmd:w-[80px]"
                             }`}
                             aria-label={`Go to slide ${index + 1}`}
                         />
@@ -61,7 +61,6 @@ const GridSlider = () => {
             >
                 <Swiper
                     spaceBetween={0}
-                    slidesPerView={slidesPerView}
                     loop={true}
                     autoplay={{ delay: 2000, disableOnInteraction: false }}
                     modules={[Autoplay, Pagination]}
@@ -69,6 +68,16 @@ const GridSlider = () => {
                     className="flex items-center justify-between"
                     onSwiper={(swiper) => (swiperRef.current = swiper)}
                     onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+                    breakpoints={{
+                        0: {
+                          slidesPerView: 1,
+                          spaceBetween: 16,
+                        },
+                        1000: {
+                          slidesPerView: slidesPerView,
+                          spaceBetween: 0,
+                        },
+                    }}
                 >
                     {[...Array(5)].map((_, index) => (
                         <SwiperSlide 
@@ -82,7 +91,7 @@ const GridSlider = () => {
                                         className="w-[80%] h-[80%] object-cover"
                                         alt={`Arrival ${index + 1}`}
                                     />
-                                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-[48px] text-[#141511] bg-white py-[8px] px-[24px] flex justify-center items-center text-[16px] font-medium leading-[24.8px] tracking-[0%] cursor-pointer gap-[8px] opacity-0 scale-0 transition-all duration-50 group-hover:opacity-100 group-hover:scale-100">
+                                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-[48px] text-[#141511] bg-white py-[8px] px-[24px] flex justify-center items-center text-[16px] font-medium leading-[24.8px] tracking-[0%] cursor-pointer gap-[8px] opacity-0 scale-0 transition-all duration-50 group-hover:opacity-100 group-hover:scale-100 whitespace-nowrap">
                                         View all <img src="/images/arrowdirection.svg" alt="Arrow" />
                                     </div>
                                 </div>

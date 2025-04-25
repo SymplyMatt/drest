@@ -137,7 +137,10 @@ body{
         justify-content: center;
     }
     .swiper-slide{
-        width: 315px;
+        width: 315px !important;
+        @media screen and (max-width: 1000px) {
+            width: 290px !important;
+        }
         height: 420px;
         display: flex;
         align-items: center;
