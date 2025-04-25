@@ -87,7 +87,7 @@ const GridSlider = () => {
                             <div className="w-full h-full flex flex-col justify-center transition-all duration-1000 hover:z-10 relative bg-white">
                                 <div className="w-full flex items-center justify-center new_arrivals_img relative">
                                     <img 
-                                        src={`/images/arrivals${(index % 10) + 1}.png`} 
+                                        src={`/images/arrivals${(index % 5) + 1}.png`} 
                                         className="w-[80%] h-[80%] object-cover"
                                         alt={`Arrival ${index + 1}`}
                                     />
