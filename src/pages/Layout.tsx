@@ -1,10 +1,10 @@
 import { ReactNode } from "react";
 import Header from "../components/common/Header";
-import Footer from "../components/common/Footer";
+// import Footer from "../components/common/Footer";
 import Auth from "../components/common/Auth";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
-import Search from "../components/common/Search";
+// import Search from "../components/common/Search";
 
 interface LayoutProps {
     children?: ReactNode;
@@ -22,8 +22,8 @@ const Layout = ({ children=<></>, headerGap= "tmd:gap-[24px]" }: LayoutProps) =>
                 </div>
                 {/* <Footer /> */}
             </div>
-            {/* {authPage && <Auth />}
-            {searchMode && <Search />} */}
+            {authPage && <Auth />}
+            {/* {searchMode && <Search />} */}
         </>
     );
 };
