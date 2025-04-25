@@ -79,7 +79,7 @@ const GridSlider = () => {
                         },
                     }}
                 >
-                    {[...Array(5)].map((_, index) => (
+                    {[...Array(100)].map((_, index) => (
                         <SwiperSlide 
                             key={index} 
                             className="flex justify-center bg-[#F3F3F3] border border-[#E6E6E6] transition-all duration-1000 hover:h-[500px] hover:w-[375px] hover:z-10 relative px-[20px] py-[60px] hover:px-[20px] hover:py-[20px] hover:scale-[1.05] group"
