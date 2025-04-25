@@ -16,7 +16,7 @@ const Home = () => {
             <NewArrivals />
             <CategoriesAndProducts title="Trending"/>
             <Ads />
-            {/* <FeaturedBrands /> */}
+            <FeaturedBrands />
         </Layout>
     );
 }
