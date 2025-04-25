@@ -14,8 +14,8 @@ const Home = () => {
             <FlashSales />
             <CategoriesAndProducts title="Recommended"/>
             <NewArrivals />
-            {/* <CategoriesAndProducts title="Trending"/>
-            <Ads />
+            <CategoriesAndProducts title="Trending"/>
+            {/* <Ads />
             <FeaturedBrands /> */}
         </Layout>
     );

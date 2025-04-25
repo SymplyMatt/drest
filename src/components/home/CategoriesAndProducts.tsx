@@ -108,7 +108,7 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({
                                     />
                                 )}
                                 
-                                <div className={`absolute top-[20px] left-[10px] h-[28px] bg-[#8F0024] p-[10px] flex justify-center items-center text-white text-[14px] font-semibold leading-[21px] tracking-[-4%] gap-[8px] ${!discount && 'hidden'}`}>
+                                <div className={`text-[12px] tmd:text-[14px] absolute top-[20px] left-[10px] h-[28px] bg-[#8F0024] p-[6px] tmd:p-[10px] flex justify-center items-center text-white font-semibold leading-[21px] tracking-[-4%] gap-[8px] ${!discount && 'hidden'}`}>
                                     <img src="/images/discountbadge.svg" alt="Discount" /> {discount}% OFF
                                 </div>
                                 
