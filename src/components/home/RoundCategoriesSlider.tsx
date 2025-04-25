@@ -11,9 +11,9 @@ interface ComponentProp{
 const RoundCategoriesSlider: React.FC<ComponentProp> = ({ handleClick }) => {
     const navigate = useNavigate();
     const categories: string[][] = [
-        ["Shoes1", "SHOP NOW", "Tops", "Hand Bags", "Tops", "Shoes", "Bottoms", "Jackets & coats"], 
-        ["Shoes2", "SHOP NOW", "Tops", "Hand Bags", "Tops", "Shoes", "Bottoms", "Jackets & coats"], 
-        ["Shoes3", "SHOP NOW", "Tops", "Hand Bags", "Tops", "Shoes", "Bottoms", "Jackets & coats"]
+        ["Shoes", "SHOP NOW", "Tops", "Hand Bags", "Tops", "Shoes", "Bottoms", "Jackets & coats"], 
+        ["Shoes", "SHOP NOW", "Tops", "Hand Bags", "Tops", "Shoes", "Bottoms", "Jackets & coats"], 
+        ["Shoes", "SHOP NOW", "Tops", "Hand Bags", "Tops", "Shoes", "Bottoms", "Jackets & coats"]
     ];
     const swiperRef = useRef<SwiperClass | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
@@ -21,16 +21,16 @@ const RoundCategoriesSlider: React.FC<ComponentProp> = ({ handleClick }) => {
     const renderCustomPagination = () => {
         const totalSlides = categories.length; 
         return (
-            <div className="flex items-center justify-center gap-[24px] mt-[24px]">
-                <div className="flex items-center justify-center">
+            <div className="w-full tmd:w-fit flex items-center justify-center gap-[24px] my-[24px] px-[20px]">
+                <div className="w-full flex items-center justify-center">
                     {[...Array(totalSlides)].map((_, index) => (
                         <button
                             key={index}
                             onClick={() => swiperRef.current?.slideTo(index)}
                             className={`transition-all duration-300 ${
                                 activeIndex === index 
-                                    ? "bg-[#141511] w-[60px] h-[4px]" 
-                                    : "bg-[#F3F3F3] w-[60px] h-[4px]"
+                                    ? "bg-[#141511] w-full max-w-[60px] h-[4px] tmd:w-[60px]" 
+                                    : "bg-[#F3F3F3] w-full max-w-[60px] h-[4px] tmd:w-[60px]"
                             }`}
                             aria-label={`Go to slide ${index + 1}`}
                         />

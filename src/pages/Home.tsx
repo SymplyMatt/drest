@@ -11,8 +11,8 @@ const Home = () => {
         <Layout>
             <HeroSlider />
             <RoundCategoriesSlider />
-            {/* <FlashSales />
-            <CategoriesAndProducts title="Recommended"/>
+            <FlashSales />
+            {/* <CategoriesAndProducts title="Recommended"/>
             <NewArrivals />
             <CategoriesAndProducts title="Trending"/>
             <Ads />

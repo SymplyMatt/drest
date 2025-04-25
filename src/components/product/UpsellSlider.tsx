@@ -44,17 +44,17 @@ const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products = [1, 2, 
     const renderCustomPagination = () => {
         const totalSlides = 5; 
         return (
-            <div className="flex items-center justify-center gap-[24px] mt-[24px]">
+            <div className="w-full tmd:w-fit flex items-center justify-center gap-[24px] tmd:mt-[24px] p-[20px] tmd:p-[0px] mx-auto">
                 <img src="/images/prev_arrivals.svg" className="cursor-pointer" onClick={handlePrevClick} />
-                <div className="flex items-center justify-center">
+                <div className="w-full flex items-center justify-center">
                     {[...Array(totalSlides)].map((_, index) => (
                         <button
                             key={index}
                             onClick={() => swiperRef.current?.slideTo(index)}
                             className={`transition-all duration-300 ${
                                 activeIndex === index 
-                                    ? "bg-[#141511] w-[80px] h-[4px]" 
-                                    : "bg-[#F3F3F3] w-[80px] h-[4px]"
+                                    ? "bg-[#141511] w-full min-w-[20px] max-w-[80px] h-[4px] tmd:w-[80px]" 
+                                    : "bg-[#F3F3F3] w-full min-w-[20px] max-w-[80px] h-[4px] tmd:w-[80px]"
                             }`}
                             aria-label={`Go to slide ${index + 1}`}
                         />
@@ -67,7 +67,7 @@ const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products = [1, 2, 
 
     return (
         <>
-            <div className="w-full flex flex-col items-center gap-[20px]">
+            <div className="w-full flex flex-col items-center gap-[20px] upsell p-[20px] tmd:p-[0px]">
                 {titleComponent}
                 {showTitle && <div className="w-full flex flex-col gap-[20px] justify-center px-[50px]">
                     <div className="w-full flex items-center justify-between h-[48px]">
@@ -85,7 +85,6 @@ const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products = [1, 2, 
                     </div>
                 </div>}
                 <Swiper
-                    slidesPerView={4}
                     className="w-full"
                     loop={true}
                     autoplay={{ delay: 3000, disableOnInteraction: false }}
@@ -93,6 +92,16 @@ const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products = [1, 2, 
                     modules={[Autoplay]}
                     onSwiper={(swiper) => (swiperRef.current = swiper)}
                     onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+                    breakpoints={{
+                        0: {
+                          slidesPerView: 1.2,
+                          spaceBetween: 8
+                        },
+                        1000: {
+                            slidesPerView: 4,
+                            spaceBetween: 0
+                        },
+                    }}
                 >
                     {products.map((number,index) => {
                         const discount = number % 3 !== 0 ? 0 : Math.floor(number/100 * 100) + 10;
@@ -100,14 +109,14 @@ const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products = [1, 2, 
                         const priceAfterDiscount = price - (price * discount) / 100;
                         return (
                             <SwiperSlide key={index}>
-                                <div className="flex flex-col items-center h-[480px] group cursor-pointer" 
+                                <div className="flex flex-col items-center w-[300px] h-[400px] tmd:h-[480px] tmd:w-fit group cursor-pointer" 
                                     onMouseEnter={() =>{ 
                                         setHoveredIndex(index);
                                     }} 
                                     onMouseLeave={() => {
                                         setHoveredIndex(null);
                                     }}>
-                                    <div className="w-full h-[400px] bg-[#F3F3F3] border border-[#E6E6E6] flex items-center justify-center relative">
+                                    <div className="w-full w-[300px] tmd:w-fit h-[400px] tmd:h-[480px] tmd:w-fit bg-[#F3F3F3] border border-[#E6E6E6] flex items-center justify-center relative">
                                         <img src={(hoveredIndex && hoveredIndex === index) ? activeImage : `/images/recommended${number}.png`} className="w-full h-full object-cover" />
                                         <img src="/images/heart.svg" className="cursor-pointer absolute top-[20px] right-[10px] transition-transform duration-200 hover:scale-[0.9]" />
                                         <div
