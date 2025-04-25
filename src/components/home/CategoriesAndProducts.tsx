@@ -57,11 +57,11 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({
         <div className="w-full flex flex-col items-center gap-[24px] mb-[50px]">
             {titleComponent}
             {showTitle && (
-                <div className="w-full flex flex-col gap-[20px] justify-center px-[50px]">
-                    <div className="w-full flex items-center justify-between h-[48px]">
+                <div className="w-full flex flex-col gap-[0px] tmd:gap-[20px] justify-center tmd:px-[50px]">
+                    <div className="w-full flex items-center justify-between h-[48px] my-[20px] tmd:my-[0px] px-[20px] tmd:px-[0px]">
                         <div className="flex items-center gap-[32px]">
                             <div className="text-[24px] font-semibold leading-[32.78px] tracking-[0%]">{title}</div>
-                            <div className="flex items-center gap-[24px]">
+                            <div className="items-center gap-[24px] hidden tmd:flex">
                                 <img src="/images/line_sm.svg" alt="Divider" />
                                 <div className="h-[43px] bg-[#2B2B2B] text-white flex items-center justify-center p-[12px] text-[14px] font-semibold leading-[19.12px] tracking-[0%] cursor-pointer">WOMEN'S</div>
                                 <div className="flex items-center justify-center text-[14px] font-medium leading-[19.12px] tracking-[0%] cursor-pointer">MEN'S</div>
@@ -76,7 +76,7 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({
                 </div>
             )}
             
-            <div className="w-full grid grid-cols-4">
+            <div className="w-full grid grid-cols-2 tmd:grid-cols-4">
                 {products.map((number, index) => {
                     const imagesLength = allImages.length; 
                     const adjustedNumber = (number % imagesLength) || imagesLength; 
@@ -86,12 +86,12 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({
                     const showImage = hoveredIndex === index ? activeImage : `/images/recommended${adjustedNumber}.png`;
                     return (
                         <div 
-                            className="col-span-1 flex flex-col items-center h-[500px] group" 
+                            className="col-span-1 flex flex-col items-center h-fit tmd:h-[500px] group" 
                             key={index}
                             onMouseEnter={() => setHoveredIndex(index)} 
                             onMouseLeave={() => setHoveredIndex(null)}
                         >
-                            <div className="w-full h-[400px] bg-[#F3F3F3] border border-[#E6E6E6] flex items-center justify-center relative">
+                            <div className="w-full h-[200px] tmd:h-[400px] bg-[#F3F3F3] border border-[#E6E6E6] flex items-center justify-center relative">
                                 <img src={showImage} className="w-full h-full object-cover" alt={`Product ${index + 1}`} />
                                 
                                 {!location.pathname.includes('wishlist') ? (
@@ -128,12 +128,12 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({
                                 </div>
                             </div>
                             
-                            <div className="flex flex-col items-center justify-center gap-[4px] h-[100px] border-b border-l border-r border-[#E6E6E6] w-full">
+                            <div className="flex flex-col items-center justify-center gap-[4px] tmd:h-[100px] border-b border-l border-r border-[#E6E6E6] w-full py-[12px] px-[16px]">
                                 <div className="text-[14px] leading-[27px] tracking-[0%] text-[#141511] font-semibold">
                                     {brands[adjustedNumber - 1]}
                                 </div>
                                 
-                                <div className="text-[18px] leading-[27px] tracking-[0%]">
+                                <div className="text-[18px] leading-[27px] tracking-[0%] text-center">
                                     Ocean breeze varsity jacket
                                 </div>
                                 
