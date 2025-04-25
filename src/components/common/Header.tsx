@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-// import MenuLinks from "./MenuLinks";
+import MenuLinks from "./MenuLinks";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AppDispatch } from "../../redux/store";
 import { useDispatch } from "react-redux";
@@ -40,7 +40,7 @@ const Header = () => {
                     </div>
                     <Currencies />
                 </div>
-                <div className="w-full h-[92px] flex border-b border-[#E6E6E6] px-[20px] tmd:px-[50px] justify-between items-center">
+                <div className="w-full h-[92px] flex border-b border-[#E6E6E6] px-[20px] tmd:px-[50px] justify-between items-center gap-[24px]">
                     <div className="cursor-pointer" onClick={()=>navigate('/')}><img src="/images/logo.svg" className="h-[32px] tmd:h-[36px]"/></div>
                     <div className="items-center gap-[16px] uppercase hidden tmd:flex">
                         {["women", "men", "kids", "home", "beauty"].map((category, index) => (
@@ -74,7 +74,7 @@ const Header = () => {
                         ))}
                 </div>
             </div>
-            {/* <MenuLinks hoveredMenu={hoveredMenu} setHoveredMenu={setHoveredMenu}/> */}
+            <MenuLinks hoveredMenu={hoveredMenu} setHoveredMenu={setHoveredMenu}/>
         </>
     )
 }
