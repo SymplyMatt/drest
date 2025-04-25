@@ -23,7 +23,7 @@ const GridSlider = () => {
     };
 
     const renderCustomPagination = () => {
-        const totalSlides = 5; 
+        const totalSlides = 100; 
         return (
             <div className="w-full tmd:w-fit flex items-center justify-center gap-[24px] tmd:mt-[24px] p-[20px] tmd:p-[0px] mx-auto">
                 <img src="/images/prev_arrivals.svg" className="cursor-pointer" onClick={handlePrevClick} />
@@ -87,7 +87,7 @@ const GridSlider = () => {
                             <div className="w-full h-full flex flex-col justify-center transition-all duration-1000 hover:z-10 relative bg-white">
                                 <div className="w-full flex items-center justify-center new_arrivals_img relative">
                                     <img 
-                                        src={`/images/arrivals${index + 1}.png`} 
+                                        src={`/images/arrivals${(index % 10) + 1}.png`} 
                                         className="w-[80%] h-[80%] object-cover"
                                         alt={`Arrival ${index + 1}`}
                                     />
