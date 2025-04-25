@@ -97,6 +97,10 @@ body{
     }
     .swiper-slide{
         height: 384px !important;
+        @media screen and (max-width: 1000px) {
+            height: 290px !important;
+            width: 230px !important;
+        }
     }
     .swiper-button-prev, .swiper-button-next {
         background-size: contain;

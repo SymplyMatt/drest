@@ -7,14 +7,14 @@ import { Autoplay, Navigation } from "swiper/modules";
 const FeaturedBrands = () => {
     return (
         <div className="flex flex-col items-center gap-[36px] w-full justify-center mb-[40px]">
-            <div className="w-full flex flex-col items-center justify-center gap-[4px]">
+            <div className="w-full flex flex-col items-center justify-center gap-[4px] py-[12px] tmd:px-[0px]">
                 <div className="text-[48px] font-medium leading-[62.4px] tracking-[-2%]">Featured Brands</div>
                 <div className="text-[#8F0024] text-[18px] font-medium leading-[24.59px] tracking-[-2%]">Brands you love</div>
             </div>
             <div className="w-full featured_brands">
                 <Swiper
                     spaceBetween={14}
-                    slidesPerView={4.5}
+                    slidesPerView={1}
                     loop={true}
                     navigation={true}
                     autoplay={{ delay: 3000, disableOnInteraction: false }}
@@ -23,7 +23,7 @@ const FeaturedBrands = () => {
                     className="flex items-center justify-between"
                 >
                     {[...Array(10)].map((_, index) => (
-                        <SwiperSlide key={index} className="h-[384px] flex justify-center">
+                        <SwiperSlide key={index} className="w-[230px] h-[290px] tmd:w-fit tmd:h-[384px] flex justify-center">
                             <div className="relative w-full h-full flex justify-center">
                                 <img
                                     src={`/images/brands${(index % 5) + 1}.png`}
