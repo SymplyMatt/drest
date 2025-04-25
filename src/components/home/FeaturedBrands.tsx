@@ -22,7 +22,7 @@ const FeaturedBrands = () => {
                     speed={2000}
                     className="flex items-center justify-between"
                 >
-                    {[...Array(10)].map((_, index) => (
+                    {[...Array(100)].map((_, index) => (
                         <SwiperSlide key={index} className="w-[230px] h-[290px] tmd:w-fit tmd:h-[384px] flex justify-center">
                             <div className="relative w-full h-full flex justify-center">
                                 <img
