@@ -141,7 +141,7 @@ const AccountMobile = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-[80%] h-[48px] flex items-center justify-center text-[#BD3322] border border-[#D6D6D5] mx-auto font-medium py-[8px]">
+                    <div className="w-[80%] h-[48px] flex items-center justify-center text-[#BD3322] border border-[#D6D6D5] mx-auto font-medium py-[8px] gap-[8px]">
                         <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M8.7168 10.8H17.1668" stroke="#BD3322" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                             <path d="M9.5526 17.4508L6.07927 17.4666C5.08344 17.4716 4.27344 16.6733 4.27344 15.6875V5.91247C4.27344 4.92997 5.0776 4.1333 6.07094 4.1333H9.66594" stroke="#BD3322" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
