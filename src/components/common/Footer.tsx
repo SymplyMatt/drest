@@ -23,7 +23,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex w-full bg-black flex-col gap-[20px] tmd:gap-[100px] text-[#E6E6E6] px-[20px] tmd:px-[50px] py-[70px]">
+            <div className="flex w-full bg-black flex-col gap-[50px] tmd:gap-[100px] text-[#E6E6E6] px-[20px] tmd:px-[50px] py-[70px]">
                 <div className="grid grid-cols-1 tmd:grid-cols-5 w-full gap-[50px]">
                     <div className="flex flex-col w-full gap-[50px] col-span-1 tmd:col-span-3 tmd:pr-[50px] order-2 tmd:order-1">
                         <div className="w-full grid grid-cols-1 tmd:grid-cols-3 gap-[20px] tmd:gap-[100px] items-center justify-between">
