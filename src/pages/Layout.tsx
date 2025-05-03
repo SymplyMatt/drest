@@ -5,6 +5,7 @@ import Auth from "../components/common/Auth";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import Search from "../components/common/Search";
+import MobileFooter from "../components/common/MobileFooter";
 
 interface LayoutProps {
     children?: ReactNode;
@@ -24,6 +25,7 @@ const Layout = ({ children=<></>, headerGap= "tmd:gap-[24px]" }: LayoutProps) =>
             </div>
             {authPage && <Auth />}
             {searchMode && <Search />}
+            <MobileFooter />
         </>
     );
 };

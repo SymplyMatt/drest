@@ -95,7 +95,7 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-                <div className="w-full flex items-center justify-center text-[14px] font-normal leading-[19.12px] tracking-[0%] text-[#E6E6E6]">© 2024 Drest. All Rights Reserved</div>
+                <div className="w-full flex items-center justify-center text-[14px] font-normal leading-[19.12px] tracking-[0%] text-[#E6E6E6] py-[20px]">© 2024 Drest. All Rights Reserved</div>
             </div>
         </div>
     )
