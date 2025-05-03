@@ -12,7 +12,7 @@ const MobileFooter = () => {
     const location = useLocation();
     const currentPath = location.pathname.split('/')[1];
     return (
-        <div className="fixed bottom-0 left-0 w-full h-[80px] bg-[#FFFFFF] z-10 bg-black px-[26px] tmd:hidden grid grid-cols-5 items-center justify-between border border-[#EAEAEA] gap-[12px]">
+        <div className="fixed bottom-0 left-0 w-full h-[80px] bg-[#FFFFFF] z-10 px-[26px] tmd:hidden grid grid-cols-5 items-center justify-between border border-[#EAEAEA] gap-[12px]">
             <div className={`col-span-1 flex flex-col items-center gap-[4px] text-center text-[12px] ${(!authPage  && currentPath == '') ? 'font-bold' : 'font-medium'} ${(!authPage  && currentPath == '') ? 'text-[#912A1D]' : 'text-[#141511]'}`}
                 onClick={() => {
                     authPage && dispatch(setAuthPage(null));
