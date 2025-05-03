@@ -79,10 +79,10 @@ const Footer = () => {
                     <div className="flex flex-col gap-[36px]  col-span-3 text-[#E6E6E6]">
                         <div className="text-[16px] font-normal leading-[21.86px] tracking-[0%]">Accepted Payment methods</div>
                         <div className="flex items-center gap-[36px]">
-                            <img src="/images/visa.svg" alt="" />
-                            <img src="/images/mastercard.svg" alt="" />
-                            <img src="/images/americanexpress.svg" alt="" />
-                            <img src="/images/paypal.svg" alt="" />
+                            <img src="/images/visa.svg" alt="" className="tmd:h-full h-[24px]"/>
+                            <img src="/images/mastercard.svg" alt="" className="tmd:h-full h-[24px]" />
+                            <img src="/images/americanexpress.svg" alt="" className="tmd:h-full h-[24px]" />
+                            <img src="/images/paypal.svg" alt="" className="tmd:h-full h-[24px]" />
                         </div>
                     </div>
                     <div className="hidden tmd:flex flex-col gap-[36px] col-span-2 text-[#E6E6E6]">
