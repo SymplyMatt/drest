@@ -54,7 +54,7 @@ const PasswordLogin = () => {
                     </div>
                     <div className="w-full flex flex-col justify-center gap-[12px] mt-[10px]">
                         <div className="text-center text-[#676764]">Don't have an account?</div>
-                        <div className="flex h-[40px] bg-[#fff] w-full cursor-pointer items-center justify-center border border-[#D6D6D5] text-[#141511] text-[14px] font-semibold gap-[8px]"><img src="/images/apple.svg" /> Continue with Google</div>
+                        <div className="flex h-[40px] bg-[#fff] w-full cursor-pointer items-center justify-center border border-[#D6D6D5] text-[#141511] text-[14px] font-semibold gap-[8px] uppercase"> Create An account</div>
                     </div>
                 <div className="text-[#676764] text-[16px] leading-[150%]"> By clicking Sign in, Continue with Google, Facebook, or Apple, you agree to Drest's <span className="underline cursor-pointer">Terms of Use</span> and <span className="underline cursor-pointer">Privacy Policy.</span></div>
             </div>
