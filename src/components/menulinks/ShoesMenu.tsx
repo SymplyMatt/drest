@@ -26,7 +26,7 @@ const ShoesMenu: React.FC<MenuLinksProps> = ({ hoveredMenu, setHoveredMenu }) =>
     };
   return (
     <div 
-      className={`absolute z-10 bg-white top-[182px] left-[100px] grid grid-cols-[auto_360px] gap-[100px] px-[50px] shadow-lg
+      className={`absolute z-10 bg-white top-[182px] left-[100px] hidden tmd:grid grid-cols-[auto_360px] gap-[100px] px-[50px] shadow-lg
                   transition-all duration-300 ease-in-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'}`} 
       onMouseLeave={() => setHoveredMenu(null)}
     >

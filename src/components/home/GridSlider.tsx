@@ -109,7 +109,7 @@ const GridSlider = () => {
                     ))}
                 </Swiper>
             </div>
-            {renderCustomPagination()}
+            {/* {renderCustomPagination()} */}
         </>
     );
 };
