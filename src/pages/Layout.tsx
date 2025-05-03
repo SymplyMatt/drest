@@ -20,7 +20,7 @@ const Layout = ({ children=<></>, headerGap= "tmd:gap-[24px]" }: LayoutProps) =>
                     <Header />
                     {children}
                 </div>
-                {/* <Footer /> */}
+                <Footer />
             </div>
             {authPage && <Auth />}
             {searchMode && <Search />}

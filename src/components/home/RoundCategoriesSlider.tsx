@@ -19,23 +19,21 @@ const RoundCategoriesSlider: React.FC<ComponentProp> = ({ handleClick }) => {
     const [activeIndex, setActiveIndex] = useState(0);
 
     const renderCustomPagination = () => {
-        const totalSlides = categories.length; 
+        const totalSlides = categories.length;
         return (
-            <div className="w-full tmd:w-fit flex items-center justify-center gap-[24px] my-[24px] px-[20px]">
-                <div className="w-full flex items-center justify-center">
-                    {[...Array(totalSlides)].map((_, index) => (
-                        <button
-                            key={index}
-                            onClick={() => swiperRef.current?.slideTo(index)}
-                            className={`transition-all duration-300 ${
-                                activeIndex === index 
-                                    ? "bg-[#141511] w-full max-w-[60px] h-[4px] tmd:w-[60px]" 
-                                    : "bg-[#F3F3F3] w-full max-w-[60px] h-[4px] tmd:w-[60px]"
-                            }`}
-                            aria-label={`Go to slide ${index + 1}`}
-                        />
-                    ))}
-                </div>
+            <div className="w-full flex items-center justify-center gap-1 my-[24px] px-[20px]">
+                {[...Array(totalSlides)].map((_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => swiperRef.current?.slideTo(index)}
+                        className={`transition-all duration-300 grow h-[4px] ${
+                            activeIndex === index 
+                                ? "bg-[#141511]" 
+                                : "bg-[#F3F3F3]"
+                        }`}
+                        aria-label={`Go to slide ${index + 1}`}
+                    />
+                ))}
             </div>
         );
     };
