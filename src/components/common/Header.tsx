@@ -41,7 +41,7 @@ const Header = () => {
                     <Currencies />
                 </div>
                 <div className="w-full h-[92px] flex border-b border-[#E6E6E6] px-[20px] tmd:px-[50px] justify-between items-center gap-[24px]">
-                    <div className="cursor-pointer" onClick={()=>navigate('/')}><img src="/images/logo.svg" className="h-[32px] tmd:h-[36px]"/></div>
+                    <div className="cursor-pointer" onClick={()=>navigate('/')}><img src="/images/logo.svg" className="h-[28px] tmd:h-[36px]"/></div>
                     <div className="items-center gap-[16px] uppercase hidden tmd:flex">
                         {["women", "men", "kids", "home", "beauty"].map((category, index) => (
                             <div key={index} className="font-semibold cursor-pointer flex items-center opacity-[0.90] hover:text-[#8F0024] open-menu">
@@ -49,7 +49,7 @@ const Header = () => {
                             </div>
                         ))}
                     </div>
-                    <div className="h-[48px] border border-black flex items-center justify-between px-[12px] cursor-pointer w-[200px]">
+                    <div className="h-[48px] border border-black flex items-center justify-between px-[12px] cursor-pointer w-fit tmd:w-[200px]">
                         <input type="text" className="border-none outline-none focus:ring-0 text-base text-[#6B6B6B] cursor-pointer" placeholder="Search for product" onClick={() => dispatch(setSearchMode('empty'))}/>
                         <img src="/images/search.svg" />
                     </div>
