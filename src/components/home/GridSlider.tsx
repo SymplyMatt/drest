@@ -11,37 +11,22 @@ const GridSlider = () => {
     const [slidesPerView, setSlidesPerView] = useState(4);
     const [activeIndex, setActiveIndex] = useState(0);
 
-    const handlePrevClick = () => {
-        if (swiperRef.current) {
-            swiperRef.current.slidePrev();
-        }
-    };
-    const handleNextClick = () => {
-        if (swiperRef.current) {
-            swiperRef.current.slideNext();
-        }
-    };
-
     const renderCustomPagination = () => {
-        const totalSlides = 100; 
+        const totalSlides = 3;
         return (
-            <div className="w-full tmd:w-fit flex items-center justify-center gap-[24px] tmd:mt-[24px] p-[20px] tmd:p-[0px] mx-auto">
-                <img src="/images/prev_arrivals.svg" className="cursor-pointer" onClick={handlePrevClick} />
-                <div className="w-full flex items-center justify-center">
-                    {[...Array(totalSlides)].map((_, index) => (
-                        <button
-                            key={index}
-                            onClick={() => swiperRef.current?.slideTo(index)}
-                            className={`transition-all duration-300 ${
-                                activeIndex === index 
-                                    ? "bg-[#141511] w-full min-w-[20px] max-w-[80px] h-[4px] tmd:w-[80px]" 
-                                    : "bg-[#F3F3F3] w-full min-w-[20px] max-w-[80px] h-[4px] tmd:w-[80px]"
-                            }`}
-                            aria-label={`Go to slide ${index + 1}`}
-                        />
-                    ))}
-                </div>
-                <img src="/images/next_arrivals.svg"  className="cursor-pointer" onClick={handleNextClick}/>
+            <div className="w-full flex items-center justify-center gap-1 px-[20px]">
+                {[...Array(totalSlides)].map((_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => swiperRef.current?.slideTo(index)}
+                        className={`transition-all duration-300 grow h-[4px] ${
+                            activeIndex === index 
+                                ? "bg-[#141511]" 
+                                : "bg-[#F3F3F3]"
+                        }`}
+                        aria-label={`Go to slide ${index + 1}`}
+                    />
+                ))}
             </div>
         );
     };
@@ -109,7 +94,7 @@ const GridSlider = () => {
                     ))}
                 </Swiper>
             </div>
-            {/* {renderCustomPagination()} */}
+            {renderCustomPagination()}
         </>
     );
 };

@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import Header from "../components/common/Header";
-// import Footer from "../components/common/Footer";
+import Footer from "../components/common/Footer";
 import Auth from "../components/common/Auth";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
