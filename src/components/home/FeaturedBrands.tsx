@@ -14,13 +14,20 @@ const FeaturedBrands = () => {
             <div className="w-full featured_brands">
                 <Swiper
                     spaceBetween={14}
-                    slidesPerView={1}
                     loop={true}
                     navigation={true}
                     autoplay={{ delay: 3000, disableOnInteraction: false }}
                     modules={[Autoplay, Navigation]}
                     speed={2000}
                     className="flex items-center justify-between"
+                    breakpoints={{
+                        0: {
+                          slidesPerView: 1,
+                        },
+                        1000: {
+                          slidesPerView: 4.5
+                        },
+                    }}
                 >
                     {[...Array(100)].map((_, index) => (
                         <SwiperSlide key={index} className="w-[230px] h-[290px] tmd:w-fit tmd:h-[384px] flex justify-center">
