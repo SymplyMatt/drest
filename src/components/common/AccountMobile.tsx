@@ -1,24 +1,18 @@
-import { useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../redux/store";
+import { AppDispatch } from "../../redux/store";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
-import { setAuthPage } from "../../redux/states/auth";
 import Footer from "./Footer";
 import { setSearchMode } from "../../redux/states/app";
 import { useNavigate } from "react-router-dom";
 
 const AccountMobile = () => {
-    const { authPage } = useSelector((state: RootState) => state.auth);
     const navigate = useNavigate();
     const dispatch = useDispatch<AppDispatch>();
-    const handleBack = () => {
-        dispatch(setAuthPage(null));
-    }
   return (
     <>
         <motion.div initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.4, ease: "easeOut" }} className="w-full h-[100vh] fixed top-0 right-0 bg-[#1415114D] z-10 flex flex-col tmd:pt-[46px] pb-[80px] overflow-scroll">
-            <div className="w-full min-h-[100%] bg-white border border-[#D6D6D5] tmd:p-[38px] flex flex-col items-center h_content overflow-y-scroll login">
-                <div className="w-full h-[92px] flex border-b border-[#E6E6E6] px-[20px] tmd:px-[50px] justify-between items-center gap-[24px]">
+            <div className="w-full min-h-[100%] bg-white border border-[#D6D6D5] tmd:p-[38px] flex flex-col items-center h_content overflow-y-scroll">
+                <div className="w-full min-h-[92px] flex border-b border-[#E6E6E6] px-[20px] tmd:px-[50px] justify-between items-center gap-[24px]">
                     <div className="cursor-pointer" onClick={()=>navigate('/')}><img src="/images/logo.svg" className="h-[28px] tmd:h-[36px]"/></div>
                     <div className="h-[48px] border border-black flex items-center justify-between px-[12px] cursor-pointer w-fit tmd:w-[200px]">
                         <input type="text" className="border-none outline-none focus:ring-0 text-base text-[#6B6B6B] cursor-pointer" placeholder="Search for product" onClick={() => dispatch(setSearchMode('empty'))}/>
@@ -137,8 +131,8 @@ const AccountMobile = () => {
                         LOGOUT
                     </div>
                 </div>
+                <Footer />
             </div>
-            <Footer />
         </motion.div>
     </>
   );

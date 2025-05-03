@@ -10,7 +10,6 @@ import UserInfo from "./UserInfo";
 
 const Header = () => {
     const [hoveredMenu, setHoveredMenu] = useState<string | null>(null);
-    console.log(hoveredMenu)
     const navigate = useNavigate();
     const location = useLocation();
     const dispatch = useDispatch<AppDispatch>();
