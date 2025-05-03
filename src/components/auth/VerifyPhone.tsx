@@ -6,8 +6,8 @@ import { setLoggedInUser } from "../../redux/states/app";
 const VerifyPhone = () => {
     const dispatch = useDispatch<AppDispatch>();
     return (
-        <div className="w-[500px] bg-white border border-[#D6D6D5] p-[38px] flex flex-col items-center h_content overflow-y-scroll login">
-            <img src="/images/cancelx.svg" className="self-end cursor-pointer" onClick={() => dispatch(setAuthPage(null))}/>
+        <div className="w-[500px] bg-white border border-[#D6D6D5] py-[40px] px-[20px] tmd:p-[38px] flex flex-col items-center h_content overflow-y-scroll login">
+            <img src="/images/cancelx.svg" className="self-end cursor-pointer hidden tmd:block" onClick={() => dispatch(setAuthPage(null))}/>
             <div className="w-full flex flex-col items-center gap-[24px] p-10">
                 <div className="flex flex-col items-center gap-[8px] mt-[-24px]">
                     <div className="text-center text-[28px] font-medium leading-[130%] tracking-[0%] text-[#141511]">Verify your mobile number</div>

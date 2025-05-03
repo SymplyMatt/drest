@@ -6,7 +6,7 @@ const PhoneLogin = () => {
     const dispatch = useDispatch<AppDispatch>();
     return (
         <div className="w-[500px] h-full bg-white border border-[#D6D6D5] p-[38px] flex flex-col items-center h_content overflow-y-scroll login">
-            <img src="/images/cancelx.svg" className="self-end cursor-pointer" onClick={() => dispatch(setAuthPage(null))}/>
+            <img src="/images/cancelx.svg" className="self-end cursor-pointer hidden tmd:block" onClick={() => dispatch(setAuthPage(null))}/>
             <div className="w-full flex flex-col items-center gap-[24px] p-10">
                 <img src="/images/logo.svg" className="h-[38px] mt-[-24px]"/>
                 <div className="flex flex-col items-center gap-[8px]">

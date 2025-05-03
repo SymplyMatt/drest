@@ -20,7 +20,7 @@ interface AuthState {
 const initialState: AuthState = {
   signupValues: { email: "", password: "" },
   loginValues: { email: "", password: "" },
-  authPage: null,
+  authPage: "emaillogin",
 };
 
 const auth = createSlice({
