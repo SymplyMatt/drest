@@ -1,7 +1,7 @@
 
 const MobileFooter = () => {
   return (
-    <div className="fixed bottom-0 left-0 w-full h-[80px] bg-[#FFFFFF] z-10 bg-black px-[26px] tmd:hidden grid grid-cols-5 items-center justify-between border border-[#EAEAEA] gap-[12px]">
+    <div className="fixed bottom-0 left-0 w-full h-[80px] bg-[#FFFFFF] z-10 px-[26px] tmd:hidden grid grid-cols-5 items-center justify-between border border-[#EAEAEA] gap-[12px]">
         <div className="col-span-1 flex flex-col items-center gap-[4px] text-center text-[#912A1D] text-[12px] font-bold">
             <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0.5 18V6L8.5 0L16.5 6V18H10.5V11H6.5V18H0.5Z" fill="#912A1D"/>
