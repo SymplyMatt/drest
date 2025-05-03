@@ -96,9 +96,25 @@ const AccountMobile = () => {
                                 </svg>
                                 Change Language
                             </div>
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7.5 15L12.5 10L7.5 5" stroke="#141511" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+                            <div className="flex items-center gap-[8px] text-[#141511] font-medium text-[14px]">
+                                <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_855_31298)">
+                                    <path d="M11 21.4C16.5228 21.4 21 16.9229 21 11.4C21 5.87718 16.5228 1.40002 11 1.40002C5.47715 1.40002 1 5.87718 1 11.4C1 16.9229 5.47715 21.4 11 21.4Z" fill="#F0F0F0"/>
+                                    <path d="M21.0003 11.4C21.0003 7.10039 18.2865 3.43496 14.4785 2.02203V20.7781C18.2865 19.3651 21.0003 15.6997 21.0003 11.4Z" fill="#D80027"/>
+                                    <path d="M1 11.4C1 15.6997 3.71379 19.3651 7.52176 20.778V2.02203C3.71379 3.43496 1 7.10039 1 11.4Z" fill="#0052B4"/>
+                                    </g>
+                                    <rect x="0.5" y="0.900024" width="21" height="21" rx="10.5" stroke="white"/>
+                                    <defs>
+                                    <clipPath id="clip0_855_31298">
+                                    <rect x="1" y="1.40002" width="20" height="20" rx="10" fill="white"/>
+                                    </clipPath>
+                                    </defs>
+                                </svg>
+                                French
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.5 15L12.5 10L7.5 5" stroke="#141511" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
                         </div>
                         <div className="py-[16px] px-[12px] flex items-center justify-between border-b border-[#D6D6D5] h-[56px]">
                             <div className="flex items-center gap-[12px] text-[#141511] font-medium text-[14px]">
@@ -117,9 +133,12 @@ const AccountMobile = () => {
                                 </svg>
                                 Delivery addresses
                             </div>
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7.5 15L12.5 10L7.5 5" stroke="#141511" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
+                            <div className="flex items-center gap-[8px] text-[#141511] font-medium text-[14px]">
+                                EUR (Euro)
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.5 15L12.5 10L7.5 5" stroke="#141511" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
                         </div>
                     </div>
                     <div className="w-[80%] h-[48px] flex items-center justify-center text-[#BD3322] border border-[#D6D6D5] mx-auto font-medium py-[8px]">
