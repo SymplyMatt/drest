@@ -6,53 +6,63 @@ import { setLoggedInUser } from "../../redux/states/app";
 const CreateAccount = () => {
   const dispatch = useDispatch<AppDispatch>();
     return (
-      <div className="w-[500px] h-full bg-white border border-[#D6D6D5] py-[40px] px-[20px] tmd:p-[38px] flex flex-col items-center h_content overflow-y-scroll login">
+      <div className="w-[500px] h-full bg-white border border-[#D6D6D5] pb-[40px] tmd:p-[38px] flex flex-col items-center h_content overflow-y-scroll login">
           <img src="/images/cancelx.svg" className="self-end cursor-pointer hidden tmd:block" onClick={() => dispatch(setAuthPage(null))}/>
-          <div className="w-full flex flex-col items-center gap-[24px] p-10">
-              <img src="/images/logo.svg" className="h-[38px] mt-[-24px]"/>
-              <div className="flex flex-col items-center gap-[8px]">
-                  <div className="text-center text-[28px] font-medium leading-[130%] tracking-[0%] text-[#141511]">Create your account</div>
+          <div className="w-full flex flex-col items-center gap-[24px] py-10 tmd:p-10">
+              <div className="flex w-full items-center justify-between tmd:justify-center h-[80px] tmd:h-fit border-b border-[#D6D6D5] tmd:border-none px-[20px]">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="tmd:hidden" onClick={() => dispatch(setAuthPage(null))}>
+                    <path d="M4.16602 10H15.8327" stroke="#141511" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8.33268 5.83334L4.16602 10" stroke="#141511" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8.33268 14.1667L4.16602 10" stroke="#141511" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <img src="/images/logo.svg" className="h-[28px] tmd:h-[38px] mt-[-24px]"/>
+                <div  className="tmd:hidden"></div>
               </div>
-              <div className="w-full flex flex-col justify-center gap-[12px]">
-                  <label className="text-[#141511] font-semibold">Email</label>
-                  <input type="text" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder="mail@gmail.com"/>
-                  <label className="text-[#141511] font-semibold">First name</label>
-                  <input type="text" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder="Maulana"/>
-                  <label className="text-[#141511] font-semibold">Mobile number</label>
-                  <div className="w-full flex items-center">
-                    <div className="h-[48px] bg-[#F3F3F3] flag-container min-w-[85px] border-r border-[#D6D6D5] flex items-center justify-center text-[#676764] p-[8px] gap-[4px] cursor-pointer">
-                        <img src="/images/tunisia.svg" className="w-[24px] h-[24px]"/>
-                        +1
-                        <img src="/images/caretflag.svg" className="w-[24px] h-[24px]"/>
-                    </div>
-                    <input type="text" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder="Enter mobile number"/>
-                    </div>
-                  <label className="text-[#141511] font-semibold">Password</label>
-                  <div className="w-full flex items-center relative">
-                    <input type="password" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder=""/>
-                    <img src="/images/eyepassword.svg" className="cursor-pointer absolute right-[10px]"/>
-                  </div>
-                  <div className="flex flex-col justify-center gap-[8px]">
-                    <div className="w-full flex items-center justify-center gap-[8px]">
-                        <div className={`transition-all duration-300 h-[4px] flex-grow bg-[#D58618]`}> </div>
-                        <div className={`transition-all duration-300 h-[4px] flex-grow bg-[#D58618]`}> </div>
-                        <div className={`transition-all duration-300 h-[4px] flex-grow bg-[#D6D6D5]`}> </div>
-                    </div>
-                    <div className="text-[#676764] flex items-center gap-[8px] cursor-pointer text-left text-[14px]">At least 1 number, 8 characters, 1 symbol</div>
+              <div className="w-full flex flex-col gap-[24px] px-[20px]">
+                <div className="flex flex-col items-center gap-[8px]">
+                    <div className="text-center text-[28px] font-medium leading-[130%] tracking-[0%] text-[#141511]">Create your account</div>
                 </div>
+                <div className="w-full flex flex-col justify-center gap-[12px]">
+                    <label className="text-[#141511] font-semibold">Email</label>
+                    <input type="text" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder="mail@gmail.com"/>
+                    <label className="text-[#141511] font-semibold">First name</label>
+                    <input type="text" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder="Maulana"/>
+                    <label className="text-[#141511] font-semibold">Mobile number</label>
+                    <div className="w-full flex items-center">
+                      <div className="h-[48px] bg-[#F3F3F3] flag-container min-w-[85px] border-r border-[#D6D6D5] flex items-center justify-center text-[#676764] p-[8px] gap-[4px] cursor-pointer">
+                          <img src="/images/tunisia.svg" className="w-[24px] h-[24px]"/>
+                          +1
+                          <img src="/images/caretflag.svg" className="w-[24px] h-[24px]"/>
+                      </div>
+                      <input type="text" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder="Enter mobile number"/>
+                      </div>
+                    <label className="text-[#141511] font-semibold">Password</label>
+                    <div className="w-full flex items-center relative">
+                      <input type="password" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder=""/>
+                      <img src="/images/eyepassword.svg" className="cursor-pointer absolute right-[10px]"/>
+                    </div>
+                    <div className="flex flex-col justify-center gap-[8px]">
+                      <div className="w-full flex items-center justify-center gap-[8px]">
+                          <div className={`transition-all duration-300 h-[4px] flex-grow bg-[#D58618]`}> </div>
+                          <div className={`transition-all duration-300 h-[4px] flex-grow bg-[#D58618]`}> </div>
+                          <div className={`transition-all duration-300 h-[4px] flex-grow bg-[#D6D6D5]`}> </div>
+                      </div>
+                      <div className="text-[#676764] flex items-center gap-[8px] cursor-pointer text-left text-[14px]">At least 1 number, 8 characters, 1 symbol</div>
+                  </div>
+                </div>
+                <div className="flex h-[48px] bg-[#141511] w-full cursor-pointer text-white items-center justify-center" 
+                  onClick={() => {
+                    dispatch(setLoggedInUser({name: "Matt", email: "symplymatt@gmail.com", id: "1"}));
+                    dispatch(setAuthPage("verify-email"));
+                  }}>REGISTER</div>
+                <div className="text-[#676764] flex items-center gap-[8px] cursor-pointer">Already have an account? <span className="font-semibold text-[#141511] underline" onClick={() => dispatch(setAuthPage('emaillogin'))}>Sign in</span></div>
+                <div className="text-[#676764]">Or</div>
+                <div className="w-full flex flex-col justify-center gap-[12px]">
+                    <div className="uppercase flex h-[36px] bg-[#fff] w-full cursor-pointer items-center justify-center border border-[#D6D6D5] text-[#141511] text-[14px] font-semibold gap-[8px]"><img src="/images/google.svg" /> Signup with Google</div>
+                    <div className="uppercase flex h-[36px] bg-[#fff] w-full cursor-pointer items-center justify-center border border-[#D6D6D5] text-[#141511] text-[14px] font-semibold gap-[8px]"><img src="/images/apple.svg" /> Signup with Google</div>
+                </div>
+                <div className="text-[#676764] text-[16px] leading-[150%]"> By clicking Sign in, Continue with Google, Facebook, or Apple, you agree to Drest's <span className="underline cursor-pointer">Terms of Use</span> and <span className="underline cursor-pointer">Privacy Policy.</span></div>
               </div>
-              <div className="flex h-[48px] bg-[#141511] w-full cursor-pointer text-white items-center justify-center" 
-                onClick={() => {
-                  dispatch(setLoggedInUser({name: "Matt", email: "symplymatt@gmail.com", id: "1"}));
-                  dispatch(setAuthPage("verify-email"));
-                }}>REGISTER</div>
-              <div className="text-[#676764] flex items-center gap-[8px] cursor-pointer">Already have an account? <span className="font-semibold text-[#141511] underline" onClick={() => dispatch(setAuthPage('emaillogin'))}>Sign in</span></div>
-              <div className="text-[#676764]">Or</div>
-              <div className="w-full flex flex-col justify-center gap-[12px]">
-                  <div className="uppercase flex h-[36px] bg-[#fff] w-full cursor-pointer items-center justify-center border border-[#D6D6D5] text-[#141511] text-[14px] font-semibold gap-[8px]"><img src="/images/google.svg" /> Signup with Google</div>
-                  <div className="uppercase flex h-[36px] bg-[#fff] w-full cursor-pointer items-center justify-center border border-[#D6D6D5] text-[#141511] text-[14px] font-semibold gap-[8px]"><img src="/images/apple.svg" /> Signup with Google</div>
-              </div>
-              <div className="text-[#676764] text-[16px] leading-[150%]"> By clicking Sign in, Continue with Google, Facebook, or Apple, you agree to Drest's <span className="underline cursor-pointer">Terms of Use</span> and <span className="underline cursor-pointer">Privacy Policy.</span></div>
           </div>
       </div>
     )
