@@ -9,7 +9,7 @@ const SearchResults = () => {
     const [input, setInput] = useState<string>("");
     const navigate = useNavigate();
     return (
-    <div className="w-[100vw] h-[100vh] fixed top-0 right-0 bg-[#1415114D] z-10 flex justify-center">
+    <div className="w-[100vw] h-[100vh] fixed top-0 right-0 bg-[#1415114D] z-10 hidden tmd:flex justify-center">
         <div className="w-[70%] bg-white h_content border border-[#D6D6D5] p-[40px] flex flex-col items-center gap-[40px]">
             <div className="w-full flex items-center justify-between gap-[40px]">
                 <div className="w-full flex items-center justify-center border border-black h-[48px]">
