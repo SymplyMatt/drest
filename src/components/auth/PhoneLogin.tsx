@@ -46,7 +46,7 @@ const PhoneLogin = () => {
                             dispatch(setAuthPage("emaillogin"));
                         }}>SIGN IN WITH EMAIL INSTEAD
                     </div>
-                    <div className="text-[#676764]">Or</div>
+                    <div className="text-[#676764] text-center">Or</div>
                     <div className="w-full flex flex-col justify-center gap-[12px]">
                         <div className="flex h-[36px] bg-[#fff] w-full cursor-pointer items-center justify-center border border-[#D6D6D5] text-[#141511] text-[14px] font-semibold gap-[8px]"><img src="/images/google.svg" /> Continue with Google</div>
                         <div className="flex h-[36px] bg-[#fff] w-full cursor-pointer items-center justify-center border border-[#D6D6D5] text-[#141511] text-[14px] font-semibold gap-[8px]"><img src="/images/apple.svg" /> Continue with Google</div>
