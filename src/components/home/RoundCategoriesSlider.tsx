@@ -21,12 +21,12 @@ const RoundCategoriesSlider: React.FC<ComponentProp> = ({ handleClick }) => {
     const renderCustomPagination = () => {
         const totalSlides = categories.length;
         return (
-            <div className="w-full flex items-center justify-center gap-1 my-[24px] px-[20px]">
+            <div className="w-full tmd:w-fit flex items-center justify-center gap-1 my-[24px] px-[20px]">
                 {[...Array(totalSlides)].map((_, index) => (
                     <button
                         key={index}
                         onClick={() => swiperRef.current?.slideTo(index)}
-                        className={`transition-all duration-300 grow h-[4px] ${
+                        className={`transition-all duration-300 grow h-[4px] tmd:w-[80px] ${
                             activeIndex === index 
                                 ? "bg-[#141511]" 
                                 : "bg-[#F3F3F3]"
