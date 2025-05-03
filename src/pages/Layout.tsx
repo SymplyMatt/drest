@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import Search from "../components/common/Search";
 import MobileFooter from "../components/common/MobileFooter";
+import AccountMobile from "../components/common/AccountMobile";
 
 interface LayoutProps {
     children?: ReactNode;
@@ -13,7 +14,7 @@ interface LayoutProps {
 }
 const Layout = ({ children=<></>, headerGap= "tmd:gap-[24px]" }: LayoutProps) => {
     const { authPage } = useSelector((state: RootState) => state.auth);
-    const { searchMode } = useSelector((state: RootState) => state.app);
+    const { searchMode, showAccount } = useSelector((state: RootState) => state.app);
     return (
         <>  
             <div className={`w-full flex flex-col items-center ${(authPage || searchMode) ? "tmd:blur-sm" : ""}`}>
@@ -24,6 +25,7 @@ const Layout = ({ children=<></>, headerGap= "tmd:gap-[24px]" }: LayoutProps) =>
                 <Footer />
             </div>
             {authPage && <Auth />}
+            {showAccount && <AccountMobile />}
             {searchMode && <Search />}
             <MobileFooter />
         </>

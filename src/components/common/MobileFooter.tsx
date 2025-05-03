@@ -2,13 +2,13 @@ import { useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store";
 import { setAuthPage } from "../../redux/states/auth";
 import { useSelector } from "react-redux";
-import { setSearchMode } from "../../redux/states/app";
+import { setSearchMode, setShowAccount } from "../../redux/states/app";
 import { useLocation } from "react-router-dom";
 
 const MobileFooter = () => {
     const dispatch = useDispatch<AppDispatch>();
     const { authPage } = useSelector((state: RootState) => state.auth);
-    const { loggedInUser, searchMode } = useSelector((state: RootState) => state.app);
+    const { loggedInUser, searchMode, showAccount } = useSelector((state: RootState) => state.app);
     const location = useLocation();
     const currentPath = location.pathname.split('/')[1];
     return (
@@ -17,6 +17,7 @@ const MobileFooter = () => {
                 onClick={() => {
                     authPage && dispatch(setAuthPage(null));
                     searchMode && dispatch(setSearchMode(null));
+                    showAccount && dispatch(setShowAccount(false));
                 }}>
                 <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0.5 18V6L8.5 0L16.5 6V18H10.5V11H6.5V18H0.5Z" fill={(!authPage  && currentPath == '') ? "#912A1D" : 'black'}/>
@@ -43,7 +44,8 @@ const MobileFooter = () => {
             </div>
             <div className={`col-span-1 flex flex-col items-center gap-[4px] text-center text-[12px] ${(authPage) ? 'font-bold' : 'font-medium'} ${authPage ? 'text-[#912A1D]' : ''}`} 
                 onClick={() => {
-                    !loggedInUser && !authPage && dispatch(setAuthPage("emaillogin"))
+                    !loggedInUser && !authPage && dispatch(setAuthPage("emaillogin"));
+                    loggedInUser && dispatch(setShowAccount(true));
                 }}>
                 <svg width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M15.5 8C15.5 9.06087 15.0786 10.0783 14.3284 10.8284C13.5783 11.5786 12.5609 12 11.5 12C10.4391 12 9.42172 11.5786 8.67157 10.8284C7.92143 10.0783 7.5 9.06087 7.5 8C7.5 6.93913 7.92143 5.92172 8.67157 5.17157C9.42172 4.42143 10.4391 4 11.5 4C12.5609 4 13.5783 4.42143 14.3284 5.17157C15.0786 5.92172 15.5 6.93913 15.5 8ZM13.5 8C13.5 8.53043 13.2893 9.03914 12.9142 9.41421C12.5391 9.78929 12.0304 10 11.5 10C10.9696 10 10.4609 9.78929 10.0858 9.41421C9.71071 9.03914 9.5 8.53043 9.5 8C9.5 7.46957 9.71071 6.96086 10.0858 6.58579C10.4609 6.21071 10.9696 6 11.5 6C12.0304 6 12.5391 6.21071 12.9142 6.58579C13.2893 6.96086 13.5 7.46957 13.5 8Z" fill={(authPage) ? "#912A1D" : 'black'}/>
