@@ -15,7 +15,7 @@ const Layout = ({ children=<></>, headerGap= "tmd:gap-[24px]" }: LayoutProps) =>
     const { searchMode } = useSelector((state: RootState) => state.app);
     return (
         <>  
-            <div className={`w-full flex flex-col items-center ${(authPage || searchMode) ? "blur-sm" : ""}`}>
+            <div className={`w-full flex flex-col items-center ${(authPage || searchMode) ? "tmd:blur-sm" : ""}`}>
                 <div className={`flex flex-col w-full items-center ${headerGap}`}>
                     <Header />
                     {children}
