@@ -17,11 +17,11 @@ const OTPLogin = () => {
                     <path d="M8.33268 5.83334L4.16602 10" stroke="#141511" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M8.33268 14.1667L4.16602 10" stroke="#141511" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                <img src="/images/logo.svg" className="h-[28px] tmd:h-[38px] mt-[-24px]"/>
+                <img src="/images/logo.svg" className="h-[28px] tmd:h-[38px] tmd:mt-[-24px]"/>
                 <div className="tmd:hidden"></div>
             </div>
             <div className="w-full flex flex-col items-center gap-[24px] px-[20px] py-[40px] tmd:py-[0px]">
-                <div className="flex flex-col items-center gap-[8px] mt-[-24px]">
+                <div className="flex flex-col items-center gap-[8px] tmd:mt-[-24px]">
                     <div className="text-center text-[28px] font-medium leading-[130%] tracking-[0%] text-[#141511]">Sign in</div>
                     <div className="text-center text-[16px] font-normal leading-[130%] tracking-[0%] text-[#4F4F4D]">Enter your password to continue</div>
                     <div className="flex justify-between gap-[12px] items-center text-center text-[16px] font-normal leading-[130%] tracking-[0%] text-[#4F4F4D] font-semibold">
