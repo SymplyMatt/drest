@@ -156,6 +156,32 @@ const Header = () => {
                             </svg>
                         </div>
                 </div>
+                <div className="w-full flex items-center justify-start gap-[18px] overflow-x-auto py-[16px] px-[20px] scrollbar-hide">
+                    <div className="whitespace-nowrap w-fit cursor-pointer flex items-center justify-center gap-[8px] h-[40px] border border-[#959694] border-[0.7px] rounded-[38px] py-[8px] px-[16px] text-[#141511] font-semibold">
+                        All Filters <img src="/images/filters.svg" />
+                    </div>
+                    <select className="whitespace-nowrap cursor-pointer border border-[#959694] border-[0.7px] h-[40px] rounded-[38px] py-[8px] px-[16px] text-[#141511] whitespace-nowrap">
+                        <option value="Universe">Universe</option>
+                    </select>
+                    <select className="whitespace-nowrap cursor-pointer border border-[#959694] border-[0.7px] h-[40px] rounded-[38px] py-[8px] px-[16px] text-[#141511] whitespace-nowrap">
+                        <option value="Universe">Category</option>
+                    </select>
+                    <select className="whitespace-nowrap cursor-pointer border border-[#959694] border-[0.7px] h-[40px] rounded-[38px] py-[8px] px-[16px] text-[#141511] whitespace-nowrap">
+                        <option value="Universe">Size</option>
+                    </select>
+                    <select className="whitespace-nowrap cursor-pointer border border-[#959694] border-[0.7px] h-[40px] rounded-[38px] py-[8px] px-[16px] text-[#141511] whitespace-nowrap">
+                        <option value="Universe">Universe</option>
+                    </select>
+                </div>
+                <div className="flex items-center px-[20px]">
+                    <div className="flex items-center justify-center gap-[12px] h-[40px] border border-[#D6D6D5] py-[8px] px-[12px] text-[#4F4F4D] text-[14px] cursor-pointer bg-[#F3F3F3]">Women 
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.85403 9.14624C9.90048 9.19269 9.93733 9.24784 9.96247 9.30854C9.98762 9.36924 10.0006 9.43429 10.0006 9.49999C10.0006 9.56569 9.98762 9.63074 9.96247 9.69144C9.93733 9.75213 9.90048 9.80728 9.85403 9.85374C9.80757 9.90019 9.75242 9.93704 9.69173 9.96218C9.63103 9.98733 9.56598 10.0003 9.50028 10.0003C9.43458 10.0003 9.36953 9.98733 9.30883 9.96218C9.24813 9.93704 9.19298 9.90019 9.14653 9.85374L5.00028 5.70686L0.854028 9.85374C0.760208 9.94756 0.63296 10.0003 0.500278 10.0003C0.367596 10.0003 0.240348 9.94756 0.146528 9.85374C0.0527077 9.75992 2.61548e-09 9.63267 0 9.49999C-2.61548e-09 9.36731 0.0527077 9.24006 0.146528 9.14624L4.2934 4.99999L0.146528 0.853738C0.0527077 0.759918 0 0.63267 0 0.499988C0 0.367306 0.0527077 0.240058 0.146528 0.146238C0.240348 0.0524178 0.367596 -0.000289917 0.500278 -0.000289917C0.63296 -0.000289917 0.760208 0.0524178 0.854028 0.146238L5.00028 4.29311L9.14653 0.146238C9.24035 0.0524178 9.3676 -0.00028992 9.50028 -0.000289917C9.63296 -0.000289914 9.76021 0.0524178 9.85403 0.146238C9.94785 0.240058 10.0006 0.367306 10.0006 0.499988C10.0006 0.63267 9.94785 0.759918 9.85403 0.853738L5.70715 4.99999L9.85403 9.14624Z" fill="#4F4F4D"/>
+                        </svg>
+                    </div>
+                    <div className="text-[#141511] cursor-pointer underline text-[14px] ml-[10px]" onClick={()=>navigate('/')}>Clear all</div>
+                </div>
+                <div className="w-full flex items-center justify-between gap-[16px] text-[16px] font-semibold leading-[130%] tracking-[-4%] px-[20px] pt-[20px]">Search results for “{searchQuery}” <span className="text-[16px] font-normal capitalize">Showing 2,001 Products</span></div>
             </div>
         </div>
     );
