@@ -51,18 +51,18 @@ const EmptySearch = () => {
             </div>
             <div className="w-full flex flex-col justify-center gap-[12px] tmd:hidden">
                 <div className="text-[#7E7E7C] font-medium">Popular categories</div>
-                <div className="flex flex-col justify-center gap-[8px]">
+                <div className="flex flex-col justify-center gap-[12px]">
                     <div className="flex items-center gap-[8px] text-[#0F172A]">
                         <img src="/images/searchmobileimage.svg" className="rounded-full"/> Sale
                     </div>
                     <div className="flex items-center gap-[8px] text-[#0F172A]">
-                        <img src="/images/searchmobileimage.svg" className="rounded-full"/> Clothing in Women
+                        <img src="/images/searchmobileimage2.svg" className="rounded-full"/> Clothing in Women
                     </div>
                     <div className="flex items-center gap-[8px] text-[#0F172A]">
-                        <img src="/images/searchmobileimage.svg" className="rounded-full"/> Accessories
+                        <img src="/images/searchmobileimage3.svg" className="rounded-full"/> Accessories
                     </div>
                     <div className="flex items-center gap-[8px] text-[#0F172A]">
-                        <img src="/images/searchmobileimage.svg" className="rounded-full"/> Running shoes
+                        <img src="/images/searchmobileimage4.svg" className="rounded-full"/> Running shoes
                     </div>
                 </div>
             </div>
