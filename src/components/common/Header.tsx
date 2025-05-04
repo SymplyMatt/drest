@@ -40,7 +40,7 @@ const Header = () => {
                     </div>
                     <Currencies />
                 </div>
-                {!location.pathname.includes('/search') && <div className="w-full h-[92px] flex border-b border-[#E6E6E6] px-[20px] tmd:px-[50px] justify-between items-center gap-[24px]">
+                <div className={`w-full h-[92px] border-b border-[#E6E6E6] px-[20px] tmd:px-[50px] justify-between items-center gap-[24px] ${location.pathname.includes('/search') ? 'hidden tmd:flex' : 'flex'}`}>
                     <div className="cursor-pointer" onClick={()=>navigate('/')}><img src="/images/logo.svg" className="h-[28px] tmd:h-[36px]"/></div>
                     <div className="items-center gap-[16px] uppercase hidden tmd:flex">
                         {["women", "men", "kids", "home", "beauty"].map((category, index) => (
@@ -54,7 +54,7 @@ const Header = () => {
                         <img src="/images/search.svg" />
                     </div>
                     <UserInfo />
-                </div>}
+                </div>
                 <div className="relative border-b border-[#E6E6E6] h-[48px] w-full px-[20px] tmd:px-[50px] hidden tmd:flex items-center justify-between">
                     <div className="flex items-center gap-[30px] text-[14px]">
                         {["New Arrivals", "Shoes", "Clothing", "Accessories", "Bags", "Sports", "Gifts", "Brands", "SALE"].map((category, index) => (

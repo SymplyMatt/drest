@@ -21,7 +21,7 @@ const Header = () => {
     
     return (
         <div className="w-full flex flex-col gap-[24px] justify-center">
-            <div className="hidden tmd:flex px-[50px] pt-[20px]">
+            <div className="hidden tmd:flex px-[50px] pt-[20px] flex-col gap-[20px]">
                 {type !== 'all' && <div className="items-center justify-center text-[18px] hidden tmd:flex">
                     {menu ?  utils.capitalizeEachWord(menu) : ''}
                     {subcategory ?  '/' : ''}
