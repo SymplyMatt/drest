@@ -12,7 +12,7 @@ const EmptySearch = () => {
     <motion.div initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.4, ease: "easeOut" }} className="min-w-[100%] w-[100vw] h-[100vh] fixed top-0 right-0 bg-[#1415114D] z-10 flex tmd:flex justify-center pt-[0px] tmd:pt-[42px]">
         <div className="w-full h-full tmd:h-fit tmd:w-[70%] bg-white h_content border border-[#D6D6D5] py-[40px] pb-[100px] tmd:py-[40px] px-[20px] tmd:p-[40px] flex flex-col items-center gap-[40px] overflow-scroll">
             <div className="w-full tmd:hidden flex items-center justify-end">
-                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={() => dispatch(setSearchMode(null))}>
                     <path d="M12.9233 12.4976L23.6519 23.2262" stroke="#141511" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     <path d="M12.4127 23.4129L23.1413 12.6843" stroke="#141511" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
