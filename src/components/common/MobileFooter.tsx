@@ -3,7 +3,7 @@ import { AppDispatch, RootState } from "../../redux/store";
 import { setAuthPage } from "../../redux/states/auth";
 import { useSelector } from "react-redux";
 import { setSearchMode, setShowAccount } from "../../redux/states/app";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const MobileFooter = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -11,26 +11,37 @@ const MobileFooter = () => {
     const { loggedInUser, searchMode, showAccount } = useSelector((state: RootState) => state.app);
     const location = useLocation();
     const currentPath = location.pathname.split('/')[1];
+    const navigate = useNavigate();
+    const clearModals = () => {
+        searchMode && dispatch(setSearchMode(null));
+        showAccount && dispatch(setShowAccount(false));
+        authPage && dispatch(setAuthPage(null));
+    }
     return (
         <div className="fixed bottom-0 left-0 w-full h-[80px] bg-[#FFFFFF] z-10 px-[26px] tmd:hidden grid grid-cols-5 items-center justify-between border border-[#EAEAEA] gap-[12px]">
             <div className={`col-span-1 flex flex-col items-center gap-[4px] text-center text-[12px] ${(!authPage  && currentPath == '') ? 'font-bold' : 'font-medium'} ${(!authPage  && currentPath == '') ? 'text-[#912A1D]' : 'text-[#141511]'}`}
                 onClick={() => {
-                    authPage && dispatch(setAuthPage(null));
-                    searchMode && dispatch(setSearchMode(null));
-                    showAccount && dispatch(setShowAccount(false));
+                    clearModals();
+                    navigate('/');
                 }}>
                 <svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0.5 18V6L8.5 0L16.5 6V18H10.5V11H6.5V18H0.5Z" fill={(!authPage  && currentPath == '') ? "#912A1D" : 'black'}/>
                 </svg>
                 Home
             </div>
-            <div className="col-span-1 flex flex-col items-center gap-[4px] text-center text-[#141511] text-[12px] font-medium">
+            <div className="col-span-1 flex flex-col items-center gap-[4px] text-center text-[#141511] text-[12px] font-medium"
+                onClick={() => {
+                    clearModals();
+                }}>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M15.5 5.00022C14.5717 5.00022 13.6815 5.36897 13.0251 6.02535C12.3687 6.68172 12 7.57196 12 8.50022C12 9.42848 12.3687 10.3187 13.0251 10.9751C13.6815 11.6315 14.5717 12.0002 15.5 12.0002C16.4283 12.0002 17.3185 11.6315 17.9749 10.9751C18.6313 10.3187 19 9.42848 19 8.50022C19 7.57196 18.6313 6.68172 17.9749 6.02535C17.3185 5.36897 16.4283 5.00022 15.5 5.00022ZM10 8.50022C10.0001 7.63833 10.2028 6.78852 10.5917 6.01935C10.9806 5.25018 11.5448 4.58317 12.2388 4.07212C12.9329 3.56107 13.7373 3.22028 14.5872 3.07724C15.4372 2.93421 16.3088 2.99293 17.1319 3.24866C17.955 3.5044 18.7065 3.94999 19.3257 4.54951C19.9449 5.14902 20.4146 5.88568 20.6968 6.70006C20.979 7.51444 21.0659 8.38374 20.9504 9.23787C20.8349 10.092 20.5203 10.907 20.032 11.6172L22.707 14.2932L21.293 15.7072L18.618 13.0322C17.7922 13.6005 16.8267 13.9323 15.826 13.9918C14.8253 14.0512 13.8273 13.836 12.9401 13.3694C12.0528 12.9028 11.3099 12.2025 10.7917 11.3444C10.2736 10.4862 9.99978 9.50271 10 8.50022ZM3 4.00022H8V6.00022H3V4.00022ZM3 11.0002H8V13.0002H3V11.0002ZM21 18.0002V20.0002H3V18.0002H21Z" fill="black"/>
                 </svg>
                 Categories
             </div>
-            <div className="col-span-1 flex flex-col items-center gap-[4px] text-center text-[#141511] text-[12px] font-medium">
+            <div className="col-span-1 flex flex-col items-center gap-[4px] text-center text-[#141511] text-[12px] font-medium"
+                onClick={() => {
+                    clearModals();
+                }}>
                 <svg width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8.99816 0.25C6.81501 0.25 5.02302 2.04199 5.02302 4.22514V5.02017H1.09717L1.04787 5.76591L0.252846 20.0764L0.202759 20.9207H17.7928L17.7435 20.0756L16.9484 5.76511L16.8984 5.02017H12.9733V4.22514C12.9733 2.04199 11.1813 0.25 8.99816 0.25ZM8.99816 1.84006C9.63072 1.84006 10.2374 2.09134 10.6847 2.53863C11.132 2.98592 11.3832 3.59258 11.3832 4.22514V5.02017H6.61307V4.22514C6.61307 3.59258 6.86436 2.98592 7.31165 2.53863C7.75894 2.09134 8.36559 1.84006 8.99816 1.84006ZM2.58784 6.61023H5.02302V8.99531H6.61307V6.61023H11.3832V8.99531H12.9733V6.61023H15.4085L16.1041 19.3307H1.89299L2.58784 6.61023Z" fill="black"/>
                 </svg>
@@ -44,6 +55,7 @@ const MobileFooter = () => {
             </div>
             <div className={`col-span-1 flex flex-col items-center gap-[4px] text-center text-[12px] ${(authPage) ? 'font-bold' : 'font-medium'} ${authPage ? 'text-[#912A1D]' : ''}`} 
                 onClick={() => {
+                    clearModals();
                     !loggedInUser && !authPage && dispatch(setAuthPage("emaillogin"));
                     loggedInUser && dispatch(setShowAccount(true));
                 }}>
