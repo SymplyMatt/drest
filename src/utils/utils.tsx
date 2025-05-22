@@ -230,3 +230,40 @@ export default class utils {
       return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   };
 }
+
+import axios from 'axios';
+
+const baseURL = 'https://printing.storgit.com/wp-json/wc/v3/';
+const username = 'ck_6c26057028225672d33e6541b21fcd0f4fb28b9c';
+const password = 'cs_749bba1fe4f35bda59266ccc4de20adb4c8f1d0a';
+
+
+const token = btoa(`${username}:${password}`);
+
+export const fetchProducts = async () => {
+  try {
+    const response = await axios.get(`${baseURL}products`, {
+      headers: {
+        Authorization: `Basic ${token}`,
+      },
+    });
+    console.log('Products:', response.data);
+    return response.data;
+  } catch (err) {
+    console.error('Error fetching products:', err);
+  }
+};
+
+export const fetchCategories = async () => {
+  try {
+    const response = await axios.get(`${baseURL}products/categories`, {
+      headers: {
+        Authorization: `Basic ${token}`,
+      },
+    });
+    console.log('Categories:', response.data);
+    return response.data;
+  } catch (err) {
+    console.error('Error fetching categories:', err);
+  }
+};
