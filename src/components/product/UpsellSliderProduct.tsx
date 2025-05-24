@@ -40,7 +40,7 @@ const UpsellSliderProduct: React.FC<CategoriesAndProductsProps> =({product}) => 
                         !discount && "hidden"
                     }`}
                 >
-                    <img src="/images/discountbadge.svg" /> {discount}% OFF
+                    <img src="/images/discountbadge.svg" /> {Math.round(discount)}% OFF
                 </div>
                 <img src="/images/rec_plus.svg" className="cursor-pointer absolute bottom-[20px] right-[10px]" />
                 <div className="w-full h-[80px] border-t border-b border-[#D6D6D5] cursor-pointer absolute bottom-[0px] right-[0px] bg-white flex items-center justify-center p-[16px] opacity-0 translate-y-4 transition-all duration-500 ease-in-out group-hover:opacity-100 group-hover:translate-y-0">
