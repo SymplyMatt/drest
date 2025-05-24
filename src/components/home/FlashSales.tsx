@@ -1,7 +1,11 @@
 import UpsellSlider from '../product/UpsellSlider'
 import homeimageone from '../../assets/images/homeimageone.png';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 
 const FlashSales = () => {
+  const { products } = useSelector((state: RootState) => state.app);
+
   return (
     <>
       <div className="w-full flex-col items-center justify-center">
@@ -14,7 +18,7 @@ const FlashSales = () => {
               <div className="flex items-center text-white gap-[8px]"><span className="leading-[100%] tracking-[2%]">Time Left:</span> <span className="font-bold">02h : 47m : 05s</span></div>
               <div className="uppercase text-white underline text-[16px] font-medium leading-[24px] tracking-[0%] cursor-pointer absolute right-[16px] top-1/2 -translate-y-1/2 tmd:static  tmd:top-auto tmd:translate-y-0">see all</div>
           </div>
-          <UpsellSlider showTitle={false} />
+          { products.length > 0 ? <UpsellSlider showTitle={false} products={ products.slice(0,1) }/> : <></> }
       </div>
       <img src={homeimageone} className="w-full h-auto" />
     </>

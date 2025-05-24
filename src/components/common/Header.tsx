@@ -15,7 +15,6 @@ const Header = () => {
     const dispatch = useDispatch<AppDispatch>();
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
-        console.log(location.pathname);
     }, [location.pathname]);
     return (
         <>

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Product } from "../../utils/utils";
 
 interface User {
   id: string;
@@ -13,6 +14,7 @@ interface AppState {
   showAccount: boolean;
   loggedInUser: User | null;
   cart: any[];
+  products: Product[];
 }
 
 const initialState: AppState = {
@@ -22,6 +24,7 @@ const initialState: AppState = {
   language: import.meta.env.VITE_LANGUAGE || "us",
   loggedInUser: null,
   cart: [1,2,3,4,5,6],
+  products: [],
 };
 
 const app = createSlice({
@@ -30,6 +33,9 @@ const app = createSlice({
   reducers: {
     setTheme: (state, action: PayloadAction<"light" | "dark">) => {
       state.theme = action.payload;
+    },
+    setProducts: (state, action: PayloadAction<Product[]>) => {
+      state.products = action.payload;
     },
     setSearchMode: (state, action: PayloadAction<string | null>) => {
       state.searchMode = action.payload;
@@ -49,5 +55,5 @@ const app = createSlice({
   },
 });
 
-export const { setTheme, setLanguage, setLoggedInUser, setSearchMode, emptyCart, setShowAccount } = app.actions;
+export const { setTheme, setLanguage, setLoggedInUser, setSearchMode, emptyCart, setShowAccount, setProducts } = app.actions;
 export default app.reducer;

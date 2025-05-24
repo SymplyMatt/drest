@@ -1,4 +1,5 @@
 
+import axios from 'axios';
 export default class utils {
     static anyFalseyValues(obj: { [key: string]: any }): boolean {
         for (const key in obj) {
@@ -231,7 +232,6 @@ export default class utils {
   };
 }
 
-import axios from 'axios';
 
 const baseURL = import.meta.env.VITE_BASEURL || 'https://example.com/api/';
 const username = import.meta.env.VITE_API_USERNAME || '';
@@ -251,3 +251,96 @@ export const fetchFromApi = async (endpoint: string) => {
     console.error(`Error fetching from ${endpoint}:`, err);
   }
 };
+
+export interface Product {
+  id: number;
+  name: string;
+  slug: string;
+  permalink: string;
+  date_created: string;
+  date_created_gmt: string;
+  date_modified: string;
+  date_modified_gmt: string;
+  type: string;
+  status: string;
+  featured: boolean;
+  catalog_visibility: string;
+  description: string;
+  short_description: string;
+  sku: string;
+  price: string;
+  regular_price: string;
+  sale_price: string;
+  date_on_sale_from: string | null;
+  date_on_sale_from_gmt: string | null;
+  date_on_sale_to: string | null;
+  date_on_sale_to_gmt: string | null;
+  on_sale: boolean;
+  purchasable: boolean;
+  total_sales: string;
+  virtual: boolean;
+  downloadable: boolean;
+  downloads: any[]; // can be typed if download structure is known
+  download_limit: number;
+  download_expiry: number;
+  external_url: string;
+  button_text: string;
+  tax_status: string;
+  tax_class: string;
+  manage_stock: boolean;
+  stock_quantity: number;
+  backorders: string;
+  backorders_allowed: boolean;
+  backordered: boolean;
+  low_stock_amount: number | null;
+  sold_individually: boolean;
+  weight: string;
+  dimensions: {
+    length: string;
+    width: string;
+    height: string;
+  };
+  shipping_required: boolean;
+  shipping_taxable: boolean;
+  shipping_class: string;
+  shipping_class_id: number;
+  reviews_allowed: boolean;
+  average_rating: string;
+  rating_count: number;
+  upsell_ids: number[];
+  cross_sell_ids: number[];
+  parent_id: number;
+  purchase_note: string;
+  categories: {
+    id: number;
+    name: string;
+    slug: string;
+  }[];
+  tags: any[];
+  images: any[]; // can be typed if image structure is known
+  attributes: any[]; // can be typed if attribute structure is known
+  default_attributes: any[];
+  variations: any[];
+  grouped_products: any[];
+  menu_order: number;
+  price_html: string;
+  related_ids: number[];
+  meta_data: any[]; // can be typed if structure is known
+  stock_status: string;
+  has_options: boolean;
+  post_password: string;
+  global_unique_id: string;
+  aioseo_notices: any[];
+  brands: any[];
+  _links: {
+    self: {
+      href: string;
+      targetHints: {
+        allow: string[];
+      };
+    }[];
+    collection: {
+      href: string;
+    }[];
+  };
+}
