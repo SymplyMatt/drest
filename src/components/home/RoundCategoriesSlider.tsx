@@ -11,7 +11,7 @@ interface ComponentProp{
     categories?: ProductCategory[];
 }
 const RoundCategoriesSlider: React.FC<ComponentProp> = ({ handleClick, categories=[] }) => {
-    const splitedCategories: ProductCategory[][] = [categories]
+    const splitedCategories: ProductCategory[][] = [categories,categories,categories]
     const navigate = useNavigate();
     const swiperRef = useRef<SwiperClass | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
@@ -50,7 +50,7 @@ const RoundCategoriesSlider: React.FC<ComponentProp> = ({ handleClick, categorie
                     onSwiper={(swiper) => (swiperRef.current = swiper)}
                     onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
                 >
-                    {categories.map((category:ProductCategory, index) => (
+                    {[...categories, ...categories].map((category:ProductCategory, index) => (
                         <SwiperSlide key={index} className="h-full flex flex-col justify-center !w-auto flex-row slide-in-slide">
                             <div className="flex grid-cols-4 items-center gap-[8px]">
                                     <div className="relative h-full flex justify-center flex-col items-center gap-[8px] cursor-pointer" key={index}>
