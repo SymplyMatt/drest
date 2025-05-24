@@ -351,7 +351,7 @@ export interface ProductCategory {
   parent: number;
   description: string;
   display: string;
-  image: null | {
+  image: {
     id: number;
     src: string;
     name: string;
