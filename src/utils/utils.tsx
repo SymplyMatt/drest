@@ -233,37 +233,21 @@ export default class utils {
 
 import axios from 'axios';
 
-const baseURL = 'https://printing.storgit.com/wp-json/wc/v3/';
-const username = 'ck_6c26057028225672d33e6541b21fcd0f4fb28b9c';
-const password = 'cs_749bba1fe4f35bda59266ccc4de20adb4c8f1d0a';
-
+const baseURL = import.meta.env.VITE_BASEURL || 'https://example.com/api/';
+const username = import.meta.env.VITE_API_USERNAME || '';
+const password = import.meta.env.VITE_API_PASSWORD || '';
 
 const token = btoa(`${username}:${password}`);
-
-export const fetchProducts = async () => {
+export const fetchFromApi = async (endpoint: string) => {
   try {
-    const response = await axios.get(`${baseURL}products`, {
+    const response = await axios.get(`${baseURL}${endpoint}`, {
       headers: {
         Authorization: `Basic ${token}`,
       },
     });
-    console.log('Products:', response.data);
+    console.log(`Response from ${endpoint}:`, response.data);
     return response.data;
   } catch (err) {
-    console.error('Error fetching products:', err);
-  }
-};
-
-export const fetchCategories = async () => {
-  try {
-    const response = await axios.get(`${baseURL}products/categories`, {
-      headers: {
-        Authorization: `Basic ${token}`,
-      },
-    });
-    console.log('Categories:', response.data);
-    return response.data;
-  } catch (err) {
-    console.error('Error fetching categories:', err);
+    console.error(`Error fetching from ${endpoint}:`, err);
   }
 };
