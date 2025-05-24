@@ -32,11 +32,9 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
         products.length < 1 && fetchData();
     }, [dispatch]);
 
-    if (products.length === 0) {
+    if (products?.length === 0 || !products) {
         return (
-            <div className="w-full h-screen flex justify-center items-center">
-                <Loader />
-            </div>
+            <Loader />
         );
     }
 

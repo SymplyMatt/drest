@@ -45,9 +45,8 @@ module.exports = {
         3: "3px",
         5: "5px",
         10: "10px",
-        12: "12px",
-        10: "10px",
         11: "11px",
+        12: "12px",
         16: "16px",
         18: "18px",
         20: "20px",
@@ -60,8 +59,8 @@ module.exports = {
         48: "48px",
         50: "50px",
         56: "56px",
-        64: "64px",
         60: "60px",
+        64: "64px",
         80: "80px",
         96: "96px",
         100: "100px",
@@ -72,7 +71,6 @@ module.exports = {
         150: "150px",
         160: "160px",
         180: "180px",
-        200: "200px",
         200: "200px",
         272: "272px",
         286: "286px",
@@ -104,6 +102,17 @@ module.exports = {
       },
       fontFamily: {
         circular: ["Circular", "sans-serif"],
+      },
+
+      // ✅ Add your animation here
+      animation: {
+        zoom: "zoomInOut 2s ease-in-out infinite",
+      },
+      keyframes: {
+        zoomInOut: {
+          "0%, 100%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.2)" },
+        },
       },
     },
   },

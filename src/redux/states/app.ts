@@ -35,7 +35,7 @@ const app = createSlice({
       state.theme = action.payload;
     },
     setProducts: (state, action: PayloadAction<Product[]>) => {
-      state.products = action.payload;
+      if (Array.isArray(action.payload)) state.products = action.payload;
     },
     setSearchMode: (state, action: PayloadAction<string | null>) => {
       state.searchMode = action.payload;
