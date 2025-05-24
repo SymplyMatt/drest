@@ -5,14 +5,18 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination } from "swiper/modules";
 import { useRef, useState } from "react";
+import { ArrivalsAndCategory } from "../../utils/utils";
 
-const GridSlider = () => {
+interface ComponentProp{
+    categoriesAndProducts?: ArrivalsAndCategory[];
+}
+const GridSlider: React.FC<ComponentProp> = ({categoriesAndProducts=[]}) => {
     const swiperRef = useRef<SwiperClass | null>(null);
     const [slidesPerView, setSlidesPerView] = useState(4);
     const [activeIndex, setActiveIndex] = useState(0);
 
     const renderCustomPagination = () => {
-        const totalSlides = 3;
+        const totalSlides = [...categoriesAndProducts, ...categoriesAndProducts, ...categoriesAndProducts].length;
         return (
             <div className="w-full flex items-center justify-center gap-1 px-[20px]">
                 {[...Array(totalSlides)].map((_, index) => (
@@ -64,7 +68,7 @@ const GridSlider = () => {
                         },
                     }}
                 >
-                    {[...Array(100)].map((_, index) => (
+                    {[...categoriesAndProducts, ...categoriesAndProducts, ...categoriesAndProducts].map((categoryAndProduct:ArrivalsAndCategory, index) => (
                         <SwiperSlide 
                             key={index} 
                             className="flex justify-center bg-[#F3F3F3] border border-[#E6E6E6] transition-all duration-1000 hover:h-[500px] hover:w-[375px] hover:z-10 relative px-[20px] py-[60px] hover:px-[20px] hover:py-[20px] hover:scale-[1.05] group"
@@ -72,7 +76,7 @@ const GridSlider = () => {
                             <div className="w-full h-full flex flex-col justify-center transition-all duration-1000 hover:z-10 relative bg-white">
                                 <div className="w-full flex items-center justify-center new_arrivals_img relative">
                                     <img 
-                                        src={`/images/arrivals${(index % 5) + 1}.png`} 
+                                        src={categoryAndProduct.products[0]?.images[0]?.src || categoryAndProduct.category?.image?.src} 
                                         className="w-[80%] h-[80%] object-cover"
                                         alt={`Arrival ${index + 1}`}
                                     />
@@ -82,11 +86,11 @@ const GridSlider = () => {
                                 </div>
                                 <div className="w-full h-[60px] border-t border-[#D6D6D5] flex items-center justify-between">
                                     <div className="w-full flex items-center justify-center text-[18px] font-medium leading-[27px] tracking-[0%]">
-                                        Sweat Shirts
+                                        {categoryAndProduct.category.name}
                                     </div>
                                     <div className="h-[20.5px] bg-[#D6D6D5] w-[1px]" />
                                     <div className="w-full flex items-center justify-center text-[18px] font-medium leading-[27px] tracking-[0%]">
-                                        840 Products
+                                        {categoryAndProduct.products.length} Products
                                     </div>
                                 </div>
                             </div>

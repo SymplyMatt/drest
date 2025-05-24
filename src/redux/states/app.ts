@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Product, ProductCategory } from "../../utils/utils";
+import { ArrivalsAndCategory, Product, ProductCategory } from "../../utils/utils";
 
 interface User {
   id: string;
@@ -16,6 +16,7 @@ interface AppState {
   cart: any[];
   products: Product[];
   categories: ProductCategory[];
+  newArrivals: ArrivalsAndCategory[];
 }
 
 const initialState: AppState = {
@@ -27,6 +28,7 @@ const initialState: AppState = {
   cart: [1,2,3,4,5,6],
   products: [],
   categories: [],
+  newArrivals: [],
 };
 
 const app = createSlice({
@@ -41,6 +43,9 @@ const app = createSlice({
     },
     setCategories: (state, action: PayloadAction<ProductCategory[]>) => {
       if (Array.isArray(action.payload)) state.categories = action.payload;
+    },
+    setNewArrivals: (state, action: PayloadAction<ArrivalsAndCategory[]>) => {
+      if (Array.isArray(action.payload)) state.newArrivals = action.payload;
     },
     setSearchMode: (state, action: PayloadAction<string | null>) => {
       state.searchMode = action.payload;
@@ -60,5 +65,5 @@ const app = createSlice({
   },
 });
 
-export const { setTheme, setLanguage, setLoggedInUser, setSearchMode, emptyCart, setShowAccount, setProducts, setCategories } = app.actions;
+export const { setTheme, setLanguage, setLoggedInUser, setSearchMode, emptyCart, setShowAccount, setProducts, setCategories, setNewArrivals } = app.actions;
 export default app.reducer;

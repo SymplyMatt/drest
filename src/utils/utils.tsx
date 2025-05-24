@@ -371,3 +371,7 @@ export interface ProductCategory {
     }>;
   };
 }
+export interface ArrivalsAndCategory {
+  category: ProductCategory;
+  products: Product[];
+}

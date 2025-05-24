@@ -7,8 +7,8 @@ import { RootState } from "../redux/store";
 import Search from "../components/common/Search";
 import MobileFooter from "../components/common/MobileFooter";
 import AccountMobile from "../components/common/AccountMobile";
-import { fetchFromApi, Product, ProductCategory } from "../utils/utils";
-import { setCategories, setProducts } from "../redux/states/app";
+import { ArrivalsAndCategory, fetchFromApi, Product, ProductCategory } from "../utils/utils";
+import { setCategories, setNewArrivals, setProducts } from "../redux/states/app";
 import Loader from "../components/common/Loader";
 interface LayoutProps {
   children?: ReactNode;
@@ -25,8 +25,14 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
             try {
                 const products: Product[] = await fetchFromApi("products");
                 const categories: ProductCategory[] = await fetchFromApi("products/categories");
+                const newArrivals: Product[] = await fetchFromApi("products?orderby=date&order=desc&per_page=100");
+                const arrivalsAndCategories: ArrivalsAndCategory[] = categories.map((category:any)=>{
+                    const productsInCategory = newArrivals.filter((newarrival:any)=> newarrival.categories.map((i:any)=>i.name).includes(category.name));
+                    return { category: category, products: productsInCategory };
+                });
                 dispatch(setProducts(products));
                 dispatch(setCategories(categories));
+                dispatch(setNewArrivals(arrivalsAndCategories));
             } catch (error) {
                 console.error("Error in useEffect:", error);
             }
