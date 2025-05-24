@@ -6,7 +6,6 @@ interface CategoriesAndProductsProps {
     product: Product;
 }
 const CategoriesAndProductsProduct: React.FC<CategoriesAndProductsProps>= ({product}) => {
-    const brands: string[] = ['Adidas','Fendi','Versace','Gucci','Louis Vuitton','Cristian Dior','Prada','Balenciaga'];
     const navigate = useNavigate();
     const discount = ((Number(product.regular_price) - Number(product.price)) / Number(product.regular_price)) * 100;
     const price = Number(product.regular_price);
