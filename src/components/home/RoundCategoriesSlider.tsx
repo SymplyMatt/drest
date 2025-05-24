@@ -17,7 +17,7 @@ const RoundCategoriesSlider: React.FC<ComponentProp> = ({ handleClick, categorie
     const [activeIndex, setActiveIndex] = useState(0);
 
     const renderCustomPagination = () => {
-        const totalSlides = splitedCategories.length;
+        const totalSlides = [...categories, ...categories].length;
         return (
             <div className="w-full tmd:w-fit flex items-center justify-center gap-1 my-[24px] px-[20px]">
                 {[...Array(totalSlides)].map((_, index) => (
