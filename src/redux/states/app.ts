@@ -15,6 +15,7 @@ interface AppState {
   loggedInUser: User | null;
   cart: any[];
   products: Product[];
+  categories: any[];
 }
 
 const initialState: AppState = {
@@ -25,6 +26,7 @@ const initialState: AppState = {
   loggedInUser: null,
   cart: [1,2,3,4,5,6],
   products: [],
+  categories: [],
 };
 
 const app = createSlice({
@@ -36,6 +38,9 @@ const app = createSlice({
     },
     setProducts: (state, action: PayloadAction<Product[]>) => {
       if (Array.isArray(action.payload)) state.products = action.payload;
+    },
+    setCategories: (state, action: PayloadAction<Product[]>) => {
+      if (Array.isArray(action.payload)) state.categories = action.payload;
     },
     setSearchMode: (state, action: PayloadAction<string | null>) => {
       state.searchMode = action.payload;
@@ -55,5 +60,5 @@ const app = createSlice({
   },
 });
 
-export const { setTheme, setLanguage, setLoggedInUser, setSearchMode, emptyCart, setShowAccount, setProducts } = app.actions;
+export const { setTheme, setLanguage, setLoggedInUser, setSearchMode, emptyCart, setShowAccount, setProducts, setCategories } = app.actions;
 export default app.reducer;
