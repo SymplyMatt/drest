@@ -7,7 +7,7 @@ import Layout from "./Layout";
 const AllResults = () => {
     return (
         <Layout>
-            <CategoriesAndProducts showTitle={false} titleComponent={Header()} products={Array.from({ length: 40 }, (_, i) => i + 1)}/>
+            <CategoriesAndProducts showTitle={false} titleComponent={Header()} />
             <Pagination />
         </Layout>
     );

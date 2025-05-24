@@ -7,13 +7,13 @@ import {ReactNode, useRef, useState } from "react";
 import { Product } from "../../utils/utils";
 import UpsellSliderProduct from "./UpsellSliderProduct";
 interface CategoriesAndProductsProps {
-    products: Product[];
+    products?: Product[];
     showTitle?: boolean;
     title?: string;
     titleComponent?: ReactNode;
 }
 
-const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products, showTitle = true, title= 'You may also like', titleComponent=<></> }) => {
+const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products=[], showTitle = true, title= 'You may also like', titleComponent=<></> }) => {
     const swiperRef = useRef<SwiperClass | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const handlePrevClick = () => {
