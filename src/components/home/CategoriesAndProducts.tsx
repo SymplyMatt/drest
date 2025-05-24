@@ -13,6 +13,7 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
     const { products, categories } = useSelector((state: RootState) => state.app);
     const [activeCategory, setActiveCategory] = useState<string | null>("All");
     const filteredProducts = activeCategory === "All" ? products : products.filter(product => product.categories.map(i=>i.name.toLowerCase()).includes(activeCategory?.toLowerCase() || ""));
+    
     return (
     <div className="w-full flex flex-col items-center gap-[24px] mb-[50px]">
         { titleComponent }
