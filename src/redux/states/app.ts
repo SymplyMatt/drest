@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Product } from "../../utils/utils";
+import { Product, ProductCategory } from "../../utils/utils";
 
 interface User {
   id: string;
@@ -15,7 +15,7 @@ interface AppState {
   loggedInUser: User | null;
   cart: any[];
   products: Product[];
-  categories: any[];
+  categories: ProductCategory[];
 }
 
 const initialState: AppState = {
@@ -39,7 +39,7 @@ const app = createSlice({
     setProducts: (state, action: PayloadAction<Product[]>) => {
       if (Array.isArray(action.payload)) state.products = action.payload;
     },
-    setCategories: (state, action: PayloadAction<Product[]>) => {
+    setCategories: (state, action: PayloadAction<ProductCategory[]>) => {
       if (Array.isArray(action.payload)) state.categories = action.payload;
     },
     setSearchMode: (state, action: PayloadAction<string | null>) => {
