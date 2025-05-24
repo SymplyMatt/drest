@@ -7,7 +7,7 @@ import { RootState } from "../redux/store";
 import Summary from "../components/checkout/Summary";
 
 const Cart = () => {
-    const { cart } = useSelector((state: RootState) => state.app);
+    const { cart, products } = useSelector((state: RootState) => state.app);
     return (
         <Layout headerGap="">
             <div className="w-full flex flex-col gap-[24px]">
@@ -16,7 +16,7 @@ const Cart = () => {
                     {cart.length === 0 && <EmptyCart />}
                     <Summary />
                 </div>
-                <UpsellSlider/>
+                { products.length > 0 ? <UpsellSlider products={products}/> : <></> }
             </div>
         </Layout>
     );

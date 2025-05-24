@@ -1,6 +1,8 @@
+import { useSelector } from "react-redux";
 import CategoriesAndProducts from "../components/home/CategoriesAndProducts";
 import UpsellSlider from "../components/product/UpsellSlider";
 import Layout from "./Layout";
+import { RootState } from "../redux/store";
 
 const upsellTitleComponent = () => {
     return (
@@ -44,11 +46,12 @@ const wishlistTitleComponent = () => {
 };
 
 const WishList = () => {
+    const { products } = useSelector((state: RootState) => state.app);
     return (
         <Layout>
             <div className="flex justify-start self-start px-[50px]">Home/Wishlist</div>
             <CategoriesAndProducts showTitle={false} titleComponent={wishlistTitleComponent()}/>
-            <UpsellSlider showTitle={false} titleComponent={upsellTitleComponent()}/>
+            { products.length > 0 ? <UpsellSlider showTitle={false} titleComponent={upsellTitleComponent()}/> : <></> }
         </Layout>
     );
 };
