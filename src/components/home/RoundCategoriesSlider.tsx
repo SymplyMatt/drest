@@ -17,14 +17,14 @@ const RoundCategoriesSlider: React.FC<ComponentProp> = ({ handleClick, categorie
     const [activeIndex, setActiveIndex] = useState(0);
 
     const renderCustomPagination = () => {
-        const totalSlides = splitedCategories.length;
+        const totalSlides = window.innerWidth >= 1200 ? [...categories, ...categories].length : splitedCategories.length;
         return (
             <div className="w-full tmd:w-fit flex items-center justify-center gap-1 my-[24px] px-[20px]">
                 {[...Array(totalSlides)].map((_, index) => (
                     <button
                         key={index}
                         onClick={() => swiperRef.current?.slideTo(index)}
-                        className={`transition-all duration-300 grow h-[4px] tmd:w-[80px] ${
+                        className={`transition-all duration-300 grow h-[4px] tmd:w-[20px] ${
                             activeIndex === index 
                                 ? "bg-[#141511]" 
                                 : "bg-[#F3F3F3]"
@@ -54,7 +54,7 @@ const RoundCategoriesSlider: React.FC<ComponentProp> = ({ handleClick, categorie
                         <SwiperSlide key={index} className="h-full flex flex-col justify-center !w-auto flex-row slide-in-slide">
                             <div className="flex grid-cols-4 items-center gap-[8px]">
                                     <div className="relative h-full flex justify-center flex-col items-center gap-[8px] cursor-pointer" key={index}>
-                                        <img src={category.image.src} className="object-cover h-[64px] w-[64px] tmd:w-[100px] tmd:h-[100px] rounded-full" alt="Product" />
+                                        <img src={category?.image?.src} className="object-cover h-[64px] w-[64px] tmd:w-[100px] tmd:h-[100px] rounded-full" alt="Product" />
                                         <div className="w-full flex text-center items-center whitespace-nowrap justify-center h-[36px] bg-white px-[20px] font-semibold cursor-pointer" onClick={() => {handleClick ? handleClick(category.name) : navigate('/product/productId')}}>
                                             {category.name}
                                         </div>
@@ -83,7 +83,7 @@ const RoundCategoriesSlider: React.FC<ComponentProp> = ({ handleClick, categorie
                                 <div className="flex grid-cols-4 items-center">
                                     {category.slice(0,4).map((category:ProductCategory, index) =>(
                                         <div className="w-[25%] relative h-full flex justify-center flex-col items-center gap-[8px] cursor-pointer" key={index}>
-                                            <img src={category.image.src} className="object-cover h-[64px] w-[64px] tmd:w-[100px] tmd:h-[100px] rounded-full" alt="Product" />
+                                            <img src={category?.image?.src} className="object-cover h-[64px] w-[64px] tmd:w-[100px] tmd:h-[100px] rounded-full" alt="Product" />
                                             <div className="w-full flex text-center items-center whitespace-nowrap justify-center h-[36px] bg-white px-[20px] font-semibold cursor-pointer" onClick={() => {handleClick ? handleClick(category.name) : navigate('/product/productId')}}>
                                                 {category.name}
                                             </div>
@@ -93,7 +93,7 @@ const RoundCategoriesSlider: React.FC<ComponentProp> = ({ handleClick, categorie
                                 <div className="flex grid-cols-4 items-center tmd:hidden">
                                     {category.slice(4).map((category, index) =>(
                                         <div className="w-[25%] relative h-full flex justify-center flex-col items-center gap-[8px] cursor-pointer" key={index}>
-                                            <img src={category.image.src} className="object-cover h-[64px] w-[64px] tmd:w-[100px] tmd:h-[100px] rounded-full" alt="Product" />
+                                            <img src={category?.image?.src} className="object-cover h-[64px] w-[64px] tmd:w-[100px] tmd:h-[100px] rounded-full" alt="Product" />
                                             <div className="w-full flex text-center items-center whitespace-nowrap justify-center h-[36px] bg-white px-[20px] font-semibold cursor-pointer" onClick={() => {handleClick ? handleClick(category.name) : navigate('/product/productId')}}>
                                                 {category.name}
                                             </div>

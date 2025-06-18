@@ -1,8 +1,8 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useMemo, useState } from "react";
 import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
 import CategoriesAndProductsProduct from "./CategoriesAndProductsProduct";
-import { ProductCategory } from "../../utils/utils";
+import { Product, ProductCategory } from "../../utils/utils";
 
 interface CategoriesAndProductsProps {
     title?: string;
@@ -10,10 +10,23 @@ interface CategoriesAndProductsProps {
     titleComponent?: ReactNode;
 }
 const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = 'Trending',  showTitle = true, titleComponent = <></> }) => {
-    const { products, categories } = useSelector((state: RootState) => state.app);
-    const [activeCategory, setActiveCategory] = useState<string | null>("All");
-    const filteredProducts = activeCategory === "All" ? products : products.filter(product => product.categories.map(i=>i.name.toLowerCase()).includes(activeCategory?.toLowerCase() || ""));
-    
+    const { products } = useSelector((state: RootState) => state.app);
+    const [activeCategory, setActiveCategory] = useState<number | null>(0);
+    const filteredProducts = activeCategory === 0 ? products : products.filter(product => {
+        const categoryIds = product.categories.map(i => i.id);
+        return categoryIds.includes(activeCategory as number)
+    });
+    const uniqueCategories = useMemo(() => {
+        const categoryMap = new Map<number, ProductCategory>();
+        products.forEach((product: Product) => {
+          product.categories.forEach((category: ProductCategory) => {
+            if (!categoryMap.has(category.id)) {
+              categoryMap.set(category.id, category);
+            }
+          });
+        });
+        return Array.from(categoryMap.values());
+    }, [products]);
     return (
     <div className="w-full flex flex-col items-center gap-[24px] mb-[50px]">
         { titleComponent }
@@ -24,9 +37,9 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
                         <div className="text-[24px] font-semibold leading-[32.78px] tracking-[0%]">{title}</div>
                         <div className="items-center gap-[24px] hidden tmd:flex">
                             <img src="/images/line_sm.svg" alt="Divider" />
-                            <div className={`h-[43px] flex items-center justify-center p-[12px] text-[14px] font-semibold leading-[19.12px] tracking-[0%] cursor-pointer ${activeCategory === "All" ? "bg-[#2B2B2B] text-white" : ""}`}  onClick={()=> setActiveCategory("All")}>All Categories</div>
-                            {categories.slice(0,5).map((category:ProductCategory, index:number)=>(
-                                <div className={`h-[43px] flex items-center justify-center p-[12px] text-[14px] font-semibold leading-[19.12px] tracking-[0%] cursor-pointer ${activeCategory === category.name ? "bg-[#2B2B2B] text-white" : ""}`} key={index} onClick={()=> setActiveCategory(category.name)}>{category.name}</div>
+                            <div className={`h-[43px] flex items-center justify-center p-[12px] text-[14px] font-semibold leading-[19.12px] tracking-[0%] cursor-pointer ${activeCategory === 0 ? "bg-[#2B2B2B] text-white" : ""}`}  onClick={()=> setActiveCategory(0)}>All</div>
+                            {uniqueCategories.slice(0,5).map((category:ProductCategory, index:number)=>(
+                                <div className={`h-[43px] flex items-center justify-center p-[12px] text-[14px] font-semibold leading-[19.12px] tracking-[0%] cursor-pointer ${activeCategory === category.id ? "bg-[#2B2B2B] text-white" : ""}`} key={index} onClick={()=> setActiveCategory(category.id)}>{category.name.replace(/&amp;/g, "&")}</div>
                             ))}
                         </div>
                     </div>

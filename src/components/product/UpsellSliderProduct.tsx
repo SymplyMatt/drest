@@ -7,7 +7,8 @@ interface CategoriesAndProductsProps {
 }
 const UpsellSliderProduct: React.FC<CategoriesAndProductsProps> =({product}) => {
     const navigate = useNavigate();
-    const discount = ((Number(product.regular_price) - Number(product.price)) / Number(product.regular_price)) * 100;
+    const discount = (product.regular_price && product.price && product.regular_price > product.price) ? (((Number(product.regular_price) - Number(product.price)) / Number(product.regular_price)) * 100) : 0;
+    console.log(product);
     const price = Number(product.regular_price);
     const priceAfterDiscount = Number(product.price);
     const allImages = product.images.map((image) => image.src);
@@ -53,7 +54,7 @@ const UpsellSliderProduct: React.FC<CategoriesAndProductsProps> =({product}) => 
                 </div>
             </div>
             <div className="flex flex-col items-center justify-center gap-[4px] h-[80px] border-b border-l border-r border-[#E6E6E6] w-full z-10 relative top-0 left-0">
-                <div className="text-[18px] leading-[27px] tracking-[0%]">{product.name}</div>
+                <div className="text-[18px] leading-[27px] tracking-[0%]">{product.name.replace(/&amp;/g, "&").length < 30 ? product.name.replace(/&amp;/g, "&") : product.name.replace(/&amp;/g, "&").substring(0,30) + "..."}</div>
                 <div className="text-[18px] font-semibold leading-[26px] tracking-[-5%] price">
                     {priceAfterDiscount} TND
                     {discount ? (

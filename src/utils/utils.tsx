@@ -347,19 +347,19 @@ export interface Product {
 export interface ProductCategory {
   id: number;
   name: string;
-  slug: string;
-  parent: number;
-  description: string;
-  display: string;
-  image: {
+  slug?: string;
+  parent?: number;
+  description?: string;
+  display?: string;
+  image?: {
     id: number;
     src: string;
     name: string;
     alt: string;
   };
-  menu_order: number;
-  count: number;
-  _links: {
+  menu_order?: number;
+  count?: number;
+  _links?: {
     self: Array<{
       href: string;
       targetHints?: {

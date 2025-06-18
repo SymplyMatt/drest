@@ -25,13 +25,13 @@ const GridSlider: React.FC<ComponentProp> = ({categoriesAndProducts=[]}) => {
         }
     };
     const renderCustomPagination = () => {
-        const totalSlides = [...categoriesAndProducts, ...categoriesAndProducts, ...categoriesAndProducts].length;
+        const totalSlides = [...categoriesAndProducts].length;
         return (
             <div className="flex items-center justify-center px-[20px] gap-[20px]">
                 <img src="/images/prev_arrivals.svg"  className="cursor-pointer" onClick={handlePrevClick}/>
                 <div className="w-full flex items-center justify-center">
                     {[...Array(totalSlides)].map((_, index) => (
-                        <button key={index} onClick={() => swiperRef.current?.slideTo(index)} className={`transition-all duration-300 h-[4px] w-[20px] ${activeIndex === index ? "bg-[#141511]" : "bg-[#F3F3F3]"}`} aria-label={`Go to slide ${index + 1}`} />
+                        <button key={index} onClick={() => swiperRef.current?.slideTo(index)} className={`transition-all duration-300 h-[4px] w-[20px] tmd:w-[30px] ${activeIndex === index ? "bg-[#141511]" : "bg-[#F3F3F3]"}`} aria-label={`Go to slide ${index + 1}`} />
                     ))}
                 </div>
                 <img src="/images/next_arrivals.svg"  className="cursor-pointer" onClick={handleNextClick}/>
@@ -90,7 +90,7 @@ const GridSlider: React.FC<ComponentProp> = ({categoriesAndProducts=[]}) => {
                                 </div>
                                 <div className="w-full h-[60px] border-t border-[#D6D6D5] flex items-center justify-between">
                                     <div className="w-full flex items-center justify-center text-[18px] font-medium leading-[27px] tracking-[0%]">
-                                        {categoryAndProduct.category.name}
+                                        {categoryAndProduct.category.name.replace(/&amp;/g, "&").length < 12 ? categoryAndProduct.category.name.replace(/&amp;/g, "&") : categoryAndProduct.category.name.replace(/&amp;/g, "&").slice(0, 12) + "..."}
                                     </div>
                                     <div className="h-[20.5px] bg-[#D6D6D5] w-[1px]" />
                                     <div className="w-full flex items-center justify-center text-[18px] font-medium leading-[27px] tracking-[0%]">

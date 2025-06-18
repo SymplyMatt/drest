@@ -50,11 +50,11 @@ const CategoriesAndProductsProduct: React.FC<CategoriesAndProductsProps>= ({prod
         
         <div className="flex flex-col items-center justify-center gap-[4px] tmd:h-[100px] border-b border-l border-r border-[#E6E6E6] w-full py-[12px] px-[16px]">
             <div className="text-[14px] leading-[27px] tracking-[0%] text-[#141511] font-semibold">
-                {product.categories.length > 0 ? product.categories[0].name : 'Uncategorized'}
+                {product.categories.length > 0 ? product.categories[0].name.replace(/&amp;/g, "&") : 'Uncategorized'}
             </div>
             
             <div className="text-[18px] leading-[27px] tracking-[0%] text-center">
-                {product.name}
+                {product.name.replace(/&amp;/g, "&").length < 30 ? product.name.replace(/&amp;/g, "&") : product.name.replace(/&amp;/g, "&").substring(0, 30) + '...'}
             </div>
             
             <div className="text-[18px] font-semibold leading-[26px] tracking-[-5%] price">
