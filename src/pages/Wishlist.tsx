@@ -46,11 +46,11 @@ const wishlistTitleComponent = () => {
 };
 
 const WishList = () => {
-    const { products } = useSelector((state: RootState) => state.app);
+    const { products, wishlist } = useSelector((state: RootState) => state.app);
     return (
         <Layout>
             <div className="flex justify-start self-start px-[50px]">Home/Wishlist</div>
-            <CategoriesAndProducts showTitle={false} titleComponent={wishlistTitleComponent()}/>
+            <CategoriesAndProducts showTitle={false} titleComponent={wishlistTitleComponent()} productsToDisplay={wishlist}/>
             { products.length > 0 ? <UpsellSlider showTitle={false} titleComponent={upsellTitleComponent()}/> : <></> }
         </Layout>
     );

@@ -1,6 +1,4 @@
 import { ReactNode, useMemo, useState } from "react";
-import { RootState } from "../../redux/store";
-import { useSelector } from "react-redux";
 import CategoriesAndProductsProduct from "./CategoriesAndProductsProduct";
 import { Product, ProductCategory } from "../../utils/utils";
 
@@ -8,17 +6,17 @@ interface CategoriesAndProductsProps {
     title?: string;
     showTitle?: boolean;
     titleComponent?: ReactNode;
+    productsToDisplay: Product[];
 }
-const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = 'Trending',  showTitle = true, titleComponent = <></> }) => {
-    const { products } = useSelector((state: RootState) => state.app);
+const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = 'Trending',  showTitle = true, titleComponent = <></>, productsToDisplay }) => {
     const [activeCategory, setActiveCategory] = useState<number | null>(0);
-    const filteredProducts = activeCategory === 0 ? products : products.filter(product => {
+    const filteredProducts = (activeCategory === 0 || !showTitle) ? productsToDisplay : productsToDisplay.filter(product => {
         const categoryIds = product.categories.map(i => i.id);
         return categoryIds.includes(activeCategory as number)
     });
     const uniqueCategories = useMemo(() => {
         const categoryMap = new Map<number, ProductCategory>();
-        products.forEach((product: Product) => {
+        productsToDisplay.forEach((product: Product) => {
           product.categories.forEach((category: ProductCategory) => {
             if (!categoryMap.has(category.id)) {
               categoryMap.set(category.id, category);
@@ -26,7 +24,7 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
           });
         });
         return Array.from(categoryMap.values());
-    }, [products]);
+    }, [productsToDisplay]);
     return (
     <div className="w-full flex flex-col items-center gap-[24px] mb-[50px]">
         { titleComponent }
