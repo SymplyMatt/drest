@@ -279,7 +279,7 @@ export interface Product {
   total_sales: string;
   virtual: boolean;
   downloadable: boolean;
-  downloads: any[]; // can be typed if download structure is known
+  downloads: any[];
   download_limit: number;
   download_expiry: number;
   external_url: string;
@@ -316,15 +316,15 @@ export interface Product {
     slug: string;
   }[];
   tags: any[];
-  images: any[]; // can be typed if image structure is known
-  attributes: any[]; // can be typed if attribute structure is known
+  images: any[];
+  attributes: any[];
   default_attributes: any[];
   variations: any[];
   grouped_products: any[];
   menu_order: number;
   price_html: string;
   related_ids: number[];
-  meta_data: any[]; // can be typed if structure is known
+  meta_data: any[];
   stock_status: string;
   has_options: boolean;
   post_password: string;

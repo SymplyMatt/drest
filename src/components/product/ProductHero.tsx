@@ -8,9 +8,12 @@ interface CategoriesAndProductsProps {
     product: Product;
 }
 const ProductHero : React.FC<CategoriesAndProductsProps> = ({product}) => {
+    const discount = (product.regular_price && product.price && product.regular_price > product.price) ? (((Number(product.regular_price) - Number(product.price)) / Number(product.regular_price)) * 100) : 0;
+    const price = Number(product.regular_price);
+    const priceAfterDiscount = Number(product.price);
     const swiperRef = useRef<SwiperClass | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
-
+    const [activeImage, setActiveImage] = useState(product.images[0].src);
     const renderCustomPagination = () => {
         const totalSlides = 6; 
         return (
@@ -35,11 +38,11 @@ const ProductHero : React.FC<CategoriesAndProductsProps> = ({product}) => {
     return (
         <div className="w-full bg-[#F3F3F3] grid grid-cols-[17%_50%_33%] px-[50px] gap-[20px] items-center justify-center">
             <div className="flex items-center justify-center w-full">
-                <div className="flex items-center justify-center w-[195px] bg-white h-[512px] gap-[16px] p-[16px]">
-                    <div className="h-full">{renderCustomPagination()}</div>
+                <div className="flex items-center justify-center w-[195px] bg-white h-[512px] gap-[16px] p-[16px]" style={{ height: product.images.length > 3 ? '512px' : `${(product.images.length * 140) + 32}px` }}>
+                    {product.images.length > 3 && <div className="h-full">{renderCustomPagination()}</div>}
                     <Swiper
                         direction="vertical"
-                        slidesPerView={3.2}
+                        slidesPerView={product.images.length > 3 ? 3.2 : product.images.length}
                         spaceBetween={0}
                         loop={true} 
                         autoplay={{ delay: 3000, disableOnInteraction: false }}
@@ -49,66 +52,43 @@ const ProductHero : React.FC<CategoriesAndProductsProps> = ({product}) => {
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
                         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
                     >
-                        <SwiperSlide>
-                            <div className="w-full h-[150px] border border-[#D6D6D5] bg-[#F3F3F3] flex items-center justify-center cursor-pointer p-[10px] relative">
-                                <img src="/images/productimage1.png" className="h-full object-cover"/>
-                                <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                                    <rect x="1" y="1" width="48" height="48" rx="24" fill="#F3F3F3"/>
-                                    <rect x="1" y="1" width="48" height="48" rx="24" stroke="#D6D6D5"/>
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.1178 25.467C15.9607 25.176 15.9607 24.823 16.1178 24.532C18.0097 21.033 21.5048 18 24.9998 18C28.4948 18 31.9898 21.033 33.8818 24.533C34.0388 24.824 34.0388 25.177 33.8818 25.468C31.9898 28.967 28.4948 32 24.9998 32C21.5048 32 18.0097 28.967 16.1178 25.467Z" stroke="#141511" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    <path d="M27.1213 22.8787C28.2929 24.0502 28.2929 25.9497 27.1213 27.1213C25.9497 28.2929 24.0502 28.2929 22.8787 27.1213C21.7071 25.9497 21.7071 24.0502 22.8787 22.8787C24.0502 21.7071 25.9497 21.7071 27.1213 22.8787" stroke="#141511" stroke-width="1.4286" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="w-full h-[150px] border border-[#D6D6D5] bg-[#F3F3F3] flex items-center justify-center cursor-pointer p-[10px]">
-                                <img src="/images/productimage2.png" className="h-full object-cover"/>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="w-full h-[150px] border border-[#D6D6D5] bg-[#F3F3F3] flex items-center justify-center cursor-pointer p-[10px]">
-                                <img src="/images/productimage3.png" className="h-full object-cover"/>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="w-full h-[150px] border border-[#D6D6D5] bg-[#F3F3F3] flex items-center justify-center cursor-pointer p-[10px]">
-                                <img src="/images/productimage1.png" className="h-full object-cover"/>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="w-full h-[150px] border border-[#D6D6D5] bg-[#F3F3F3] flex items-center justify-center cursor-pointer p-[10px]">
-                                <img src="/images/productimage2.png" className="h-full object-cover"/>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="w-full h-[150px] border border-[#D6D6D5] bg-[#F3F3F3] flex items-center justify-center cursor-pointer p-[10px]">
-                                <img src="/images/productimage3.png" className="h-full object-cover"/>
-                            </div>
-                        </SwiperSlide>
+                        {product.images.map((image,index) => (
+                            <SwiperSlide className="w-full h-[150px] px150" onClick={()=>setActiveImage(image.src)}>
+                                <div className="w-full h-[150px] border border-[#D6D6D5] bg-[#F3F3F3] flex items-center justify-center cursor-pointer p-[10px] relative" key={index}>
+                                    <img src={image.src} className="h-full object-cover"/>
+                                    {image.src === activeImage && <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                                        <rect x="1" y="1" width="48" height="48" rx="24" fill="#F3F3F3"/>
+                                        <rect x="1" y="1" width="48" height="48" rx="24" stroke="#D6D6D5"/>
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16.1178 25.467C15.9607 25.176 15.9607 24.823 16.1178 24.532C18.0097 21.033 21.5048 18 24.9998 18C28.4948 18 31.9898 21.033 33.8818 24.533C34.0388 24.824 34.0388 25.177 33.8818 25.468C31.9898 28.967 28.4948 32 24.9998 32C21.5048 32 18.0097 28.967 16.1178 25.467Z" stroke="#141511" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M27.1213 22.8787C28.2929 24.0502 28.2929 25.9497 27.1213 27.1213C25.9497 28.2929 24.0502 28.2929 22.8787 27.1213C21.7071 25.9497 21.7071 24.0502 22.8787 22.8787C24.0502 21.7071 25.9497 21.7071 27.1213 22.8787" stroke="#141511" stroke-width="1.4286" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>}
+                                </div>
+                            </SwiperSlide>
+                        ))}
                     </Swiper>
                 </div>
             </div>
             <div className="flex items-center justify-center">
-                <img src="/images/productimage1.png" className="h-full"/>
+                <img src={activeImage} className="h-full"/>
             </div>
             <div className="flex items-center justify-center p-[24px]">
                 <div className="w-full flex flex-col items-center justify-center">
-                    <div className="h-[48px] bg-[#36A34C] w-full flex items-center justify-between text-white px-[24px] py-[12px]">
+                    {discount ? <div className="h-[48px] bg-[#36A34C] w-full flex items-center justify-between text-white px-[24px] py-[12px]">
                         <div className="font-normal text-[16px] leading-[24px] tracking-[0%]">SPECIAL DISCOUNT</div>
-                        <div className="font-semibold text-[16px] leading-[24px] tracking-[-4%]">18% OFF</div>
-                    </div>
+                        <div className="font-semibold text-[16px] leading-[24px] tracking-[-4%]">{discount}% OFF</div>
+                    </div> : ""}
                     <div className="w-full flex flex-col justify-center items-center bg-white">
                         <div className="w-full flex flex-col items-center py-[16px] px-[24px]">
                             <div className="w-full flex items-center justify-between text-white">
-                                <div className="text-[#141511] ">Arman classic varsity jacket</div>
+                                <div className="text-[#141511] ">{product.name}</div>
                                 <div className=""><img src="/images/heart.svg" className="cursor-pointer" /></div>
                             </div>
-                            <div className="font-semibold text-[24px] leading-[24px] tracking-[-4%] w-full flex items-center gap-[8px] price">180.00 TND <span className="font-semibold text-[#8F0024] text-[20px] leading-[26px] tracking-[0%] line-through">220 TND</span></div>
+                            <div className="font-semibold text-[24px] leading-[24px] tracking-[-4%] w-full flex items-center gap-[8px] price">{priceAfterDiscount} TND {discount ? <span className="font-semibold text-[#8F0024] text-[20px] leading-[26px] tracking-[0%] line-through">{price} TND</span> : ''}</div>
                         </div>
                         <div className="w-full grid grid-cols-2 items-center border-t border-b border-[#D6D6D5]">
                             <div className="px-[24px] col-span-1 flex flex-col justify-between text-white gap-[4px] border-r border-[#D6D6D5] py-[16px]">
                                 <div className="text-[#676764] font-normal text-[16px] leading-[24px] tracking-[0%] uppercase">Category:</div>
-                                <div className="text-[#141511] font-medium text-[18px] leading-[27px] tracking-[0%]">Men's Jacket</div>
+                                <div className="text-[#141511] font-medium text-[18px] leading-[27px] tracking-[0%]">{product.categories[0].name}</div>
                             </div>
                             <div className="px-[24px] col-span-1 flex flex-col justify-between text-black gap-[4px] py-[16px]">
                                 <div className="text-[#141511] font-semibold text-[18px] leading-[27px] tracking-[0%]">Brand </div>
