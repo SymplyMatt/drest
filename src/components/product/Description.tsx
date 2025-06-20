@@ -1,16 +1,17 @@
 import { useState, useRef, useEffect } from "react";
-
-const Description = () => {
+import { Product } from "../../utils/utils";
+interface CategoriesAndProductsProps {
+  product: Product;
+}
+const Description : React.FC<CategoriesAndProductsProps> =  ({product}) => {
   const [showDescription, setShowDescription] = useState<boolean>(false);
   const [showFeatures, setShowFeatures] = useState<boolean>(false);
   const [showShipping, setShowShipping] = useState<boolean>(false);
   const [showReviews, setShowReviews] = useState<boolean>(false);
-  
   const descriptionRef = useRef<HTMLDivElement>(null);
   const featuresRef = useRef<HTMLDivElement>(null);
   const shippingRef = useRef<HTMLDivElement>(null);
   const reviewsRef = useRef<HTMLDivElement>(null);
-  
   const [descriptionHeight, setDescriptionHeight] = useState<number>(0);
   const [featuresHeight, setFeaturesHeight] = useState<number>(0);
   const [shippingHeight, setShippingHeight] = useState<number>(0);

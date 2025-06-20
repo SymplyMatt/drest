@@ -3,7 +3,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { useRef, useState } from "react";
 import { Autoplay } from "swiper/modules";
-const ProductHero = () => {
+import { Product } from "../../utils/utils";
+interface CategoriesAndProductsProps {
+    product: Product;
+}
+const ProductHero : React.FC<CategoriesAndProductsProps> = ({product}) => {
     const swiperRef = useRef<SwiperClass | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
 
