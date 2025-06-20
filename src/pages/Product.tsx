@@ -15,19 +15,22 @@ const Product = () => {
   const location = useLocation();
   const productFromRoute = location.state?.product as ProductInterface | undefined;
   const [product, setProduct] = useState<ProductInterface | null>(productFromRoute || null);
+  const [reviews, setReviews] = useState<any>([]);
   const [loading, setLoading] = useState(!productFromRoute);
   useEffect(() => {
     const fetchProduct = async () => {
-      if (!product && id) {
+        if (!product && id) {
         try {
-          const fetchedProduct = await fetchFromApi(`products/${id}`);
-          setProduct(fetchedProduct);
+            const fetchedProduct = await fetchFromApi(`products/${id}`);
+            setProduct(fetchedProduct);
         } catch (err) {
-          console.error("Error fetching product:", err);
+            console.error("Error fetching product:", err);
         } finally {
-          setLoading(false);
+            setLoading(false);
         }
-      }
+        }
+        const reviews = await fetchFromApi(`products/reviews?product=${id}`);
+        setReviews(reviews || []);
     };
     fetchProduct();
   }, [product, id]);
@@ -36,8 +39,8 @@ const Product = () => {
 
   return (
     <Layout>
-      <ProductHero product={product} />
-      <Description product={product} />
+      <ProductHero product={product} reviews={reviews}/>
+      <Description product={product} reviews={reviews}/>
       {products.length > 0 && <UpsellSlider products={products} />}
     </Layout>
   );
