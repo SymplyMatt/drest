@@ -4,6 +4,10 @@ import "swiper/css/navigation";
 import { useRef, useState } from "react";
 import { Autoplay } from "swiper/modules";
 import { Product } from "../../utils/utils";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { useDispatch } from "react-redux";
+import { addToWishlist, removeFromWishlist } from "../../redux/states/app";
 interface CategoriesAndProductsProps {
     product: Product;
 }
@@ -14,6 +18,8 @@ const ProductHero : React.FC<CategoriesAndProductsProps> = ({product}) => {
     const swiperRef = useRef<SwiperClass | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const [activeImage, setActiveImage] = useState(product.images[0].src);
+    const { wishlist } = useSelector((state: RootState) => state.app);
+    const isInWishlist = wishlist.some((item) => item.id === product.id);
     const renderCustomPagination = () => {
         const totalSlides = 6; 
         return (
@@ -35,6 +41,7 @@ const ProductHero : React.FC<CategoriesAndProductsProps> = ({product}) => {
             </div>
         );
     };
+    const dispatch = useDispatch();
     return (
         <div className="w-full bg-[#F3F3F3] grid grid-cols-[17%_50%_33%] px-[50px] gap-[20px] items-center justify-center">
             <div className="flex items-center justify-center w-full">
@@ -81,7 +88,10 @@ const ProductHero : React.FC<CategoriesAndProductsProps> = ({product}) => {
                         <div className="w-full flex flex-col items-center py-[16px] px-[24px]">
                             <div className="w-full flex items-center justify-between text-white">
                                 <div className="text-[#141511] ">{product.name}</div>
-                                <div className=""><img src="/images/heart.svg" className="cursor-pointer" /></div>
+                                <div className="">
+                                    {!isInWishlist ? <img src="/images/heart.svg" className="cursor-pointer" onClick={()=>dispatch(addToWishlist(product))}/> : ''}
+                                    {isInWishlist ? <img src="/images/heartfilled.svg" className="cursor-pointer"  onClick={()=>dispatch(removeFromWishlist(product.id))}/> : ''}
+                                </div>
                             </div>
                             <div className="font-semibold text-[24px] leading-[24px] tracking-[-4%] w-full flex items-center gap-[8px] price">{priceAfterDiscount} TND {discount ? <span className="font-semibold text-[#8F0024] text-[20px] leading-[26px] tracking-[0%] line-through">{price} TND</span> : ''}</div>
                         </div>
