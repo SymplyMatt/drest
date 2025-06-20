@@ -7,7 +7,7 @@ import { Product } from "../../utils/utils";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { useDispatch } from "react-redux";
-import { addToWishlist, removeFromWishlist } from "../../redux/states/app";
+import { addToCart, addToWishlist, removeFromCart, removeFromWishlist } from "../../redux/states/app";
 interface CategoriesAndProductsProps {
     product: Product;
     reviews: any[];
@@ -19,8 +19,9 @@ const ProductHero : React.FC<CategoriesAndProductsProps> = ({product, reviews}) 
     const swiperRef = useRef<SwiperClass | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const [activeImage, setActiveImage] = useState(product.images[0].src);
-    const { wishlist } = useSelector((state: RootState) => state.app);
+    const { wishlist,cart } = useSelector((state: RootState) => state.app);
     const isInWishlist = wishlist.some((item) => item.id === product.id);
+    const isInCart = cart.some((item) => item.product.id === product.id);
     const renderCustomPagination = () => {
         const totalSlides = 6; 
         return (
@@ -154,7 +155,8 @@ const ProductHero : React.FC<CategoriesAndProductsProps> = ({product, reviews}) 
                             </div>
                         </div>
                         <div className="w-full flex flex-col items-center justify-center px-[24px] py-[16px] gap-[12px]">
-                            <div className="gap-[8px] w-full h-[48px] bg-[#141511] text-white flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-[0.95]"><img src="/images/plus.svg"/> ADD TO CART</div>
+                            {isInCart ? <div className="gap-[8px] w-full h-[48px] bg-red-900 text-white flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-[0.95]" onClick={()=>dispatch(removeFromCart(product.id))}>REMOVE FROM CART</div> : ''}
+                            {!isInCart ? <div className="gap-[8px] w-full h-[48px] bg-[#141511] text-white flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-[0.95]"onClick={()=>dispatch(addToCart({quantity:1,product}))}><img src="/images/plus.svg"/> ADD TO CART</div> : ''}
                             <div className="gap-[8px] w-full h-[48px] bg-[#fff] text-[#60D669] flex items-center justify-center cursor-pointer border border-[#60D669] transition-transform duration-200 hover:scale-[0.95]"><img src="/images/plus.svg"/><img src="/images/whatsapp.svg"/> ORDER ON WHATSAPP</div>
                         </div>
                     </div>
