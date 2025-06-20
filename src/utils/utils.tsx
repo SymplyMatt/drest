@@ -245,7 +245,6 @@ export const fetchFromApi = async (endpoint: string) => {
         Authorization: `Basic ${token}`,
       },
     });
-    console.log(`Response from ${endpoint}:`, response.data);
     return response.data;
   } catch (err) {
     console.error(`Error fetching from ${endpoint}:`, err);
@@ -374,4 +373,8 @@ export interface ProductCategory {
 export interface ArrivalsAndCategory {
   category: ProductCategory;
   products: Product[];
+}
+export interface CartItem {
+  quantity: number;
+  product: Product;
 }

@@ -1,19 +1,26 @@
 import { useNavigate } from "react-router-dom";
 import { Product } from "../../utils/utils";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { useDispatch } from "react-redux";
+import { addToWishlist, removeFromWishlist } from "../../redux/states/app";
 
 interface CategoriesAndProductsProps {
     product: Product;
 }
 const CategoriesAndProductsProduct: React.FC<CategoriesAndProductsProps>= ({product}) => {
     const navigate = useNavigate();
-    const discount = ((Number(product.regular_price) - Number(product.price)) / Number(product.regular_price)) * 100;
+    const discount = (product.regular_price && product.price && product.regular_price > product.price) ? (((Number(product.regular_price) - Number(product.price)) / Number(product.regular_price)) * 100) : 0;
     const price = Number(product.regular_price);
     const priceAfterDiscount = Number(product.price);
     const allImages = product.images.map((image) => image.src);
     const [hovered, setHovered] = useState<boolean>(false);
     const [activeImage, setActiveImage] = useState<string>(allImages[0]);
     const showImage = hovered ? activeImage : product.images[0]?.src;
+    const { wishlist } = useSelector((state: RootState) => state.app);
+    const isInWishlist = wishlist.some((item) => item.id === product.id);
+    const dispatch = useDispatch();
     useEffect(() => {
         if (hovered) {
             const intervalId = setInterval(() => {
@@ -29,11 +36,16 @@ const CategoriesAndProductsProduct: React.FC<CategoriesAndProductsProps>= ({prod
     <div className="col-span-1 flex flex-col items-center h-fit tmd:h-[500px] group" onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}>
         <div className="w-full h-[200px] tmd:h-[400px] bg-[#F3F3F3] border border-[#E6E6E6] flex items-center justify-center relative">
             <img src={showImage} className="w-full h-full object-cover" />
-            {!location.pathname.includes('wishlist') ? (
-                <img src="/images/heart.svg" className="cursor-pointer absolute top-[20px] right-[10px] transition-transform duration-200 hover:scale-[0.9]" alt="Add to wishlist" />
-            ) : (
-                <img src="/images/heartfilled.svg" className="cursor-pointer absolute top-[20px] right-[10px] transition-transform duration-200 hover:scale-[0.9]" alt="Remove from wishlist"/>
-            )}
+            {!isInWishlist && <img src="/images/heart.svg" className="cursor-pointer absolute top-[20px] right-[10px] transition-transform duration-200 hover:scale-[0.9]" 
+                    onClick={() => {
+                        dispatch(addToWishlist(product));
+                    }}
+                />}
+                {isInWishlist && <img src="/images/heartfilled.svg" className="cursor-pointer absolute top-[20px] right-[10px] transition-transform duration-200 hover:scale-[0.9]" alt="Remove from wishlist"
+                    onClick={() => {
+                        dispatch(removeFromWishlist(product.id));
+                    }}
+                />}
             <div className={`text-[12px] tmd:text-[14px] absolute top-[20px] left-[10px] h-[28px] bg-[#8F0024] p-[6px] tmd:p-[10px] flex justify-center items-center text-white font-semibold leading-[21px] tracking-[-4%] gap-[8px] ${!discount && 'hidden'}`}>
                 <img src="/images/discountbadge.svg" alt="Discount" /> {Math.round(discount)}% OFF
             </div>

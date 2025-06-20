@@ -56,7 +56,7 @@ const RoundCategoriesSlider: React.FC<ComponentProp> = ({ handleClick, categorie
                                     <div className="relative h-full flex justify-center flex-col items-center gap-[8px] cursor-pointer" key={index}>
                                         <img src={category?.image?.src} className="object-cover h-[64px] w-[64px] tmd:w-[100px] tmd:h-[100px] rounded-full" alt="Product" />
                                         <div className="w-full flex text-center items-center whitespace-nowrap justify-center h-[36px] bg-white px-[20px] font-semibold cursor-pointer" onClick={() => {handleClick ? handleClick(category.name) : navigate('/product/productId')}}>
-                                            {category.name}
+                                        {category.name.replace(/&amp;/g, "&")}
                                         </div>
                                     </div>
                             </div>
@@ -85,7 +85,7 @@ const RoundCategoriesSlider: React.FC<ComponentProp> = ({ handleClick, categorie
                                         <div className="w-[25%] relative h-full flex justify-center flex-col items-center gap-[8px] cursor-pointer" key={index}>
                                             <img src={category?.image?.src} className="object-cover h-[64px] w-[64px] tmd:w-[100px] tmd:h-[100px] rounded-full" alt="Product" />
                                             <div className="w-full flex text-center items-center whitespace-nowrap justify-center h-[36px] bg-white px-[20px] font-semibold cursor-pointer" onClick={() => {handleClick ? handleClick(category.name) : navigate('/product/productId')}}>
-                                                {category.name}
+                                                {category.name.replace(/&amp;/g, "&")}
                                             </div>
                                         </div>
                                     ))}
@@ -95,7 +95,7 @@ const RoundCategoriesSlider: React.FC<ComponentProp> = ({ handleClick, categorie
                                         <div className="w-[25%] relative h-full flex justify-center flex-col items-center gap-[8px] cursor-pointer" key={index}>
                                             <img src={category?.image?.src} className="object-cover h-[64px] w-[64px] tmd:w-[100px] tmd:h-[100px] rounded-full" alt="Product" />
                                             <div className="w-full flex text-center items-center whitespace-nowrap justify-center h-[36px] bg-white px-[20px] font-semibold cursor-pointer" onClick={() => {handleClick ? handleClick(category.name) : navigate('/product/productId')}}>
-                                                {category.name}
+                                            {category.name.replace(/&amp;/g, "&")}
                                             </div>
                                         </div>
                                     ))}

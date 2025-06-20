@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ArrivalsAndCategory, Product, ProductCategory } from "../../utils/utils";
-
+import { ArrivalsAndCategory, CartItem, Product, ProductCategory } from "../../utils/utils";
 interface User {
   id: string;
   name: string;
@@ -13,7 +12,8 @@ interface AppState {
   searchMode: string | null;
   showAccount: boolean;
   loggedInUser: User | null;
-  cart: any[];
+  cart: CartItem[];
+  wishlist: Product[];
   products: Product[];
   categories: ProductCategory[];
   newArrivals: ArrivalsAndCategory[];
@@ -25,7 +25,8 @@ const initialState: AppState = {
   showAccount: false,
   language: import.meta.env.VITE_LANGUAGE || "us",
   loggedInUser: null,
-  cart: [1,2,3,4,5,6],
+  cart: [],
+  wishlist: [],
   products: [],
   categories: [],
   newArrivals: [],
@@ -59,11 +60,23 @@ const app = createSlice({
     setLoggedInUser: (state, action: PayloadAction<User | null>) => {
       state.loggedInUser = action.payload;
     },
+    addToCart: (state, action: PayloadAction<CartItem>) => {
+      state.cart = [...state.cart, action.payload];
+    },
+    addToWishlist: (state, action: PayloadAction<Product>) => {
+      state.wishlist = [...state.wishlist, action.payload];
+    },
+    removeFromCart: (state, action: PayloadAction<number>) => {
+      state.cart = state.cart.filter((item:CartItem) => item.product.id !== action.payload);
+    },
+    removeFromWishlist: (state, action: PayloadAction<number>) => {
+      state.wishlist = state.wishlist.filter((item:Product) => item.id !== action.payload);
+    },
     emptyCart: (state) => {
       state.cart = [];
     },
   },
 });
 
-export const { setTheme, setLanguage, setLoggedInUser, setSearchMode, emptyCart, setShowAccount, setProducts, setCategories, setNewArrivals } = app.actions;
+export const { setTheme, setLanguage, setLoggedInUser, setSearchMode, emptyCart, setShowAccount, setProducts, setCategories, setNewArrivals, addToCart, addToWishlist, removeFromCart, removeFromWishlist} = app.actions;
 export default app.reducer;
