@@ -1,7 +1,7 @@
 import { Swiper, SwiperClass, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Autoplay } from "swiper/modules";
 import { Product } from "../../utils/utils";
 import { useSelector } from "react-redux";
@@ -44,6 +44,11 @@ const ProductHero : React.FC<CategoriesAndProductsProps> = ({product, reviews}) 
         );
     };
     const dispatch = useDispatch();
+    useEffect(()=>{
+        setActiveImage(product.images[0].src);
+        setActiveIndex(0);
+        swiperRef.current?.slideTo(0);
+    },[product]);
     return (
         <div className="w-full bg-[#F3F3F3] grid grid-cols-[17%_50%_33%] px-[50px] gap-[20px] items-center justify-center">
             <div className="flex items-center justify-center w-full">
@@ -84,7 +89,7 @@ const ProductHero : React.FC<CategoriesAndProductsProps> = ({product, reviews}) 
                 <div className="w-full flex flex-col items-center justify-center">
                     {discount ? <div className="h-[48px] bg-[#36A34C] w-full flex items-center justify-between text-white px-[24px] py-[12px]">
                         <div className="font-normal text-[16px] leading-[24px] tracking-[0%]">SPECIAL DISCOUNT</div>
-                        <div className="font-semibold text-[16px] leading-[24px] tracking-[-4%]">{discount}% OFF</div>
+                        <div className="font-semibold text-[16px] leading-[24px] tracking-[-4%]">{Math.round(discount)}% OFF</div>
                     </div> : ""}
                     <div className="w-full flex flex-col justify-center items-center bg-white">
                         <div className="w-full flex flex-col items-center py-[16px] px-[24px]">
@@ -95,7 +100,7 @@ const ProductHero : React.FC<CategoriesAndProductsProps> = ({product, reviews}) 
                                     {isInWishlist ? <img src="/images/heartfilled.svg" className="cursor-pointer"  onClick={()=>dispatch(removeFromWishlist(product.id))}/> : ''}
                                 </div>
                             </div>
-                            <div className="font-semibold text-[24px] leading-[24px] tracking-[-4%] w-full flex items-center gap-[8px] price">{priceAfterDiscount} TND {discount ? <span className="font-semibold text-[#8F0024] text-[20px] leading-[26px] tracking-[0%] line-through">{price} TND</span> : ''}</div>
+                            <div className="font-semibold text-[24px] leading-[24px] tracking-[-4%] w-full flex items-center gap-[8px] price">{Math.round(priceAfterDiscount)} TND {discount ? <span className="font-semibold text-[#8F0024] text-[20px] leading-[26px] tracking-[0%] line-through">{Math.round(price)} TND</span> : ''}</div>
                         </div>
                         <div className="w-full grid grid-cols-2 items-center border-t border-b border-[#D6D6D5]">
                             <div className="px-[24px] col-span-1 flex flex-col justify-between text-white gap-[4px] border-r border-[#D6D6D5] py-[16px]">

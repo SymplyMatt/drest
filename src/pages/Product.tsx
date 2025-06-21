@@ -34,6 +34,9 @@ const Product = () => {
     };
     fetchProduct();
   }, [product, id]);
+  useEffect(()=>{
+    setProduct(productFromRoute || null);
+  },[id])
 
   if (loading || !product) return <Loader />;
 
