@@ -51,6 +51,11 @@ const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products=[], showT
         );
     };
 
+    if (products?.length === 0) {
+        return (
+            <></>
+        );
+    }
     return (
         <>
             <div className="w-full flex flex-col items-center gap-[20px] upsell p-[20px] tmd:p-[0px]">
