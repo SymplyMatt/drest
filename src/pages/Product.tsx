@@ -15,6 +15,7 @@ const Product = () => {
   const location = useLocation();
   const productFromRoute = location.state?.product as ProductInterface | undefined;
   const [product, setProduct] = useState<ProductInterface | null>(productFromRoute || null);
+  const [upsells, setUpsells] = useState<ProductInterface[]>([]);
   const [reviews, setReviews] = useState<any>([]);
   const [loading, setLoading] = useState(!productFromRoute);
   useEffect(() => {
@@ -34,6 +35,18 @@ const Product = () => {
     };
     fetchProduct();
   }, [product, id]);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const fetchedProduct = await fetchFromApi(`products?include=${product?.related_ids?.join(",")}`);
+        setUpsells(fetchedProduct);
+      } catch (err) {
+        console.error("Error fetching product:", err);
+      }
+    };
+    fetchProduct();
+  }, [product]);
   useEffect(()=>{
     setProduct(productFromRoute || null);
   },[id])
@@ -44,7 +57,7 @@ const Product = () => {
     <Layout>
       <ProductHero product={product} reviews={reviews}/>
       <Description product={product} reviews={reviews}/>
-      {products.length > 0 && <UpsellSlider products={products} />}
+      {products.length > 0 && <UpsellSlider products={upsells} />}
     </Layout>
   );
 };
