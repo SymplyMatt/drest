@@ -1,8 +1,10 @@
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../redux/store";
-import { setAuthPage } from "../../redux/states/auth";
+import { AppDispatch, RootState } from "../../redux/store";
+import { setAuthPage, setLoginValues } from "../../redux/states/auth";
+import { useSelector } from "react-redux";
 
 const EmailLogin = () => {
+    const { loginValues } = useSelector((state: RootState) => state.auth);
     const dispatch = useDispatch<AppDispatch>();
     const handleBack = () => {
         dispatch(setAuthPage(null));
@@ -27,7 +29,7 @@ const EmailLogin = () => {
                 </div>
                 <div className="w-full flex flex-col justify-center gap-[12px]">
                     <label className="text-[#141511] font-semibold">Email</label>
-                    <input type="text" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder="mail@gmail.com"/>
+                    <input type="text" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder="mail@gmail.com" value={loginValues.email} onChange={(e)=>dispatch(setLoginValues({...loginValues, email:e.currentTarget.value}))}/>
                     <div className="w-full flex justify-between items-center">
                         <div className="text-[#141511] text-[16px] font-normal flex items-center gap-[8px]"><img src="/images/checkboxchecked.svg" className="cursor-pointer"/>Keep me signed in</div>
                         <div className="uppercase text-[#141511] text-[12px] underline font-semibold cursor-pointer" onClick={() => dispatch(setAuthPage('create-account'))}>Create an account</div>

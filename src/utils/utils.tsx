@@ -233,21 +233,35 @@ export default class utils {
 }
 
 
-const baseURL = import.meta.env.VITE_BASEURL || 'https://example.com/api/';
 const username = import.meta.env.VITE_API_USERNAME || '';
 const password = import.meta.env.VITE_API_PASSWORD || '';
 
 const token = btoa(`${username}:${password}`);
-export const fetchFromApi = async (endpoint: string) => {
+export const fetchFromApi = async (
+  endpoint: string,
+  options?: {
+    method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+    body?: any;
+    baseurl?: string;
+  }
+) => {
   try {
-    const response = await axios.get(`${baseURL}${endpoint}`, {
-      headers: {
-        Authorization: `Basic ${token}`,
-      },
-    });
+    const baseURL = options?.baseurl ? options?.baseurl : import.meta.env.VITE_BASEURL || 'https://example.com/api/';
+    const method = options?.method || 'GET';
+    const url = `${baseURL}${endpoint}`;
+    const headers: Record<string, string> = {};
+    if (!options?.body) {
+      headers['Authorization'] = `Basic ${token}`;
+    }
+    if (options?.body) {
+      headers['Content-Type'] = 'application/json';
+    }
+    const config = { method, url, headers, ...(method !== 'GET' && options?.body ? { data: options.body } : {})};
+    const response = await axios(config);
     return response.data;
   } catch (err) {
     console.error(`Error fetching from ${endpoint}:`, err);
+    throw err;
   }
 };
 

@@ -1,12 +1,31 @@
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../redux/store";
-import { setAuthPage } from "../../redux/states/auth";
+import { AppDispatch, RootState } from "../../redux/store";
+import { setAuthPage, setLoginValues } from "../../redux/states/auth";
 import { setLoggedInUser } from "../../redux/states/app";
+import { useSelector } from "react-redux";
+import { fetchFromApi } from "../../utils/utils";
+import { useState } from "react";
+import Loader from "../common/Loader";
 
 const PasswordLogin = () => {
+    const [loading, setLoading] = useState(false);
+    const { loginValues } = useSelector((state: RootState) => state.auth);
     const dispatch = useDispatch<AppDispatch>();
     const handleBack = () => {
         dispatch(setAuthPage("emaillogin"));
+    }
+    const loginUser = async () => {
+        setLoading(true);
+        const response: any = await fetchFromApi("jwt-auth/v1/token", {method: "POST", body: { username: loginValues.email, password: loginValues.password }, baseurl:'https://newshop.tn/wp-json/'});
+        setLoading(false);
+        console.log(response);
+        if(!response) return;
+        const {user_display_name, user_email, token, user_nicename} = response;
+        dispatch(setLoggedInUser({name: user_display_name, email: user_email, token, displayName: user_nicename}));
+        dispatch(setAuthPage(null));
+    }
+    if(loading){
+        return <Loader />
     }
     return (
       <div className="w-[500px] h-full bg-white border border-[#D6D6D5] pb-[40px] tmd:p-[38px] flex flex-col items-center h_content overflow-y-scroll login">
@@ -36,7 +55,7 @@ const PasswordLogin = () => {
                     </div>
                     <div className="w-full flex flex-col justify-center gap-[12px]">
                         <label className="text-[#141511] font-semibold">Password</label>
-                        <input type="password" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder=""/>
+                        <input type="password" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder="" value={loginValues.password} onChange={(e)=>dispatch(setLoginValues({...loginValues, password:e.currentTarget.value}))}/>
                         <div className="w-full flex justify-between items-center">
                             <div className="text-[#141511] text-[16px] font-normal flex items-center gap-[8px] underline"><img src="/images/eyepassword.svg" className="cursor-pointer"/>Show password</div>
                             <div className="text-[#141511] text-[12px] underline font-semibold cursor-pointer" onClick={() => dispatch(setAuthPage("resetpassword-email"))}>Forgot password?</div>
@@ -44,8 +63,7 @@ const PasswordLogin = () => {
                     </div>
                     <div className="flex h-[48px] bg-[#141511] w-full cursor-pointer text-white items-center justify-center"  
                         onClick={() => {
-                            dispatch(setLoggedInUser({name: "Matt", email: "symplymatt@gmail.com", id: "1"}));
-                            dispatch(setAuthPage(null));
+                            loginUser();
                         }}>NEXT</div>
                     <div className="flex h-[48px] text-[#141511] w-full cursor-pointer bg-white items-center justify-center border border-[#D6D6D5] font-semibold"
                         onClick={() => {

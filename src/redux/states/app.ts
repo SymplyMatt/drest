@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ArrivalsAndCategory, CartItem, Product, ProductCategory } from "../../utils/utils";
 interface User {
-  id: string;
   name: string;
   email: string;
+  displayName: string;
+  token: string;
 }
 
 interface AppState {
