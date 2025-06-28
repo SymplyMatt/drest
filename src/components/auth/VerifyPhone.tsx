@@ -44,7 +44,7 @@ const VerifyPhone = () => {
                 </div>
                 <div className="flex h-[48px] bg-[#141511] w-full cursor-pointer text-white items-center justify-center"
                     onClick={() => {
-                        dispatch(setLoggedInUser({name: "Matt", email: "symplymatt@gmail.com", id: "1"}));
+                        dispatch(setLoggedInUser({name: "user_display_name", email: "user_email", token:"token", displayName: "user_nicename"}));
                         dispatch(setAuthPage(null));
                     }}>NEXT</div>
                 <div className="flex h-[48px] text-[#141511] w-full cursor-pointer bg-white items-center justify-center border border-[#D6D6D5] font-semibold"
