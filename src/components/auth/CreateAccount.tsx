@@ -3,7 +3,7 @@ import { AppDispatch, RootState } from "../../redux/store";
 import { setAuthPage, setSignupValues } from "../../redux/states/auth";
 import { setLoggedInUser } from "../../redux/states/app";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchFromApi } from "../../utils/utils";
 import Loader from "../common/Loader";
 
@@ -11,6 +11,7 @@ const CreateAccount = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
   const { signupValues } = useSelector((state: RootState) => state.auth);
+  const [disabled, setDisabled] = useState(false);
   const handleBack = () => {
     dispatch(setAuthPage("emaillogin"));
   }
@@ -25,8 +26,12 @@ const CreateAccount = () => {
     dispatch(setAuthPage(null));
   }
   if(loading){
-      return <Loader />
+    return <Loader />
   }
+  useEffect(()=>{
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    setDisabled(!(emailRegex.test(signupValues.email) && signupValues.password.length >= 8 && signupValues.first_name.length > 0 && signupValues.phone.length > 0));
+  },[signupValues]);
   return (
     <div className="w-[500px] h-full bg-white border border-[#D6D6D5] pb-[40px] tmd:p-[38px] flex flex-col items-center h_content overflow-y-scroll login">
         <img src="/images/cancelx.svg" className="self-end cursor-pointer hidden tmd:block" onClick={() => dispatch(setAuthPage(null))}/>
@@ -72,7 +77,7 @@ const CreateAccount = () => {
                     <div className="text-[#676764] flex items-center gap-[8px] cursor-pointer text-left text-[14px]">At least 1 number, 8 characters, 1 symbol</div>
                 </div>
               </div>
-              <div className="flex h-[48px] bg-[#141511] w-full cursor-pointer text-white items-center justify-center" 
+              <div className={`flex h-[48px] bg-[#141511] w-full cursor-pointer text-white items-center justify-center ${disabled ? 'opacity-50 cursor-not-allowed' : ''} ${loading ? 'cursor-wait' : ''}`} 
                 onClick={() => {
                   signUpUser();
               }}>REGISTER</div>
