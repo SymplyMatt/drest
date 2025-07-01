@@ -1,12 +1,31 @@
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../redux/store";
-import { setAuthPage } from "../../redux/states/auth";
+import { AppDispatch, RootState } from "../../redux/store";
+import { setAuthPage, setSignupValues } from "../../redux/states/auth";
 import { setLoggedInUser } from "../../redux/states/app";
+import { useSelector } from "react-redux";
+import { useState } from "react";
+import { fetchFromApi } from "../../utils/utils";
+import Loader from "../common/Loader";
 
 const CreateAccount = () => {
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
+  const { signupValues } = useSelector((state: RootState) => state.auth);
   const handleBack = () => {
     dispatch(setAuthPage("emaillogin"));
+  }
+  const signUpUser = async () => {
+    setLoading(true);
+    const response: any = await fetchFromApi("custom/v1/signup", {method: "POST", body: { first_name: signupValues.first_name, password: signupValues.password, email: signupValues.email, phone: signupValues.phone }, baseurl:'https://newshop.tn/wp-json/'});
+    setLoading(false);
+    console.log(response);
+    if(!response) return;
+    const {user_display_name, user_email, token, user_nicename} = response;
+    dispatch(setLoggedInUser({name: user_display_name, email: user_email, token, displayName: user_nicename}));
+    dispatch(setAuthPage(null));
+  }
+  if(loading){
+      return <Loader />
   }
   return (
     <div className="w-[500px] h-full bg-white border border-[#D6D6D5] pb-[40px] tmd:p-[38px] flex flex-col items-center h_content overflow-y-scroll login">
@@ -27,9 +46,9 @@ const CreateAccount = () => {
               </div>
               <div className="w-full flex flex-col justify-center gap-[12px]">
                   <label className="text-[#141511] font-semibold">Email</label>
-                  <input type="text" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder="mail@gmail.com"/>
+                  <input type="text" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder="mail@gmail.com" value={signupValues.email} onChange={(e)=>dispatch(setSignupValues({...signupValues, email:e.currentTarget.value}))}/>
                   <label className="text-[#141511] font-semibold">First name</label>
-                  <input type="text" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder="Maulana"/>
+                  <input type="text" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder="Maulana" value={signupValues.first_name} onChange={(e)=>dispatch(setSignupValues({...signupValues, first_name:e.currentTarget.value}))}/>
                   <label className="text-[#141511] font-semibold">Mobile number</label>
                   <div className="w-full flex items-center">
                     <div className="h-[48px] bg-[#F3F3F3] flag-container min-w-[85px] border-r border-[#D6D6D5] flex items-center justify-center text-[#676764] p-[8px] gap-[4px] cursor-pointer">
@@ -37,11 +56,11 @@ const CreateAccount = () => {
                         +1
                         <img src="/images/caretflag.svg" className="w-[24px] h-[24px]"/>
                     </div>
-                    <input type="text" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder="Enter mobile number"/>
+                    <input type="text" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder="Enter mobile number" value={signupValues.phone} onChange={(e)=>dispatch(setSignupValues({...signupValues, phone:e.currentTarget.value}))}/>
                     </div>
                   <label className="text-[#141511] font-semibold">Password</label>
                   <div className="w-full flex items-center relative">
-                    <input type="password" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder=""/>
+                    <input type="password" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder="" value={signupValues.password} onChange={(e)=>dispatch(setSignupValues({...signupValues, password:e.currentTarget.value}))}/>
                     <img src="/images/eyepassword.svg" className="cursor-pointer absolute right-[10px]"/>
                   </div>
                   <div className="flex flex-col justify-center gap-[8px]">
@@ -55,9 +74,8 @@ const CreateAccount = () => {
               </div>
               <div className="flex h-[48px] bg-[#141511] w-full cursor-pointer text-white items-center justify-center" 
                 onClick={() => {
-                  dispatch(setLoggedInUser({name: "user_display_name", email: "user_email", token:"token", displayName: "user_nicename"}));
-                  dispatch(setAuthPage("verify-email"));
-                }}>REGISTER</div>
+                  signUpUser();
+              }}>REGISTER</div>
               <div className="text-[#676764] flex items-center gap-[8px] cursor-pointer">Already have an account? <span className="font-semibold text-[#141511] underline" onClick={() => dispatch(setAuthPage('emaillogin'))}>Sign in</span></div>
               <div className="text-[#676764] text-center">Or</div>
               <div className="w-full flex flex-col justify-center gap-[12px]">

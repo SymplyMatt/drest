@@ -3,7 +3,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface SignupValues {
   email: string;
   password: string;
-  name?: string;
+  first_name: string;
+  phone: string;
 }
 
 interface LoginValues {
@@ -18,7 +19,7 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-  signupValues: { email: "", password: "" },
+  signupValues: { email: "", password: "", first_name: "", phone: "" },
   loginValues: { email: "", password: "" },
   authPage: null,
 };
