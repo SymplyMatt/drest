@@ -94,15 +94,23 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
                 {Array.from({ length: activeCategory ? activeCategoryPages : pages }).reduce((acc: React.ReactNode[], _, index) => {
                     const page = index + 1;
                     const pageToUse = activeCategory ? activeCategoryPages : pages;
-                    const shouldShow = page <= 5 || page > pageToUse - 2 || page === currentPage;
-                    const prev = acc.length ? (acc[acc.length - 1] as any)?.key : null;
+                    const isInFirstFive = page <= 5;
+                    const isInLastTwo = page > pageToUse - 2;
+                    const isNearCurrent = page >= currentPage - 1 && page <= currentPage + 1;
+                    const shouldShow = isInFirstFive || isInLastTwo || isNearCurrent;
+                    const lastKey = acc.length ? (acc[acc.length - 1] as any)?.key : null;
+                    const lastPage = typeof lastKey === "string" && lastKey.startsWith("ellipsis") ? Number(lastKey.split("-")[1]) : Number(lastKey);
                     if (shouldShow) {
-                        if (prev && Number(prev) !== page - 1) {
-                            acc.push(<div key={`ellipsis-${page}`}>...</div>);
-                        }
-                        acc.push(
-                            <div key={page} className={`h-[32px] border border-[#2B2B2B] flex items-center justify-center cursor-pointer p-[4px] rounded-[4px] ${currentPage === page ? "bg-[#2B2B2B] text-white" : "opacity-50"} ${page < 10 ?  'w-[32px]' : ' w-[50px]' }`} onClick={() => setCurrentPage(page)}>{page}</div>
-                        );
+                    if (acc.length && lastPage && page - lastPage > 1) {
+                        acc.push(<div key={`ellipsis-${page}`}>...</div>);
+                    }
+                    acc.push(
+                        <div key={page} className={`h-[32px] border border-[#2B2B2B] flex items-center justify-center cursor-pointer p-[4px] rounded-[4px] ${currentPage === page ? "bg-[#2B2B2B] text-white" : "opacity-50"} ${page < 10 ? "w-[32px]" : "w-[50px]"}`}
+                            onClick={() => setCurrentPage(page)}
+                        >
+                            {page}
+                        </div>
+                    );
                     }
                     return acc;
                 }, [])}
