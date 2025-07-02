@@ -16,6 +16,7 @@ interface AppState {
   cart: CartItem[];
   wishlist: Product[];
   products: Product[];
+  sales: Product[];
   categories: ProductCategory[];
   newArrivals: ArrivalsAndCategory[];
 }
@@ -29,6 +30,7 @@ const initialState: AppState = {
   cart: [],
   wishlist: [],
   products: [],
+  sales: [],
   categories: [],
   newArrivals: [],
 };
@@ -42,6 +44,9 @@ const app = createSlice({
     },
     setProducts: (state, action: PayloadAction<Product[]>) => {
       if (Array.isArray(action.payload)) state.products = action.payload;
+    },
+    setSales: (state, action: PayloadAction<Product[]>) => {
+      if (Array.isArray(action.payload)) state.sales = action.payload;
     },
     setCategories: (state, action: PayloadAction<ProductCategory[]>) => {
       if (Array.isArray(action.payload)) state.categories = action.payload;
@@ -79,5 +84,5 @@ const app = createSlice({
   },
 });
 
-export const { setTheme, setLanguage, setLoggedInUser, setSearchMode, emptyCart, setShowAccount, setProducts, setCategories, setNewArrivals, addToCart, addToWishlist, removeFromCart, removeFromWishlist} = app.actions;
+export const { setTheme, setLanguage, setLoggedInUser, setSearchMode, emptyCart, setShowAccount, setProducts, setSales, setCategories, setNewArrivals, addToCart, addToWishlist, removeFromCart, removeFromWishlist} = app.actions;
 export default app.reducer;

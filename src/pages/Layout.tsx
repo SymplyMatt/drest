@@ -8,7 +8,7 @@ import Search from "../components/common/Search";
 import MobileFooter from "../components/common/MobileFooter";
 import AccountMobile from "../components/common/AccountMobile";
 import { ArrivalsAndCategory, fetchFromApi, Product, ProductCategory } from "../utils/utils";
-import { setCategories, setNewArrivals, setProducts } from "../redux/states/app";
+import { setCategories, setNewArrivals, setProducts, setSales } from "../redux/states/app";
 import Loader from "../components/common/Loader";
 interface LayoutProps {
   children?: ReactNode;
@@ -18,12 +18,13 @@ interface LayoutProps {
 const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps) => {
     const dispatch = useDispatch();
     const { authPage } = useSelector((state: RootState) => state.auth);
-    const { searchMode, showAccount, products, categories } = useSelector((state: RootState) => state.app);
+    const { searchMode, showAccount, products, categories, sales } = useSelector((state: RootState) => state.app);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const products: Product[] = (await fetchFromApi("products")).data;
+                const sales: Product[] = (await fetchFromApi("products?on_sale=true")).data;
                 const categories: ProductCategory[] = (await fetchFromApi("products/categories")).data;
                 const newArrivals: Product[] = (await fetchFromApi("products?orderby=date&order=desc&per_page=100")).data;
                 const arrivalsAndCategories: ArrivalsAndCategory[] = categories.map((category:any)=>{
@@ -31,6 +32,7 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
                     return { category: category, products: productsInCategory };
                 });
                 dispatch(setProducts(products));
+                dispatch(setSales(sales));
                 dispatch(setCategories(categories));
                 dispatch(setNewArrivals(arrivalsAndCategories));
             } catch (error) {
@@ -40,7 +42,7 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
         products.length < 1 && fetchData();
     }, [dispatch]);
 
-    if (products?.length === 0 || !products || categories?.length === 0 || !categories) {
+    if (products?.length === 0 || !products || categories?.length === 0 || !categories || sales?.length === 0 || !sales) {
         return (
             <Loader />
         );
