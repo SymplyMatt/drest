@@ -17,6 +17,7 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
     const dispatch = useDispatch();
     const location = useLocation();
     const currentPath = location.pathname.split('/')[1];
+    console.log(currentPath);
     const { totalPages, wishlist } = useSelector((state: RootState) => state.app);
     const [pages, setPages] = useState<number>(currentPath.includes('wish') ? wishlist.length : totalPages);
     const [activeCategory, setActiveCategory] = useState<number | null>(0);
@@ -73,8 +74,8 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
     },[currentPage]);
     
     useEffect(()=>{
-        setPages(totalPages);
-    },[totalPages]);
+        setPages(currentPath.includes('wish') ? wishlist.length : totalPages);
+    },[totalPages,wishlist]);
     return (
     <div className="w-full flex flex-col items-center gap-[24px] mb-[50px]">
         { titleComponent }
