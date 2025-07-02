@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { useDispatch } from "react-redux";
 import { setProducts } from "../../redux/states/app";
+import { useLocation } from "react-router-dom";
 
 interface CategoriesAndProductsProps {
     title?: string;
@@ -14,13 +15,16 @@ interface CategoriesAndProductsProps {
 }
 const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = 'Trending',  showTitle = true, titleComponent = <></>, productsToDisplay }) => {
     const dispatch = useDispatch();
-    const { totalPages } = useSelector((state: RootState) => state.app);
-    const [pages, setPages] = useState<number>(totalPages);
+    const location = useLocation();
+    const currentPath = location.pathname.split('/')[1];
+    const { totalPages, wishlist } = useSelector((state: RootState) => state.app);
+    const [pages, setPages] = useState<number>(currentPath.includes('wish') ? wishlist.length : totalPages);
     const [activeCategory, setActiveCategory] = useState<number | null>(0);
     const [activeCategoryProducts, setActiveCategoryProducts] = useState<Product[]>([]);
     const [activeCategoryPages, setActiveCategoryPages] = useState<number>(1);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const filteredProducts = (activeCategory === 0 || !showTitle) ? productsToDisplay : activeCategoryProducts;
+    console.log("Filtered Products:", filteredProducts);
     const uniqueCategories = useMemo(() => {
         const categoryMap = new Map<number, ProductCategory>();
         productsToDisplay.forEach((product: Product) => {
