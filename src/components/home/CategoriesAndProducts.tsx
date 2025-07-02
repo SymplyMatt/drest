@@ -3,6 +3,8 @@ import CategoriesAndProductsProduct from "./CategoriesAndProductsProduct";
 import { fetchFromApi, Product, ProductCategory, Response } from "../../utils/utils";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+import { useDispatch } from "react-redux";
+import { setProducts } from "../../redux/states/app";
 
 interface CategoriesAndProductsProps {
     title?: string;
@@ -11,6 +13,7 @@ interface CategoriesAndProductsProps {
     productsToDisplay: Product[];
 }
 const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = 'Trending',  showTitle = true, titleComponent = <></>, productsToDisplay }) => {
+    const dispatch = useDispatch();
     const { totalPages } = useSelector((state: RootState) => state.app);
     const [pages, setPages] = useState<number>(totalPages);
     const [activeCategory, setActiveCategory] = useState<number | null>(0);
@@ -48,16 +51,23 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
 
     useEffect(()=>{
         const fetchData = async () => {
-            setActiveCategoryProducts([]);
             try {
-                const products: Response = (await fetchFromApi(`products?category=${activeCategory}&page=${currentPage}&per_page=8`));
-                setActiveCategoryProducts(products.data as Product[]);
+                if(activeCategory){
+                    const products: Response = (await fetchFromApi(`products?category=${activeCategory}&page=${currentPage}&per_page=8`));
+                    setActiveCategoryProducts([]);
+                    setActiveCategoryProducts(products.data as Product[]);
+                }else{
+                    console.log("Fetching all products for current page:", currentPage);
+                    const products: Response = (await fetchFromApi(`products?page=${currentPage}&per_page=8`));
+                    dispatch(setProducts(products.data));
+                }
             } catch (error) {
                 console.error("Error in useEffect:", error);
             }
         };
-        currentPage && activeCategory && fetchData();
+        currentPage && fetchData();
     },[currentPage]);
+    
     useEffect(()=>{
         setPages(totalPages);
     },[totalPages]);
