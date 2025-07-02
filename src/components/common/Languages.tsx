@@ -1,8 +1,13 @@
 import { useEffect, useRef, useState } from "react";
+import { RootState } from "../../redux/store";
+import { useSelector } from "react-redux";
 
 const Languages = () => {
     const [showLanguages, setShowLanguages] = useState(false);
     const wrapperRef = useRef<HTMLDivElement | null>(null);
+    const { language } = useSelector((state: RootState) => state.app);
+    const languageFormatted = (language === 'us' || language === 'uk') ? 'eng' : language === 'french' ? 'FR' : language === 'german' ? 'de' : language === 'portuguese' ? 'pt' : language === 'tunisian' ? 'tn' : language;
+    const languageInFull = (language === 'us' || language === 'uk') ? 'English' : language === 'french' ? 'French' : language === 'german' ? 'German' : language === 'portuguese' ? 'Portuguese' : language === 'tunisian' ? 'Tunisian' : language;
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent): void => {
             if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {
@@ -26,9 +31,9 @@ const Languages = () => {
         <div className="hidden items-center gap-[8px] cursor-pointer tmd:flex">
             <img src="/images/france.svg" />
             <div className="flex gap-[4px] items-center text-[14px] cursor-pointer" onClick={toggleDropdown}>
-                <span className="text-[14px] font-extrabold">FR</span>
+                <span className="text-[14px] font-extrabold uppercase">{languageFormatted}</span>
                 <span className="text-[#E6E6E6] opacity-[0.7]">|</span>
-                <span>French</span>
+                <span>{languageInFull}</span>
                 {!showLanguages && <img src="/images/caretdownsm.svg" />}
                 {showLanguages && <svg width="8" height="4" viewBox="0 0 8 4" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4.00013 0.052969L7.66992 3.90625H0.330338L4.00013 0.052969Z" fill="white"/>
