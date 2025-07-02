@@ -11,7 +11,9 @@ interface CategoriesAndProductsProps {
 const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = 'Trending',  showTitle = true, titleComponent = <></>, productsToDisplay }) => {
     const [activeCategory, setActiveCategory] = useState<number | null>(0);
     const [activeCategoryProducts, setActiveCategoryProducts] = useState<Product[]>([]);
-    const filteredProducts = (activeCategory === 0 || !showTitle) ? productsToDisplay : activeCategoryProducts
+    const [activeCategoryPages, setActiveCategoryPages] = useState<number>(1);
+    const [activeCategoryPage, setActiveCategoryPage] = useState<number>(1);
+    const filteredProducts = (activeCategory === 0 || !showTitle) ? productsToDisplay : activeCategoryProducts;
     const uniqueCategories = useMemo(() => {
         const categoryMap = new Map<number, ProductCategory>();
         productsToDisplay.forEach((product: Product) => {
@@ -26,7 +28,9 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
     useEffect(()=>{
         const fetchData = async () => {
             try {
-                const products: Response = (await fetchFromApi(`products?category=${activeCategory}`));
+                const products: Response = (await fetchFromApi(`products?category=${activeCategory}&page=${activeCategoryPage}&per_page=8`));
+                const totalPages = products.headers['x-wp-totalpages'];
+                if(totalPages) setActiveCategoryPages(parseInt(totalPages));
                 setActiveCategoryProducts(products.data as Product[]);
             } catch (error) {
                 console.error("Error in useEffect:", error);
