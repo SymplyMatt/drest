@@ -23,6 +23,7 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
     useEffect(() => {
         const fetchData = async () => {
             try {
+                console.log('running again!!!')
                 const productRes: Response = (await fetchFromApi("products?per_page=8"));
                 const products = productRes.data as Product[];
                 const total = productRes.headers['x-wp-total'];
@@ -45,7 +46,7 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
             }
         };
         products.length < 1 && fetchData();
-    }, [dispatch]);
+    }, []);
 
     if (products?.length === 0 || !products) {
         return (

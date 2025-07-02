@@ -96,7 +96,7 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
         <div className="w-full grid grid-cols-2 tmd:grid-cols-4">
             {filteredProducts.map((product, index) => ( <CategoriesAndProductsProduct key={index} product={product} /> ))}
         </div>
-        <div className="flex items-center justify-center gap-[50px]">
+        {filteredProducts.length ? <div className="flex items-center justify-center gap-[50px]">
             <div className={`flex items-center justify-center gap-[4px] ${currentPage === 1 && 'opacity-50 cursor-not-allowed'}`} onClick={()=>currentPage>1 && setCurrentPage(currentPage-1)}>
                 <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.99994 11.6537L0.346191 6L5.99994 0.346249L7.05369 1.4L2.45369 6L7.05369 10.6L5.99994 11.6537Z" fill="#2B2B2B"/>
@@ -134,7 +134,7 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
                     <path d="M4.94625 6L0.346252 1.4L1.4 0.346249L7.05375 6L1.4 11.6537L0.346252 10.6L4.94625 6Z" fill="#2B2B2B"/>
                 </svg>
             </div>
-        </div>
+        </div> : ''}
     </div>
     );
 };
