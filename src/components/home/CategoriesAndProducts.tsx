@@ -17,7 +17,6 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
     const dispatch = useDispatch();
     const location = useLocation();
     const currentPath = location.pathname.split('/')[1];
-    console.log(currentPath);
     const { totalPages, wishlist } = useSelector((state: RootState) => state.app);
     const [pages, setPages] = useState<number>(currentPath.includes('wish') ? wishlist.length : totalPages);
     const [activeCategory, setActiveCategory] = useState<number | null>(0);
@@ -25,7 +24,6 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
     const [activeCategoryPages, setActiveCategoryPages] = useState<number>(1);
     const [currentPage, setCurrentPage] = useState<number>(1);
     const filteredProducts = (activeCategory === 0 || !showTitle) ? productsToDisplay : activeCategoryProducts;
-    console.log("Filtered Products:", filteredProducts);
     const uniqueCategories = useMemo(() => {
         const categoryMap = new Map<number, ProductCategory>();
         productsToDisplay.forEach((product: Product) => {
@@ -59,7 +57,6 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
             try {
                 if(activeCategory){
                     const products: Response = (await fetchFromApi(`products?category=${activeCategory}&page=${currentPage}&per_page=8`));
-                    setActiveCategoryProducts([]);
                     setActiveCategoryProducts(products.data as Product[]);
                 }else{
                     console.log("Fetching all products for current page:", currentPage);
