@@ -231,7 +231,13 @@ export default class utils {
       return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   };
 }
-
+export interface Response{
+  data: any;
+  status: number;
+  statusText: string;
+  headers: Record<string, string>;
+  config: any;
+}
 
 const username = import.meta.env.VITE_API_USERNAME || '';
 const password = import.meta.env.VITE_API_PASSWORD || '';
@@ -257,11 +263,11 @@ export const fetchFromApi = async (
       headers['Content-Type'] = 'application/json';
     }
     const config = { method, url, headers, ...(method !== 'GET' && options?.body ? { data: options.body } : {})};
-    const response = await axios(config);
-    return response.data;
+    const response: Response = await axios(config);
+    return response;
   } catch (err) {
     console.error(`Error fetching from ${endpoint}:`, err);
-    throw err;
+    return err as Response;
   }
 };
 

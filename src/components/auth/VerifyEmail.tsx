@@ -1,12 +1,33 @@
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../redux/store";
+import { AppDispatch, RootState } from "../../redux/store";
 import { setAuthPage } from "../../redux/states/auth";
 import { setLoggedInUser } from "../../redux/states/app";
+import { useState } from "react";
+import { fetchFromApi } from "../../utils/utils";
+import { useSelector } from "react-redux";
+import Loader from "../common/Loader";
 
 const VerifyEmail = () => {
     const dispatch = useDispatch<AppDispatch>();
+    const { signupValues } = useSelector((state: RootState) => state.auth);
+    const [loading, setLoading] = useState(false);
+    const [otp, setOtp] = useState("");
     const handleBack = () => {
         dispatch(setAuthPage("create-account"));
+    }
+    const verifyOtp = async () => {
+        setLoading(true);
+        const response: any = await fetchFromApi("custom/v1/verify-signup-otp", {method: "POST", body: { password: signupValues.password, email: signupValues.email, otp }, baseurl:'https://newshop.tn/wp-json/'});
+        setLoading(false);
+        console.log(response);
+        if(response.data && response.status == 200) {
+            const {user_display_name, user_email, token, user_nicename} = response.data;
+            dispatch(setLoggedInUser({name: user_display_name, email: user_email, token, displayName: user_nicename}));
+            dispatch(setAuthPage(null));
+        };
+    }
+    if(loading){
+        return <Loader />
     }
     return (
         <div className="w-[500px] bg-white border border-[#D6D6D5] pb-[40px] tmd:p-[38px] flex flex-col items-center h-full tmd:h_content overflow-y-scroll login">
@@ -36,7 +57,12 @@ const VerifyEmail = () => {
                 </div>
                 <div className="w-full flex flex-col justify-center gap-[12px]">
                     <label className="text-[#141511] font-semibold">OTP</label>
-                    <input type="text" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder=""/>
+                    <input type="text" className="bg-[#F3F3F3] outline-none border-none p-[8px] px-[12px] w-full h-[48px]" placeholder="" value={otp} inputMode="numeric" maxLength={6}
+                    onChange={(e) => {
+                        const value = e.currentTarget.value;
+                        if (/^\d{0,6}$/.test(value)) setOtp(value)
+                    }}
+                    />
                     <div className="w-full flex justify-between items-center">
                         <div className="text-[#141511] text-[16px] font-normal flex items-center gap-[8px] underline"></div>
                         <div className="text-[#141511] text-[12px] underline font-semibold cursor-pointer">Resend OTP in 15secs</div>
@@ -44,8 +70,7 @@ const VerifyEmail = () => {
                 </div>
                 <div className="flex h-[48px] bg-[#141511] w-full cursor-pointer text-white items-center justify-center"
                     onClick={() => {
-                        dispatch(setLoggedInUser({name: "user_display_name", email: "user_email", token:"token", displayName: "user_nicename"}));
-                        dispatch(setAuthPage(null));
+                        verifyOtp();
                     }}>NEXT</div>
                 <div className="flex h-[48px] text-[#141511] w-full cursor-pointer bg-white items-center justify-center border border-[#D6D6D5] font-semibold"
                     onClick={() => {

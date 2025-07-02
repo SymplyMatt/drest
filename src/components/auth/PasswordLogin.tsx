@@ -16,11 +16,11 @@ const PasswordLogin = () => {
     }
     const loginUser = async () => {
         setLoading(true);
-        const response: any = await fetchFromApi("jwt-auth/v1/token", {method: "POST", body: { username: loginValues.email, password: loginValues.password }, baseurl:'https://newshop.tn/wp-json/'});
+        const response = await fetchFromApi("jwt-auth/v1/token", {method: "POST", body: { username: loginValues.email, password: loginValues.password }, baseurl:'https://newshop.tn/wp-json/'});
         setLoading(false);
         console.log(response);
-        if(!response) return;
-        const {user_display_name, user_email, token, user_nicename} = response;
+        if(!response.data) return;
+        const {user_display_name, user_email, token, user_nicename} = response.data;
         dispatch(setLoggedInUser({name: user_display_name, email: user_email, token, displayName: user_nicename}));
         dispatch(setAuthPage(null));
     }

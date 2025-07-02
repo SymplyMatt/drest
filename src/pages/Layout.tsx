@@ -23,9 +23,9 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const products: Product[] = await fetchFromApi("products");
-                const categories: ProductCategory[] = await fetchFromApi("products/categories");
-                const newArrivals: Product[] = await fetchFromApi("products?orderby=date&order=desc&per_page=100");
+                const products: Product[] = (await fetchFromApi("products")).data;
+                const categories: ProductCategory[] = (await fetchFromApi("products/categories")).data;
+                const newArrivals: Product[] = (await fetchFromApi("products?orderby=date&order=desc&per_page=100")).data;
                 const arrivalsAndCategories: ArrivalsAndCategory[] = categories.map((category:any)=>{
                     const productsInCategory = newArrivals.filter((newarrival:any)=> newarrival.categories.map((i:any)=>i.name).includes(category.name));
                     return { category: category, products: productsInCategory };

@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store";
 import { setAuthPage, setSignupValues } from "../../redux/states/auth";
-import { setLoggedInUser } from "../../redux/states/app";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchFromApi } from "../../utils/utils";
@@ -20,18 +19,17 @@ const CreateAccount = () => {
     const response: any = await fetchFromApi("custom/v1/signup", {method: "POST", body: { first_name: signupValues.first_name, password: signupValues.password, email: signupValues.email, phone: signupValues.phone }, baseurl:'https://newshop.tn/wp-json/'});
     setLoading(false);
     console.log(response);
-    if(!response) return;
-    const {user_display_name, user_email, token, user_nicename} = response;
-    dispatch(setLoggedInUser({name: user_display_name, email: user_email, token, displayName: user_nicename}));
-    dispatch(setAuthPage(null));
-  }
-  if(loading){
-    return <Loader />
+    // if(!response) return;
+    if(response.data && response.status == 200) dispatch(setAuthPage("verify-email"));
   }
   useEffect(()=>{
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     setDisabled(!(emailRegex.test(signupValues.email) && signupValues.password.length >= 8 && signupValues.first_name.length > 0 && signupValues.phone.length > 0));
   },[signupValues]);
+
+  if(loading){
+    return <Loader />
+  }
   return (
     <div className="w-[500px] h-full bg-white border border-[#D6D6D5] pb-[40px] tmd:p-[38px] flex flex-col items-center h_content overflow-y-scroll login">
         <img src="/images/cancelx.svg" className="self-end cursor-pointer hidden tmd:block" onClick={() => dispatch(setAuthPage(null))}/>
@@ -79,7 +77,7 @@ const CreateAccount = () => {
               </div>
               <div className={`flex h-[48px] bg-[#141511] w-full cursor-pointer text-white items-center justify-center ${disabled ? 'opacity-50 cursor-not-allowed' : ''} ${loading ? 'cursor-wait' : ''}`} 
                 onClick={() => {
-                  signUpUser();
+                  !disabled && signUpUser();
               }}>REGISTER</div>
               <div className="text-[#676764] flex items-center gap-[8px] cursor-pointer">Already have an account? <span className="font-semibold text-[#141511] underline" onClick={() => dispatch(setAuthPage('emaillogin'))}>Sign in</span></div>
               <div className="text-[#676764] text-center">Or</div>
