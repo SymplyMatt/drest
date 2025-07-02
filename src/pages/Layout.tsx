@@ -8,7 +8,7 @@ import Search from "../components/common/Search";
 import MobileFooter from "../components/common/MobileFooter";
 import AccountMobile from "../components/common/AccountMobile";
 import { ArrivalsAndCategory, fetchFromApi, Product, ProductCategory, Response } from "../utils/utils";
-import { setCategories, setNewArrivals, setProducts, setSales, setTotalProducts } from "../redux/states/app";
+import { setCategories, setNewArrivals, setProducts, setSales, setTotalPages, setTotalProducts } from "../redux/states/app";
 import Loader from "../components/common/Loader";
 interface LayoutProps {
   children?: ReactNode;
@@ -28,7 +28,7 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
                 const total = productRes.headers['x-wp-total'];
                 const totalPages = productRes.headers['x-wp-totalpages'];
                 if(total) dispatch(setTotalProducts(parseInt(total)));
-                if(totalPages) dispatch(setTotalProducts(parseInt(totalPages)));
+                if(totalPages) dispatch(setTotalPages(parseInt(totalPages)));
                 dispatch(setProducts(products));
                 const sales: Product[] = (await fetchFromApi("products?on_sale=true")).data;
                 dispatch(setSales(sales));

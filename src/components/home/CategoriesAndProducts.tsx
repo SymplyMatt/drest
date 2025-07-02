@@ -1,6 +1,8 @@
 import { ReactNode, useEffect, useMemo, useState } from "react";
 import CategoriesAndProductsProduct from "./CategoriesAndProductsProduct";
 import { fetchFromApi, Product, ProductCategory, Response } from "../../utils/utils";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 interface CategoriesAndProductsProps {
     title?: string;
@@ -9,10 +11,12 @@ interface CategoriesAndProductsProps {
     productsToDisplay: Product[];
 }
 const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = 'Trending',  showTitle = true, titleComponent = <></>, productsToDisplay }) => {
+    const { totalPages } = useSelector((state: RootState) => state.app);
+    const [pages, setPages] = useState<number>(totalPages);
     const [activeCategory, setActiveCategory] = useState<number | null>(0);
     const [activeCategoryProducts, setActiveCategoryProducts] = useState<Product[]>([]);
     const [activeCategoryPages, setActiveCategoryPages] = useState<number>(1);
-    const [activeCategoryPage, setActiveCategoryPage] = useState<number>(1);
+    const [currentPage, setCurrentPage] = useState<number>(1);
     const filteredProducts = (activeCategory === 0 || !showTitle) ? productsToDisplay : activeCategoryProducts;
     const uniqueCategories = useMemo(() => {
         const categoryMap = new Map<number, ProductCategory>();
@@ -28,7 +32,8 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
     useEffect(()=>{
         const fetchData = async () => {
             try {
-                const products: Response = (await fetchFromApi(`products?category=${activeCategory}&page=${activeCategoryPage}&per_page=8`));
+                setCurrentPage(1);
+                const products: Response = (await fetchFromApi(`products?category=${activeCategory}&page=${currentPage}&per_page=8`));
                 const totalPages = products.headers['x-wp-totalpages'];
                 if(totalPages) setActiveCategoryPages(parseInt(totalPages));
                 setActiveCategoryProducts(products.data as Product[]);
@@ -40,6 +45,19 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
         activeCategory && fetchData();
         if(!activeCategory) setActiveCategoryProducts([]);
     },[activeCategory]);
+
+    useEffect(()=>{
+        const fetchData = async () => {
+            setActiveCategoryProducts([]);
+            try {
+                const products: Response = (await fetchFromApi(`products?category=${activeCategory}&page=${currentPage}&per_page=8`));
+                setActiveCategoryProducts(products.data as Product[]);
+            } catch (error) {
+                console.error("Error in useEffect:", error);
+            }
+        };
+        currentPage && activeCategory && fetchData();
+    },[currentPage]);
     return (
     <div className="w-full flex flex-col items-center gap-[24px] mb-[50px]">
         { titleComponent }
@@ -64,6 +82,23 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
         
         <div className="w-full grid grid-cols-2 tmd:grid-cols-4">
             {filteredProducts.map((product, index) => ( <CategoriesAndProductsProduct key={index} product={product} /> ))}
+        </div>
+        <div className="flex w-full items-center justify-center gap-[20px]">
+            {Array.from({ length: activeCategory ? activeCategoryPages : pages }).reduce((acc: React.ReactNode[], _, index) => {
+                const page = index + 1;
+                const pageToUse = activeCategory ? activeCategoryPages : pages;
+                const shouldShow = page <= 5 || page > pageToUse - 2 || page === currentPage;
+                const prev = acc.length ? (acc[acc.length - 1] as any)?.key : null;
+                if (shouldShow) {
+                    if (prev && Number(prev) !== page - 1) {
+                        acc.push(<div key={`ellipsis-${page}`}>...</div>);
+                    }
+                    acc.push(
+                        <div key={page} className={`h-[32px] border border-[#2B2B2B] flex items-center justify-center cursor-pointer p-[4px] rounded-[4px] ${currentPage === page ? "bg-[#2B2B2B] text-white" : "opacity-50"} ${page < 10 ?  'w-[32px]' : ' w-[50px]' }`} onClick={() => setCurrentPage(page)}>{page}</div>
+                    );
+                }
+                return acc;
+            }, [])}
         </div>
     </div>
     );
