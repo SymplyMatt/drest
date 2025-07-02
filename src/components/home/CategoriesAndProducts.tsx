@@ -47,7 +47,6 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
                 console.error("Error in useEffect:", error);
             }
         };
-        activeCategory && setActiveCategoryProducts([]);
         activeCategory && fetchData();
         if(!activeCategory) setActiveCategoryProducts([]);
     },[activeCategory]);
