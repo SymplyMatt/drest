@@ -1,6 +1,6 @@
-import { ReactNode, useMemo, useState } from "react";
+import { ReactNode, useEffect, useMemo, useState } from "react";
 import CategoriesAndProductsProduct from "./CategoriesAndProductsProduct";
-import { Product, ProductCategory } from "../../utils/utils";
+import { fetchFromApi, Product, ProductCategory, Response } from "../../utils/utils";
 
 interface CategoriesAndProductsProps {
     title?: string;
@@ -10,10 +10,8 @@ interface CategoriesAndProductsProps {
 }
 const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = 'Trending',  showTitle = true, titleComponent = <></>, productsToDisplay }) => {
     const [activeCategory, setActiveCategory] = useState<number | null>(0);
-    const filteredProducts = (activeCategory === 0 || !showTitle) ? productsToDisplay : productsToDisplay.filter(product => {
-        const categoryIds = product.categories.map(i => i.id);
-        return categoryIds.includes(activeCategory as number)
-    });
+    const [activeCategoryProducts, setActiveCategoryProducts] = useState<Product[]>([]);
+    const filteredProducts = (activeCategory === 0 || !showTitle) ? productsToDisplay : activeCategoryProducts
     const uniqueCategories = useMemo(() => {
         const categoryMap = new Map<number, ProductCategory>();
         productsToDisplay.forEach((product: Product) => {
@@ -25,6 +23,19 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
         });
         return Array.from(categoryMap.values());
     }, [productsToDisplay]);
+    useEffect(()=>{
+        const fetchData = async () => {
+            try {
+                const products: Response = (await fetchFromApi(`products?category=${activeCategory}`));
+                setActiveCategoryProducts(products.data as Product[]);
+            } catch (error) {
+                console.error("Error in useEffect:", error);
+            }
+        };
+        activeCategory && setActiveCategoryProducts([]);
+        activeCategory && fetchData();
+        if(!activeCategory) setActiveCategoryProducts([]);
+    },[activeCategory]);
     return (
     <div className="w-full flex flex-col items-center gap-[24px] mb-[50px]">
         { titleComponent }
