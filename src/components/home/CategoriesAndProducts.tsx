@@ -82,7 +82,6 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
                 <div className="h-[1px] bg-[#E6E6E6] w-full"></div>
             </div>
         )}
-        
         <div className="w-full grid grid-cols-2 tmd:grid-cols-4">
             {filteredProducts.map((product, index) => ( <CategoriesAndProductsProduct key={index} product={product} /> ))}
         </div>
