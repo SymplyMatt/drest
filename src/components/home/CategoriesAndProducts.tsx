@@ -58,6 +58,9 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
         };
         currentPage && activeCategory && fetchData();
     },[currentPage]);
+    useEffect(()=>{
+        setPages(totalPages);
+    },[totalPages]);
     return (
     <div className="w-full flex flex-col items-center gap-[24px] mb-[50px]">
         { titleComponent }
