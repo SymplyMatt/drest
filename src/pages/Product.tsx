@@ -22,7 +22,7 @@ const Product = () => {
     const fetchProduct = async () => {
         if (!product && id) {
         try {
-            const fetchedProduct = await fetchFromApi(`products/${id}`);
+            const fetchedProduct = (await fetchFromApi(`products/${id}`)).data;
             setProduct(fetchedProduct);
         } catch (err) {
             console.error("Error fetching product:", err);
@@ -39,7 +39,7 @@ const Product = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const fetchedProduct = await fetchFromApi(`products?include=${product?.related_ids?.join(",")}`);
+        const fetchedProduct = (await fetchFromApi(`products?include=${product?.related_ids?.join(",")}`)).data;
         setUpsells(fetchedProduct);
       } catch (err) {
         console.error("Error fetching product:", err);

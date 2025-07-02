@@ -19,6 +19,7 @@ interface AppState {
   sales: Product[];
   totalProducts: number;
   totalPages: number;
+  currentPage: number;
   categories: ProductCategory[];
   newArrivals: ArrivalsAndCategory[];
 }
@@ -37,6 +38,7 @@ const initialState: AppState = {
   newArrivals: [],
   totalProducts: 0,
   totalPages: 0,
+  currentPage: 1,
 };
 
 const app = createSlice({
@@ -60,6 +62,9 @@ const app = createSlice({
     },
     setSearchMode: (state, action: PayloadAction<string | null>) => {
       state.searchMode = action.payload;
+    },
+    setCurrentPage: (state, action: PayloadAction<number>) => {
+      state.currentPage = action.payload;
     },
     setTotalProducts: (state, action: PayloadAction<number>) => {
       state.totalProducts = action.payload;
@@ -94,5 +99,5 @@ const app = createSlice({
   },
 });
 
-export const { setTheme, setLanguage, setLoggedInUser, setSearchMode, emptyCart, setShowAccount, setProducts, setSales, setCategories, setNewArrivals, addToCart, addToWishlist, removeFromCart, removeFromWishlist, setTotalProducts, setTotalPages } = app.actions;
+export const { setTheme, setLanguage, setLoggedInUser, setSearchMode, emptyCart, setShowAccount, setProducts, setSales, setCategories, setNewArrivals, addToCart, addToWishlist, removeFromCart, removeFromWishlist, setTotalProducts, setTotalPages, setCurrentPage } = app.actions;
 export default app.reducer;
