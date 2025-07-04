@@ -4,13 +4,14 @@ import { setAuthPage, setLoginValues } from "../../redux/states/auth";
 import { setLoggedInUser } from "../../redux/states/app";
 import { useSelector } from "react-redux";
 import utils, { fetchFromApi } from "../../utils/utils";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Loader from "../common/Loader";
 
 const PasswordLogin = () => {
     const [loading, setLoading] = useState(false);
     const { loginValues } = useSelector((state: RootState) => state.auth);
     const [showPassword, setShowPassword] = useState(false);
+    const [disabled, setDisabled] = useState(false);
     const dispatch = useDispatch<AppDispatch>();
     const handleBack = () => {
         dispatch(setAuthPage("emaillogin"));
@@ -28,6 +29,9 @@ const PasswordLogin = () => {
         dispatch(setLoggedInUser({name: user_display_name, email: user_email, token, displayName: user_nicename}));
         dispatch(setAuthPage(null));
     }
+    useEffect(() => {
+        setDisabled(loginValues.password.length < 6);
+    }, [loginValues.password]);
     if(loading){
         return <Loader />
     }
@@ -68,9 +72,9 @@ const PasswordLogin = () => {
                             <div className="text-[#141511] text-[12px] underline font-semibold cursor-pointer" onClick={() => dispatch(setAuthPage("resetpassword-email"))}>Forgot password?</div>
                         </div>
                     </div>
-                    <div className="flex h-[48px] bg-[#141511] w-full cursor-pointer text-white items-center justify-center"  
+                    <div className={`flex h-[48px] bg-[#141511] w-full cursor-pointer text-white items-center justify-center ${!disabled ? 'cursor-pointer' : 'cursor-not-allowed opacity-50'}`}  
                         onClick={() => {
-                            loginUser();
+                            !disabled && loginUser();
                         }}>NEXT</div>
                     <div className="flex h-[48px] text-[#141511] w-full cursor-pointer bg-white items-center justify-center border border-[#D6D6D5] font-semibold"
                         onClick={() => {
@@ -85,6 +89,6 @@ const PasswordLogin = () => {
             </div>
       </div>
     )
-  }
+}
   
 export default PasswordLogin
