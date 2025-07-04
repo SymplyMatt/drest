@@ -92,5 +92,4 @@ const PasswordLogin = () => {
       </div>
     )
 }
-  
 export default PasswordLogin
