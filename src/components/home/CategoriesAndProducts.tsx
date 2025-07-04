@@ -96,7 +96,7 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
             {filteredProducts.map((product, index) => ( <CategoriesAndProductsProduct key={index} product={product} /> ))}
         </div>
         {filteredProducts.length ? <div className="flex items-center justify-center gap-[50px]">
-            <div className={`flex items-center justify-center gap-[4px] ${currentPage === 1 && 'opacity-50 cursor-not-allowed'}`} onClick={()=>currentPage>1 && setCurrentPage(currentPage-1)}>
+            <div className={`hidden tmd:flex items-center justify-center gap-[4px] ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`} onClick={()=>currentPage>1 && setCurrentPage(currentPage-1)}>
                 <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.99994 11.6537L0.346191 6L5.99994 0.346249L7.05369 1.4L2.45369 6L7.05369 10.6L5.99994 11.6537Z" fill="#2B2B2B"/>
                 </svg>
@@ -106,18 +106,18 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
                 {Array.from({ length: activeCategory ? activeCategoryPages : pages }).reduce((acc: React.ReactNode[], _, index) => {
                     const page = index + 1;
                     const pageToUse = activeCategory ? activeCategoryPages : pages;
-                    const isInFirstFive = page <= 5;
-                    const isInLastTwo = page > pageToUse - 2;
+                    const isInFirstThree = page <= 3;
+                    const isLast = page > pageToUse - 1;
                     const isNearCurrent = page >= currentPage - 1 && page <= currentPage + 1;
-                    const shouldShow = isInFirstFive || isInLastTwo || isNearCurrent;
+                    const shouldShow = isInFirstThree || isLast || isNearCurrent;
                     const lastKey = acc.length ? (acc[acc.length - 1] as any)?.key : null;
                     const lastPage = typeof lastKey === "string" && lastKey.startsWith("ellipsis") ? Number(lastKey.split("-")[1]) : Number(lastKey);
                     if (shouldShow) {
                     if (acc.length && lastPage && page - lastPage > 1) {
-                        acc.push(<div key={`ellipsis-${page}`}>...</div>);
+                        acc.push(<div key={`ellipsis-${page}`} className="hidden tmd:flex">...</div>);
                     }
                     acc.push(
-                        <div key={page} className={`h-[32px] border border-[#2B2B2B] flex items-center justify-center cursor-pointer p-[4px] rounded-[4px] ${currentPage === page ? "bg-[#2B2B2B] text-white" : "opacity-50"} ${page < 10 ? "w-[32px]" : "w-[50px]"}`}
+                        <div key={page} className={`text-[12px] h-[32px] border border-[#2B2B2B] flex items-center justify-center cursor-pointer p-[4px] rounded-[4px] ${currentPage === page ? "bg-[#2B2B2B] text-white" : "opacity-50"} ${page < 10 ? "w-[26px]" : "w-[40px]"}`}
                             onClick={() => setCurrentPage(page)}
                         >
                             {page}
@@ -127,7 +127,7 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
                     return acc;
                 }, [])}
             </div>
-            <div className={`flex items-center justify-center gap-[4px] ${((!activeCategory && currentPage === pages) || (activeCategory && currentPage === activeCategoryPages)) && 'opacity-50 cursor-not-allowed'}`} onClick={()=>setCurrentPage(currentPage+1)}>
+            <div className={`hidden tmd:flex items-center justify-center gap-[4px] ${((!activeCategory && currentPage === pages) || (activeCategory && currentPage === activeCategoryPages)) ? 'opacity-50 cursor-not-allowed'  : 'cursor-pointer'}`} onClick={()=>setCurrentPage(currentPage+1)}>
                 Next
                 <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M4.94625 6L0.346252 1.4L1.4 0.346249L7.05375 6L1.4 11.6537L0.346252 10.6L4.94625 6Z" fill="#2B2B2B"/>
