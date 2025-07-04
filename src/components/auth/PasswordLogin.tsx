@@ -52,7 +52,7 @@ const PasswordLogin = () => {
                         <div className="text-center text-[28px] font-medium leading-[130%] tracking-[0%] text-[#141511]">Sign in</div>
                         <div className="text-center text-[16px] font-normal leading-[130%] tracking-[0%] text-[#4F4F4D]">Enter your password to continue</div>
                         <div className="flex justify-between gap-[12px] items-center text-center text-[16px] font-normal leading-[130%] tracking-[0%] text-[#4F4F4D] font-semibold">
-                            johndoe@mail.com   
+                            {loginValues.email}   
                             <span className="underline cursor-pointer font-normal"
                             onClick={() => {
                                 dispatch(setAuthPage("emaillogin"));
