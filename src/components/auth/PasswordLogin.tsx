@@ -22,11 +22,13 @@ const PasswordLogin = () => {
         setLoading(false);
         if(!response.data && response.response) {
             utils.createErrorNotification(response.response.data.message || "An error occurred while logging in. Please try again.", 3000);
+            setLoginValues({email: '', password: ''});
             dispatch(setAuthPage(null));
             return
         };
         const {user_display_name, user_email, token, user_nicename} = response.data;
         dispatch(setLoggedInUser({name: user_display_name, email: user_email, token, displayName: user_nicename}));
+        setLoginValues({email: '', password: ''});
         dispatch(setAuthPage(null));
     }
     useEffect(() => {
