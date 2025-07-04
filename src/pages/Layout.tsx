@@ -32,20 +32,39 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
                 dispatch(setProducts(products));
                 const sales: Product[] = (await fetchFromApi("products?on_sale=true")).data;
                 dispatch(setSales(sales));
-                const categories: ProductCategory[] = (await fetchFromApi("products/categories")).data;
-                dispatch(setCategories(categories));
-                const newArrivals: Product[] = (await fetchFromApi("products?orderby=date&order=desc&per_page=100")).data;
-                const arrivalsAndCategories: ArrivalsAndCategory[] = categories.map((category:any)=>{
-                    const productsInCategory = newArrivals.filter((newarrival:any)=> newarrival.categories.map((i:any)=>i.name).includes(category.name));
-                    return { category: category, products: productsInCategory };
-                });
-                dispatch(setNewArrivals(arrivalsAndCategories));
             } catch (error) {
                 console.error("Error in useEffect:", error);
             }
         };
         products.length < 1 && fetchData();
     }, []);
+
+    useEffect(() => {
+        async function fetchArrivalsAndCategories() {
+            const validArrivalsAndCategories: ArrivalsAndCategory[] = [];
+            const productRes = await fetchFromApi("products?orderby=date&order=desc&per_page=100");
+            const newArrivals: Product[] = productRes.data;
+            const categoryIdSet = new Set<number>();
+                newArrivals.forEach(product => {
+                product.categories.forEach(cat => categoryIdSet.add(cat.id));
+            });
+            const categoryIds = Array.from(categoryIdSet);
+            const includeParam = categoryIds.join(',');
+            const categoryRes = await fetchFromApi(`products/categories?include=${includeParam}`);
+            const categories: ProductCategory[] = categoryRes.data;
+            categories.forEach(category => {
+                const productsInCategory = newArrivals.filter(product =>
+                    product.categories.some(cat => cat.id === category.id)
+                );
+                if (productsInCategory.length > 0) {
+                    validArrivalsAndCategories.push({ category, products: productsInCategory });
+                }
+            });
+            dispatch(setCategories(validArrivalsAndCategories.map(item => item.category)));
+            dispatch(setNewArrivals(validArrivalsAndCategories));
+        }
+        products?.length && fetchArrivalsAndCategories();
+    }, [products?.length]);         
 
     if (products?.length === 0 || !products) {
         return (
