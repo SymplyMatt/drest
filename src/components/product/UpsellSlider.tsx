@@ -60,12 +60,12 @@ const UpsellSlider: React.FC<CategoriesAndProductsProps> = ({ products=[], showT
         <>
             <div className="w-full flex flex-col items-center gap-[20px] upsell p-[20px] tmd:p-[0px]">
                 {titleComponent}
-                {showTitle && <div className="w-full flex flex-col gap-[20px] justify-center px-[50px]">
+                {showTitle && <div className="w-full flex flex-col gap-[20px] justify-center tmd:px-[50px]">
                     <div className="w-full flex items-center justify-between h-[48px]">
-                        <div className="flex items-center gap-[32px]">
-                            <div className="text-[48px] font-medium leading-[32.78px] tracking-[0%]">{title}</div>
+                        <div className="flex items-center gap-[32px] w-full justify-center">
+                            <div className="text-center tmd:text-left text-[32px] w-full tmd:text-[48px] font-medium leading-[32.78px] tracking-[0%] justify-center">{title}</div>
                         </div>
-                        <div className="flex items-center gap-[16px]">
+                        <div className="hidden tmd:flex items-center gap-[16px]">
                             <div className="h-[48px] bg-white border border-[#D6D6D5] px-[36px] py-[12px] cursor-pointer flex items-center justify-center font-normal leading-[24px] tracking-[0%] transition-transform duration-200 hover:scale-[0.9] gap-[8px]">
                                 <img src="/images/arrow_left.svg" className="cursor-pointer"/>PREVIOUS
                             </div>

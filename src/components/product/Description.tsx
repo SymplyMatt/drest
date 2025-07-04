@@ -43,9 +43,9 @@ const Description : React.FC<CategoriesAndProductsProps> =  ({product, reviews})
   }, [showReviews]);
   
   return (
-    <div className="w-full flex flex-col border border-[#D6D6D5] px-[50px] py-[24px] gap-[24px]">
+    <div className="w-full flex flex-col border border-[#D6D6D5] px-[20px] tmd:px-[50px] py-[24px] gap-[24px]">
       <div className="w-full flex flex-col items-center justify-center">
-        <div className="w-full flex items-center justify-between font-semibold text-[31.2px] leading-[24px] tracking-[0%] w-full flex items-center gap-[8px] p-[20px] border border-[#D6D6D5]">
+        <div className="w-full flex items-center justify-between font-semibold text-[24px] tmd:text-[31.2px] leading-[24px] tracking-[0%] w-full flex items-center gap-[8px] p-[16px] tmd:p-[20px] border border-[#D6D6D5]">
           Description 
           <img 
             src={`/images/${showDescription ? 'minus' : 'plusbox'}.svg`} 
@@ -63,13 +63,13 @@ const Description : React.FC<CategoriesAndProductsProps> =  ({product, reviews})
             opacity: showDescription ? 1 : 0
           }}
         >
-          <div ref={descriptionRef} className="p-[20px] gap-[8px] flex justify-center flex-col">
+          <div ref={descriptionRef} className="p-[16px] tmd:p-[20px] gap-[8px] flex justify-center flex-col">
             <div dangerouslySetInnerHTML={{ __html: product.short_description }} />
           </div>
         </div>
       </div>
       <div className="w-full flex flex-col items-center justify-center">
-        <div className="w-full flex items-center justify-between font-semibold text-[31.2px] leading-[24px] tracking-[0%] w-full flex items-center gap-[8px] p-[20px] border border-[#D6D6D5]">
+        <div className="w-full flex items-center justify-between font-semibold text-[24px] tmd:text-[31.2px] leading-[24px] tracking-[0%] w-full flex items-center gap-[8px] p-[16px] tmd:p-[20px] border border-[#D6D6D5]">
           Features 
           <img 
             src={`/images/${showFeatures ? 'minus' : 'plusbox'}.svg`} 
@@ -87,13 +87,13 @@ const Description : React.FC<CategoriesAndProductsProps> =  ({product, reviews})
             opacity: showFeatures ? 1 : 0
           }}
         >
-          <div ref={featuresRef} className="p-[20px] gap-[8px] flex justify-center flex-col">
+          <div ref={featuresRef} className="p-[16px] tmd:p-[20px] gap-[8px] flex justify-center flex-col">
             <div dangerouslySetInnerHTML={{ __html: product.description }} />
           </div>
         </div>
       </div>
       <div className="w-full flex flex-col items-center justify-center">
-        <div className="w-full flex items-center justify-between font-semibold text-[31.2px] leading-[24px] tracking-[0%] w-full flex items-center gap-[8px] p-[20px] border border-[#D6D6D5]">
+        <div className="w-full flex items-center justify-between font-semibold text-[24px] tmd:text-[31.2px] leading-[24px] tracking-[0%] w-full flex items-center gap-[8px] p-[16px] tmd:p-[20px] border border-[#D6D6D5]">
           Shipping and returns info 
           <img 
             src={`/images/${showShipping ? 'minus' : 'plusbox'}.svg`} 
@@ -110,7 +110,7 @@ const Description : React.FC<CategoriesAndProductsProps> =  ({product, reviews})
             opacity: showShipping ? 1 : 0
           }}
         >
-          <div ref={shippingRef} className="p-[20px] gap-[12px] flex justify-center flex-col">
+          <div ref={shippingRef} className="p-[16px] tmd:p-[20px] gap-[12px] flex justify-center flex-col">
             <div className="w-full flex flex-col justify-center gap-[8px]">
               <div className="font-normal text-[18px] leading-[27px] tracking-[-4%] text-[#676764] uppercase">Shipping</div>
               <div className="font-normal text-[18px] leading-[27px] tracking-[-4%]">At DREST a signature will be required upon delivery to ensure your package arrives securely.</div>
@@ -123,12 +123,12 @@ const Description : React.FC<CategoriesAndProductsProps> =  ({product, reviews})
               <div className="font-normal text-[18px] leading-[27px] tracking-[-4%]">All returned items must be in their original condition, with all labels attached and intact. Please note that Made to Order and personalised items are non-returnable.</div>
               <div className="font-normal text-[18px] leading-[27px] tracking-[-4%]">Additional information is available during the checkout process or in the FAQs section.</div>
             </div>
-            <table className="w-full border-collapse">
+            <table className="w-full border-collapse text-[14px] tmd:text-base">
               <thead className="bg-[#F3F3F3]">
                 <tr className="text-[#141511] font-medium text-[18px] leading-[27px] tracking-[0%] h-[60px]">
-                  <th className="text-[#141511] font-medium text-[18px] leading-[27px] tracking-[0%] border border-[#D6D6D5] p-[8px] text-center">Shipping service</th>
-                  <th className="text-[#141511] font-medium text-[18px] leading-[27px] tracking-[0%] border border-[#D6D6D5] p-[8px] text-center">Shipping fee</th>
-                  <th className="text-[#141511] font-medium text-[18px] leading-[27px] tracking-[0%] border border-[#D6D6D5] p-[8px] text-center">Delivery estimate</th>
+                  <th className="text-[#141511] font-medium text-[14px] tmd:text-[18px] leading-[27px] tracking-[150%] border border-[#D6D6D5] p-[8px] text-center">Shipping service</th>
+                  <th className="text-[#141511] font-medium text-[14px] tmd:text-[18px] leading-[27px] tracking-[150%] border border-[#D6D6D5] p-[8px] text-center">Shipping fee</th>
+                  <th className="text-[#141511] font-medium text-[14px] tmd:text-[18px] leading-[27px] tracking-[150%] border border-[#D6D6D5] p-[8px] text-center">Delivery estimate</th>
                 </tr>
               </thead>
               <tbody>
