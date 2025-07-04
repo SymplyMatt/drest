@@ -55,9 +55,9 @@ const Product = () => {
 
   return (
     <Layout>
-      {/* <ProductHero product={product} reviews={reviews}/> */}
+      <ProductHero product={product} reviews={reviews}/>
       <Description product={product} reviews={reviews}/>
-      {/* {products.length > 0 && <UpsellSlider products={upsells} />} */}
+      {products.length > 0 && <UpsellSlider products={upsells} />}
     </Layout>
   );
 };

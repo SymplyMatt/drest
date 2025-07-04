@@ -303,3 +303,21 @@ body{
 .cursor-not-allowed{
     cursor: not-allowed !important;
 }
+.w-100important{
+    width: 100px !important;
+}
+.order2{
+    @media screen and (max-width: 1200px) {
+        order: 2 !important;
+    }
+}
+.order1{
+    @media screen and (max-width: 1200px) {
+        order: 1 !important;
+    }
+}
+.order3{
+    @media screen and (max-width: 1200px) {
+        order: 3 !important;
+    }
+}

@@ -22,19 +22,20 @@ const ProductHero : React.FC<CategoriesAndProductsProps> = ({product, reviews}) 
     const { wishlist,cart } = useSelector((state: RootState) => state.app);
     const isInWishlist = wishlist.some((item) => item.id === product.id);
     const isInCart = cart.some((item) => item.product.id === product.id);
+    const [isMobileView, setIsMobileView] = useState(false);
     const renderCustomPagination = () => {
         const totalSlides = 6; 
         return (
-            <div className="h-full flex flex-col items-center justify-center mb-6 gap-[24px]">
-                <div className="h-full flex flex-col items-center justify-center">
+            <div className="h-[4px] tmd:flex-col tmd:h-full flex items-center justify-center mb-6 gap-[24px] w-full">
+                <div className="h-[4px] tmd:flex-col tmd:h-full flex items-center justify-center w-full">
                     {[...Array(totalSlides)].map((_, index) => (
                         <button
                             key={index}
                             onClick={() => swiperRef.current?.slideTo(index)}
-                            className={`transition-all duration-300 ${
+                            className={`transition-all duration-300 h-full ${
                                 activeIndex === index 
-                                    ? "bg-[#141511] w-[4px] h-full" 
-                                    : "bg-[#F3F3F3] w-[4px] h-full"
+                                    ? "bg-[#141511] w-full flex-1 tmd:w-[4px]" 
+                                    : "bg-[#F3F3F3] w-full flex-1 tmd:w-[4px]"
                             }`}
                             aria-label={`Go to slide ${index + 1}`}
                         />
@@ -49,26 +50,36 @@ const ProductHero : React.FC<CategoriesAndProductsProps> = ({product, reviews}) 
         setActiveIndex(0);
         swiperRef.current?.slideTo(0);
     },[product]);
+    useEffect(() => {
+        const handleResize = () => {
+          setIsMobileView(window.innerWidth < 1200);
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+    }, []);
     return (
-        <div className="w-full bg-[#F3F3F3] grid grid-cols-[17%_50%_33%] px-[50px] gap-[20px] items-center justify-center">
-            <div className="flex items-center justify-center w-full">
-                <div className="flex items-center justify-center w-[195px] bg-white h-[512px] gap-[16px] p-[16px]" style={{ height: product.images.length > 3 ? '512px' : `${(product.images.length * 140) + 32}px` }}>
-                    {product.images.length > 3 && <div className="h-full">{renderCustomPagination()}</div>}
+        <div className="flex flex-col w-full bg-[#F3F3F3] tmd:grid tmd:grid-cols-[17%_50%_33%] tmd:px-[50px] tmd:gap-[20px] items-center justify-center">
+            <div className={`flex items-center justify-center w-full order2`}>
+                <div className={`flex items-center flex-col tmd:flex-row justify-center w-[195px] bg-white gap-[16px] p-[16px] ${isMobileView && 'w-full'}`} style={{ height: isMobileView ? '150px' : product.images.length > 3 ? '512px' : `${(product.images.length * 140) + 32}px` }}>
+                    {product.images.length > 3 && <div className={`h-[4px] tmd:h-full ${isMobileView && 'w-full'}`}>{renderCustomPagination()}</div>}
                     <Swiper
-                        direction="vertical"
+                        direction={!isMobileView ? "vertical" : "horizontal"}
                         slidesPerView={product.images.length > 3 ? 3.2 : product.images.length}
                         spaceBetween={0}
                         loop={true} 
-                        autoplay={{ delay: 3000, disableOnInteraction: false }}
+                        // autoplay={{ delay: 3000, disableOnInteraction: false }}
                         modules={[Autoplay]}
                         speed={1000}
-                        className="w-full h-full"
+                        className={`w-full ${isMobileView ? 'h-[100px]' : 'h-full'}`}
                         onSwiper={(swiper) => (swiperRef.current = swiper)}
                         onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
                     >
                         {product.images.map((image,index) => (
-                            <SwiperSlide className="w-full h-[150px] px150" onClick={()=>setActiveImage(image.src)}>
-                                <div className="w-full h-[150px] border border-[#D6D6D5] bg-[#F3F3F3] flex items-center justify-center cursor-pointer p-[10px] relative" key={index}>
+                            <SwiperSlide className={`${isMobileView ? 'w-100important h-[100px]': 'w-full h-[150px] px150'}`} onClick={()=>setActiveImage(image.src)} key={index} style={{ width: isMobileView ? '100px' : '', height: isMobileView ? '100px' : ''}}>
+                                <div className={`${isMobileView ? 'w-100important h-[100px]' : 'w-full h-[150px]'} border border-[#D6D6D5] bg-[#F3F3F3] flex items-center justify-center cursor-pointer p-[10px] relative`} key={index} style={{ width: isMobileView ? '100px' : '', height: isMobileView ? '100px' : ''}}>
                                     <img src={image.src} className="h-full object-cover"/>
                                     {image.src === activeImage && <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                                         <rect x="1" y="1" width="48" height="48" rx="24" fill="#F3F3F3"/>
@@ -82,10 +93,10 @@ const ProductHero : React.FC<CategoriesAndProductsProps> = ({product, reviews}) 
                     </Swiper>
                 </div>
             </div>
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center w-full order1">
                 <img src={activeImage} className="h-full"/>
             </div>
-            <div className="flex items-center justify-center p-[24px]">
+            <div className="flex items-center justify-center tmd:p-[24px] w-full order3">
                 <div className="w-full flex flex-col items-center justify-center">
                     {discount ? <div className="h-[48px] bg-[#36A34C] w-full flex items-center justify-between text-white px-[24px] py-[12px]">
                         <div className="font-normal text-[16px] leading-[24px] tracking-[0%]">SPECIAL DISCOUNT</div>
