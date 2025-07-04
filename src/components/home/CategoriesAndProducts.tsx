@@ -58,7 +58,6 @@ const CategoriesAndProducts: React.FC<CategoriesAndProductsProps> = ({ title = '
                     const products: Response = (await fetchFromApi(`products?category=${activeCategory}&page=${currentPage}&per_page=8`));
                     setActiveCategoryProducts(products.data as Product[]);
                 }else{
-                    console.log("Fetching all products for current page:", currentPage);
                     const products: Response = (await fetchFromApi(`products?page=${currentPage}&per_page=8`));
                     dispatch(setProducts(products.data));
                 }

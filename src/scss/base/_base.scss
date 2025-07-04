@@ -258,3 +258,45 @@ body{
 .px150{
     height: 150px !important;
 }
+@keyframes slide-in {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .slide-in {
+    animation: slide-in 0.5s ease-out;
+  }
+  @keyframes slide-out {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+  
+  .slide-out {
+    animation: slide-out 0.3s ease-in forwards;
+  }
+  .spinner {
+    width: 35px;
+    height: 35px;
+    animation: rotate 2s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }

@@ -3,7 +3,7 @@ import { AppDispatch, RootState } from "../../redux/store";
 import { setAuthPage, setLoginValues } from "../../redux/states/auth";
 import { setLoggedInUser } from "../../redux/states/app";
 import { useSelector } from "react-redux";
-import { fetchFromApi } from "../../utils/utils";
+import utils, { fetchFromApi } from "../../utils/utils";
 import { useState } from "react";
 import Loader from "../common/Loader";
 
@@ -18,8 +18,11 @@ const PasswordLogin = () => {
         setLoading(true);
         const response = await fetchFromApi("jwt-auth/v1/token", {method: "POST", body: { username: loginValues.email, password: loginValues.password }, baseurl:'https://newshop.tn/wp-json/'});
         setLoading(false);
-        console.log(response);
-        if(!response.data) return;
+        if(!response.data && response.response) {
+            utils.createErrorNotification(response.response.data.message || "An error occurred while logging in. Please try again.", 3000);
+            dispatch(setAuthPage(null));
+            return
+        };
         const {user_display_name, user_email, token, user_nicename} = response.data;
         dispatch(setLoggedInUser({name: user_display_name, email: user_email, token, displayName: user_nicename}));
         dispatch(setAuthPage(null));

@@ -23,7 +23,6 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
     useEffect(() => {
         const fetchData = async () => {
             try {
-                console.log('running again!!!')
                 const productRes: Response = (await fetchFromApi("products?per_page=8"));
                 const products = productRes.data as Product[];
                 const total = productRes.headers['x-wp-total'];
@@ -67,6 +66,7 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
             {showAccount && <AccountMobile />}
             {searchMode && <Search />}
             <MobileFooter />
+            <div className="flex flex-col absolute top-[100px] right-[10px] tmd:right-[30px] notification-container gap-20"></div>
         </>
     );
 };

@@ -17,8 +17,7 @@ export default class utils {
         const phoneRegex: RegExp = /^\d{10}$/;
         return phoneRegex.test(number);
     }
-    static convertImageToBase64(file: File): Promise<string> {
-      
+    static convertImageToBase64(file: File): Promise<string> {    
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onloadend = () => {
@@ -71,38 +70,31 @@ export default class utils {
     }
     static createErrorNotification(error : string, time: number) {
       const errorDiv = document.createElement('div');
-      errorDiv.className = 'p-20 flex items-center bg-errorBg rounded-12 text-white relative w-[400px] justify-between slide-in';
-  
+      errorDiv.className = 'p-20 flex items-center bg-errorBg rounded-12 text-white relative max-w-[400px] justify-between slide-in z-10';
       const p1 = document.createElement('p');
       const p2 = document.createElement('p');
       p1.innerHTML = 'ERROR!';
       p1.className = 'text-[#AA2924] font-bold text-[18px] text-left';
       p2.innerHTML = error;
       p2.className = 'text-[#C4736F] text-left';
-  
       const textContainer = document.createElement('div');
       textContainer.className = 'flex flex-col justify-between p-0 h-full';
       textContainer.appendChild(p1);
       textContainer.appendChild(p2);
-  
       const cancel = document.createElement('div');
       cancel.className = 'flex items-center cursor-pointer text-[28px] text-[#CB9B99]';
       cancel.innerHTML = '<i class="fa-solid fa-xmark"></i>';
-  
       const errorIconContainer = document.createElement('div');
       errorIconContainer.className = 'flex items-center justify-center p-10 w-[40px] h-[40px] rounded-50 bg-[#E1B0AC]';
       const errorIcon = document.createElement('i');
       errorIcon.className = 'fa-solid fa-xmark text-[#AA2924] text-[28px]';
       errorIconContainer.appendChild(errorIcon);
-  
       const infoContainer = document.createElement('div');
       infoContainer.className = 'flex gap-10 items-center justify-center h-full';
       infoContainer.appendChild(errorIconContainer);
       infoContainer.appendChild(textContainer);
-  
       errorDiv.appendChild(infoContainer);
       errorDiv.appendChild(cancel);
-  
       const notificationContainer = document.querySelector('.notification-container');
       if (notificationContainer) {
         notificationContainer.appendChild(errorDiv);
@@ -127,7 +119,6 @@ export default class utils {
     static createSuccessNotification(message : string, time: number) {
       const errorDiv = document.createElement('div');
       errorDiv.className = 'p-20 flex items-center bg-successBg rounded-12 text-white relative w-[400px] justify-between slide-in';
-  
       const p1 = document.createElement('p');
       const p2 = document.createElement('p');
       p1.innerHTML = 'SUCCESS!';
@@ -237,6 +228,7 @@ export interface Response{
   statusText: string;
   headers: Record<string, string>;
   config: any;
+  response?: any;
 }
 
 const username = import.meta.env.VITE_API_USERNAME || '';
@@ -265,7 +257,7 @@ export const fetchFromApi = async (
     const config = { method, url, headers, ...(method !== 'GET' && options?.body ? { data: options.body } : {})};
     const response: Response = await axios(config);
     return response;
-  } catch (err) {
+  } catch (err:any) {
     console.error(`Error fetching from ${endpoint}:`, err);
     return err as Response;
   }

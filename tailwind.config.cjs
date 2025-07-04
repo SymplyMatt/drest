@@ -39,6 +39,8 @@ module.exports = {
         white: "#FFFFFF",
         headerBlack: "#000000",
         textWhite: "#FFFFFF",
+        errorBg: "#EEC8C5",
+        successBg: "#DDF4D8",
       },
       spacing: {
         1: "1px",
