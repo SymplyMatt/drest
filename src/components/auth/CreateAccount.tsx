@@ -25,9 +25,20 @@ const CreateAccount = () => {
   }
   useEffect(()=>{
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    setDisabled(!(emailRegex.test(signupValues.email) && signupValues.password.length >= 6 && signupValues.first_name.length > 0 && signupValues.phone.length > 8));
+    setDisabled(!(emailRegex.test(signupValues.email) && passwordStrengthScore(signupValues.password) > 2 && signupValues.first_name.length > 0 && signupValues.phone.length > 8));
   },[signupValues]);
 
+  function passwordStrengthScore(str: string): number {
+    let score = 0;
+    const hasNumber = /\d/.test(str);
+    const hasSymbol = /[!@#$%^&*(),.?":{}|<>_\-+=\\/~`[\];']/g.test(str);
+    const isLongEnough = str.length >= 8;
+    if (hasNumber) score++;
+    if (hasSymbol) score++;
+    if (isLongEnough) score++;
+    return score;
+  }
+  
   if(loading){
     return <Loader />
   }
@@ -70,11 +81,11 @@ const CreateAccount = () => {
                   </div>
                   <div className="flex flex-col justify-center gap-[8px]">
                     <div className="w-full flex items-center justify-center gap-[8px]">
-                        <div className={`transition-all duration-300 h-[4px] flex-grow bg-[#D58618]`}> </div>
-                        <div className={`transition-all duration-300 h-[4px] flex-grow bg-[#D58618]`}> </div>
-                        <div className={`transition-all duration-300 h-[4px] flex-grow bg-[#D6D6D5]`}> </div>
+                        <div className={`transition-all duration-300 h-[4px] flex-grow ${passwordStrengthScore(signupValues.password) >= 1 ? 'bg-[#D58618]' : 'bg-[#D6D6D5]' }`}> </div>
+                        <div className={`transition-all duration-300 h-[4px] flex-grow ${passwordStrengthScore(signupValues.password) >= 2 ? 'bg-[#D58618]' : 'bg-[#D6D6D5]' }`}> </div>
+                        <div className={`transition-all duration-300 h-[4px] flex-grow ${passwordStrengthScore(signupValues.password) >= 3 ? 'bg-[#D58618]' : 'bg-[#D6D6D5]' }`}> </div>
                     </div>
-                    <div className="text-[#676764] flex items-center gap-[8px] cursor-pointer text-left text-[14px]">At least 1 number, 8 characters, 1 symbol</div>
+                    <div className="text-[#676764] flex items-center gap-[8px] text-left text-[14px]">At least 1 number, 8 characters, 1 symbol</div>
                 </div>
               </div>
               <div className={`flex h-[48px] bg-[#141511] w-full cursor-pointer text-white items-center justify-center ${disabled ? 'opacity-50 cursor-not-allowed' : ''} ${loading ? 'cursor-wait' : ''}`} 

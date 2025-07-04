@@ -32,7 +32,7 @@ const PasswordLogin = () => {
         dispatch(setAuthPage(null));
     }
     useEffect(() => {
-        setDisabled(loginValues.password.length < 6);
+        setDisabled(loginValues.password.length < 8);
     }, [loginValues.password]);
     if(loading){
         return <Loader />
