@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ArrivalsAndCategory, CartItem, Product, ProductCategory } from "../../utils/utils";
+import { ArrivalsAndCategory, CartItem, Product, ProductCategory, SavedCartItem } from "../../utils/utils";
 interface User {
   name: string;
   email: string;
@@ -14,6 +14,7 @@ interface AppState {
   showAccount: boolean;
   loggedInUser: User | null;
   cart: CartItem[];
+  savedcart: SavedCartItem[];
   wishlist: Product[];
   products: Product[];
   sales: Product[];
@@ -31,6 +32,7 @@ const initialState: AppState = {
   language: import.meta.env.VITE_LANGUAGE || "us",
   loggedInUser: null,
   cart: [],
+  savedcart: [],
   wishlist: [],
   products: [],
   sales: [],
@@ -84,6 +86,12 @@ const app = createSlice({
     addToCart: (state, action: PayloadAction<CartItem>) => {
       state.cart = [...state.cart, action.payload];
     },
+    updateCart: (state, action: PayloadAction<CartItem[]>) => {
+      state.cart = action.payload;
+    },
+    updateSavedCart: (state, action: PayloadAction<SavedCartItem[]>) => {
+      state.savedcart = action.payload;
+    },
     addToWishlist: (state, action: PayloadAction<Product>) => {
       state.wishlist = [...state.wishlist, action.payload];
     },
@@ -99,5 +107,5 @@ const app = createSlice({
   },
 });
 
-export const { setTheme, setLanguage, setLoggedInUser, setSearchMode, emptyCart, setShowAccount, setProducts, setSales, setCategories, setNewArrivals, addToCart, addToWishlist, removeFromCart, removeFromWishlist, setTotalProducts, setTotalPages, setCurrentPage } = app.actions;
+export const { setTheme, setLanguage, setLoggedInUser, setSearchMode, emptyCart, setShowAccount, setProducts, setSales, setCategories, setNewArrivals, addToCart, addToWishlist, removeFromCart, removeFromWishlist, setTotalProducts, setTotalPages, setCurrentPage, updateSavedCart, updateCart } = app.actions;
 export default app.reducer;

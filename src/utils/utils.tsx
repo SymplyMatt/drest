@@ -241,6 +241,7 @@ export const fetchFromApi = async (
     method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
     body?: any;
     baseurl?: string;
+    useToken?: boolean;
   }
 ) => {
   try {
@@ -252,7 +253,7 @@ export const fetchFromApi = async (
     if (!options?.body) {
       headers['Authorization'] = `Basic ${token}`;
     }
-    if (options?.body && userToken) {
+    if ((options?.body || options?.useToken) && userToken) {
       headers['Authorization'] = `Bearer ${userToken}`;
     }
     if (options?.body) {
@@ -393,4 +394,13 @@ export interface ArrivalsAndCategory {
 export interface CartItem {
   quantity: number;
   product: Product;
+}
+export interface SavedCartItem {
+  key: string;
+  product_id: number;
+  name: string;
+  price: number;
+  subtotal: number;
+  total: number;
+  quantity: number;
 }

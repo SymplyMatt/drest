@@ -29,6 +29,7 @@ const PasswordLogin = () => {
         const {user_display_name, user_email, token, user_nicename} = response.data;
         dispatch(setLoggedInUser({name: user_display_name, email: user_email, token, displayName: user_nicename}));
         localStorage.setItem("userToken", token);
+        localStorage.setItem("user", JSON.stringify({name: user_display_name, email: user_email, displayName: user_nicename}));
         setLoginValues({email: '', password: ''});
         dispatch(setAuthPage(null));
     }

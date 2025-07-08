@@ -7,8 +7,8 @@ import { RootState } from "../redux/store";
 import Search from "../components/common/Search";
 import MobileFooter from "../components/common/MobileFooter";
 import AccountMobile from "../components/common/AccountMobile";
-import { ArrivalsAndCategory, fetchFromApi, Product, ProductCategory, Response } from "../utils/utils";
-import { setCategories, setNewArrivals, setProducts, setSales, setTotalPages, setTotalProducts } from "../redux/states/app";
+import { ArrivalsAndCategory, fetchFromApi, Product, ProductCategory, Response, SavedCartItem } from "../utils/utils";
+import { setCategories, setLoggedInUser, setNewArrivals, setProducts, setSales, setTotalPages, setTotalProducts, updateCart, updateSavedCart } from "../redux/states/app";
 import Loader from "../components/common/Loader";
 interface LayoutProps {
   children?: ReactNode;
@@ -18,7 +18,7 @@ interface LayoutProps {
 const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps) => {
     const dispatch = useDispatch();
     const { authPage } = useSelector((state: RootState) => state.auth);
-    const { searchMode, showAccount, products } = useSelector((state: RootState) => state.app);
+    const { searchMode, showAccount, products, loggedInUser, cart, savedcart } = useSelector((state: RootState) => state.app);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,6 +38,14 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
         };
         products.length < 1 && fetchData();
     }, []);
+
+    useEffect(()=>{
+        if (loggedInUser) return
+        const savedUser = JSON.parse(localStorage.getItem("user") as string);
+        if (!savedUser) return;
+        const { name, email, token, displayName } = savedUser;
+        dispatch(setLoggedInUser({name, email, token, displayName}));
+    },[]);
 
     useEffect(() => {
         async function fetchArrivalsAndCategories() {
@@ -64,7 +72,41 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
             dispatch(setNewArrivals(validArrivalsAndCategories));
         }
         products?.length && fetchArrivalsAndCategories();
-    }, [products?.length]);         
+    }, [products?.length]);  
+
+    useEffect(() => {
+        async function fetchSavedCart() {
+            const uniqueProducts = Array.from(new Set(savedcart.map((i: SavedCartItem) => i.product_id)));
+            const includeParam = uniqueProducts.join(',');
+            const productsRes = await fetchFromApi(`products?include=${includeParam}`);
+            if (!productsRes.data) return;
+            const cartProductsAndQuantities = productsRes.data.map((item: Product) => {
+                const cart_item = savedcart.find(i => i.product_id === item.id);
+                return { product: item, quantity: cart_item ? cart_item.quantity : 1 };
+            });
+            const combinedMap = new Map();
+            for (const entry of cart) {
+                combinedMap.set(entry.product.id, entry);
+            }
+            for (const entry of cartProductsAndQuantities) {
+                if (!combinedMap.has(entry.product.id)) {
+                    combinedMap.set(entry.product.id, entry);
+                }
+            }
+            const combinedCart = Array.from(combinedMap.values());
+            dispatch(updateCart(combinedCart));
+        }
+        savedcart.length > 0 && fetchSavedCart();
+    }, [savedcart]);       
+
+    useEffect(() => {
+        async function fetchSavedCart() {
+            const response = await fetchFromApi("custom/v1/cart/view", {method: "GET", baseurl:'https://newshop.tn/wp-json/', useToken: true});
+            if(!response.data || !response.data.cart_items) return
+            dispatch(updateSavedCart(response.data.cart_items));
+        }
+        loggedInUser && fetchSavedCart();
+    }, [loggedInUser]);
 
     if (products?.length === 0 || !products) {
         return (
