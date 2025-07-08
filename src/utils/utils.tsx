@@ -394,6 +394,7 @@ export interface ArrivalsAndCategory {
 export interface CartItem {
   quantity: number;
   product: Product;
+  key?: string;
 }
 export interface SavedCartItem {
   key: string;

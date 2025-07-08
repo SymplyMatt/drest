@@ -82,9 +82,10 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
             if (!productsRes.data) return;
             const cartProductsAndQuantities = productsRes.data.map((item: Product) => {
                 const cart_item = savedcart.find(i => i.product_id === item.id);
-                return { product: item, quantity: cart_item ? cart_item.quantity : 1 };
+                return { product: item, quantity: cart_item ? cart_item.quantity : 1, key: cart_item ? cart_item.key : null
+                };
             });
-            const combinedMap = new Map();
+            const combinedMap = new Map<number, typeof cart[0]>();
             for (const entry of cart) {
                 combinedMap.set(entry.product.id, entry);
             }
@@ -95,9 +96,14 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
             }
             const combinedCart = Array.from(combinedMap.values());
             dispatch(updateCart(combinedCart));
+            for (const entry of cart) {
+                const savedCartEntry = savedcart.find(i => i.product_id === entry.product.id);
+                if(savedCartEntry && savedCartEntry.quantity !== entry.quantity) await fetchFromApi("custom/v1/cart/add", { method: "POST", body: { key: savedCartEntry.key, quantity: entry.quantity }, baseurl: 'https://newshop.tn/wp-json/'});
+                if(!savedCartEntry && entry.quantity > 0) await fetchFromApi("custom/v1/cart/add", { method: "POST", body: { product_id: entry.product.id, quantity: entry.quantity || 1 }, baseurl: 'https://newshop.tn/wp-json/'});
+            }
         }
         savedcart.length > 0 && fetchSavedCart();
-    }, [savedcart]);       
+    }, [savedcart]);           
 
     useEffect(() => {
         async function fetchSavedCart() {
