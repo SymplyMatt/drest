@@ -23,6 +23,7 @@ const VerifyEmail = () => {
         if(response.data && response.status == 200) {
             const {user_display_name, user_email, token, user_nicename} = response.data;
             dispatch(setLoggedInUser({name: user_display_name, email: user_email, token, displayName: user_nicename}));
+            localStorage.setItem("userToken", token);
             dispatch(setAuthPage(null));
         };
     }

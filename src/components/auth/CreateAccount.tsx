@@ -3,7 +3,7 @@ import { AppDispatch, RootState } from "../../redux/store";
 import { setAuthPage, setSignupValues } from "../../redux/states/auth";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { fetchFromApi } from "../../utils/utils";
+import utils, { fetchFromApi } from "../../utils/utils";
 import Loader from "../common/Loader";
 
 const CreateAccount = () => {
@@ -20,7 +20,11 @@ const CreateAccount = () => {
     const response: any = await fetchFromApi("custom/v1/signup", {method: "POST", body: { first_name: signupValues.first_name, password: signupValues.password, email: signupValues.email, phone: signupValues.phone }, baseurl:'https://newshop.tn/wp-json/'});
     setLoading(false);
     console.log(response);
-    // if(!response) return;
+    if(!response.data && response.response) {
+      utils.createErrorNotification(response.response.data.message || "An error occurred while signing you in. Please try again.", 3000);
+      dispatch(setAuthPage(null));
+      return
+    };
     if(response.data && response.status == 200) dispatch(setAuthPage("verify-email"));
   }
   useEffect(()=>{

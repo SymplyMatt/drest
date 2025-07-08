@@ -248,8 +248,12 @@ export const fetchFromApi = async (
     const method = options?.method || 'GET';
     const url = `${baseURL}${endpoint}`;
     const headers: Record<string, string> = {};
+    const userToken = localStorage.getItem('userToken');
     if (!options?.body) {
       headers['Authorization'] = `Basic ${token}`;
+    }
+    if (options?.body && userToken) {
+      headers['Authorization'] = `Bearer ${userToken}`;
     }
     if (options?.body) {
       headers['Content-Type'] = 'application/json';

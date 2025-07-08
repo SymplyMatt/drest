@@ -3,7 +3,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Autoplay } from "swiper/modules";
-import { Product } from "../../utils/utils";
+import { fetchFromApi, Product } from "../../utils/utils";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { useDispatch } from "react-redux";
@@ -50,6 +50,10 @@ const ProductHero : React.FC<CategoriesAndProductsProps> = ({product, reviews}) 
         setActiveIndex(0);
         swiperRef.current?.slideTo(0);
     },[product]);
+    const addProductToCart = async () =>{
+        dispatch(addToCart({quantity:1,product}));
+        await fetchFromApi("custom/v1/cart/add", {method: "POST", body: { product_id: product.id, quantity: 1 }, baseurl:'https://newshop.tn/wp-json/'});
+    }
     useEffect(() => {
         const handleResize = () => {
           setIsMobileView(window.innerWidth < 1200);
@@ -172,7 +176,10 @@ const ProductHero : React.FC<CategoriesAndProductsProps> = ({product, reviews}) 
                         </div>
                         <div className="w-full flex flex-col items-center justify-center px-[24px] py-[16px] gap-[12px]">
                             {isInCart ? <div className="gap-[8px] w-full h-[48px] bg-red-900 text-white flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-[0.95]" onClick={()=>dispatch(removeFromCart(product.id))}>REMOVE FROM CART</div> : ''}
-                            {!isInCart ? <div className="gap-[8px] w-full h-[48px] bg-[#141511] text-white flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-[0.95]"onClick={()=>dispatch(addToCart({quantity:1,product}))}><img src="/images/plus.svg"/> ADD TO CART</div> : ''}
+                            {!isInCart ? <div className="gap-[8px] w-full h-[48px] bg-[#141511] text-white flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-[0.95]" onClick={()=>addProductToCart()}>
+                                <img src="/images/plus.svg"/> 
+                                ADD TO CART
+                            </div> : ''}
                             <div className="gap-[8px] w-full h-[48px] bg-[#fff] text-[#60D669] flex items-center justify-center cursor-pointer border border-[#60D669] transition-transform duration-200 hover:scale-[0.95]"><img src="/images/plus.svg"/><img src="/images/whatsapp.svg"/> ORDER ON WHATSAPP</div>
                         </div>
                     </div>

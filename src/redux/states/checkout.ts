@@ -1,9 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Product } from "../../utils/utils";
 
 interface CartItem {
-  id: string;
-  name: string;
-  price: number;
+  product: Product;
   quantity: number;
 }
 
@@ -22,11 +21,11 @@ const checkout = createSlice({
     addToCart: (state, action: PayloadAction<CartItem>) => {
       state.cart.push(action.payload);
     },
-    removeFromCart: (state, action: PayloadAction<string>) => {
-      state.cart = state.cart.filter(item => item.id !== action.payload);
+    removeFromCart: (state, action: PayloadAction<CartItem>) => {
+      state.cart = state.cart.filter(item => item.product.id !== action.payload.product.id);
     },
-    updateCartQuantity: (state, action: PayloadAction<{ id: string; quantity: number }>) => {
-      const item = state.cart.find(item => item.id === action.payload.id);
+    updateCartQuantity: (state, action: PayloadAction<CartItem>) => {
+      const item = state.cart.find(item => item.product.id === action.payload.product.id);
       if (item) {
         item.quantity = action.payload.quantity;
       }
