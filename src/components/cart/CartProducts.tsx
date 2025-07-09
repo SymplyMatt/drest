@@ -12,12 +12,12 @@ const CartProducts = () => {
         dispatch(emptyCart());
     }
     const removeProductFromCart = async (cartEntry: CartItem) =>{
-        loggedInUser && await fetchFromApi("custom/v1/cart/remove", {method: "POST", body: { key: cartEntry?.key }, baseurl:'https://newshop.tn/wp-json/'});
+        loggedInUser && await fetchFromApi("custom/v1/cart/remove", {method: "POST", body: { key: cartEntry?.key }, baseurl:'https://newshop.tn/wp-json/', useToken: true});
         dispatch(removeFromCart(cartEntry.product.id));
     }
     const updateQuantity = async (cartEntry: CartItem, quantity: number) =>{
         if (loggedInUser){
-            const response = await fetchFromApi("custom/v1/cart/update", { method: "POST", body: { key: cartEntry?.key, quantity }, baseurl:'https://newshop.tn/wp-json/' });
+            const response = await fetchFromApi("custom/v1/cart/update", { method: "POST", body: { key: cartEntry?.key, quantity }, baseurl:'https://newshop.tn/wp-json/', useToken: true });
             if (!response.data || response.status !== 200) return
         }
         dispatch(updateCart([...cart.filter(item => item.product.id !== cartEntry.product.id), { ...cartEntry, quantity }]));

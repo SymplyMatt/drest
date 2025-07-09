@@ -253,7 +253,7 @@ export const fetchFromApi = async (
     if (!options?.body) {
       headers['Authorization'] = `Basic ${token}`;
     }
-    if (options?.body ||   (options?.useToken && userToken)) {
+    if (options?.useToken && userToken) {
       headers['Authorization'] = `Bearer ${userToken}`;
     }
     if (options?.body) {

@@ -52,10 +52,10 @@ const ProductHero : React.FC<CategoriesAndProductsProps> = ({product, reviews}) 
     },[product]);
     const addProductToCart = async () =>{
         dispatch(addToCart({quantity:1,product}));
-        loggedInUser && await fetchFromApi("custom/v1/cart/add", {method: "POST", body: { product_id: product.id, quantity: 1 }, baseurl:'https://newshop.tn/wp-json/'});
+        loggedInUser && await fetchFromApi("custom/v1/cart/add", {method: "POST", body: { product_id: product.id, quantity: 1 }, baseurl:'https://newshop.tn/wp-json/', useToken: true});
     }
     const removeProductFromCart = async () =>{
-        loggedInUser && await fetchFromApi("custom/v1/cart/remove", {method: "POST", body: { key: cartEntry?.key }, baseurl:'https://newshop.tn/wp-json/'});
+        loggedInUser && await fetchFromApi("custom/v1/cart/remove", {method: "POST", body: { key: cartEntry?.key }, baseurl:'https://newshop.tn/wp-json/', useToken: true});
         dispatch(removeFromCart(product.id));
     }
     useEffect(() => {

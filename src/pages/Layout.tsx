@@ -90,9 +90,9 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
                 const savedCartEntry = savedcart.find(i => i.product_id === entry.product.id);
                 if (savedCartEntry) {
                     cartWithKeys.push({ ...entry, key: savedCartEntry.key });
-                    if (savedCartEntry.quantity !== entry.quantity) await fetchFromApi("custom/v1/cart/add", {method: "POST",body: { key: savedCartEntry.key, quantity: entry.quantity },baseurl: 'https://newshop.tn/wp-json/'});
+                    if (savedCartEntry.quantity !== entry.quantity) await fetchFromApi("custom/v1/cart/add", {method: "POST",body: { key: savedCartEntry.key, quantity: entry.quantity },baseurl: 'https://newshop.tn/wp-json/', useToken: true});
                 } else {
-                    const response = await fetchFromApi("custom/v1/cart/add", { method: "POST", body: { product_id: entry.product.id, quantity: entry.quantity || 1 }, baseurl: 'https://newshop.tn/wp-json/',});
+                    const response = await fetchFromApi("custom/v1/cart/add", { method: "POST", body: { product_id: entry.product.id, quantity: entry.quantity || 1 }, baseurl: 'https://newshop.tn/wp-json/', useToken: true,});
                     if (!response.data || !response.data.cart) continue;
                     const cartKey = Object.keys(response.data.cart)[0];
                     cartWithKeys.push({ ...entry, key: cartKey });
