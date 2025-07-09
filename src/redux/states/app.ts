@@ -12,6 +12,7 @@ interface AppState {
   language: string;
   searchMode: string | null;
   showAccount: boolean;
+  hasLoadedCart: boolean;
   loggedInUser: User | null;
   cart: CartItem[];
   savedcart: SavedCartItem[];
@@ -29,6 +30,7 @@ const initialState: AppState = {
   theme: "light",
   searchMode: null,
   showAccount: false,
+  hasLoadedCart: false,
   language: import.meta.env.VITE_LANGUAGE || "us",
   loggedInUser: null,
   cart: [],
@@ -64,6 +66,9 @@ const app = createSlice({
     },
     setSearchMode: (state, action: PayloadAction<string | null>) => {
       state.searchMode = action.payload;
+    },
+    setHasLoadedCart: (state, action: PayloadAction<boolean>) => {
+      state.hasLoadedCart = action.payload;
     },
     setCurrentPage: (state, action: PayloadAction<number>) => {
       state.currentPage = action.payload;
@@ -107,5 +112,5 @@ const app = createSlice({
   },
 });
 
-export const { setTheme, setLanguage, setLoggedInUser, setSearchMode, emptyCart, setShowAccount, setProducts, setSales, setCategories, setNewArrivals, addToCart, addToWishlist, removeFromCart, removeFromWishlist, setTotalProducts, setTotalPages, setCurrentPage, updateSavedCart, updateCart } = app.actions;
+export const { setTheme, setLanguage, setLoggedInUser, setSearchMode, emptyCart, setShowAccount, setProducts, setSales, setCategories, setNewArrivals, addToCart, addToWishlist, removeFromCart, removeFromWishlist, setTotalProducts, setTotalPages, setCurrentPage, updateSavedCart, updateCart, setHasLoadedCart } = app.actions;
 export default app.reducer;

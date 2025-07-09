@@ -8,7 +8,7 @@ import Search from "../components/common/Search";
 import MobileFooter from "../components/common/MobileFooter";
 import AccountMobile from "../components/common/AccountMobile";
 import { ArrivalsAndCategory, fetchFromApi, Product, ProductCategory, Response, SavedCartItem } from "../utils/utils";
-import { setCategories, setLoggedInUser, setNewArrivals, setProducts, setSales, setTotalPages, setTotalProducts, updateCart, updateSavedCart } from "../redux/states/app";
+import { setCategories, setHasLoadedCart, setLoggedInUser, setNewArrivals, setProducts, setSales, setTotalPages, setTotalProducts, updateCart, updateSavedCart } from "../redux/states/app";
 import Loader from "../components/common/Loader";
 interface LayoutProps {
   children?: ReactNode;
@@ -18,7 +18,7 @@ interface LayoutProps {
 const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps) => {
     const dispatch = useDispatch();
     const { authPage } = useSelector((state: RootState) => state.auth);
-    const { searchMode, showAccount, products, loggedInUser, cart, savedcart } = useSelector((state: RootState) => state.app);
+    const { searchMode, showAccount, products, loggedInUser, cart, savedcart, hasLoadedCart } = useSelector((state: RootState) => state.app);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -101,8 +101,9 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
                 if(savedCartEntry && savedCartEntry.quantity !== entry.quantity) await fetchFromApi("custom/v1/cart/add", { method: "POST", body: { key: savedCartEntry.key, quantity: entry.quantity }, baseurl: 'https://newshop.tn/wp-json/'});
                 if(!savedCartEntry && entry.quantity > 0) await fetchFromApi("custom/v1/cart/add", { method: "POST", body: { product_id: entry.product.id, quantity: entry.quantity || 1 }, baseurl: 'https://newshop.tn/wp-json/'});
             }
+            dispatch(setHasLoadedCart(true));
         }
-        savedcart.length > 0 && fetchSavedCart();
+        (savedcart.length > 0 && !hasLoadedCart) && fetchSavedCart();
     }, [savedcart]);           
 
     useEffect(() => {
@@ -111,7 +112,7 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
             if(!response.data || !response.data.cart_items) return
             dispatch(updateSavedCart(response.data.cart_items));
         }
-        loggedInUser && fetchSavedCart();
+        loggedInUser && savedcart.length === 0 && fetchSavedCart();
     }, [loggedInUser]);
 
     if (products?.length === 0 || !products) {
