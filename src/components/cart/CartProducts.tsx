@@ -2,15 +2,20 @@ import { useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store";
 import { addToWishlist, emptyCart, removeFromCart, removeFromWishlist } from "../../redux/states/app";
 import { useSelector } from "react-redux";
+import { fetchFromApi } from "../../utils/utils";
 
 const CartProducts = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const { cart, wishlist } = useSelector((state: RootState) => state.app);
+    const { cart, wishlist, loggedInUser } = useSelector((state: RootState) => state.app);
+    const clearCart = async () =>{
+        loggedInUser && await fetchFromApi("custom/v1/cart/clear", {method: "POST", baseurl:'https://newshop.tn/wp-json/', useToken: true});
+        dispatch(emptyCart());
+    }
   return (
     <div className="w-full col-span-2 flex flex-col">
         <div className="w-full flex items-center justify-between border-b border-r border-[#D6D6D5] px-[24px] py-[12px]">
             <div className="text-[#141511] text-[20px] font-semibold">YOUR CART</div>
-            <div className="flex items-center gap-[12px] text-[#4F4F4D] cursor-pointer font-semibold" onClick={() => dispatch(emptyCart())}><img src="/images/basket.svg"/> DELETE ALL</div>
+            <div className="flex items-center gap-[12px] text-[#4F4F4D] cursor-pointer font-semibold" onClick={() => clearCart()}><img src="/images/basket.svg"/> DELETE ALL</div>
         </div>
         <div className="w-full flex flex-col p-[24px] gap-[24px] border-b border-r border-[#D6D6D5] h-full">
             {cart.map((cart, index)=>{
