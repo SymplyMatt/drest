@@ -19,9 +19,9 @@ const ProductHero : React.FC<CategoriesAndProductsProps> = ({product, reviews}) 
     const swiperRef = useRef<SwiperClass | null>(null);
     const [activeIndex, setActiveIndex] = useState(0);
     const [activeImage, setActiveImage] = useState(product.images[0].src);
-    const { wishlist,cart } = useSelector((state: RootState) => state.app);
+    const { wishlist,cart, loggedInUser } = useSelector((state: RootState) => state.app);
     const isInWishlist = wishlist.some((item) => item.id === product.id);
-    const isInCart = cart.some((item) => item.product.id === product.id);
+    const cartEntry = cart.find((item) => item.product.id === product.id);
     const [isMobileView, setIsMobileView] = useState(false);
     const renderCustomPagination = () => {
         const totalSlides = 6; 
@@ -52,7 +52,11 @@ const ProductHero : React.FC<CategoriesAndProductsProps> = ({product, reviews}) 
     },[product]);
     const addProductToCart = async () =>{
         dispatch(addToCart({quantity:1,product}));
-        await fetchFromApi("custom/v1/cart/add", {method: "POST", body: { product_id: product.id, quantity: 1 }, baseurl:'https://newshop.tn/wp-json/'});
+        loggedInUser && await fetchFromApi("custom/v1/cart/add", {method: "POST", body: { product_id: product.id, quantity: 1 }, baseurl:'https://newshop.tn/wp-json/'});
+    }
+    const removeProductFromCart = async () =>{
+        loggedInUser && await fetchFromApi("custom/v1/cart/remove", {method: "POST", body: { key: cartEntry?.key }, baseurl:'https://newshop.tn/wp-json/'});
+        dispatch(removeFromCart(product.id));
     }
     useEffect(() => {
         const handleResize = () => {
@@ -175,8 +179,8 @@ const ProductHero : React.FC<CategoriesAndProductsProps> = ({product, reviews}) 
                             </div>
                         </div>
                         <div className="w-full flex flex-col items-center justify-center px-[24px] py-[16px] gap-[12px]">
-                            {isInCart ? <div className="gap-[8px] w-full h-[48px] bg-red-900 text-white flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-[0.95]" onClick={()=>dispatch(removeFromCart(product.id))}>REMOVE FROM CART</div> : ''}
-                            {!isInCart ? <div className="gap-[8px] w-full h-[48px] bg-[#141511] text-white flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-[0.95]" onClick={()=>addProductToCart()}>
+                            {cartEntry ? <div className="gap-[8px] w-full h-[48px] bg-red-900 text-white flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-[0.95]" onClick={()=>removeProductFromCart()}>REMOVE FROM CART</div> : ''}
+                            {!cartEntry ? <div className="gap-[8px] w-full h-[48px] bg-[#141511] text-white flex items-center justify-center cursor-pointer transition-transform duration-200 hover:scale-[0.95]" onClick={()=>addProductToCart()}>
                                 <img src="/images/plus.svg"/> 
                                 ADD TO CART
                             </div> : ''}

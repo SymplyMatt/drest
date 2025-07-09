@@ -18,7 +18,7 @@ interface LayoutProps {
 const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps) => {
     const dispatch = useDispatch();
     const { authPage } = useSelector((state: RootState) => state.auth);
-    const { searchMode, showAccount, products, loggedInUser, cart, savedcart, hasLoadedCart } = useSelector((state: RootState) => state.app);
+    const { searchMode, showAccount, products, loggedInUser, cart, savedcart, hasLoadedCart, categories } = useSelector((state: RootState) => state.app);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -71,7 +71,7 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
             dispatch(setCategories(validArrivalsAndCategories.map(item => item.category)));
             dispatch(setNewArrivals(validArrivalsAndCategories));
         }
-        products?.length && fetchArrivalsAndCategories();
+        products?.length && !categories.length && fetchArrivalsAndCategories();
     }, [products?.length]);  
 
     useEffect(() => {
