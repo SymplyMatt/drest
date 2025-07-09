@@ -88,13 +88,12 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
             const cartWithKeys = [];
             for (const entry of cart) {
                 const savedCartEntry = savedcart.find(i => i.product_id === entry.product.id);
-                if(savedCartEntry && savedCartEntry.quantity !== entry.quantity) {
+                if (savedCartEntry) {
                     cartWithKeys.push({ ...entry, key: savedCartEntry.key });
-                    await fetchFromApi("custom/v1/cart/add", { method: "POST", body: { key: savedCartEntry.key, quantity: entry.quantity }, baseurl: 'https://newshop.tn/wp-json/'});
-                }
-                if(!savedCartEntry && entry.quantity > 0) {
-                    const response = await fetchFromApi("custom/v1/cart/add", { method: "POST", body: { product_id: entry.product.id, quantity: entry.quantity || 1 }, baseurl: 'https://newshop.tn/wp-json/'});
-                    if (!response.data || !response.data.cart_item_key) continue;
+                    if (savedCartEntry.quantity !== entry.quantity) await fetchFromApi("custom/v1/cart/add", {method: "POST",body: { key: savedCartEntry.key, quantity: entry.quantity },baseurl: 'https://newshop.tn/wp-json/'});
+                } else {
+                    const response = await fetchFromApi("custom/v1/cart/add", { method: "POST", body: { product_id: entry.product.id, quantity: entry.quantity || 1 }, baseurl: 'https://newshop.tn/wp-json/',});
+                    if (!response.data || !response.data.cart) continue;
                     const cartKey = Object.keys(response.data.cart)[0];
                     cartWithKeys.push({ ...entry, key: cartKey });
                 }
@@ -109,12 +108,11 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
                 }
             }
             const combinedCart = Array.from(combinedMap.values());
-            console.log("Combined Cart: ", combinedCart);
             dispatch(updateCart(combinedCart));
             dispatch(setHasLoadedCart(true));
         }
         (savedcart.length > 0 && !hasLoadedCart) && fetchSavedCart();
-    }, [savedcart]);           
+    }, [savedcart]);
 
     useEffect(() => {
         async function fetchSavedCart() {
