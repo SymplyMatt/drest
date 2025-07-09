@@ -85,8 +85,22 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
                 return { product: item, quantity: cart_item ? cart_item.quantity : 1, key: cart_item ? cart_item.key : null
                 };
             });
-            const combinedMap = new Map<number, typeof cart[0]>();
+            const cartWithKeys = [];
             for (const entry of cart) {
+                const savedCartEntry = savedcart.find(i => i.product_id === entry.product.id);
+                if(savedCartEntry && savedCartEntry.quantity !== entry.quantity) {
+                    cartWithKeys.push({ ...entry, key: savedCartEntry.key });
+                    await fetchFromApi("custom/v1/cart/add", { method: "POST", body: { key: savedCartEntry.key, quantity: entry.quantity }, baseurl: 'https://newshop.tn/wp-json/'});
+                }
+                if(!savedCartEntry && entry.quantity > 0) {
+                    const response = await fetchFromApi("custom/v1/cart/add", { method: "POST", body: { product_id: entry.product.id, quantity: entry.quantity || 1 }, baseurl: 'https://newshop.tn/wp-json/'});
+                    if (!response.data || !response.data.cart_item_key) continue;
+                    const cartKey = Object.keys(response.data.cart)[0];
+                    cartWithKeys.push({ ...entry, key: cartKey });
+                }
+            }
+            const combinedMap = new Map<number, typeof cart[0]>();
+            for (const entry of cartWithKeys) {
                 combinedMap.set(entry.product.id, entry);
             }
             for (const entry of cartProductsAndQuantities) {
@@ -95,12 +109,8 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
                 }
             }
             const combinedCart = Array.from(combinedMap.values());
+            console.log("Combined Cart: ", combinedCart);
             dispatch(updateCart(combinedCart));
-            for (const entry of cart) {
-                const savedCartEntry = savedcart.find(i => i.product_id === entry.product.id);
-                if(savedCartEntry && savedCartEntry.quantity !== entry.quantity) await fetchFromApi("custom/v1/cart/add", { method: "POST", body: { key: savedCartEntry.key, quantity: entry.quantity }, baseurl: 'https://newshop.tn/wp-json/'});
-                if(!savedCartEntry && entry.quantity > 0) await fetchFromApi("custom/v1/cart/add", { method: "POST", body: { product_id: entry.product.id, quantity: entry.quantity || 1 }, baseurl: 'https://newshop.tn/wp-json/'});
-            }
             dispatch(setHasLoadedCart(true));
         }
         (savedcart.length > 0 && !hasLoadedCart) && fetchSavedCart();
