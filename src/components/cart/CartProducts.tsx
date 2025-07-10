@@ -17,8 +17,7 @@ const CartProducts = () => {
     }
     const updateQuantity = async (cartEntry: CartItem, quantity: number) =>{
         if (loggedInUser){
-            const response = await fetchFromApi("custom/v1/cart/update", { method: "POST", body: { key: cartEntry?.key, quantity }, baseurl:'https://newshop.tn/wp-json/', useToken: true });
-            if (!response.data || response.status !== 200) return
+            await fetchFromApi("custom/v1/cart/update", { method: "POST", body: { key: cartEntry?.key, quantity }, baseurl:'https://newshop.tn/wp-json/', useToken: true });
         }
         dispatch(updateCart([...cart.filter(item => item.product.id !== cartEntry.product.id), { ...cartEntry, quantity }]));
     }

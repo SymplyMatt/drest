@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ArrivalsAndCategory, CartItem, Product, ProductCategory, SavedCartItem } from "../../utils/utils";
+import utils, { ArrivalsAndCategory, CartItem, Product, ProductCategory, SavedCartItem } from "../../utils/utils";
 interface User {
   name: string;
   email: string;
@@ -90,9 +90,11 @@ const app = createSlice({
     },
     addToCart: (state, action: PayloadAction<CartItem>) => {
       state.cart = [...state.cart, action.payload];
+      utils.createSuccessNotification(`Added ${action.payload.product.name} to cart`, 3000);
     },
     updateCart: (state, action: PayloadAction<CartItem[]>) => {
       state.cart = action.payload;
+      utils.createSuccessNotification(`Cart updated`, 3000);
     },
     updateSavedCart: (state, action: PayloadAction<SavedCartItem[]>) => {
       state.savedcart = action.payload;
