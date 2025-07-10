@@ -46,7 +46,7 @@ const NewsSlide = () => {
                 {images.map((src, index) => (
                     <SwiperSlide key={index} className="h-[222px]">
                         <div className="h-full w-full bg-[#F3F3F3] flex items-center justify-center">
-                            <img src={src} className="h-full object-cover" alt="Slide" />
+                            <img src={src} className="h-full object-contain" alt="Slide" />
                         </div>
                     </SwiperSlide>
                 ))}

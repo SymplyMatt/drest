@@ -21,7 +21,7 @@ const CheckoutSuccess = () => {
                             <div className="flex w-full flex-col gap-[20px]">
                                 {[1,2,3,4,5,6].map((item, index) =>(
                                     <div className="w-full flex items-center gap-3 h-full" key={index}>
-                                        <img src={`/images/payment-image${item}.svg`} className="h-full object-cover" />
+                                        <img src={`/images/payment-image${item}.svg`} className="h-full object-contain" />
                                         <div className="w-full flex flex-col h-full justify-between py-1">
                                             <div className="text-[#141511] text-lg font-medium leading-[150%]">Ocean breeze varsity jacket</div>
                                             <div className="text-[#141511] text-xl font-medium price">120.00 TND</div>

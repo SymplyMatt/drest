@@ -40,7 +40,7 @@ const UpsellSliderProduct: React.FC<CategoriesAndProductsProps> =({product}) => 
                 setHovered(false);
             }}>
             <div className="w-[300px] h-[400px] tmd:w-full tmd:h-[400px] bg-[#F3F3F3] border border-[#E6E6E6] flex items-center justify-center relative">
-                <img src={(hovered) ? activeImage : product.images[0]?.src} className="w-full h-full object-cover" />
+                <img src={(hovered) ? activeImage : product.images[0]?.src} className="w-full h-full object-contain" />
                 {!isInWishlist && <img src="/images/heart.svg" className="cursor-pointer absolute top-[20px] right-[10px] transition-transform duration-200 hover:scale-[0.9]" 
                     onClick={() => {
                         dispatch(addToWishlist(product));

@@ -81,7 +81,7 @@ const GridSlider: React.FC<ComponentProp> = ({categoriesAndProducts=[]}) => {
                                 <div className="w-full flex items-center justify-center new_arrivals_img relative">
                                     <img 
                                         src={categoryAndProduct.products[0]?.images[0]?.src || categoryAndProduct.category?.image?.src} 
-                                        className="w-[80%] h-[80%] object-cover"
+                                        className="w-[80%] h-[80%] object-contain"
                                         alt={`Arrival ${index + 1}`}
                                     />
                                     <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-[48px] text-[#141511] bg-white py-[8px] px-[24px] flex justify-center items-center text-[16px] font-medium leading-[24.8px] tracking-[0%] cursor-pointer gap-[8px] opacity-0 scale-0 transition-all duration-50 group-hover:opacity-100 group-hover:scale-100 whitespace-nowrap">

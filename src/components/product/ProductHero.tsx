@@ -88,7 +88,7 @@ const ProductHero : React.FC<CategoriesAndProductsProps> = ({product, reviews}) 
                         {product.images.map((image,index) => (
                             <SwiperSlide className={`${isMobileView ? 'w-100important h-[100px]': 'w-full h-[150px] px150'}`} onClick={()=>setActiveImage(image.src)} key={index} style={{ width: isMobileView ? '100px' : '', height: isMobileView ? '100px' : ''}}>
                                 <div className={`${isMobileView ? 'w-100important h-[100px]' : 'w-full h-[150px]'} border border-[#D6D6D5] bg-[#F3F3F3] flex items-center justify-center cursor-pointer p-[10px] relative`} key={index} style={{ width: isMobileView ? '100px' : '', height: isMobileView ? '100px' : ''}}>
-                                    <img src={image.src} className="h-full object-cover"/>
+                                    <img src={image.src} className="h-full object-contain"/>
                                     {image.src === activeImage && <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                                         <rect x="1" y="1" width="48" height="48" rx="24" fill="#F3F3F3"/>
                                         <rect x="1" y="1" width="48" height="48" rx="24" stroke="#D6D6D5"/>

@@ -25,7 +25,7 @@ const CategoriesSlider = () => {
                         <div className="relative w-full h-full flex justify-center">
                             <img
                                 src={`/images/productimage${(index % 6) + 1}.jpeg`}
-                                className="object-cover w-full h-full"
+                                className="object-contain w-full h-full"
                                 alt="Product"
                             />
                             <div className="absolute bottom-[10px] flex items-center justify-center h-[36px] bg-white px-[20px] font-semibold cursor-pointer" onClick={()=>navigate('/product/productId')}>
