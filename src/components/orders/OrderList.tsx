@@ -178,7 +178,7 @@ const OrderList = () => {
                             <div className="relative right-[30px]">Delivered</div>
                         </div>
                     </div>
-                    <div className="w-full grid grid-cols-2">
+                    <div className="w-full grid grid-cols-2 border-b border-[#D6D6D5]">
                         <div className="col-span-1 gap-[16px] flex flex-col p-[20px]">
                             <div className="text-[#141511] text-[20px] font-medium">Product details</div>
                             <div className="w-full flex items-center gap-3 h-[111px]">
@@ -284,6 +284,67 @@ const OrderList = () => {
                                 <div className="text-[#4F4F4D] text-[20px] flex items-center gap-[8px] font-semibold">697.05 TND</div>
                             </div>
                         </div>
+                    </div>
+                    <div className="w-full grid grid-cols-2 border-b border-[#D6D6D5]">
+                        <div className="col-span-1 flex flex-col gap-[12px] p-[24px]">
+                                <div className="text-[#141511] text-[24px] font-medium">Shipping details</div>
+                                <div className="border boder-[#D6D6D5] flex flex-col h-[245px] p-[16px] gap-[24px] bg-[#F3F3F3]">
+                                    <div className="text-[#676764] text-[18px] font-normal">SHIPPING ADDRESS</div>
+                                    <div className="w-full flex-col gap-[8px]">
+                                        <div className="text-[141511]">Mahmud Richardson</div>
+                                        <div className="text-[#676764] text-[18px]">14 Crystal avenue, Easy-way, Tunisia, 23170</div>
+                                        <div className="text-[#676764] text-[18px]">Tunisia</div>
+                                        <div className="text-[#676764] text-[18px]">richardson@gmail.com</div>
+                                        <div className="text-[#676764] text-[18px]">+231 658 - 845 - 0980</div>
+                                    </div>
+                                </div>
+                                <div className="w-full flex items-center gap-[32px]">
+                                    <div className="flex flex-col gap-[8px]">
+                                        <div className="text-[#676764] text-[18px] font-normal">Shipping type</div>
+                                        <div className="text-[#141511] text-[18px] font-medium">Standard ( Free )</div>
+                                    </div>
+                                    <div className="flex flex-col gap-[8px]">
+                                        <div className="text-[#676764] text-[18px] font-normal">Estimated arrive</div>
+                                        <div className="text-[#141511] text-[18px] font-medium">25 January 2024</div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div className="col-span-1 flex flex-col gap-[12px] p-[24px] border-l border-[#D6D6D5]">
+                            <div className="text-[#141511] text-[24px] font-medium">Shipping details</div>
+                            <div className="border boder-[#D6D6D5] flex flex-col h-[245px] p-[16px] gap-[24px] bg-[#F3F3F3]">
+                                <div className="text-[#676764] text-[18px] font-normal">BILLING ADDRESS</div>
+                                <div className="w-full flex-col gap-[8px]">
+                                    <div className="text-[141511]">Mahmud Richardson</div>
+                                    <div className="text-[#676764] text-[18px]">14 Crystal avenue, Easy-way, Tunisia, 23170</div>
+                                    <div className="text-[#676764] text-[18px]">Tunisia</div>
+                                </div>
+                            </div>
+                            <div className="w-full flex items-center gap-[32px]">
+                                <div className="flex flex-col gap-[8px]">
+                                    <div className="text-[#676764] text-[18px] font-normal">Card ending</div>
+                                    <div className="text-[#141511] text-[18px] font-medium flex items-center gap-[8px]"><img src="/images/visatext.svg" />3445</div>
+                                </div>
+                                <div className="flex flex-col gap-[8px]">
+                                    <div className="text-[#676764] text-[18px] font-normal">Expiration date</div>
+                                    <div className="text-[#141511] text-[18px] font-medium">08/2026</div>
+                                </div>
+                                <div className="flex flex-col gap-[8px]">
+                                    <div className="text-[#676764] text-[18px] font-normal">Payment type</div>
+                                    <div className="text-[#141511] text-[18px] font-medium">Debit/Credit Card</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="w-full flex items-center p-[24px] justify-between">
+                        <div className="flex gap-[8px] max-w-[600px] text-[#676764]">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.99787 6.66671C9.88287 6.66671 9.78953 6.76004 9.79037 6.87504C9.79037 6.99004 9.8837 7.08337 9.9987 7.08337C10.1137 7.08337 10.207 6.99004 10.207 6.87504C10.207 6.76004 10.1137 6.66671 9.99787 6.66671" stroke="#676764" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10 17.5V17.5C5.8575 17.5 2.5 14.1425 2.5 10V10C2.5 5.8575 5.8575 2.5 10 2.5V2.5C14.1425 2.5 17.5 5.8575 17.5 10V10C17.5 14.1425 14.1425 17.5 10 17.5Z" stroke="#676764" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9.9987 10V14.1667" stroke="#676764" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                            Order cancellations can only be made during the Review stage. If you cancel at this point, your full payment will be refunded.
+                        </div>
+                        <div className="h-[48px] bg-[#BD3322] text-white cursor-pointer flex items-center justify-center py-[8px] px-[24px]">CANCEL ORDER</div>
                     </div>
                 </div>
             </div>
