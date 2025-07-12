@@ -65,15 +65,15 @@ const Header = () => {
                     </div>
                     <div className="flex items-center gap-[8px]"><img src="/images/headphone.svg" /> Need help? <span className="font-bold">+216 50 660006</span></div>
                 </div>
-                <div className="items-center gap-[16px] uppercase flex tmd:hidden w-full px-[20px] py-[10px]">
+                {!location.pathname.includes('/orders') ? <div className="items-center gap-[16px] uppercase flex tmd:hidden w-full px-[20px] py-[10px]">
                         {["women", "men", "kids", "home", "beauty"].map((category, index) => (
                             <div key={index} className="font-semibold cursor-pointer flex items-center opacity-[0.90] hover:text-[#8F0024] open-menu">
                                 <img src={`/images/${category}.svg`} alt="" />
                             </div>
                         ))}
-                </div>
+                </div> : ''}
             </div>
-            <MenuLinks hoveredMenu={hoveredMenu} setHoveredMenu={setHoveredMenu}/>
+            {/* <MenuLinks hoveredMenu={hoveredMenu} setHoveredMenu={setHoveredMenu}/> */}
         </>
     )
 }
