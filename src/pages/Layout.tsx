@@ -123,11 +123,11 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
         loggedInUser && savedcart.length === 0 && fetchSavedCart();
     }, [loggedInUser]);
 
-    if (products?.length === 0 || !products) {
-        return (
-            <Loader />
-        );
-    }
+    // if (products?.length === 0 || !products) {
+    //     return (
+    //         <Loader />
+    //     );
+    // }
 
     return (
         <>
