@@ -1,6 +1,6 @@
-import EmptyOrder from "../components/orders/EmptyOrder";
-import OrderList from "../components/orders/OrderList";
-import ProfileNavigation from "../components/orders/ProfileNavigation";
+import EmptyOrder from "../components/profile/EmptyOrder";
+import OrderList from "../components/profile/OrderList";
+import ProfileNavigation from "../components/profile/ProfileNavigation";
 import Layout from "./Layout";
 
 const Orders = () => {

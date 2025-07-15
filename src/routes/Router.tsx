@@ -11,6 +11,7 @@ import CheckoutPayment from "../pages/CheckoutPayment";
 import AllResults from "../pages/AllResults";
 import CheckoutSuccess from "../pages/CheckoutSuccess";
 import Orders from "../pages/Orders";
+import Addresses from "../pages/Addresses";
 
 const Routes = (): JSX.Element => {
   const pageRoutes = [
@@ -57,6 +58,10 @@ const Routes = (): JSX.Element => {
     {
       path: "/orders", 
       element: <Orders />
+    },
+    {
+      path: "/addresses", 
+      element: <Addresses />
     },
     {
       path: "/search/allresults", 
