@@ -12,6 +12,7 @@ import AllResults from "../pages/AllResults";
 import CheckoutSuccess from "../pages/CheckoutSuccess";
 import Orders from "../pages/Orders";
 import Addresses from "../pages/Addresses";
+import Profile from "../pages/Profile";
 
 const Routes = (): JSX.Element => {
   const pageRoutes = [
@@ -62,6 +63,10 @@ const Routes = (): JSX.Element => {
     {
       path: "/addresses", 
       element: <Addresses />
+    },
+    {
+      path: "/profile", 
+      element: <Profile />
     },
     {
       path: "/search/allresults", 

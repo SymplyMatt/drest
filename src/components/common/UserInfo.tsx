@@ -41,7 +41,7 @@ const UserInfo = () => {
                     {showLanguages && <img src="/images/caretupsm.svg" />}
                 </div>
                 {showLanguages && <div className="absolute top-[50px] right-0 w-[200px] bg-white border border-[#F3F3F3] shadow-lang z-10 flex flex-col py-[8px]">
-                    <div className="h-[36px] p-[16px] cursor-pointer hover:bg-[#F4F4F4] w-full text-[#0F172A] text-[14px] flex items-center">My Profile</div>
+                    <div className="h-[36px] p-[16px] cursor-pointer hover:bg-[#F4F4F4] w-full text-[#0F172A] text-[14px] flex items-center" onClick={()=> navigate('/profile')}>My Profile</div>
                     <div className="h-[36px] p-[16px] cursor-pointer hover:bg-[#F4F4F4] w-full text-[#0F172A] text-[14px] flex items-center" onClick={()=> navigate('/orders')}>Orders</div>
                     <div className="h-[36px] p-[16px] cursor-pointer hover:bg-[#F4F4F4] w-full text-[#0F172A] text-[14px] flex items-center" onClick={()=> navigate('/addresses')} >Addresses</div>
                     <div className="h-[36px] p-[16px] cursor-pointer hover:bg-[#F4F4F4] w-full text-[#0F172A] text-[14px] flex items-center">Security Settings</div>
