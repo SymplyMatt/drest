@@ -1,5 +1,9 @@
+import { useLocation, useNavigate } from "react-router-dom";
 
 const ProfileNavigation = () => {
+  const location = useLocation();
+  const currentPath = location.pathname.split('/')[1];
+  const navigate = useNavigate();
   return (
     <>
         <div className="tmd:hidden h-[48px] flex w-full items-center justify-between px-[20px] border-b border-[#D6D6D5]">
@@ -12,11 +16,11 @@ const ProfileNavigation = () => {
             <div className=""></div>
         </div>
         <div className="hidden w-[360px] h-full tmd:flex flex-col px-[30px] py-[24px] border-b border-r border-[#D6D6D5] gap-[4px]">
-            <div className="text-[#141511] uppercase font-medium flex items-center h-[48px] cursor-pointer text-left px-[20px] hover:border-[#D6D6D5] hover:border hover:text-[#FFFFFF] hover:border hover:bg-[#141511]">PROFILE</div>
-            <div className="text-[#141511] uppercase font-medium flex items-center h-[48px] cursor-pointer text-left px-[20px] hover:border-[#D6D6D5] hover:border hover:text-[#FFFFFF] hover:border hover:bg-[#141511]">Delivery ADDRESSes</div>
-            <div className="text-[#141511] uppercase font-medium flex items-center h-[48px] cursor-pointer text-left px-[20px] hover:border-[#D6D6D5] hover:border hover:text-[#FFFFFF] hover:border hover:bg-[#141511]">Security settings</div>
-            <div className="text-[#FFFFFF] uppercase font-medium flex items-center h-[48px] cursor-pointer text-left border-[#D6D6D5] border px-[20px] bg-[#141511]">Orders</div>
-            <div className="text-[#141511] uppercase font-medium flex items-center h-[48px] cursor-pointer text-left px-[20px] hover:border-[#D6D6D5] hover:border hover:text-[#FFFFFF] hover:border hover:bg-[#141511]">Payment cards</div>
+            <div className={`uppercase font-medium flex items-center h-[48px] cursor-pointer text-left px-[20px] hover:border-[#D6D6D5] hover:border hover:text-[#FFFFFF] hover:border hover:bg-[#141511] ${currentPath.includes('profile') ? 'border-[#D6D6D5] bg-[#141511] text-[#FFFFFF]' : 'text-[#141511] bg-white'}`} onClick={()=>navigate('/profile')}>PROFILE</div>
+            <div className={`uppercase font-medium flex items-center h-[48px] cursor-pointer text-left px-[20px] hover:border-[#D6D6D5] hover:border hover:text-[#FFFFFF] hover:border hover:bg-[#141511] ${currentPath.includes('addresses') ? 'border-[#D6D6D5] bg-[#141511] text-[#FFFFFF]' : 'text-[#141511] bg-white'}`} onClick={()=>navigate('/addresses')}>Delivery ADDRESSES</div>
+            <div className={`uppercase font-medium flex items-center h-[48px] cursor-pointer text-left px-[20px] hover:border-[#D6D6D5] hover:border hover:text-[#FFFFFF] hover:border hover:bg-[#141511] ${currentPath.includes('security-settings') ? 'border-[#D6D6D5] bg-[#141511] text-[#FFFFFF]' : 'text-[#141511] bg-white'}`} onClick={()=>navigate('/security-settings')}>Security settings</div>
+            <div className={`uppercase font-medium flex items-center h-[48px] cursor-pointer text-left px-[20px] hover:border-[#D6D6D5] hover:border hover:text-[#FFFFFF] hover:border hover:bg-[#141511] ${currentPath.includes('orders') ? 'border-[#D6D6D5] bg-[#141511] text-[#FFFFFF]' : 'text-[#141511] bg-white'}`} onClick={()=>navigate('/orders')}>Orders</div>
+            <div className={`uppercase font-medium flex items-center h-[48px] cursor-pointer text-left px-[20px] hover:border-[#D6D6D5] hover:border hover:text-[#FFFFFF] hover:border hover:bg-[#141511] ${currentPath.includes('cards') ? 'border-[#D6D6D5] bg-[#141511] text-[#FFFFFF]' : 'text-[#141511] bg-white'}`} onClick={()=>navigate('/cards')}>Payment cards</div>
         </div>
     </>
   )
