@@ -25,6 +25,7 @@ interface AppState {
   currentPage: number;
   categories: ProductCategory[];
   newArrivals: ArrivalsAndCategory[];
+  userAddress: any
 }
 
 const initialState: AppState = {
@@ -45,6 +46,7 @@ const initialState: AppState = {
   totalProducts: 0,
   totalPages: 0,
   currentPage: 1,
+  userAddress: null
 };
 
 const app = createSlice({
@@ -90,6 +92,9 @@ const app = createSlice({
     setLanguage: (state, action: PayloadAction<string>) => {
       state.language = action.payload;
     },
+    setUserAddress: (state, action: PayloadAction<any>) => {
+      state.userAddress = action.payload;
+    },
     setLoggedInUser: (state, action: PayloadAction<User | null>) => {
       state.loggedInUser = action.payload;
     },
@@ -119,5 +124,5 @@ const app = createSlice({
   },
 });
 
-export const { setTheme, setLanguage, setLoggedInUser, setSearchMode, emptyCart, setShowAccount, setProducts, setSales, setCategories, setNewArrivals, addToCart, addToWishlist, removeFromCart, removeFromWishlist, setTotalProducts, setTotalPages, setCurrentPage, updateSavedCart, updateCart, setHasLoadedCart, setShowLogout } = app.actions;
+export const { setTheme, setLanguage, setLoggedInUser, setSearchMode, emptyCart, setShowAccount, setProducts, setSales, setCategories, setNewArrivals, addToCart, addToWishlist, removeFromCart, removeFromWishlist, setTotalProducts, setTotalPages, setCurrentPage, updateSavedCart, updateCart, setHasLoadedCart, setShowLogout, setUserAddress } = app.actions;
 export default app.reducer;

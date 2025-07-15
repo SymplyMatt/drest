@@ -1,16 +1,19 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import ProductList from "./ProductList";
+import { RootState } from "../../redux/store";
+import { useSelector } from "react-redux";
 
 const Summary = () => {
     const navigate = useNavigate();
     const page = useLocation().pathname.split("/").pop();
+    const { cart } = useSelector((state: RootState) => state.app);
     return (
-        <div className="w-full col-span-1 flex flex-col border-b border-[#D6D6D5] justify-between">
+        <div className={`w-full col-span-1 flex-col border-b border-[#D6D6D5] justify-between ${cart.length === 0 ? 'hidden tmd:flex' : ''}`}>
             <div className="w-full flex flex-col">
-                <div className="w-full flex items-center justify-center border-b border-r border-[#D6D6D5] px-[50px] py-[12px]">
+                <div className="w-full flex items-center tmd:justify-center border-b border-r border-[#D6D6D5] px-[20px] tmd:px-[50px] py-[12px]">
                     <div className="text-[#141511] text-[20px] font-medium">ORDER SUMMARY</div>
                 </div>
-                <div className="w-full p-[24px] flex flex-col items-center gap-[12px]">
+                <div className="w-full p-[20px] tmd:p-[24px] flex flex-col items-center gap-[12px]">
                     <div className="w-full flex items-center justify-between">
                         <div className="text-[#4F4F4D] text-[18px] flex items-center gap-[4px]">Total Products</div>
                         <div className="text-[#4F4F4D] text-[20px] flex items-center gap-[8px]">6 Products</div>

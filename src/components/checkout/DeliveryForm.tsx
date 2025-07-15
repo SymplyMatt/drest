@@ -1,5 +1,19 @@
+// import { useSelector } from "react-redux";
+// import { RootState } from "../../redux/store";
+// import { useDispatch } from "react-redux";
+// import { useEffect } from "react";
+// import { fetchFromApi } from "../../utils/utils";
 
 const DeliveryForm = () => {
+    // const { userAddress } = useSelector((state: RootState) => state.app);
+    // const dispatch = useDispatch();
+    // useEffect(() => {
+    //     async function getAddress(){
+    //         const address = await fetchFromApi("custom/v1/address/view", { method: "GET" ,baseurl: 'https://newshop.tn/wp-json/', useToken: true });
+    //         console.log(address.data);
+    //     }
+    //     getAddress();
+    // }, []);
     return (
     <div className="w-full col-span-2 flex flex-col h-full  border-b border-r border-[#D6D6D5]">
         <div className="w-full flex justify-center mx-auto py-[24px] gap-[4px] border-r border-[#D6D6D5]">
