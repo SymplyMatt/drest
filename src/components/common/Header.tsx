@@ -73,7 +73,7 @@ const Header = () => {
                         ))}
                 </div> : ''}
             </div>
-            <MenuLinks hoveredMenu={hoveredMenu} setHoveredMenu={setHoveredMenu}/>
+            {/* <MenuLinks hoveredMenu={hoveredMenu} setHoveredMenu={setHoveredMenu}/> */}
         </>
     )
 }

@@ -42,7 +42,7 @@ const UserInfo = () => {
                 </div>
                 {showLanguages && <div className="absolute top-[50px] right-0 w-[200px] bg-white border border-[#F3F3F3] shadow-lang z-10 flex flex-col py-[8px]">
                     <div className="h-[36px] p-[16px] cursor-pointer hover:bg-[#F4F4F4] w-full text-[#0F172A] text-[14px] flex items-center">My Profile</div>
-                    <div className="h-[36px] p-[16px] cursor-pointer hover:bg-[#F4F4F4] w-full text-[#0F172A] text-[14px] flex items-center">Orders</div>
+                    <div className="h-[36px] p-[16px] cursor-pointer hover:bg-[#F4F4F4] w-full text-[#0F172A] text-[14px] flex items-center" onClick={()=> navigate('/orders')}>Orders</div>
                     <div className="h-[36px] p-[16px] cursor-pointer hover:bg-[#F4F4F4] w-full text-[#0F172A] text-[14px] flex items-center">Addresses</div>
                     <div className="h-[36px] p-[16px] cursor-pointer hover:bg-[#F4F4F4] w-full text-[#0F172A] text-[14px] flex items-center">Security Settings</div>
                     <div className="h-[36px] p-[16px] cursor-pointer hover:bg-[#F4F4F4] w-full text-[#C74332] text-[14px] flex items-center font-semibold gap-[8px]">
