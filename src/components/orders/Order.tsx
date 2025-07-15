@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const Order = () => {
-    const [isOpen, setIsOpen] = useState(true);
+type MenuLinksProps = {
+    index: number;
+};
+const Order: React.FC<MenuLinksProps> = ({index}) => {
+    const [isOpen, setIsOpen] = useState(false);
     const toggleOrderDetails = () => {
       setIsOpen(!isOpen);
     };
+    useEffect(()=>{
+        if(index === 0) setIsOpen(true);
+    },[index])
   return (
         <div className="w-full flex flex-col">
             <div className="w-full p-[20px] border border-[#D6D6D5] flex flex-col justify-between gap-[20px]">
@@ -31,8 +37,7 @@ const Order = () => {
                             <div className="text-[#D58618] text-[18px] leading-[150%] font-medium">On progress</div>
                         </div>
                     </div>
-                    {!isOpen ?<img src="/images/closeorder.svg" onClick={toggleOrderDetails} className="cursor-pointer"/>
-                    : <img src="/images/openorder.svg" onClick={toggleOrderDetails} className="cursor-pointer"/>}
+                    <img src={isOpen ? "/images/openorder.svg" : "/images/closeorder.svg"} onClick={toggleOrderDetails} className={`cursor-pointer transition-transform duration-300 ${isOpen ? 'rotate-180' : 'rotate-0'}`}/>
                 </div>
                 <div className="grid grid-cols-1 tmd:hidden justify-center gap-[8px]">
                     <div className="flex gap-[4px] col-span-1 justify-between items-center">

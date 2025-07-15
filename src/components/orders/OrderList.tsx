@@ -7,7 +7,9 @@ const OrderList = () => {
             <div className="text-[#141511] text-[24px] leading-[130%] font-bold">Your orders</div>
             <div className="text-[#676764] text-[18px]">6 Total orders</div>
         </div>
-        <Order />
+        {Array.from({ length: 6 }).map((_, index) => (
+            <Order key={index} index={index}/>
+        ))}
     </div>
   )
 }
