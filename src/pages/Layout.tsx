@@ -10,6 +10,7 @@ import AccountMobile from "../components/common/AccountMobile";
 import { ArrivalsAndCategory, fetchFromApi, Product, ProductCategory, Response, SavedCartItem } from "../utils/utils";
 import { setCategories, setHasLoadedCart, setLoggedInUser, setNewArrivals, setProducts, setSales, setTotalPages, setTotalProducts, updateCart, updateSavedCart } from "../redux/states/app";
 import Loader from "../components/common/Loader";
+import Logout from "../components/common/Logout";
 interface LayoutProps {
   children?: ReactNode;
   headerGap?: string;
@@ -143,6 +144,7 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
             {searchMode && <Search />}
             <MobileFooter />
             <div className="flex flex-col absolute top-[100px] right-[10px] tmd:right-[30px] notification-container gap-20"></div>
+            <Logout />
         </>
     );
 };
