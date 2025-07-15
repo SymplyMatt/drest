@@ -6,18 +6,18 @@ const CheckoutProducts = () => {
   return (
     <div className="w-full col-span-2 flex flex-col">
         <div className="w-full flex justify-center mx-auto py-[24px] gap-[4px] border-r border-[#D6D6D5]">
-            <div className="flex flex-col gap-[8px] text-[#141511] whitespace-nowrap">
-                <img src="/images/deliveryinfo.svg"  className="h-[48px]"/>
+            <div className="flex flex-col gap-[8px] text-[#141511] whitespace-nowrap text-[14px]">
+                <img src="/images/deliveryinfo.svg"  className="tmd:h-[48px] h-[32px]"/>
                 Delivery info
             </div>
-            <img src="/images/arrowcheckout.svg" className="items-start h-[8px] mt-[22px]"/>
-            <div className="flex flex-col gap-[8px] text-[#141511] whitespace-nowrap">
-                <img src="/images/checkoutpayment.svg" className="h-[48px]"/>
+            <img src="/images/arrowcheckout.svg" className="items-start h-[8px] mt-[22px] w-[50px] tmd:w-auto"/>
+            <div className="flex flex-col gap-[8px] text-[#141511] whitespace-nowrap text-[14px]">
+                <img src="/images/checkoutpayment.svg" className="tmd:h-[48px] h-[32px]"/>
                 Make payment
             </div>
-            <img src="/images/arrowcheckout.svg" className="items-start h-[8px] mt-[22px]"/>
-            <div className="flex flex-col gap-[8px] text-[#141511] whitespace-nowrap">
-                <img src="/images/checkoutreview.svg"  className="h-[48px]"/>
+            <img src="/images/arrowcheckout.svg" className="items-start h-[8px] mt-[22px] w-[50px] tmd:w-auto"/>
+            <div className="flex flex-col gap-[8px] text-[#141511] whitespace-nowrap text-[14px]">
+                <img src="/images/checkoutreview.svg"  className="tmd:h-[48px] h-[32px]"/>
                 Review order
             </div>
         </div>

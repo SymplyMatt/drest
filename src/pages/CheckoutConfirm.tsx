@@ -6,7 +6,7 @@ const CheckoutConfirm = () => {
     return (
         <Layout headerGap="">
             <div className="w-full flex flex-col gap-[24px]">
-                <div className="w-full grid grid-cols-3 min-h-[720px]">
+                <div className="w-full grid grid-cols-1 tmd:grid-cols-3 tmd:min-h-[720px]">
                     <CheckoutProducts />
                     <Summary />
                 </div>

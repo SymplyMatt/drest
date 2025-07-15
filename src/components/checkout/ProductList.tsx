@@ -53,18 +53,18 @@ const ProductList = () => {
                 >
                     {[1,2,3,4,5,6].map((item, index) => (
                         <SwiperSlide className="w-full h-[111px]" key={index}>
-                            <div className="w-full flex items-center gap-3 h-full">
-                                <img src={`/images/payment-image${item}.svg`} alt={`Product ${item}`} className="h-full object-contain" />
+                            <div className="w-full flex items-center gap-[12px] h-full">
+                                <img src={`/images/payment-image${item}.svg`} alt={`Product ${item}`} className="h-[100px] w-[100px] object-contain" />
                                 <div className="w-full flex flex-col h-full justify-between py-1">
-                                    <div className="text-[#141511] text-lg font-medium leading-[150%]">Ocean breeze varsity jacket</div>
+                                    <div className="text-[#141511] text-[16px] tmd:text-lg font-medium leading-[150%]">Ocean breeze varsity jacket</div>
                                     <div className="text-[#141511] text-xl font-medium price">120.00 TND</div>
-                                    <div className="w-full grid grid-cols-10 items-center justify-between gap-2">
-                                        <div className="col-span-6 text-[#4F4F4D] text-base leading-[150%]">Color: <span>Solid Blue</span></div>
-                                        <div className="col-span-4 text-[#4F4F4D] text-base leading-[150%]">Size: <span>XL</span></div>
+                                    <div className="w-full grid grid-cols-10 items-center justify-between gap-2 text-[14px] tmd:text-base">
+                                        <div className="col-span-6 text-[#4F4F4D] text-[14px] tmd:text-base leading-[150%]">Color: <span>Solid Blue</span></div>
+                                        <div className="col-span-4 text-[#4F4F4D] text-[14px] tmd:text-base leading-[150%]">Size: <span>XL</span></div>
                                     </div>
-                                    <div className="w-full grid grid-cols-10 items-center justify-between gap-2">
-                                        <div className="col-span-6 text-[#4F4F4D] text-base leading-[150%]">Category: <span>{("varsity jacket").substring(0,13)}{("varsity jacket").length > 13 ? '...' : ''}</span></div>
-                                        <div className="col-span-4 text-[#4F4F4D] text-base leading-[150%]">Quantity: <span>1 Pcs</span></div>
+                                    <div className="w-full grid grid-cols-10 items-center justify-between gap-2 text-[14px] tmd:text-base">
+                                        <div className="col-span-6 text-[#4F4F4D] text-[14px] tmd:text-base leading-[150%]">Category: <span>{("varsity jacket").substring(0,13)}{("varsity jacket").length > 13 ? '...' : ''}</span></div>
+                                        <div className="col-span-4 text-[#4F4F4D] text-[14px] tmd:text-base leading-[150%]">Quantity: <span>1 Pcs</span></div>
                                     </div>
                                 </div>
                             </div>
