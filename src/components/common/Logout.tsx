@@ -1,6 +1,12 @@
 import { motion } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { setLoggedInUser, setShowLogout } from "../../redux/states/app";
+import { useNavigate } from "react-router-dom";
+import utils from "../../utils/utils";
 
 const Logout = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <motion.div initial={{ opacity: 0, y: -50 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 50 }} transition={{ duration: 0.4, ease: "easeOut" }} className="min-w-[100%] w-[100vw] min-h-[100%] h-[100vh] fixed top-0 right-0 bg-[#1415114D] z-10 flex justify-center items-center tmd:pt-[46px] pb-[80px]">
       <div className="w-fit bg-white border border-[#D6D6D5] justify-center flex flex-col h-fit overflow-y-scroll gap-[20px] py-[20px] max-w-[400px] tmd:max-w-[520px]">
@@ -277,8 +283,15 @@ const Logout = () => {
           <div className="text-[#4F4F4D] max-w-[520px]">Logging out will end your current session. Make sure you've saved any important information. Do you wish to proceed with logging out?</div>
         </div>
         <div className="w-full flex items-center justify-between px-[24px] gap-[12px]">
-          <div className="w-full tmd:w-fit h-[48px] cursor-pointer bg-[#fff] flex items-center justify-center py-[8px] px-[24px] text-[#141511] border border-[#D6D6D5]">NO, KEEP HERE</div>
-          <div className="w-full tmd:w-fit h-[48px] cursor-pointer bg-[#C74332] flex items-center justify-center py-[8px] px-[24px] text-[#FFFFFF] transition-transform duration-200 hover:scale-95">YES, LOG OUT</div>
+          <div className="w-full tmd:w-fit h-[48px] cursor-pointer bg-[#fff] flex items-center justify-center py-[8px] px-[24px] text-[#141511] border border-[#D6D6D5]" onClick={()=>dispatch(setShowLogout(false))}>NO, KEEP HERE</div>
+          <div className="w-full tmd:w-fit h-[48px] cursor-pointer bg-[#C74332] flex items-center justify-center py-[8px] px-[24px] text-[#FFFFFF] transition-transform duration-200 hover:scale-95" 
+          onClick={()=>{
+            dispatch(setLoggedInUser(null));
+            dispatch(setShowLogout(false));
+            navigate('/');
+            localStorage.clear();
+            utils.createSuccessNotification("Logged Out Successfully", 3000)
+          }}>YES, LOG OUT</div>
         </div>
       </div>
     </motion.div>

@@ -19,7 +19,7 @@ interface LayoutProps {
 const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps) => {
     const dispatch = useDispatch();
     const { authPage } = useSelector((state: RootState) => state.auth);
-    const { searchMode, showAccount, products, loggedInUser, cart, savedcart, hasLoadedCart, categories } = useSelector((state: RootState) => state.app);
+    const { searchMode, showAccount, products, loggedInUser, cart, savedcart, hasLoadedCart, categories, showLogout } = useSelector((state: RootState) => state.app);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -124,11 +124,11 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
         loggedInUser && savedcart.length === 0 && fetchSavedCart();
     }, [loggedInUser]);
 
-    // if (products?.length === 0 || !products) {
-    //     return (
-    //         <Loader />
-    //     );
-    // }
+    if (products?.length === 0 || !products) {
+        return (
+            <Loader />
+        );
+    }
 
     return (
         <>
@@ -144,7 +144,7 @@ const Layout = ({ children = <></>, headerGap = "tmd:gap-[24px]" }: LayoutProps)
             {searchMode && <Search />}
             <MobileFooter />
             <div className="flex flex-col absolute top-[100px] right-[10px] tmd:right-[30px] notification-container gap-20"></div>
-            <Logout />
+            {showLogout && <Logout />}
         </>
     );
 };

@@ -116,7 +116,7 @@ export default class utils {
         });
       }
     }
-    static createSuccessNotification(message : string, time: number) {
+    static createSuccessNotification(message : string, time: number=300) {
       const errorDiv = document.createElement('div');
       errorDiv.className = 'p-20 flex items-center bg-successBg rounded-12 text-white relative w-[400px] justify-between slide-in';
       const p1 = document.createElement('p');
