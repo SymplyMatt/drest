@@ -2,7 +2,7 @@ import { AppDispatch } from "../../redux/store";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import Footer from "./Footer";
-import { setSearchMode, setShowLogout } from "../../redux/states/app";
+import { setSearchMode, setShowAccount, setShowLogout } from "../../redux/states/app";
 import { useNavigate } from "react-router-dom";
 
 const AccountMobile = () => {
@@ -32,11 +32,17 @@ const AccountMobile = () => {
                                 <div className="text-[14px] text-[#141511] font-medium">Member Since</div>
                                 <div className="text-[14px] text-[#141511]">March 20, 2025</div>
                             </div>
-                            <div className="w-full flex items-center justify-center border border-[#D6D6D5] h-[36px] text-[#141511] font-medium text-[#141511]">Edit Profile</div>
+                            <div className="w-full flex items-center justify-center border border-[#D6D6D5] h-[36px] text-[#141511] font-medium text-[#141511]" onClick={()=>{
+                                dispatch(setShowAccount(false));
+                                navigate('/profile');
+                                }}>Edit Profile</div>
                         </div>
                     </div>
                     <div className="w-full grid grid-cols-3 items-center justify-between gap-[12px]">
-                        <div className="col-span-1 border border-[#D6D6D5] h-[100px] flex flex-col items-center justify-center gap-[8px] text-[#363939] text-[14px]">
+                        <div className="col-span-1 border border-[#D6D6D5] h-[100px] flex flex-col items-center justify-center gap-[8px] text-[#363939] text-[14px]" onClick={()=>{
+                                    dispatch(setShowAccount(false));
+                                    navigate('/orders');
+                                }}>
                             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5 10L10 3.33334H30L35 10V33.3333C35 34.2174 34.6488 35.0652 34.0237 35.6904C33.3986 36.3155 32.5507 36.6667 31.6667 36.6667H8.33333C7.44928 36.6667 6.60143 36.3155 5.97631 35.6904C5.35119 35.0652 5 34.2174 5 33.3333V10Z" stroke="#912A1D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M5 10H35" stroke="#912A1D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -48,7 +54,7 @@ const AccountMobile = () => {
                             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M20.8484 9.95705L20 10.8186L19.1514 9.95692C17.6042 8.38516 15.491 7.50006 13.2855 7.50006C11.0801 7.50006 8.96686 8.38516 7.41971 9.95692V9.95692C4.19343 13.2723 4.19343 18.5538 7.41971 21.8692L16.4075 30.9953C17.355 31.9579 18.6493 32.5 20 32.5C21.3508 32.5 22.645 31.9579 23.5926 30.9953L32.5803 21.8694C35.8066 18.554 35.8066 13.2725 32.5803 9.95707V9.95707C31.0331 8.38526 28.9199 7.50012 26.7144 7.50012C24.5089 7.50011 22.3956 8.38524 20.8484 9.95705Z" stroke="#912A1D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                            Orders
+                            Wishlist
                         </div>
                         <div className="col-span-1 border border-[#D6D6D5] h-[100px] flex flex-col items-center justify-center gap-[8px] text-[#363939] text-[14px]">
                             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,12 +63,15 @@ const AccountMobile = () => {
                                 <path d="M10.834 13.3333L35.834 13.3333" stroke="#912A1D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M19.9993 20H16.666" stroke="#912A1D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                            Orders
+                            Payment Cards
                         </div>
                     </div>
                     <div className="flex flex-col gap-[8px] w-full">
                         <div className="py-[16px] px-[12px] flex items-center justify-between border-b border-[#D6D6D5] h-[56px]">
-                            <div className="flex items-center gap-[12px] text-[#141511] font-medium text-[14px]">
+                            <div className="flex items-center gap-[12px] text-[#141511] font-medium text-[14px]" onClick={()=>{
+                                    dispatch(setShowAccount(false));
+                                    navigate('/addresses');
+                                }}>
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12 13V13C10.343 13 9 11.657 9 10V10C9 8.343 10.343 7 12 7V7C13.657 7 15 8.343 15 10V10C15 11.657 13.657 13 12 13Z" stroke="#141511" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12 21C12 21 5 15.25 5 10C5 6.134 8.134 3 12 3C15.866 3 19 6.134 19 10C19 15.25 12 21 12 21Z" stroke="#141511" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -131,7 +140,7 @@ const AccountMobile = () => {
                                     <path d="M4.14453 16.84H6.99453" stroke="#141511" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                     <path d="M7.92614 19.006C7.06014 19.381 6.02314 19.227 5.31514 18.519C4.38714 17.591 4.38714 16.088 5.31514 15.16C6.02314 14.452 7.06114 14.298 7.92614 14.673" stroke="#141511" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
-                                Delivery addresses
+                                Currency
                             </div>
                             <div className="flex items-center gap-[8px] text-[#141511] font-medium text-[14px]">
                                 EUR (Euro)
