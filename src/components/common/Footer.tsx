@@ -5,7 +5,7 @@ const Footer = () => {
     const { showAccount } = useSelector((state: RootState) => state.app);
     return (
         <div className={`w-full flex flex-col justify-center items-center ${!showAccount && "pt-[24px]"} thisisfooter`}>
-            {!showAccount && <div className={`w-full bg-[#87CEEB] grid grid-cols-1 tmd:grid-cols-2 px-[20px] tmd:px-[10%] py-[50px] gap-[20px] tmd:gap-[0px]`}>
+            {!showAccount && <div className={`w-full bg-[#FF8A00] grid grid-cols-1 tmd:grid-cols-2 px-[20px] tmd:px-[10%] py-[50px] gap-[20px] tmd:gap-[0px]`}>
                 <div className="flex flex-col col-span-1 justify-center">
                     <div className="tmd:w-[78%] flex flex-col justify-center gap-[16px]">
                         <div className="text-[26px] tmd:text-[36px] font-bold leading-[36px] tracking-[0%] uppercase tmd:text-justify">Get the latest updates and exclusive offers</div>

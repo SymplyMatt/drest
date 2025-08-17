@@ -1,8 +1,8 @@
-import loaderImage from "../../assets/images/logo.svg";
+import loaderImage from "../../assets/images/logo.png";
 
 const Loader = () => {
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-[#D4AF37] z-50">
+    <div className="fixed inset-0 flex items-center justify-center z-50">
       <img
         src={loaderImage}
         alt="Loading..."

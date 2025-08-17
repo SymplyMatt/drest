@@ -19,8 +19,7 @@ const Header = () => {
     return (
         <>
             <div className="w-full flex flex-col">
-                <div className="w-full flex h-[42px] bg-headerBlack items-center justify-between text-textWhite px-[20px] tmd:px-[50px]">
-                    <Languages />
+                <div className="w-full flex h-[42px] bg-[#10583E] items-center justify-center text-textWhite px-[20px] tmd:px-[50px]">
                     <div className="flex justify-center items-center gap-[40px] text-[14px] w-full tmd:w-fit">
                         <div className="cursor-pointer hidden tmd:block "><img src="/images/arrowleft.svg" /></div>
                         <div className="hidden tmd:block font-semibold">We love love - Shop for all the Valentine's Day gifts in our LOVE SALE!!</div>
@@ -37,21 +36,9 @@ const Header = () => {
                         <div className="hidden tmd:block font-medium underline leading-[14px] cursor-pointer">SHOP NOW</div>
                         <div className="hidden tmd:block cursor-pointer"><img src="/images/arrowright.svg" /></div>
                     </div>
-                    <Currencies />
                 </div>
                 <div className={`w-full h-[92px] border-b border-[#E6E6E6] px-[20px] tmd:px-[50px] justify-between items-center gap-[24px] ${location.pathname.includes('/search') ? 'hidden tmd:flex' : 'flex'}`}>
-                    <div className="cursor-pointer" onClick={()=>navigate('/')}><img src="/images/logo.svg" className="h-[28px] tmd:h-[36px]"/></div>
-                    <div className="items-center gap-[16px] uppercase hidden tmd:flex">
-                        {["women", "men", "kids", "home", "beauty"].map((category, index) => (
-                            <div key={index} className="font-semibold cursor-pointer flex items-center opacity-[0.90] hover:text-[#8F0024] open-menu">
-                                <img src={`/images/${category}.svg`} alt="" />
-                            </div>
-                        ))}
-                    </div>
-                    <div className="h-[48px] border border-black flex items-center justify-between px-[12px] cursor-pointer w-fit tmd:w-[200px]">
-                        <input type="text" className="border-none outline-none focus:ring-0 text-base text-[#6B6B6B] cursor-pointer" placeholder="Search for product" onClick={() => dispatch(setSearchMode('empty'))}/>
-                        <img src="/images/search.svg" />
-                    </div>
+                    <div className="cursor-pointer" onClick={()=>navigate('/')}><img src="/images/logo.png" className="h-[40px] tmd:h-[60px]"/></div>
                     <UserInfo />
                 </div>
                 <div className="relative border-b border-[#E6E6E6] h-[48px] w-full px-[20px] tmd:px-[50px] hidden tmd:flex items-center justify-between">

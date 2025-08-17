@@ -52,7 +52,7 @@ const CategoriesAndProductsProduct: React.FC<CategoriesAndProductsProps>= ({prod
             <img src="/images/rec_plus.svg" className="cursor-pointer absolute bottom-[20px] right-[10px]"alt="Add" />
             <div className="w-full h-[80px] border-t border-b border-[#D6D6D5] cursor-pointer absolute bottom-[0px] right-[0px] bg-white flex items-center justify-center p-[16px] opacity-0 translate-y-4 transition-all duration-500 ease-in-out group-hover:opacity-100 group-hover:translate-y-0">
                 <div 
-                    className="h-[48px] bg-[#141511] w-full flex items-center justify-center text-white gap-[8px] text-[16px] leading-[24px] tracking-[0%] font-medium transition-transform duration-200 hover:scale-[0.9]"
+                    className="h-[48px] bg-[#10583E] w-full flex items-center justify-center text-white gap-[8px] text-[16px] leading-[24px] tracking-[0%] font-medium transition-transform duration-200 hover:scale-[0.9]"
                     onClick={() => navigate(`/product/${product.id}`, { state: { product } })}
                 >
                     <img src="/images/eye_product.svg" alt="Quick view" /> Quick View

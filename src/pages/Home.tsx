@@ -16,11 +16,9 @@ const Home = () => {
             <HeroSlider />
             {categories.length ? <RoundCategoriesSlider categories={categories} /> : <></>}
             {sales.length ? <FlashSales /> : <></>}
-            {products.length ? <CategoriesAndProducts title="Recommended" productsToDisplay={products}/> : <></>}
+            {products.length ? <CategoriesAndProducts title="Top Selling" productsToDisplay={products}/> : <></>}
             {newArrivals.length ? <NewArrivals /> : <></>}
-            {products.length ? <CategoriesAndProducts title="Trending" productsToDisplay={products}/> : <></>}
-            <Ads />
-            <FeaturedBrands />
+            {products.length ? <CategoriesAndProducts title="New Stock" productsToDisplay={products}/> : <></>}
         </Layout>
     );
 }
