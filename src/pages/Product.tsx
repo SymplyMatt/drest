@@ -7,7 +7,7 @@ import UpsellSlider from "../components/product/UpsellSlider";
 import Layout from "./Layout";
 import Loader from "../components/common/Loader";
 import { RootState } from "../redux/store";
-import { fetchFromApi, Product as ProductInterface } from "../utils/utils";
+import { apiRequest, Product as ProductInterface } from "../utils/utils";
 
 const Product = () => {
   const { products } = useSelector((state: RootState) => state.app);
@@ -22,7 +22,7 @@ const Product = () => {
     const fetchProduct = async () => {
         if (!product && id) {
         try {
-            const fetchedProduct = (await fetchFromApi(`products/${id}`)).data;
+            const fetchedProduct = (await apiRequest(`products/${id}`)).data;
             setProduct(fetchedProduct);
         } catch (err) {
             console.error("Error fetching product:", err);
@@ -30,7 +30,7 @@ const Product = () => {
             setLoading(false);
         }
         }
-        const reviews = await fetchFromApi(`products/reviews?product=${id}`);
+        const reviews = await apiRequest(`products/reviews?product=${id}`);
         setReviews(reviews || []);
     };
     fetchProduct();
@@ -39,7 +39,7 @@ const Product = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const fetchedProduct = (await fetchFromApi(`products?include=${product?.related_ids?.join(",")}`)).data;
+        const fetchedProduct = (await apiRequest(`products?include=${product?.related_ids?.join(",")}`)).data;
         setUpsells(fetchedProduct);
       } catch (err) {
         console.error("Error fetching product:", err);

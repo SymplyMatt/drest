@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 
 const FlashSales = () => {
-  const { sales } = useSelector((state: RootState) => state.app);
+  const { products } = useSelector((state: RootState) => state.app);
 
   return (
     <>
@@ -18,7 +18,7 @@ const FlashSales = () => {
               <div className="flex items-center text-white gap-[8px]"><span className="leading-[100%] tracking-[2%]">Time Left:</span> <span className="font-bold">02h : 47m : 05s</span></div>
               <div className="uppercase text-white underline text-[16px] font-medium leading-[24px] tracking-[0%] cursor-pointer absolute right-[16px] top-1/2 -translate-y-1/2 tmd:static  tmd:top-auto tmd:translate-y-0">see all</div>
           </div>
-          { sales.length > 0 ? <UpsellSlider showTitle={false} products={ sales }/> : <></> }
+          { products.length > 0 ? <UpsellSlider showTitle={false} products={ products }/> : <></> }
       </div>
       <img src={homeimageone} className="w-full h-auto" />
     </>

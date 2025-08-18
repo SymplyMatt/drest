@@ -3,7 +3,7 @@ import { AppDispatch, RootState } from "../../redux/store";
 import { setAuthPage } from "../../redux/states/auth";
 import { setLoggedInUser } from "../../redux/states/app";
 import { useState } from "react";
-import { fetchFromApi } from "../../utils/utils";
+import { apiRequest } from "../../utils/utils";
 import { useSelector } from "react-redux";
 import Loader from "../common/Loader";
 
@@ -17,7 +17,7 @@ const VerifyEmail = () => {
     }
     const verifyOtp = async () => {
         setLoading(true);
-        const response: any = await fetchFromApi("custom/v1/verify-signup-otp", {method: "POST", body: { password: signupValues.password, email: signupValues.email, otp }, baseurl:'https://newshop.tn/wp-json/'});
+        const response: any = await apiRequest("custom/v1/verify-signup-otp", {method: "POST", body: { password: signupValues.password, email: signupValues.email, otp }, baseurl:'https://newshop.tn/wp-json/'});
         setLoading(false);
         console.log(response);
         if(response.data && response.status == 200) {

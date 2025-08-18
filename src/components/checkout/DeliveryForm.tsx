@@ -2,14 +2,14 @@
 // import { RootState } from "../../redux/store";
 // import { useDispatch } from "react-redux";
 // import { useEffect } from "react";
-// import { fetchFromApi } from "../../utils/utils";
+// import { apiRequest } from "../../utils/utils";
 
 const DeliveryForm = () => {
     // const { userAddress } = useSelector((state: RootState) => state.app);
     // const dispatch = useDispatch();
     // useEffect(() => {
     //     async function getAddress(){
-    //         const address = await fetchFromApi("custom/v1/address/view", { method: "GET" ,baseurl: 'https://newshop.tn/wp-json/', useToken: true });
+    //         const address = await apiRequest("custom/v1/address/view", { method: "GET" ,baseurl: 'https://newshop.tn/wp-json/', useToken: true });
     //         console.log(address.data);
     //     }
     //     getAddress();

@@ -2,22 +2,22 @@ import { useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store";
 import { addToWishlist, emptyCart, removeFromCart, removeFromWishlist, updateCart } from "../../redux/states/app";
 import { useSelector } from "react-redux";
-import { CartItem, fetchFromApi } from "../../utils/utils";
+import { CartItem, apiRequest } from "../../utils/utils";
 
 const CartProducts = () => {
     const dispatch = useDispatch<AppDispatch>();
     const { cart, wishlist, loggedInUser } = useSelector((state: RootState) => state.app);
     const clearCart = async () =>{
-        loggedInUser && await fetchFromApi("custom/v1/cart/clear", {method: "POST", baseurl:'https://newshop.tn/wp-json/', useToken: true});
+        loggedInUser && await apiRequest("custom/v1/cart/clear", {method: "POST", baseurl:'https://newshop.tn/wp-json/', useToken: true});
         dispatch(emptyCart());
     }
     const removeProductFromCart = async (cartEntry: CartItem) =>{
-        loggedInUser && await fetchFromApi("custom/v1/cart/remove", {method: "POST", body: { key: cartEntry?.key }, baseurl:'https://newshop.tn/wp-json/', useToken: true});
+        loggedInUser && await apiRequest("custom/v1/cart/remove", {method: "POST", body: { key: cartEntry?.key }, baseurl:'https://newshop.tn/wp-json/', useToken: true});
         dispatch(removeFromCart(cartEntry.product.id));
     }
     const updateQuantity = async (cartEntry: CartItem, quantity: number) =>{
         if (loggedInUser){
-            await fetchFromApi("custom/v1/cart/update", { method: "POST", body: { key: cartEntry?.key, quantity }, baseurl:'https://newshop.tn/wp-json/', useToken: true });
+            await apiRequest("custom/v1/cart/update", { method: "POST", body: { key: cartEntry?.key, quantity }, baseurl:'https://newshop.tn/wp-json/', useToken: true });
         }
         dispatch(updateCart([...cart.filter(item => item.product.id !== cartEntry.product.id), { ...cartEntry, quantity }]));
     }

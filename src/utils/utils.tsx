@@ -222,171 +222,159 @@ export default class utils {
       return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   };
 }
-export interface Response{
+
+
+import { AxiosRequestConfig, Method } from "axios";
+
+export interface Response {
   data: any;
   status: number;
   statusText: string;
-  headers: Record<string, string>;
+  headers: Record<string, string | number | boolean>;
   config: any;
-  response?: any;
+  error?: any;
 }
 
-const username = import.meta.env.VITE_API_USERNAME || '';
-const password = import.meta.env.VITE_API_PASSWORD || '';
+function normalizeHeaders(
+  headers: Record<string, any>
+): Record<string, string | number | boolean> {
+  return Object.fromEntries(
+    Object.entries(headers).map(([k, v]) => [k, v ?? ""])
+  );
+}
 
-const token = btoa(`${username}:${password}`);
-export const fetchFromApi = async (
+const baseurl = 'http://localhost:1235/';
+export async function apiRequest(
   endpoint: string,
-  options?: {
-    method?: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
-    body?: any;
-    baseurl?: string;
-    useToken?: boolean;
-  }
-) => {
+  method: Method = "GET",
+  body?: any
+): Promise<Response> {
   try {
-    const baseURL = options?.baseurl ? options?.baseurl : import.meta.env.VITE_BASEURL || 'https://example.com/api/';
-    const method = options?.method || 'GET';
-    const url = `${baseURL}${endpoint}`;
-    const headers: Record<string, string> = {};
-    const userToken = localStorage.getItem('userToken');
-    if (!options?.body) {
-      headers['Authorization'] = `Basic ${token}`;
+    const config: AxiosRequestConfig = {
+      method,
+      url: baseurl + endpoint,
+      data: body,
+      // withCredentials: true,
+    };
+
+    const res = await axios(config);
+
+    return {
+      data: res.data,
+      status: res.status,
+      statusText: res.statusText,
+      headers: normalizeHeaders(res.headers),
+      config: res.config,
+    };
+  } catch (err: any) {
+    if (err.response) {
+      return {
+        data: err.response.data,
+        status: err.response.status,
+        statusText: err.response.statusText,
+        headers: normalizeHeaders(err.response.headers),
+        config: err.config,
+        error: err.message,
+      };
     }
-    if (options?.useToken && userToken) {
-      headers['Authorization'] = `Bearer ${userToken}`;
-    }
-    if (options?.body) {
-      headers['Content-Type'] = 'application/json';
-    }
-    const config = { method, url, headers, ...(method !== 'GET' && options?.body ? { data: options.body } : {})};
-    const response: Response = await axios(config);
-    return response;
-  } catch (err:any) {
-    console.error(`Error fetching from ${endpoint}:`, err);
-    return err as Response;
+    return {
+      data: null,
+      status: 0,
+      statusText: "Network Error",
+      headers: {},
+      config: {},
+      error: err.message || err,
+    };
   }
-};
+}
 
 export interface Product {
-  id: number;
+  _id: string;
+  id: string;
   name: string;
-  slug: string;
-  permalink: string;
-  date_created: string;
-  date_created_gmt: string;
-  date_modified: string;
-  date_modified_gmt: string;
-  type: string;
-  status: string;
-  featured: boolean;
-  catalog_visibility: string;
+  inSeason: boolean;
   description: string;
-  short_description: string;
-  sku: string;
-  price: string;
-  regular_price: string;
-  sale_price: string;
-  date_on_sale_from: string | null;
-  date_on_sale_from_gmt: string | null;
-  date_on_sale_to: string | null;
-  date_on_sale_to_gmt: string | null;
-  on_sale: boolean;
-  purchasable: boolean;
-  total_sales: string;
-  virtual: boolean;
-  downloadable: boolean;
-  downloads: any[];
-  download_limit: number;
-  download_expiry: number;
-  external_url: string;
-  button_text: string;
-  tax_status: string;
-  tax_class: string;
-  manage_stock: boolean;
-  stock_quantity: number;
-  backorders: string;
-  backorders_allowed: boolean;
-  backordered: boolean;
-  low_stock_amount: number | null;
-  sold_individually: boolean;
-  weight: string;
-  dimensions: {
-    length: string;
-    width: string;
-    height: string;
-  };
-  shipping_required: boolean;
-  shipping_taxable: boolean;
-  shipping_class: string;
-  shipping_class_id: number;
-  reviews_allowed: boolean;
-  average_rating: string;
-  rating_count: number;
-  upsell_ids: number[];
-  cross_sell_ids: number[];
-  parent_id: number;
-  purchase_note: string;
-  categories: {
-    id: number;
-    name: string;
-    slug: string;
-  }[];
-  tags: any[];
-  images: any[];
-  attributes: any[];
-  default_attributes: any[];
-  variations: any[];
-  grouped_products: any[];
-  menu_order: number;
-  price_html: string;
-  related_ids: number[];
-  meta_data: any[];
-  stock_status: string;
-  has_options: boolean;
-  post_password: string;
-  global_unique_id: string;
-  aioseo_notices: any[];
-  brands: any[];
-  _links: {
-    self: {
-      href: string;
-      targetHints: {
-        allow: string[];
-      };
-    }[];
-    collection: {
-      href: string;
-    }[];
-  };
+  image: string;
+  deletedAt: string | null;
+  createdBy: string;
+  updatedBy: string;
+  createdAt: string; // ISO Date string
+  updatedAt: string; // ISO Date string
+  __v: number;
+  productOptions: ProductOption[];
+  productCategories: ProductCategory[];
+  locationProducts: LocationProduct[];
+  productContents: ProductContent[];
 }
-export interface ProductCategory {
-  id: number;
+
+export interface ProductOption {
+  _id: string;
+  id: string;
+  productId: string;
   name: string;
-  slug?: string;
-  parent?: number;
-  description?: string;
-  display?: string;
-  image?: {
-    id: number;
-    src: string;
-    name: string;
-    alt: string;
-  };
-  menu_order?: number;
-  count?: number;
-  _links?: {
-    self: Array<{
-      href: string;
-      targetHints?: {
-        allow: string[];
-      };
-    }>;
-    collection: Array<{
-      href: string;
-    }>;
-  };
+  price: number;
+  image: string;
+  stock: number;
+  deletedAt: string | null;
+  createdBy: string;
+  updatedBy: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
 }
+
+export interface ProductCategory {
+  _id: string;
+  id: string;
+  productId: string;
+  categoryId: string;
+  createdAt: string;
+  __v: number;
+  category: Category;
+}
+
+export interface Category {
+  _id: string;
+  id: string;
+  name: string;
+  image: string;
+  deletedAt: string | null;
+  createdBy: string;
+  updatedBy: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+
+export interface LocationProduct {
+  _id: string;
+  id: string;
+  productId: string;
+  locationId: string;
+  createdAt: string;
+  __v: number;
+  location: Location;
+}
+
+export interface Location {
+  _id: string;
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+
+export interface ProductContent {
+  _id: string;
+  id: string;
+  productId: string;
+  content: string; // likely HTML string
+  createdBy: string;
+  createdAt: string;
+  __v: number;
+}
+
 export interface ArrivalsAndCategory {
   category: ProductCategory;
   products: Product[];
